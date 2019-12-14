@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Button, Row, Col } from 'antd';
-
-
+import { Button, Col, Row, Grid } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import './NavigationBar.css'
 export default class NavigationBar extends Component {
     constructor(props) {
         super(props);
@@ -23,19 +24,27 @@ export default class NavigationBar extends Component {
         this.setState({ show: !this.state.show });
     }
     render() {
-        const { size } = this.state;
         return (
-            <div>
+            <Grid>
                 <Row>
-                    <Col span={8}></Col>
-                    <Col span={8} style={{'display': 'inline-flex', 'flex-direction': 'row', 'justify-content': 'space-between'}}>
-                        <Button onClick={this.DecreaseItem} type="primary" shape="circle" icon="left" size={size} />
-                        {this.state.show ? <h2>{this.state.dayOfHolidays}</h2> : ''}
-                        <Button onClick={this.IncrementItem} type="primary" shape="circle" icon="right" size={size} />
+                    <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
+                        Quanti giorni di ferie vuoi fare?
                     </Col>
-                    <Col span={8}></Col>
                 </Row>
-            </div>
+                <Row>
+                    <Col md={4} ></Col>
+                    <Col md={4} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
+                        <Button bsStyle="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.DecreaseItem}>
+                            <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
+                        </Button>
+                        {this.state.show ? <h2>{this.state.dayOfHolidays}</h2> : ''}
+                        <Button bsStyle="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.IncrementItem} >
+                            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+                        </Button>
+                    </Col>
+                    <Col md={4}></Col>
+                </Row >
+            </Grid>
         );
     }
 }

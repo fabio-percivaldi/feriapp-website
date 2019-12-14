@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { EventCalendar, eventTypes } from '@jfschmiechen/react-event-calendar';
+import { Grid, Row } from "react-bootstrap";
+
 import "./Home.css";
 import NavigationBar from "../components/NavigationBar";
-import { Layout } from 'antd';
-const { Header, Content, Footer } = Layout;
-
 let parsedEvents = [];
 
 let colors = {
@@ -39,14 +38,12 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Layout className="layout">
-        <Header>
+      <Grid className="layout" style={{heigth: '100vh'}}>
           <NavigationBar></NavigationBar>
-        </Header>
-        <Content style={{ padding: '0 50px' }}>
-          <EventCalendar items={parsedEvents} month={5} year={2019} config={config} />
-        </Content>
-      </Layout>
+          <Row>
+            <EventCalendar items={parsedEvents} month={5} year={2019} config={config} />
+          </Row>
+      </Grid>
     );
   }
 }
