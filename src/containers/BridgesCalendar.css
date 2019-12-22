@@ -1,0 +1,81 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  div.calendar {
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+    clear: both;
+  }
+  div.calendar .weekdays,
+  div.calendar .footer-weekdays {
+    display: none;
+  }
+  div.calendar ul {
+    margin: 0;
+    padding: 0;
+    list-style-image: none;
+  }
+  div.calendar li {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    max-height: 80px;
+    border: 2px solid #fff;
+  }
+  div.calendar li .day,
+  div.calendar li .month {
+    display: inline;
+  }
+  div.calendar li .day {
+    display: inline;
+  }
+  @media (min-width: 628px) {
+    div.calendar li .day {
+      display: none;
+    }
+  }
+  div.calendar li.out_of_range {
+    display: none;
+  }
+  
+  /*Small Devices Style*/
+  @media (min-width: 768px) {
+    div.calendar .weekdays,
+    div.calendar .footer-weekdays {
+      display: block;
+    }
+    div.calendar .weekdays li,
+    div.calendar .footer-weekdays li {
+      background-color: #21b0dc;
+      height: 40px;
+      text-align: center;
+      color: #fff;
+    }
+    div.calendar .footer-weekdays li {
+      height: 20px;
+    }
+    div.calendar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      clear: both;
+      width: 100%;
+    }
+    div.calendar ul li {
+      display: block;
+      float: left;
+      height: auto;
+      max-height: 150px;
+      width: 14.2857142857%;
+      padding: 10px;
+    }
+    div.calendar ul li.out_of_range {
+      display: block;
+    }
+    div.calendar h2 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
