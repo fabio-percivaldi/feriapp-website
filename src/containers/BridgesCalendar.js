@@ -24,9 +24,9 @@ export default class BridgesCalendar extends Component {
         this.state = {
             weeks: weeks,
             currentMonth: moment(),
+            dayOfHolidays: props.dayOfHolidays
         }
     }
-
 
     _kazzenger = null
     _kazzengerSettings = null
@@ -38,14 +38,13 @@ export default class BridgesCalendar extends Component {
         }
         return this._kazzenger
     }
-
-    bridgesByMonth = (kazzenger, maxWorkDays, start, end) => {
+    bridgesByMonth = (kazzenger, dayOfHolidays, start, end) => {
         return kazzenger
             .bridgesByMonth({
                 start: start.startOf('month').toDate(),
                 end: end.endOf('month').toDate(),
                 maxHolidaysDistance: 4,
-                maxAvailability: maxWorkDays,
+                maxAvailability: dayOfHolidays,
             })
             .map(years => {
                 const scores = []
@@ -63,7 +62,7 @@ export default class BridgesCalendar extends Component {
                 return years
             })
     }
-    bridges = (kazzenger, maxWorkDays) => {
+    bridges = (kazzenger, dayOfHolidays) => {
         //  const now = new Date('2019-01-01T00:00:00Z')
         const now = new Date()
         return kazzenger
@@ -71,7 +70,7 @@ export default class BridgesCalendar extends Component {
                 start: now,
                 end: new Date(`${now.getFullYear() + 2}-12-31T12:00:00Z`),
                 maxHolidaysDistance: 4,
-                maxAvailability: maxWorkDays,
+                maxAvailability: dayOfHolidays,
             })
             .map(years => {
                 const scores = []
@@ -89,13 +88,11 @@ export default class BridgesCalendar extends Component {
                 return years
             })
     }
-
-    calculateMonthlyCalendar(currentMonth) {
-        const defaultMaxWorkDays = 5
+    calculateMonthlyCalendar = (currentMonth, dayOfHolidays = 2) => {
         const previousMonth = moment(currentMonth).subtract(1, 'months')
         const nextMonth = moment(currentMonth).add(1, 'months')
         
-        const bridgesByMonth = this.bridgesByMonth(this.getKazzenger(), defaultMaxWorkDays, moment(currentMonth), nextMonth)
+        const bridgesByMonth = this.bridgesByMonth(this.getKazzenger(), dayOfHolidays, moment(currentMonth), nextMonth)
         console.log(bridgesByMonth)
         // TODO: da considerare i ponti nel mese precedente e in quello successivo
         const bridgesDayInPreviousMonth = bridgesByMonth.find(bridge => {
@@ -188,13 +185,22 @@ export default class BridgesCalendar extends Component {
 
         this.setState({ isLoading: false });
     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.dayOfHolidays !== this.props.dayOfHolidays) {
+            const weeks = this.calculateMonthlyCalendar(this.state.currentMonth, this.props.dayOfHolidays) 
+            this.setState({
+                weeks,
+                currentMonth: this.state.currentMonth
+            })  
+        }
+    }
     renderDay(dayNumber, month, isBridge) {
         return <DayOnCalendar dayOfTheMonth={dayNumber} month={month} isBridge={isBridge} key={`${dayNumber}${month}`}></DayOnCalendar>
     }
 
     nextMonth = () => {
         const nextMonth = moment(this.state.currentMonth).add(1, 'months')
-        const nextWeeks = this.calculateMonthlyCalendar(nextMonth)
+        const nextWeeks = this.calculateMonthlyCalendar(nextMonth, this.state.maxWorkDays)
 
         this.setState({
             weeks: nextWeeks,
@@ -204,7 +210,7 @@ export default class BridgesCalendar extends Component {
 
     previousMonth = () => {
         const previousMonth = moment(this.state.currentMonth).subtract(1, 'months')
-        const previousWeeks = this.calculateMonthlyCalendar(previousMonth)
+        const previousWeeks = this.calculateMonthlyCalendar(previousMonth, this.state.maxWorkDays)
 
         this.setState({
             weeks: previousWeeks,

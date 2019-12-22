@@ -9,10 +9,9 @@ export default class Home extends Component {
     super(props);
 
     this.state = {
-      days: [],
+      dayOfHolidays: 2
     };
   }
-  currentValue = 2
 
   async componentDidMount() {
     if (!this.props.isAuthenticated) {
@@ -21,18 +20,25 @@ export default class Home extends Component {
 
     this.setState({ isLoading: false });
   }
-  incrementNumber = () => {
-    this.currentValue++
+  increment = () => {
+    this.setState({
+      dayOfHolidays: this.state.dayOfHolidays + 1 
+    })
+  }
+  decrease = () => {
+    this.setState({
+      dayOfHolidays: this.state.dayOfHolidays - 1
+    })
   }
   render() {
     return (
       <Grid>
         <Col>
           <Row>
-            <NavigationBar></NavigationBar>
+            <NavigationBar increment={this.increment} decrease={this.decrease} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
           </Row>
           <Row>
-            <BridgesCalendar></BridgesCalendar>
+            <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
           </Row>
         </Col>
       </Grid>
