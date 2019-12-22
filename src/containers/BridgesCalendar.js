@@ -5,21 +5,126 @@ import moment from 'moment'
 import { Button, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import * as Kazzenger from '../kazzenger-core/kazzenger'
+import deepEqual from 'deep-equal'
+
+const defaultLocation = { country: 'IT', city: 'Milano' }
+const defaultDaysOff = [0, 6]
+const defaultKazzengerSettings = {
+    ...defaultLocation,
+    daysOff: defaultDaysOff,
+}
 
 export default class BridgesCalendar extends Component {
     constructor(props) {
         super(props);
 
+        const weeks = this.calculateMonthlyCalendar(moment())
+
         this.state = {
-            weeks: this.calculateMonthlyCalendar(moment()),
-            currentMonth: moment()
+            weeks: weeks,
+            currentMonth: moment(),
         }
     }
+
+
+    _kazzenger = null
+    _kazzengerSettings = null
+    getKazzenger = (settings) => {
+        if (!this._kazzenger || (settings && !deepEqual(settings, this._kazzengerSettings))) {
+            this._kazzengerSettings = settings || defaultKazzengerSettings
+            this._kazzenger = new Kazzenger.default(this._kazzengerSettings)
+            console.log('creted new Kazzenger')
+        }
+        return this._kazzenger
+    }
+
+    bridgesByMonth = (kazzenger, maxWorkDays, start, end) => {
+        return kazzenger
+            .bridgesByMonth({
+                start: start.startOf('month').toDate(),
+                end: end.endOf('month').toDate(),
+                maxHolidaysDistance: 4,
+                maxAvailability: maxWorkDays,
+            })
+            .map(years => {
+                const scores = []
+                years.bridges.forEach(bridge => {
+                    bridge.rate = kazzenger.rateBridge(bridge)
+                    if (bridge.rate > 70) {
+                        scores.push(bridge.rate)
+                    }
+                })
+                scores.sort().reverse()
+                years.bridges.forEach(bridge => {
+                    const index = scores.indexOf(bridge.rate)
+                    bridge.isTop = index >= 0 && index < 2
+                })
+                return years
+            })
+    }
+    bridges = (kazzenger, maxWorkDays) => {
+        //  const now = new Date('2019-01-01T00:00:00Z')
+        const now = new Date()
+        return kazzenger
+            .bridgesByYears({
+                start: now,
+                end: new Date(`${now.getFullYear() + 2}-12-31T12:00:00Z`),
+                maxHolidaysDistance: 4,
+                maxAvailability: maxWorkDays,
+            })
+            .map(years => {
+                const scores = []
+                years.bridges.forEach(bridge => {
+                    bridge.rate = kazzenger.rateBridge(bridge)
+                    if (bridge.rate > 70) {
+                        scores.push(bridge.rate)
+                    }
+                })
+                scores.sort().reverse()
+                years.bridges.forEach(bridge => {
+                    const index = scores.indexOf(bridge.rate)
+                    bridge.isTop = index >= 0 && index < 2
+                })
+                return years
+            })
+    }
+
     calculateMonthlyCalendar(currentMonth) {
+        const defaultMaxWorkDays = 5
+        const previousMonth = moment(currentMonth).subtract(1, 'months')
+        const nextMonth = moment(currentMonth).add(1, 'months')
         
-        console.log('|||||||||||||||||| ', currentMonth)
+        const bridgesByMonth = this.bridgesByMonth(this.getKazzenger(), defaultMaxWorkDays, moment(currentMonth), nextMonth)
+        console.log(bridgesByMonth)
+        // TODO: da considerare i ponti nel mese precedente e in quello successivo
+        const bridgesDayInPreviousMonth = bridgesByMonth.find(bridge => {
+            return bridge.months.find(month => month === previousMonth.format('MM'))
+        })
+        const bridgesInCurrentMonth = bridgesByMonth.find(bridge => {
+            const pippo = bridge.months.find(month => {
+                return month === currentMonth.toDate().getMonth()
+            })
+            return pippo !== undefined
+        })
+        let bridgesDaysInCurrentMonth = []
+        if(bridgesInCurrentMonth) {
+            bridgesDaysInCurrentMonth = bridgesInCurrentMonth.bridges.map(bridge => {
+                const start = parseInt(moment(bridge.start).format('D'))
+                const end = parseInt(moment(bridge.end).format('D'))
+                const days = []
+                for (let i = start; i <= end; i++) {
+                    days.push({
+                        dayNumber: i,
+                        month: moment(bridge.start).format('MMM'),
+                    })
+                }
+                return days
+            })
+        }
+
         const daysInCurrentMonth = currentMonth.daysInMonth()
-        const daysInPreviousMonth = moment(currentMonth).subtract(1, 'months').daysInMonth()
+        const daysInPreviousMonth = previousMonth.daysInMonth()
         const extraDays = 35 - daysInCurrentMonth
         const secondHalf = Math.floor(extraDays / 2)
         const firstHalf = secondHalf + (extraDays % 2)
@@ -27,14 +132,16 @@ export default class BridgesCalendar extends Component {
         for (let i = firstHalf; i > 0; i--) {
             startPadding.push({
                 dayNumber: daysInPreviousMonth - i + 1,
-                month: moment(currentMonth).subtract(1, 'months').format('MMM')
+                month: previousMonth.format('MMM'),
+                isBridge: false
             })
         }
         const endPadding = []
         for (let i = 1; i <= firstHalf; i++) {
             endPadding.push({
                 dayNumber: i,
-                month: moment(currentMonth).add(1, 'months').format('MMM')
+                month: nextMonth.format('MMM'),
+                isBridge: false
             })
         }
         let days = [...startPadding]
@@ -42,10 +149,20 @@ export default class BridgesCalendar extends Component {
         for (let i = 1; i <= daysInCurrentMonth; i++) {
             days.push({
                 dayNumber: i,
-                month: currentMonth.format('MMM')
+                month: currentMonth.format('MMM'),
+                isBridge: false
             })
         }
         days = [...days, ...endPadding]
+        // per ora prendo solo il primo ponte non sto considerando eventuali sovrapposizioni di giorni, ovvero ponti diversi che hanno giorni in comune
+        if(bridgesDaysInCurrentMonth[0]) {
+            bridgesDaysInCurrentMonth[0].forEach(bridgeDay => {
+                const day = days.find(day => (day.dayNumber === bridgeDay.dayNumber) && (day.month === bridgeDay.month))
+                if(day) {
+                    day.isBridge = true
+                }
+            })
+        }
         return [
             {
                 days: days.slice(0, 7)
@@ -71,8 +188,8 @@ export default class BridgesCalendar extends Component {
 
         this.setState({ isLoading: false });
     }
-    renderDay(dayNumber, month) {
-        return <DayOnCalendar dayOfTheMonth={dayNumber} month={month} isBridge={false} key={`${dayNumber}${month}`}></DayOnCalendar>
+    renderDay(dayNumber, month, isBridge) {
+        return <DayOnCalendar dayOfTheMonth={dayNumber} month={month} isBridge={isBridge} key={`${dayNumber}${month}`}></DayOnCalendar>
     }
 
     nextMonth = () => {
@@ -108,7 +225,7 @@ export default class BridgesCalendar extends Component {
                 </ul>
                 <ul>
                     <Col md={12}>
-                        <Row style={{background: '#80808059'}}>
+                        <Row style={{ background: '#80808059' }}>
                             <Col md={4} ></Col>
                             <Col md={4} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
                                 <Button bsStyle="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
@@ -125,27 +242,27 @@ export default class BridgesCalendar extends Component {
                 </ul>
                 <ul>
                     {this.state.weeks[0].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month)
+                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
                     })}
                 </ul>
                 <ul>
                     {this.state.weeks[1].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month)
+                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
                     })}
                 </ul>
                 <ul>
                     {this.state.weeks[2].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month)
+                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
                     })}
                 </ul>
                 <ul>
                     {this.state.weeks[3].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month)
+                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
                     })}
                 </ul>
                 <ul>
                     {this.state.weeks[4].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month)
+                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
                     })}
                 </ul>
             </div>

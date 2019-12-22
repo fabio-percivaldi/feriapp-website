@@ -1,0 +1,779 @@
+[
+  {
+    "city": "Agrigento",
+    "name": "San Gerlando",
+    "date": "02-25",
+    "region": "Sicilia",
+    "province": "AG"
+  },
+  {
+    "city": "Alessandria",
+    "name": "San Baudolino e Madonna della Salve",
+    "date": "11-10",
+    "region": "Piemonte",
+    "province": "AL"
+  },
+  {
+    "city": "Ancona",
+    "name": "San Ciriaco di Gerusalemme",
+    "date": "05-04",
+    "region": "Marche",
+    "province": "AN"
+  },
+  {
+    "city": "Aosta",
+    "name": "San Grato",
+    "date": "09-07",
+    "region": "Valle d'Aosta",
+    "province": "AO"
+  },
+  {
+    "city": "Arezzo",
+    "name": "San Arezzo",
+    "date": "08-07",
+    "region": "Toscana",
+    "province": "AR"
+  },
+  {
+    "city": "Ascoli Piceno",
+    "name": "Sant'Emidio",
+    "date": "08-05",
+    "region": "Marche",
+    "province": "AP"
+  },
+  {
+    "city": "Asti",
+    "name": "San Secondo",
+    "date": "1st tuesday in May",
+    "region": "Piemonte",
+    "province": "AT"
+  },
+  {
+    "city": "Avellino",
+    "name": "San Modestino",
+    "date": "02-14",
+    "region": "Campania",
+    "province": "AV"
+  },
+  {
+    "city": "Bari",
+    "name": "San Nicola",
+    "date": "05-08",
+    "region": "Puglia",
+    "province": "BA"
+  },
+  {
+    "city": "Barletta",
+    "name": "San Ruggero",
+    "date": "12-30",
+    "region": "Puglia",
+    "province": "BT"
+  },
+  {
+    "city": "Belluno",
+    "name": "San Martino di Tours",
+    "date": "11-11",
+    "region": "Veneto",
+    "province": "BL"
+  },
+  {
+    "city": "Benevento",
+    "name": "San Bartolomeo",
+    "date": "08-24",
+    "region": "Campania",
+    "province": "BN"
+  },
+  {
+    "city": "Bergamo",
+    "name": "Sant'Alessandro di Bergamo",
+    "date": "08-26",
+    "region": "Lombardia",
+    "province": "BG"
+  },
+  {
+    "city": "Biella",
+    "name": "Santo Stefano martire",
+    "date": "12-26",
+    "region": "Piemonte",
+    "province": "BI"
+  },
+  {
+    "city": "Bologna",
+    "name": "San Petronio",
+    "date": "10-04",
+    "region": "Emilia Romagna",
+    "province": "BO"
+  },
+  {
+    "city": "Bolzano",
+    "name": "Santa Maria Assunta",
+    "date": "lunedi di Pentecoste",
+    "region": "Trentino Alto Adige",
+    "province": "BZ"
+  },
+  {
+    "city": "Brescia",
+    "name": "Santi Faustino e Giovita e Sant'Angela Merici",
+    "date": "02-15",
+    "region": "Lombardia",
+    "province": "BS"
+  },
+  {
+    "city": "Brindisi",
+    "name": "San Lorenzo da Brindisi e San Teodoro d'Amasea",
+    "date": "primo fine settimana di settembre",
+    "region": "Puglia",
+    "province": "BR"
+  },
+  {
+    "city": "Cagliari",
+    "name": "San Saturnino",
+    "date": "10-30",
+    "region": "Sardegna",
+    "province": "CA"
+  },
+  {
+    "city": "Caltanissetta",
+    "name": "San Michele Arcangelo",
+    "date": "09-29",
+    "region": "Sicilia",
+    "province": "CL"
+  },
+  {
+    "city": "Campobasso",
+    "name": "San Giorgio",
+    "date": "04-23",
+    "region": "Molise",
+    "province": "CB"
+  },
+  {
+    "city": "Carrara",
+    "name": "San Ceccardo",
+    "date": "06-16",
+    "region": "Toscana",
+    "province": "MS"
+  },
+  {
+    "city": "Carbonia",
+    "name": "San Ponziano",
+    "date": "giovedì dopo la seconda domenica di maggio",
+    "region": "Sardegna",
+    "province": "CI"
+  },
+  {
+    "city": "Caserta",
+    "name": "San Sebastiano",
+    "date": "01-20",
+    "region": "Campania",
+    "province": "CE"
+  },
+  {
+    "city": "Catania",
+    "name": "Sant'Agata",
+    "date": "02-05",
+    "region": "Sicilia",
+    "province": "CT"
+  },
+  {
+    "city": "Catanzaro",
+    "name": "San Vitaliano",
+    "date": "07-16",
+    "region": "Calabria",
+    "province": "CZ"
+  },
+  {
+    "city": "Cesena",
+    "name": "San Giovanni Battista",
+    "date": "06-24",
+    "region": "Emilia Romagna",
+    "province": "FC"
+  },
+  {
+    "city": "Chieti",
+    "name": "San Giustino",
+    "date": "05-11",
+    "region": "Abruzzo",
+    "province": "CH"
+  },
+  {
+    "city": "Como",
+    "name": "Sant'Abbondio",
+    "date": "08-31",
+    "region": "Lombardia",
+    "province": "CO"
+  },
+  {
+    "city": "Cosenza",
+    "name": "Madonna del Pilerio",
+    "date": "02-12",
+    "region": "Calabria",
+    "province": "CS"
+  },
+  {
+    "city": "Cremona",
+    "name": "Sant'Omobono",
+    "date": "11-13",
+    "region": "Lombardia",
+    "province": "CR"
+  },
+  {
+    "city": "Crotone",
+    "name": "San Dionigi di Parigi",
+    "date": "10-09",
+    "region": "Calabria",
+    "province": "KR"
+  },
+  {
+    "city": "Cuneo",
+    "name": "San Michele Arcangelo",
+    "date": "09-29",
+    "region": "Piemonte",
+    "province": "CN"
+  },
+  {
+    "city": "Enna",
+    "name": "Maria Santissima della Visitazione",
+    "date": "07-02",
+    "region": "Sicilia",
+    "province": "EN"
+  },
+  {
+    "city": "Fermo",
+    "name": "Santa Maria Assunta e San Savino",
+    "date": "08-16",
+    "region": "Marche",
+    "province": "FM"
+  },
+  {
+    "city": "Ferrara",
+    "name": "San Giorgio",
+    "date": "04-23",
+    "region": "Emilia Romagna",
+    "province": "FE"
+  },
+  {
+    "city": "Firenze",
+    "name": "San Giovanni Battista",
+    "date": "06-24",
+    "region": "Toscana",
+    "province": "FI"
+  },
+  {
+    "city": "Foggia",
+    "name": "Madonna dei Sette Veli",
+    "date": "03-22",
+    "region": "Puglia",
+    "province": "FG"
+  },
+  {
+    "city": "Forlì",
+    "name": "Madonna del Fuoco",
+    "date": "02-04",
+    "region": "Emilia Romagna",
+    "province": "FC"
+  },
+  {
+    "city": "Frosinone",
+    "name": "San Silverio e Sant'Ormisda",
+    "date": "06-20",
+    "region": "Lazio",
+    "province": "FR"
+  },
+  {
+    "city": "Genova",
+    "name": "San Giovanni Battista",
+    "date": "06-24",
+    "region": "Liguria",
+    "province": "GE"
+  },
+  {
+    "city": "Gorizia",
+    "name": "Santi Ilario e Taziano",
+    "date": "03-16",
+    "region": "Friuli Venezia Giulia",
+    "province": "GO"
+  },
+  {
+    "city": "Grosseto",
+    "name": "San Lorenzo",
+    "date": "08-10",
+    "region": "Toscana",
+    "province": "GR"
+  },
+  {
+    "city": "Iglesias",
+    "name": "Santa Chiara",
+    "date": "08-11",
+    "region": "Sardegna",
+    "province": "CI"
+  },
+  {
+    "city": "Imperia",
+    "name": "San Leonardo da Porto Maurizio",
+    "date": "11-26",
+    "region": "Liguria",
+    "province": "IM"
+  },
+  {
+    "city": "Isernia",
+    "name": "San Celestino V",
+    "date": "05-19",
+    "region": "Molise",
+    "province": "IS"
+  },
+  {
+    "city": "La Spezia",
+    "name": "San Giuseppe",
+    "date": "03-19",
+    "region": "Liguria",
+    "province": "SP"
+  },
+  {
+    "city": "L'Aquila",
+    "name": "San Massimo d'Aveia",
+    "date": "06-10",
+    "region": "Abruzzo",
+    "province": "AQ"
+  },
+  {
+    "city": "Latina",
+    "name": "Santa Maria Goretti",
+    "date": "07-06",
+    "region": "Lazio",
+    "province": "LT"
+  },
+  {
+    "city": "Lecce",
+    "name": "Sant'Oronzo",
+    "date": "08-26",
+    "region": "Puglia",
+    "province": "LE"
+  },
+  {
+    "city": "Lecco",
+    "name": "San Niccolò",
+    "date": "12-06",
+    "region": "Lombardia",
+    "province": "LC"
+  },
+  {
+    "city": "Livorno",
+    "name": "Santa Giulia",
+    "date": "05-22",
+    "region": "Toscana",
+    "province": "LI"
+  },
+  {
+    "city": "Lodi",
+    "name": "San Bassiano",
+    "date": "01-19",
+    "region": "Lombardia",
+    "province": "LO"
+  },
+  {
+    "city": "Lucca",
+    "name": "San Paolino di Lucca",
+    "date": "07-12",
+    "region": "Toscana",
+    "province": "LU"
+  },
+  {
+    "city": "Macerata",
+    "name": "San Giuliano",
+    "date": "08-31",
+    "region": "Marche",
+    "province": "MC"
+  },
+  {
+    "city": "Mantova",
+    "name": "Sant'Anselmo da Baggio",
+    "date": "03-18",
+    "region": "Lombardia",
+    "province": "MN"
+  },
+  {
+    "city": "Massa",
+    "name": "San Francesco d'Assisi",
+    "date": "10-04",
+    "region": "Toscana",
+    "province": "MS"
+  },
+  {
+    "city": "Matera",
+    "name": "Madonna della Bruna",
+    "date": "07-02",
+    "region": "Basilicata",
+    "province": "MT"
+  },
+  {
+    "city": "Messina",
+    "name": "Madonna della Lettera",
+    "date": "06-03",
+    "region": "Sicilia",
+    "province": "ME"
+  },
+  {
+    "city": "Milano",
+    "name": "Sant'Ambrogio",
+    "date": "12-07",
+    "region": "Lombardia",
+    "province": "MI"
+  },
+  {
+    "city": "Modena",
+    "name": "San Geminiano",
+    "date": "01-31",
+    "region": "Emilia Romagna",
+    "province": "MO"
+  },
+  {
+    "city": "Monza",
+    "name": "San Giovanni Battista",
+    "date": "06-24",
+    "region": "Lombardia",
+    "province": "MB"
+  },
+  {
+    "city": "Napoli",
+    "name": "San Gennaro",
+    "date": "09-19",
+    "region": "Campania",
+    "province": "NA"
+  },
+  {
+    "city": "Novara",
+    "name": "San Gaudenzio",
+    "date": "01-22",
+    "region": "Piemonte",
+    "province": "NO"
+  },
+  {
+    "city": "Nuoro",
+    "name": "Santa Maria delle Neve",
+    "date": "08-05",
+    "region": "Sardegna",
+    "province": "NU"
+  },
+  {
+    "city": "Olbia",
+    "name": "San Simplicio",
+    "date": "05-15",
+    "region": "Sardegna",
+    "province": "OT"
+  },
+  {
+    "city": "Oristano",
+    "name": "Sant'Archelao",
+    "date": "02-13",
+    "region": "Sardegna",
+    "province": "OR"
+  },
+  {
+    "city": "Padova",
+    "name": "Sant'Antonio da Padova",
+    "date": "06-13",
+    "region": "Veneto",
+    "province": "PD"
+  },
+  {
+    "city": "Palermo",
+    "name": "Santa Rosalia",
+    "date": "07-15",
+    "region": "Sicilia",
+    "province": "PA"
+  },
+  {
+    "city": "Parma",
+    "name": "Sant'Ilario",
+    "date": "01-13",
+    "region": "Emilia Romagna",
+    "province": "PR"
+  },
+  {
+    "city": "Pavia",
+    "name": "San Siro",
+    "date": "12-09",
+    "region": "Lombardia",
+    "province": "PV"
+  },
+  {
+    "city": "Perugia",
+    "name": "San Costanzo",
+    "date": "01-29",
+    "region": "Umbria",
+    "province": "PG"
+  },
+  {
+    "city": "Pesaro",
+    "name": "San Terenzio",
+    "date": "09-24",
+    "region": "Marche",
+    "province": "PU"
+  },
+  {
+    "city": "Pescara",
+    "name": "San Cetteo",
+    "date": "10-10",
+    "region": "Abruzzo",
+    "province": "PE"
+  },
+  {
+    "city": "Piacenza",
+    "name": "Sant'Antonino",
+    "date": "07-04",
+    "region": "Emilia Romagna",
+    "province": "PC"
+  },
+  {
+    "city": "Pisa",
+    "name": "San Ranieri",
+    "date": "06-17",
+    "region": "Toscana",
+    "province": "PI"
+  },
+  {
+    "city": "Pistoia",
+    "name": "San Jacopo",
+    "date": "07-25",
+    "region": "Toscana",
+    "province": "PT"
+  },
+  {
+    "city": "Pordenone",
+    "name": "San Marco Evangelista e Beata Vergine Maria delle Grazie",
+    "date": "04-25 e 09-08",
+    "region": "Friuli Venezia Giulia",
+    "province": "PN"
+  },
+  {
+    "city": "Potenza",
+    "name": "San Gerardo di Potenza",
+    "date": "05-30",
+    "region": "Basilicata",
+    "province": "PZ"
+  },
+  {
+    "city": "Prato",
+    "name": "Santo Stefano",
+    "date": "12-26",
+    "region": "Toscana",
+    "province": "PO"
+  },
+  {
+    "city": "Ragusa",
+    "name": "San Giovanni Battista",
+    "date": "08-29",
+    "region": "Sicilia",
+    "province": "RG"
+  },
+  {
+    "city": "Ravenna",
+    "name": "Sant'Apollinare",
+    "date": "07-23",
+    "region": "Emilia Romagna",
+    "province": "RA"
+  },
+  {
+    "city": "Reggio Calabria",
+    "name": "San Giorgio",
+    "date": "04-23",
+    "region": "Calabria",
+    "province": "RC"
+  },
+  {
+    "city": "Reggio Emilia",
+    "name": "San Prospero",
+    "date": "11-24",
+    "region": "Emilia Romagna",
+    "province": "RE"
+  },
+  {
+    "city": "Rieti",
+    "name": "Santa Barbara",
+    "date": "12-04",
+    "region": "Lazio",
+    "province": "RI"
+  },
+  {
+    "city": "Rimini",
+    "name": "San Gaudenzio",
+    "date": "10-14",
+    "region": "Emilia Romagna",
+    "province": "RN"
+  },
+  {
+    "city": "Roma",
+    "name": "Santi Pietro e Paolo",
+    "date": "06-29",
+    "region": "Lazio",
+    "province": "Roma"
+  },
+  {
+    "city": "Rovigo",
+    "name": "San Bellino",
+    "date": "11-26",
+    "region": "Veneto",
+    "province": "RO"
+  },
+  {
+    "city": "Salerno",
+    "name": "San Matteo",
+    "date": "09-21",
+    "region": "Campania",
+    "province": "SA"
+  },
+  {
+    "city": "Sassari",
+    "name": "San Nicola",
+    "date": "12-06",
+    "region": "Sardegna",
+    "province": "SS"
+  },
+  {
+    "city": "Savona",
+    "name": "Nostra Signora della Misericordia",
+    "date": "03-18",
+    "region": "Liguria",
+    "province": "SV"
+  },
+  {
+    "city": "Siena",
+    "name": "Sant'Ansano",
+    "date": "12-01",
+    "region": "Toscana",
+    "province": "SI"
+  },
+  {
+    "city": "Siracusa",
+    "name": "Santa Lucia da Siracusa",
+    "date": "12-13",
+    "region": "Sicilia",
+    "province": "SR"
+  },
+  {
+    "city": "Sondrio",
+    "name": "Santi Gervasio e Protasio",
+    "date": "06-19",
+    "region": "Lombardia",
+    "province": "SO"
+  },
+  {
+    "city": "Taranto",
+    "name": "San Cataldo",
+    "date": "05-10",
+    "region": "Puglia",
+    "province": "TA"
+  },
+  {
+    "city": "Teramo",
+    "name": "San Berardo da Pagliara",
+    "date": "12-19",
+    "region": "Abruzzo",
+    "province": "TE"
+  },
+  {
+    "city": "Terni",
+    "name": "San Valentino",
+    "date": "02-14",
+    "region": "Umbria",
+    "province": "TR"
+  },
+  {
+    "city": "Torino",
+    "name": "San Giovanni Battista",
+    "date": "06-24",
+    "region": "Piemonte",
+    "province": "TO"
+  },
+  {
+    "city": "Trapani",
+    "name": "Sant'Alberto degli Abati",
+    "date": "08-07",
+    "region": "Sicilia",
+    "province": "TP"
+  },
+  {
+    "city": "Trento",
+    "name": "San Vigilio",
+    "date": "06-26",
+    "region": "Trentino Alto Adige",
+    "province": "TN"
+  },
+  {
+    "city": "Treviso",
+    "name": "San Liberale",
+    "date": "04-27",
+    "region": "Veneto",
+    "province": "TV"
+  },
+  {
+    "city": "Trieste",
+    "name": "San Giusto",
+    "date": "11-03",
+    "region": "Friuli Venezia Giulia",
+    "province": "TS"
+  },
+  {
+    "city": "Udine",
+    "name": "Santi Ermacora e Fortunato",
+    "date": "07-12",
+    "region": "Friuli Venezia Giulia",
+    "province": "UD"
+  },
+  {
+    "city": "Varese",
+    "name": "San Vittore il Moro",
+    "date": "05-08",
+    "region": "Lombardia",
+    "province": "VA"
+  },
+  {
+    "city": "Venezia",
+    "name": "Madonna della Salute",
+    "date": "11-21",
+    "region": "Veneto",
+    "province": "VE"
+  },
+  {
+    "city": "Verbania",
+    "name": "San Vittore",
+    "date": "05-08",
+    "region": "Piemonte",
+    "province": "VB"
+  },
+  {
+    "city": "Vercelli",
+    "name": "Sant'Eusebio",
+    "date": "08-01",
+    "region": "Piemonte",
+    "province": "VC"
+  },
+  {
+    "city": "Verona",
+    "name": "San Zeno",
+    "date": "05-21",
+    "region": "Veneto",
+    "province": "VR"
+  },
+  {
+    "city": "Vibo Valentia",
+    "name": "San Leoluca",
+    "date": "03-01",
+    "region": "Calabria",
+    "province": "VV"
+  },
+  {
+    "city": "Vicenza",
+    "name": "Madonna di Monte Berico",
+    "date": "09-08",
+    "region": "Veneto",
+    "province": "VI"
+  },
+  {
+    "city": "Viterbo",
+    "name": "Santa Rosa",
+    "date": "09-04",
+    "region": "Lazio",
+    "province": "VT"
+  }
+]
