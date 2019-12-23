@@ -91,9 +91,8 @@ export default class BridgesCalendar extends Component {
     calculateMonthlyCalendar = (currentMonth, dayOfHolidays = 2) => {
         const previousMonth = moment(currentMonth).subtract(1, 'months')
         const nextMonth = moment(currentMonth).add(1, 'months')
-        
+
         const bridgesByMonth = this.bridgesByMonth(this.getKazzenger(), dayOfHolidays, moment(currentMonth), nextMonth)
-        console.log(bridgesByMonth)
         // TODO: da considerare i ponti nel mese precedente e in quello successivo
         const bridgesDayInPreviousMonth = bridgesByMonth.find(bridge => {
             return bridge.months.find(month => month === previousMonth.format('MM'))
@@ -105,7 +104,7 @@ export default class BridgesCalendar extends Component {
             return pippo !== undefined
         })
         let bridgesDaysInCurrentMonth = []
-        if(bridgesInCurrentMonth) {
+        if (bridgesInCurrentMonth) {
             bridgesDaysInCurrentMonth = bridgesInCurrentMonth.bridges.map(bridge => {
                 const start = parseInt(moment(bridge.start).format('D'))
                 const end = parseInt(moment(bridge.end).format('D'))
@@ -152,10 +151,10 @@ export default class BridgesCalendar extends Component {
         }
         days = [...days, ...endPadding]
         // per ora prendo solo il primo ponte non sto considerando eventuali sovrapposizioni di giorni, ovvero ponti diversi che hanno giorni in comune
-        if(bridgesDaysInCurrentMonth[0]) {
+        if (bridgesDaysInCurrentMonth[0]) {
             bridgesDaysInCurrentMonth[0].forEach(bridgeDay => {
                 const day = days.find(day => (day.dayNumber === bridgeDay.dayNumber) && (day.month === bridgeDay.month))
-                if(day) {
+                if (day) {
                     day.isBridge = true
                 }
             })
@@ -187,11 +186,11 @@ export default class BridgesCalendar extends Component {
     }
     componentDidUpdate(prevProps) {
         if (prevProps.dayOfHolidays !== this.props.dayOfHolidays) {
-            const weeks = this.calculateMonthlyCalendar(this.state.currentMonth, this.props.dayOfHolidays) 
+            const weeks = this.calculateMonthlyCalendar(this.state.currentMonth, this.props.dayOfHolidays)
             this.setState({
                 weeks,
                 currentMonth: this.state.currentMonth
-            })  
+            })
         }
     }
     renderDay(dayNumber, month, isBridge) {

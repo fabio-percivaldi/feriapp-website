@@ -3,7 +3,7 @@
 const cityAndRegion = require('./it-cities')
 const holidays = require('./it-cities-holidays')
 
-function searchCity (city) {
+function searchCity(city) {
   return cityAndRegion.find(value => (value.city.toLowerCase().includes(city.toLowerCase())))
 }
 
@@ -15,4 +15,3 @@ holidays.forEach(holiday => {
   }
 })
 
-console.log(JSON.stringify(holidays))

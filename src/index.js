@@ -6,6 +6,9 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import config from "./config";
 import "./index.css";
+import bridges from "./store/bridges";
+import { calculateBridges } from "./actions/bridges";
+import { Provider } from "react-redux";
 
 Amplify.configure({
   Auth: {
@@ -31,9 +34,14 @@ Amplify.configure({
   }
 });
 
+window.bridges = bridges;
+window.calculateBridges = calculateBridges;
+
 ReactDOM.render(
   <Router>
+    <Provider store={bridges}>
     <App />
+    </Provider>
   </Router>,
   document.getElementById("root")
 );
