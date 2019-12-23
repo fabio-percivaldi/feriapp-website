@@ -234,11 +234,11 @@ export default class BridgesCalendar extends Component {
                         <Row style={{ background: '#80808059' }}>
                             <Col md={4} ></Col>
                             <Col md={4} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-                                <Button bsStyle="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
+                                <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
                                     <FontAwesomeIcon icon={faChevronCircleLeft}></FontAwesomeIcon>
                                 </Button>
                                 <h2>{this.state.currentMonth.format('MMMM')}</h2>
-                                <Button bsStyle="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
+                                <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
                                     <FontAwesomeIcon icon={faChevronCircleRight}></FontAwesomeIcon>
                                 </Button>
                             </Col>

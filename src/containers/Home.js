@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Grid, Col, Row } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import "./Home.css";
 import BridgesCalendar from "./BridgesCalendar";
 import NavigationBar from '../components/NavigationBar';
+import BridgesList from './BridgesList';
 
 export default class Home extends Component {
   constructor(props) {
@@ -32,8 +33,11 @@ export default class Home extends Component {
   }
   render() {
     return (
-      <Grid>
-        <Col>
+      <Container>
+        <Col md={4}> 
+          <BridgesList></BridgesList>
+        </Col>
+        <Col md={8}>
           <Row>
             <NavigationBar increment={this.increment} decrease={this.decrease} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
           </Row>
@@ -41,7 +45,8 @@ export default class Home extends Component {
             <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
           </Row>
         </Col>
-      </Grid>
+
+      </Container>
     );
   }
 }

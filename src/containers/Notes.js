@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { API, Storage } from "aws-amplify";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { s3Upload } from "../libs/awsLib";
 import config from "../config";
@@ -137,7 +137,7 @@ export default class Notes extends Component {
             </FormGroup>
             {this.state.note.attachment &&
               <FormGroup>
-                <ControlLabel>Attachment</ControlLabel>
+                <FormLabel>Attachment</FormLabel>
                 <FormControl.Static>
                   <a
                     target="_blank"
@@ -150,12 +150,12 @@ export default class Notes extends Component {
               </FormGroup>}
             <FormGroup controlId="file">
               {!this.state.note.attachment &&
-                <ControlLabel>Attachment</ControlLabel>}
+                <FormLabel>Attachment</FormLabel>}
               <FormControl onChange={this.handleFileChange} type="file" />
             </FormGroup>
             <LoaderButton
               block
-              bsStyle="primary"
+              variant="primary"
               bsSize="large"
               disabled={!this.validateForm()}
               type="submit"
@@ -165,7 +165,7 @@ export default class Notes extends Component {
             />
             <LoaderButton
               block
-              bsStyle="danger"
+              variant="danger"
               bsSize="large"
               isLoading={this.state.isDeleting}
               onClick={this.handleDelete}

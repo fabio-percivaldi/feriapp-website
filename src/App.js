@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -72,29 +72,28 @@ class App extends Component {
     return (
       !this.state.isAuthenticating && (
         <div className="App container">
-          <Navbar fluid collapseOnSelect>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <Link to="/">Feriapp</Link>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav pullRight>
-                {this.state.isAuthenticated ? (
-                  <NavItem onClick={this.handleLogout}>Logout</NavItem>
+
+          <Navbar bg="light" variant="light">
+            <Navbar.Brand href="/">
+              <img
+                alt=""
+                src="./feriapp_icon.png"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{' '}
+              Feriapp
+          </Navbar.Brand>
+          <Navbar.Collapse className="justify-content-end">
+          {this.state.isAuthenticated ? (
+            <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
                 ) : (
                   <Fragment>
-                    <LinkContainer to="/signup">
-                      <NavItem>Signup</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/login">
-                      <NavItem>Login</NavItem>
-                    </LinkContainer>
+                    <Button variant="secondary" style={{marginRight:'20px'}}href="/signup">Signup</Button>
+                    <Button variant="secondary" href="/login">Login</Button>
                   </Fragment>
                 )}
-              </Nav>
-            </Navbar.Collapse>
+          </Navbar.Collapse>
           </Navbar>
           <Routes childProps={childProps} />
         </div>

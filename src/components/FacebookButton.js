@@ -75,7 +75,7 @@ export default class FacebookButton extends Component {
       <LoaderButton
         block
         bsSize="large"
-        bsStyle="primary"
+        variant="primary"
         className="FacebookButton"
         text="Login with Facebook"
         onClick={this.handleClick}
