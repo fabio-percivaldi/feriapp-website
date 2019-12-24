@@ -10,8 +10,15 @@ import { calculateCalendarDays } from '../actions/bridges'
 
 
 class ConnectedBridgesCalendar extends Component {
-    renderDay = (dayNumber, month, isBridge) => {
-        return <DayOnCalendar dayOfTheMonth={dayNumber} month={month} isBridge={isBridge} key={`${dayNumber}${month}`}></DayOnCalendar>
+    renderDay = (calendarDay) => {
+        const {day, isBridge} = calendarDay 
+        return <DayOnCalendar 
+        dayOfTheMonth={day.format('D')} 
+        month={day.format('MMM')} 
+        isBridge={isBridge} 
+        key={`${day.format('D')}${day.format('MMM')}`}>
+
+        </DayOnCalendar>
     }
     
     nextMonth = () => {
@@ -55,27 +62,27 @@ class ConnectedBridgesCalendar extends Component {
                 </ul>
                 <ul>
                     {weeks[0].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
+                        return this.renderDay(day)
                     })}
                 </ul>
                 <ul>
                     {weeks[1].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
+                        return this.renderDay(day)
                     })}
                 </ul>
                 <ul>
                     {weeks[2].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
+                        return this.renderDay(day)
                     })}
                 </ul>
                 <ul>
                     {weeks[3].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
+                        return this.renderDay(day)
                     })}
                 </ul>
                 <ul>
                     {weeks[4].days.map(day => {
-                        return this.renderDay(day.dayNumber, day.month, day.isBridge)
+                        return this.renderDay(day)
                     })}
                 </ul>
             </div>

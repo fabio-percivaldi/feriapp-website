@@ -46,29 +46,44 @@ const bridges = (kazzenger, dayOfHolidays) => {
             return years
         })
 }
-
+const calculateBridgeInCalendar = (weeks, bridge) => {
+    weeks.forEach(week => {
+        week.days.forEach(day => {
+            const momentDay = day.day
+            if(momentDay.isSame(moment(bridge.end))) {
+            }
+            if(momentDay.isSameOrAfter(moment(bridge.start), 'day')  && momentDay.isSameOrBefore(moment(bridge.end), 'day')){
+                day.isBridge = true
+            }
+        })
+    })        
+    return weeks
+}
 const calculateMonthlyCalendar = (currentMonth) => {
     const previousMonth = moment(currentMonth).subtract(1, 'months')
+    const lastDayOfPreviousMonth = previousMonth.endOf('month')
+
     const nextMonth = moment(currentMonth).add(1, 'months')
+    const firstDayOfNextMonth = nextMonth.startOf('month')
 
     const daysInCurrentMonth = currentMonth.daysInMonth()
-    const daysInPreviousMonth = previousMonth.daysInMonth()
+    const firstDayInCurrentMonth = currentMonth.startOf('month')
+
     const extraDays = 35 - daysInCurrentMonth
     const secondHalf = Math.floor(extraDays / 2)
     const firstHalf = secondHalf + (extraDays % 2)
     const startPadding = []
-    for (let i = firstHalf; i > 0; i--) {
+    for (let i = firstHalf; i >0 ; i--) {
+        const day = moment(lastDayOfPreviousMonth).subtract(i, 'days')
         startPadding.push({
-            dayNumber: daysInPreviousMonth - i + 1,
-            month: previousMonth.format('MMM'),
+            day,
             isBridge: false
         })
     }
     const endPadding = []
     for (let i = 1; i <= firstHalf; i++) {
         endPadding.push({
-            dayNumber: i,
-            month: nextMonth.format('MMM'),
+            day: moment(firstDayOfNextMonth).add(i, 'days'),
             isBridge: false
         })
     }
@@ -76,8 +91,7 @@ const calculateMonthlyCalendar = (currentMonth) => {
 
     for (let i = 1; i <= daysInCurrentMonth; i++) {
         days.push({
-            dayNumber: i,
-            month: currentMonth.format('MMM'),
+            day: moment(firstDayInCurrentMonth).add(i, 'days'),
             isBridge: false
         })
     }
@@ -115,7 +129,9 @@ function rootReducer(state = initialState, action) {
             return { ...state, bridges: bridgesResult, dayOfHolidays: action.payload }
 
         case SELECT_BRIDGE:
-            return { ...state, selectedBridge: action.payload }
+            const nextWeeksWithousBridges = calculateMonthlyCalendar(state.currentMonth)
+            const nextWeeksWithBridges = calculateBridgeInCalendar(nextWeeksWithousBridges, action.payload)
+            return { ...state, weeks: nextWeeksWithBridges, selectedBridge: action.payload }
 
         case CALCULATE_CALENDAR:
             const nextWeeks = calculateMonthlyCalendar(action.payload)
