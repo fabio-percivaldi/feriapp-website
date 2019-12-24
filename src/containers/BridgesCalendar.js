@@ -90,19 +90,6 @@ class ConnectedBridgesCalendar extends Component {
     }
 }
 const mapStateToProps = state => {
-    if (state.selectedBridge) {
-        const start = parseInt(moment(state.selectedBridge.start).format('D'))
-        const end = parseInt(moment(state.selectedBridge.end).format('D'))
-        const days = []
-        for (let i = start; i <= end; i++) {
-            days.push({
-                dayNumber: i,
-                month: moment(state.selectedBridge.start).format('MMM'),
-            })
-        }
-        // const weeks = JSON.parse(JSON.stringify(weeks))
-        // console.log('|||||||||||||', state.selectedBridge)
-    }
     return {
         bridges: state.bridges,
         selectedBridge: state.selectedBridge,
