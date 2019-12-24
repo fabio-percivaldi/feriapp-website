@@ -1,6 +1,7 @@
-import { CALCULATE_BRIDGES } from "../constants/action-types";
+import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR } from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
+import moment from 'moment'
 
 const defaultLocation = { country: 'IT', city: 'Milano' }
 const defaultDaysOff = [0, 6]
@@ -11,7 +12,7 @@ const defaultKazzengerSettings = {
 
 let _kazzenger = null
 let _kazzengerSettings = null
-function getKazzenger(settings) {
+const getKazzenger = (settings) => {
     if (!_kazzenger || (settings && !deepEqual(settings, _kazzengerSettings))) {
         _kazzengerSettings = settings || defaultKazzengerSettings
         _kazzenger = new Kazzenger.default(_kazzengerSettings)
@@ -19,7 +20,7 @@ function getKazzenger(settings) {
     }
     return _kazzenger
 }
-function bridges(kazzenger, dayOfHolidays) {
+const bridges = (kazzenger, dayOfHolidays) => {
     //  const now = new Date('2019-01-01T00:00:00Z')
     const now = new Date()
     return kazzenger
@@ -46,15 +47,81 @@ function bridges(kazzenger, dayOfHolidays) {
         })
 }
 
+const calculateMonthlyCalendar = (currentMonth) => {
+    const previousMonth = moment(currentMonth).subtract(1, 'months')
+    const nextMonth = moment(currentMonth).add(1, 'months')
+
+    const daysInCurrentMonth = currentMonth.daysInMonth()
+    const daysInPreviousMonth = previousMonth.daysInMonth()
+    const extraDays = 35 - daysInCurrentMonth
+    const secondHalf = Math.floor(extraDays / 2)
+    const firstHalf = secondHalf + (extraDays % 2)
+    const startPadding = []
+    for (let i = firstHalf; i > 0; i--) {
+        startPadding.push({
+            dayNumber: daysInPreviousMonth - i + 1,
+            month: previousMonth.format('MMM'),
+            isBridge: false
+        })
+    }
+    const endPadding = []
+    for (let i = 1; i <= firstHalf; i++) {
+        endPadding.push({
+            dayNumber: i,
+            month: nextMonth.format('MMM'),
+            isBridge: false
+        })
+    }
+    let days = [...startPadding]
+
+    for (let i = 1; i <= daysInCurrentMonth; i++) {
+        days.push({
+            dayNumber: i,
+            month: currentMonth.format('MMM'),
+            isBridge: false
+        })
+    }
+    days = [...days, ...endPadding]
+    const weeks = [
+        {
+            days: days.slice(0, 7)
+        },
+        {
+            days: days.slice(7, 14)
+        },
+        {
+            days: days.slice(14, 21)
+        },
+        {
+            days: days.slice(21, 28)
+        },
+        {
+            days: days.slice(28, 35)
+        },
+    ]
+    return weeks
+}
 const initialState = {
-    bridges: bridges(getKazzenger(), 2)
+    bridges: bridges(getKazzenger(), 2),
+    selectedBridge: {},
+    weeks: calculateMonthlyCalendar(moment()),
+    currentMonth: moment(),
+    dayOfHolidays: 2
 };
 function rootReducer(state = initialState, action) {
-    if (action.type === CALCULATE_BRIDGES) {
-        const bridgesResult = bridges(getKazzenger(), action.payload)
+    switch (action.type) {
+        case CALCULATE_BRIDGES:
+            const bridgesResult = bridges(getKazzenger(), action.payload)
+            return { ...state, bridges: bridgesResult, dayOfHolidays: action.payload }
 
-        state = { ...state, bridges: bridgesResult }
+        case SELECT_BRIDGE:
+            return { ...state, selectedBridge: action.payload }
+
+        case CALCULATE_CALENDAR:
+            const nextWeeks = calculateMonthlyCalendar(action.payload)
+            return { ...state, weeks: nextWeeks, currentMonth: action.payload }
+        default:
+            return state
     }
-    return state;
 };
 export default rootReducer;

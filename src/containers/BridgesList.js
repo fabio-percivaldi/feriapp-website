@@ -2,12 +2,11 @@ import React from "react";
 import './BridgesList.css'
 import { Card, ListGroup } from 'react-bootstrap'
 import { connect } from "react-redux";
-import moment from 'moment'
+import BridgeCard from '../components/BridgeCard'
 const renderSingleBridge = (singleBridge) => {
-    return <ListGroup.Item >
-        {`${moment(singleBridge.start).format('DD MMMM')} - ${moment(singleBridge.end).format('DD MMMM')}`}
-    </ListGroup.Item>
+    return <BridgeCard bridge={singleBridge}></BridgeCard>
 }
+
 const renderBridge = (bridge) => {
     const { years, bridges = [] } = bridge
     let yearsNormalized
