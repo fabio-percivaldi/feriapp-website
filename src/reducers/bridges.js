@@ -74,7 +74,7 @@ const calculateMonthlyCalendar = (currentMonth) => {
     const firstHalf = secondHalf + (extraDays % 2)
     const startPadding = []
     for (let i = firstHalf; i >0 ; i--) {
-        const day = moment(lastDayOfPreviousMonth).subtract(i, 'days')
+        const day = moment(lastDayOfPreviousMonth).subtract(i-1, 'days')
         startPadding.push({
             day,
             isBridge: false
@@ -89,7 +89,7 @@ const calculateMonthlyCalendar = (currentMonth) => {
     }
     let days = [...startPadding]
 
-    for (let i = 1; i <= daysInCurrentMonth; i++) {
+    for (let i = 0; i <= daysInCurrentMonth; i++) {
         days.push({
             day: moment(firstDayInCurrentMonth).add(i, 'days'),
             isBridge: false
