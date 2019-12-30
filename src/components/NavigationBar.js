@@ -32,8 +32,8 @@ export default class NavigationBar extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={4} ></Col>
-                    <Col md={4} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
+                    <Col md={3} ></Col>
+                    <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
                         <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.decreaseDayOfHolidays}>
                             <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
                         </Button>
@@ -42,7 +42,7 @@ export default class NavigationBar extends Component {
                             <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                         </Button>
                     </Col>
-                    <Col md={4}></Col>
+                    <Col md={3}></Col>
                 </Row >
             </Container>
         );

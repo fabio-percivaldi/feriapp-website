@@ -5,14 +5,17 @@ export default class DayOnCalendar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isBridge: false,
+            isBridge: props.isBridge,
+            isHoliday: props.isHoliday,
             dayOfTheMonth: '',
             month: ''
         }
     }
     render() {
+        let className = this.props.isHoliday ? 'holiday' : 'defaultDay'
+        className = this.props.isBridge ? 'bridge': className
         return (
-            <li className={this.props.isBridge ? 'bridge' : 'defaultDay'} >
+            <li className={className} >
                 <Col md={12}>
                     <Row style={{textAlign:'center'}}>
                         {this.props.month}

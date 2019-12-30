@@ -1,7 +1,11 @@
+.holiday {
+  background-color: #80808059;
+}
+
 .bridge {
   background-color: orange;
 }
 
 .defaultDay {
-  background-color: #80808059;
+  background-color: #c3c3c359;
 }
