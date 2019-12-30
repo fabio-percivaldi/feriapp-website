@@ -1,4 +1,4 @@
-import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CALCULATE_SETTINGS } from "../constants/action-types";
+import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CHANGE_SETTINGS } from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
@@ -38,6 +38,7 @@ const bridges = (kazzenger, dayOfHolidays) => {
                     scores.push(bridge.rate)
                 }
                 bridge.id = `${moment(bridge.start).format('YYYY-MM-DD')}-${moment(bridge.end).format('YYYY-MM-DD')}`
+                bridge.isSelected = false
             })
             scores.sort().reverse()
             years.bridges.forEach(bridge => {
@@ -120,7 +121,10 @@ const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
 }
 const calculateSelectedBridges = (selectedBridges, bridge) => {
     const newBridges = [...selectedBridges]
-    const index = newBridges.indexOf(bridge)
+    const foundedBridge = newBridges.find(bri => bri.id === bridge.id)
+
+    const index = newBridges.indexOf(foundedBridge)
+
     let selectOrDeselect = true
     if(index === -1) {
         newBridges.push(bridge)
@@ -142,6 +146,19 @@ const calculateSelectedBridges = (selectedBridges, bridge) => {
         selectOrDeselect
     }
 }
+const updateBridges = (bridgesList, clickedBridge) => {
+    const bridgeListCopy = JSON.parse(JSON.stringify(bridgesList))
+
+    bridgeListCopy.forEach(bridgeYear => {
+        const foundedBridge = bridgeYear.bridges.find(bridge => {
+            return bridge.id === clickedBridge.id
+        })
+        if(foundedBridge) {
+            foundedBridge.isSelected = clickedBridge.isSelected
+        }
+    })
+    return bridgeListCopy
+}
 const initialState = {
     bridges: bridges(getKazzenger(), 2),
     selectedBridges: [],
@@ -156,23 +173,26 @@ function rootReducer(state = initialState, action) {
     switch (action.type) {
         case CALCULATE_BRIDGES:
             bridgesResult = bridges(state.kazzenger, action.payload)
-            return { ...state, bridges: bridgesResult, dayOfHolidays: action.payload }
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
+            return { ...state, bridges: bridgesResult, weeks: nextWeeks, selectedBridges: initialState.selectedBridges, dayOfHolidays: action.payload }
 
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
             const nextMonth = selectedBridges.selectOrDeselect ? moment(action.payload.start) : state.currentMonth
             nextWeeks = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.kazzenger)
-            return { ...state, currentMonth: nextMonth, weeks: nextWeeks, selectedBridges: selectedBridges.newBridges }
+            const newBridgesList = updateBridges(state.bridges, action.payload)
+
+            return { ...state, currentMonth: nextMonth, weeks: nextWeeks, bridges: newBridgesList, selectedBridges: selectedBridges.newBridges }
 
         case CALCULATE_CALENDAR:
             nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.kazzenger)
-            return { ...state, weeks: nextWeeks, currentMonth: action.payload }
+            return { ...state, currentMonth: action.payload, weeks: nextWeeks }
         
-        case CALCULATE_SETTINGS:
+        case CHANGE_SETTINGS:
             const newKazzenger = getKazzenger(action.payload)
-            nextWeeks = calculateMonthlyCalendar(state.currentMonth, state.selectedBridges, newKazzenger)
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, newKazzenger)
             bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
-            return { ...state, bridges: bridgesResult, kazzenger: newKazzenger, weeks: nextWeeks }
+            return { ...state,  weeks: nextWeeks, bridges: bridgesResult, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger }
 
         default:
             return state

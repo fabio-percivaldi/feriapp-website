@@ -1,4 +1,4 @@
-import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CALCULATE_SETTINGS } from '../constants/action-types'
+import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CHANGE_SETTINGS } from '../constants/action-types'
 
 
 export function calculateBridges(dayOfHolidays) {
@@ -13,6 +13,6 @@ export function calculateCalendarDays(month) {
   return { type: CALCULATE_CALENDAR, payload: month}
 }
 
-export function calculateNewSettings(settings) {
-  return {type: CALCULATE_SETTINGS, payload: settings}
+export function changeSettings(settings) {
+  return {type: CHANGE_SETTINGS, payload: settings}
 }

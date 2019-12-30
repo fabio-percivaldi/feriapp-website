@@ -15,18 +15,25 @@ class ConnectedBridgeCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            bridge: props.bridge
+            bridge: props.bridge,
+            isSelected: props.isSelected
         }
     }
 
     handleBridgeSelection = (event) => {
-        this.props.selectBridge(this.state.bridge)
-        event.target.style.background = event.target.style.background ===  'orange' ? 'white' : 'orange';
+        this.props.selectBridge({
+            ...this.state.bridge,
+            isSelected: !this.props.isSelected
+        })
     }
 
     render() {
+        const backgroundColor = this.props.isSelected ? 'orange' : 'white'
         return (
-            <ListGroup.Item style={{cursor: 'pointer'}} key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} onClick={this.handleBridgeSelection}>
+            <ListGroup.Item 
+            style={{cursor: 'pointer', background: backgroundColor}} 
+            key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} 
+            onClick={this.handleBridgeSelection}>
                 {`${moment(this.state.bridge.start).format('DD MMMM')} - ${moment(this.state.bridge.end).format('DD MMMM')}`}
             </ListGroup.Item>
         );

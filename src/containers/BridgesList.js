@@ -4,7 +4,7 @@ import { Card, ListGroup } from 'react-bootstrap'
 import { connect } from "react-redux";
 import BridgeCard from '../components/BridgeCard'
 const renderSingleBridge = (singleBridge) => {
-    return <BridgeCard key={singleBridge.id} bridge={singleBridge}></BridgeCard>
+    return <BridgeCard key={singleBridge.id} isSelected={singleBridge.isSelected} bridge={singleBridge}></BridgeCard>
 }
 
 const renderBridge = (bridge) => {

@@ -5,12 +5,12 @@ import BridgesCalendar from "./BridgesCalendar";
 import NavigationBar from '../components/NavigationBar';
 import BridgesList from './BridgesList';
 import { connect } from "react-redux";
-import { calculateBridges, calculateNewSettings } from "../actions/bridges";
+import { calculateBridges, changeSettings } from "../actions/bridges";
 
 function mapDispatchToProps(dispatch) {
   return {
     calculateBridges: bridges => dispatch(calculateBridges(bridges)),
-    calculateNewSettings: settings => dispatch(calculateNewSettings(settings))
+    changeSettings: settings => dispatch(changeSettings(settings))
   };
 }
 
@@ -41,7 +41,7 @@ class ConnectedHome extends Component {
     this.props.calculateBridges(this.state.dayOfHolidays - 1);
   }
   changeSettings = (newSettings) => {
-    this.props.calculateNewSettings(newSettings)
+    this.props.changeSettings(newSettings)
   }
   render() {
     return (
