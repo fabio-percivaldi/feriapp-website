@@ -5,11 +5,12 @@ import BridgesCalendar from "./BridgesCalendar";
 import NavigationBar from '../components/NavigationBar';
 import BridgesList from './BridgesList';
 import { connect } from "react-redux";
-import { calculateBridges } from "../actions/bridges";
+import { calculateBridges, calculateNewSettings } from "../actions/bridges";
 
 function mapDispatchToProps(dispatch) {
   return {
-    calculateBridges: bridges => dispatch(calculateBridges(bridges))
+    calculateBridges: bridges => dispatch(calculateBridges(bridges)),
+    calculateNewSettings: settings => dispatch(calculateNewSettings(settings))
   };
 }
 
@@ -39,21 +40,26 @@ class ConnectedHome extends Component {
     })
     this.props.calculateBridges(this.state.dayOfHolidays - 1);
   }
+  changeSettings = (newSettings) => {
+    this.props.calculateNewSettings(newSettings)
+  }
   render() {
     return (
       <Container>
-        <Col md={4}>
-          <BridgesList></BridgesList>
-        </Col>
-        <Col md={8}>
-          <Row>
-            <NavigationBar increment={this.increment} decrease={this.decrease} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
-          </Row>
-          <Row>
-            <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
-          </Row>
-        </Col>
+        <Row>
+          <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
+        </Row>
+        <Row style={{paddingTop: '20px'}}>
+          <Col md={4}>
+            <BridgesList></BridgesList>
+          </Col>
+          <Col md={8}>
 
+            <Row>
+              <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
+            </Row>
+          </Col>
+        </Row>
       </Container>
     );
   }

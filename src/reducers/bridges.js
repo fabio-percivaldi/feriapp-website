@@ -1,4 +1,4 @@
-import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR } from "../constants/action-types";
+import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CALCULATE_SETTINGS } from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
@@ -48,13 +48,13 @@ const bridges = (kazzenger, dayOfHolidays) => {
         })
 }
 
-const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
+const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
     const firstDayInCurrentMonth = currentMonth.startOf('month')
     
     let days = []
     for(let i = - firstDayInCurrentMonth.format('d'); i< 42; i++) {
         const day = moment(firstDayInCurrentMonth).add(i, 'days')
-        const isHolidayOrWeekend = getKazzenger().isHolidayOrWeekend(day)
+        const isHolidayOrWeekend = kazzenger.isHolidayOrWeekend(day)
         days.push({
             day,
             bridges: [],
@@ -145,26 +145,35 @@ const calculateSelectedBridges = (selectedBridges, bridge) => {
 const initialState = {
     bridges: bridges(getKazzenger(), 2),
     selectedBridges: [],
-    weeks: calculateMonthlyCalendar(moment(), [], defaultKazzengerSettings),
+    weeks: calculateMonthlyCalendar(moment(), [], getKazzenger()),
     currentMonth: moment(),
     dayOfHolidays: 2,
-    settings: defaultKazzengerSettings
+    kazzenger: getKazzenger(),
 };
 function rootReducer(state = initialState, action) {
+    let nextWeeks
+    let bridgesResult
     switch (action.type) {
         case CALCULATE_BRIDGES:
-            const bridgesResult = bridges(getKazzenger(), action.payload)
+            bridgesResult = bridges(state.kazzenger, action.payload)
             return { ...state, bridges: bridgesResult, dayOfHolidays: action.payload }
 
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
             const nextMonth = selectedBridges.selectOrDeselect ? moment(action.payload.start) : state.currentMonth
-            const nextWeeksWithBridges = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.settings)
-            return { ...state, currentMonth: nextMonth, weeks: nextWeeksWithBridges, selectedBridges: selectedBridges.newBridges }
+            nextWeeks = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.kazzenger)
+            return { ...state, currentMonth: nextMonth, weeks: nextWeeks, selectedBridges: selectedBridges.newBridges }
 
         case CALCULATE_CALENDAR:
-            const nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.settings)
+            nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.kazzenger)
             return { ...state, weeks: nextWeeks, currentMonth: action.payload }
+        
+        case CALCULATE_SETTINGS:
+            const newKazzenger = getKazzenger(action.payload)
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, state.selectedBridges, newKazzenger)
+            bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
+            return { ...state, bridges: bridgesResult, kazzenger: newKazzenger, weeks: nextWeeks }
+
         default:
             return state
     }
