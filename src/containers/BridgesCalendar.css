@@ -22,7 +22,7 @@
     width: 100%;
     padding: 10px;
     max-height: 80px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
   }
   div.calendar li .day,
   div.calendar li .month {

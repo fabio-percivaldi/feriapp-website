@@ -2,7 +2,7 @@ import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR } from "../constan
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
-
+const BRIDGES_COLOR = ['#ff000057', '#00800082', 'orange', 'blue']
 const defaultLocation = { country: 'IT', city: 'Milano' }
 const defaultDaysOff = [0, 6]
 const defaultKazzengerSettings = {
@@ -57,7 +57,7 @@ const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
         const isHolidayOrWeekend = getKazzenger().isHolidayOrWeekend(day)
         days.push({
             day,
-            isBridge: false,
+            bridges: [],
             ...isHolidayOrWeekend
         })
     }
@@ -81,14 +81,37 @@ const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
             days: days.slice(35, 42)
         },
     ]
+    let bridgeCounter = 0
     weeks.forEach(week => {
+        let previousBridge, currentBridge = {}
         week.days.forEach(day => {
             const momentDay = day.day
+            let isBridgeDay = false
             bridges.forEach(bridge => {
                 if(momentDay.isSameOrAfter(moment(bridge.start), 'day')  && momentDay.isSameOrBefore(moment(bridge.end), 'day')){
-                    day.isBridge = true
-                }
+                    isBridgeDay = true
+                    if(!previousBridge) {
+                        previousBridge = bridge
+                    }
+                    currentBridge = bridge
+                    for(let i = 0; i < bridgeCounter; i++) {
+                        day.bridges.push({})
+                    }
+                    if(currentBridge.id !== previousBridge.id) {
+                        previousBridge = currentBridge
+                        bridgeCounter++
+                    }
+                    day.bridges.push({
+                        ...bridge,
+                        background: BRIDGES_COLOR[bridgeCounter],
+                        marginLeft: '-26px',
+                        marginRight: '-26px'
+                    })
+                } 
             })
+            if(!isBridgeDay) {
+                bridgeCounter = 0
+            }
         })
     })    
     return weeks

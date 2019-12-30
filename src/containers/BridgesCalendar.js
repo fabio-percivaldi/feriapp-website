@@ -11,15 +11,14 @@ import { calculateCalendarDays } from '../actions/bridges'
 
 class ConnectedBridgesCalendar extends Component {
     renderDay = (calendarDay) => {
-        const { day, isBridge, isHoliday, isWeekend } = calendarDay
+        const { day, bridges, isHoliday, isWeekend } = calendarDay
         return <DayOnCalendar
             dayOfTheMonth={day.format('D')}
             month={day.format('MMM')}
-            isBridge={isBridge}
+            bridges={bridges}
             isWeekend={isWeekend}
             isHoliday={isHoliday}
             key={`${day.format('D')}${day.format('MMM')}`}>
-
         </DayOnCalendar>
     }
 

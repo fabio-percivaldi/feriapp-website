@@ -1,30 +1,40 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Tooltip, OverlayTrigger } from "react-bootstrap";
 import './DayOnCalendar.css'
 export default class DayOnCalendar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isBridge: props.isBridge,
+            bridges: props.bridges,
             isHoliday: props.isHoliday,
             dayOfTheMonth: '',
             month: ''
         }
     }
+    renderTooltip = (bridge) => {
+        return <Tooltip style={{fontSize: '1.5rem'}}>{`Holidays: ${bridge.holidaysCount} - Weekdays: ${bridge.weekdaysCount}`}</Tooltip>;
+      }
     render() {
-        console.log(this.props)
         let className = this.props.isWeekend ? 'weekend' : 'defaultDay'
         className = this.props.isHoliday ? 'holiday' : className
-        className = this.props.isBridge ? 'bridge': className
         return (
             <li className={className} >
-                <Col md={12}>
-                    <Row style={{textAlign:'center'}}>
-                        {this.props.month}
-                    </Row>
+                <Col style={{height: '100px'}} md={12}>
                     <Row style={{textAlign:'center'}}>
                         {this.props.dayOfTheMonth}
                     </Row>
+                    {this.props.bridges.map(bridge => {
+                        const {background, title, marginLeft, marginRight} = bridge
+                        return <OverlayTrigger
+                            placement="bottom"
+                            delay={{ show: 250, hide: 250 }}
+                            overlay={this.renderTooltip(bridge)}
+                        ><Row style={{background, marginLeft, marginRight}}>
+                            <Col md={12} style={{height: '20px'}} >
+                            </Col>
+                        </Row>
+                        </OverlayTrigger>
+                    })}
                 </Col>
 
             </li>
