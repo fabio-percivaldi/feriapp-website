@@ -4,7 +4,7 @@ import { Card, ListGroup } from 'react-bootstrap'
 import { connect } from "react-redux";
 import BridgeCard from '../components/BridgeCard'
 const renderSingleBridge = (singleBridge) => {
-    return <BridgeCard bridge={singleBridge}></BridgeCard>
+    return <BridgeCard key={singleBridge.id} bridge={singleBridge}></BridgeCard>
 }
 
 const renderBridge = (bridge) => {
@@ -13,7 +13,7 @@ const renderBridge = (bridge) => {
     if (years) {
         yearsNormalized = years.join('-')
     }
-    return <Card>
+    return <Card key={yearsNormalized}>
         <Card.Header>{yearsNormalized}</Card.Header>
         <ListGroup variant="flush">
             {bridges.map(renderSingleBridge)}

@@ -37,6 +37,7 @@ const bridges = (kazzenger, dayOfHolidays) => {
                 if (bridge.rate > 70) {
                     scores.push(bridge.rate)
                 }
+                bridge.id = `${moment(bridge.start).format('YYYY-MM-DD')}-${moment(bridge.end).format('YYYY-MM-DD')}`
             })
             scores.sort().reverse()
             years.bridges.forEach(bridge => {
@@ -46,20 +47,8 @@ const bridges = (kazzenger, dayOfHolidays) => {
             return years
         })
 }
-const calculateBridgeInCalendar = (weeks, bridge) => {
-    weeks.forEach(week => {
-        week.days.forEach(day => {
-            const momentDay = day.day
-            if(momentDay.isSame(moment(bridge.end))) {
-            }
-            if(momentDay.isSameOrAfter(moment(bridge.start), 'day')  && momentDay.isSameOrBefore(moment(bridge.end), 'day')){
-                day.isBridge = true
-            }
-        })
-    })        
-    return weeks
-}
-const calculateMonthlyCalendar = (currentMonth) => {
+
+const calculateMonthlyCalendar = (currentMonth, bridges) => {
     const previousMonth = moment(currentMonth).subtract(1, 'months')
     const lastDayOfPreviousMonth = previousMonth.endOf('month')
 
@@ -113,12 +102,32 @@ const calculateMonthlyCalendar = (currentMonth) => {
             days: days.slice(28, 35)
         },
     ]
+    weeks.forEach(week => {
+        week.days.forEach(day => {
+            const momentDay = day.day
+            bridges.forEach(bridge => {
+                if(momentDay.isSameOrAfter(moment(bridge.start), 'day')  && momentDay.isSameOrBefore(moment(bridge.end), 'day')){
+                    day.isBridge = true
+                }
+            })
+        })
+    })    
     return weeks
+}
+const calculateSelectedBridges = (selectedBridges, bridge) => {
+    const newBridges = [...selectedBridges]
+    const index = newBridges.indexOf(bridge)
+    if(index === -1) {
+        newBridges.push(bridge)
+    } else {
+        newBridges.splice(index, 1)
+    }
+    return newBridges
 }
 const initialState = {
     bridges: bridges(getKazzenger(), 2),
-    selectedBridge: {},
-    weeks: calculateMonthlyCalendar(moment()),
+    selectedBridges: [],
+    weeks: calculateMonthlyCalendar(moment(), []),
     currentMonth: moment(),
     dayOfHolidays: 2
 };
@@ -126,15 +135,17 @@ function rootReducer(state = initialState, action) {
     switch (action.type) {
         case CALCULATE_BRIDGES:
             const bridgesResult = bridges(getKazzenger(), action.payload)
+            console.log('||||||||||||||||||||', bridgesResult)
+
             return { ...state, bridges: bridgesResult, dayOfHolidays: action.payload }
 
         case SELECT_BRIDGE:
-            const nextWeeksWithousBridges = calculateMonthlyCalendar(state.currentMonth)
-            const nextWeeksWithBridges = calculateBridgeInCalendar(nextWeeksWithousBridges, action.payload)
-            return { ...state, weeks: nextWeeksWithBridges, selectedBridge: action.payload }
+            const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
+            const nextWeeksWithBridges = calculateMonthlyCalendar(state.currentMonth,  selectedBridges)
+            return { ...state, weeks: nextWeeksWithBridges, selectedBridges }
 
         case CALCULATE_CALENDAR:
-            const nextWeeks = calculateMonthlyCalendar(action.payload)
+            const nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges)
             return { ...state, weeks: nextWeeks, currentMonth: action.payload }
         default:
             return state

@@ -19,17 +19,14 @@ class ConnectedBridgeCard extends Component {
         }
     }
 
-    handleMouseEnter = (event) => {
+    handleBridgeSelection = (event) => {
         this.props.selectBridge(this.state.bridge)
-        event.target.style.background = 'orange';
+        event.target.style.background = event.target.style.background ===  'orange' ? 'white' : 'orange';
     }
-    handleMouseLeaver = (event) => {
 
-        event.target.style.background = 'white';
-    }
     render() {
         return (
-            <ListGroup.Item onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeaver}>
+            <ListGroup.Item key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} onClick={this.handleBridgeSelection}>
                 {`${moment(this.state.bridge.start).format('DD MMMM')} - ${moment(this.state.bridge.end).format('DD MMMM')}`}
             </ListGroup.Item>
         );

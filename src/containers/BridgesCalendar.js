@@ -51,7 +51,7 @@ class ConnectedBridgesCalendar extends Component {
                                 <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
                                     <FontAwesomeIcon icon={faChevronCircleLeft}></FontAwesomeIcon>
                                 </Button>
-                                <h2>{currentMonth.format('MMMM')}</h2>
+                                <h2>{currentMonth.format('MMMM - YYYY')}</h2>
                                 <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
                                     <FontAwesomeIcon icon={faChevronCircleRight}></FontAwesomeIcon>
                                 </Button>
@@ -92,7 +92,7 @@ class ConnectedBridgesCalendar extends Component {
 const mapStateToProps = state => {
     return {
         bridges: state.bridges,
-        selectedBridge: state.selectedBridge,
+        selectedBridges: state.selectedBridges,
         weeks: state.weeks,
         dayOfHolidays: state.dayOfHolidays,
         currentMonth: state.currentMonth
