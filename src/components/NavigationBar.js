@@ -3,7 +3,8 @@ import { Button, Col, Row, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import Select from 'react-select';
-
+// import Geosuggest from 'react-geosuggest';
+import CityAutosuggestions from './CityAutosuggestion'
 import './NavigationBar.css'
 const weekDays = [
     {
@@ -68,10 +69,10 @@ export default class NavigationBar extends Component {
     }
     handleChange = selectedOption => {
         this.setState(
-          { selectedNotWorkingDays: selectedOption}         
+            { selectedNotWorkingDays: selectedOption }
         );
         let daysOff = []
-        if(selectedOption) {
+        if (selectedOption) {
             daysOff = selectedOption.map(day => {
                 return day.value
             })
@@ -80,7 +81,7 @@ export default class NavigationBar extends Component {
             daysOff,
             ...this.state.defaultLocation
         })
-      };
+    };
     render() {
         return (
             <Container>
@@ -122,8 +123,25 @@ export default class NavigationBar extends Component {
                         </Col>
                     </Row >
                 </Col>
-                <Col md={4} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
-                    In che città vivi?
+                <Col md={4}>
+                    <Row>
+                        <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
+                            In che città vivi?
+                        </Col>
+                    </Row>
+                    <Row style={{ paddingTop: '5px' }}>
+                        <Col md={12} >
+                            {/* <Geosuggest
+                            placeholder="Cerca la tua città"
+                            country="it"
+                            types="cities"
+                            >
+                                
+                                
+                            </Geosuggest> */}
+                            <CityAutosuggestions></CityAutosuggestions>
+                        </Col>
+                    </Row >
                 </Col>
             </Container>
         );
