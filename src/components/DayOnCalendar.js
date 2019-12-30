@@ -12,7 +12,9 @@ export default class DayOnCalendar extends Component {
         }
     }
     render() {
-        let className = this.props.isHoliday ? 'holiday' : 'defaultDay'
+        console.log(this.props)
+        let className = this.props.isWeekend ? 'weekend' : 'defaultDay'
+        className = this.props.isHoliday ? 'holiday' : className
         className = this.props.isBridge ? 'bridge': className
         return (
             <li className={className} >

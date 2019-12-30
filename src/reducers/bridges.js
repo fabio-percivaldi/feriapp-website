@@ -2,8 +2,6 @@ import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR } from "../constan
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
-import Holidays from 'date-holidays'
-var hd = new Holidays('IT', 'Milano')
 
 const defaultLocation = { country: 'IT', city: 'Milano' }
 const defaultDaysOff = [0, 6]
@@ -56,15 +54,13 @@ const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
     let days = []
     for(let i = - firstDayInCurrentMonth.format('d'); i< 42; i++) {
         const day = moment(firstDayInCurrentMonth).add(i, 'days')
-        
+        const isHolidayOrWeekend = getKazzenger().isHolidayOrWeekend(day)
         days.push({
             day,
             isBridge: false,
-            // isHoliday: getKazzenger().isHoliday(day)
-            isHoliday: false
+            ...isHolidayOrWeekend
         })
     }
-    console.log('|||||||||||||||', firstDayInCurrentMonth.format('d'))
     const weeks = [
         {
             days: days.slice(0, 7)

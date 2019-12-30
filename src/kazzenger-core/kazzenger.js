@@ -54,11 +54,13 @@ function setHolidays(holidaysLib, holidays) {
     }
   })
 }
-Kazzenger.prototype.isHoliday = function isHoliday(momentDay) {
-  if(this.daysOff.includes(parseInt(momentDay.format('d')))) {
-    return true
+Kazzenger.prototype.isHolidayOrWeekend = function isHoliday(momentDay) {
+  const isWeekend = this.daysOff.includes(parseInt(momentDay.format('d')))
+  const isHoliday = Object.keys(this.holidays.holidays).includes(momentDay.format('MM-DD'))
+  return {
+    isWeekend,
+    isHoliday
   }
-  return false
 }
 
 Kazzenger.prototype.isDayOff = function isDayOff(date) {
