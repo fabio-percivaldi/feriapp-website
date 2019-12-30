@@ -119,12 +119,17 @@ const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
 const calculateSelectedBridges = (selectedBridges, bridge) => {
     const newBridges = [...selectedBridges]
     const index = newBridges.indexOf(bridge)
+    let selectOrDeselect = true
     if(index === -1) {
         newBridges.push(bridge)
     } else {
+        selectOrDeselect = false
         newBridges.splice(index, 1)
     }
-    return newBridges
+    return {
+        newBridges,
+        selectOrDeselect
+    }
 }
 const initialState = {
     bridges: bridges(getKazzenger(), 2),
@@ -142,8 +147,9 @@ function rootReducer(state = initialState, action) {
 
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
-            const nextWeeksWithBridges = calculateMonthlyCalendar(state.currentMonth, selectedBridges, state.settings)
-            return { ...state, weeks: nextWeeksWithBridges, selectedBridges }
+            const nextMonth = selectedBridges.selectOrDeselect ? moment(action.payload.start) : state.currentMonth
+            const nextWeeksWithBridges = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.settings)
+            return { ...state, currentMonth: nextMonth, weeks: nextWeeksWithBridges, selectedBridges: selectedBridges.newBridges }
 
         case CALCULATE_CALENDAR:
             const nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.settings)
