@@ -24,8 +24,9 @@ export default class DayOnCalendar extends Component {
                         {this.props.dayOfTheMonth}
                     </Row>
                     {this.props.bridges.map(bridge => {
-                        const {background, title, marginLeft, marginRight} = bridge
+                        const {background, id, marginLeft, marginRight} = bridge
                         return <OverlayTrigger
+                            key={id}
                             placement="bottom"
                             delay={{ show: 250, hide: 250 }}
                             overlay={this.renderTooltip(bridge)}

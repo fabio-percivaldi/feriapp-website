@@ -83,22 +83,22 @@ const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
     ]
     let bridgeCounter = 0
     weeks.forEach(week => {
-        let previousBridge, currentBridge = {}
+        let previousBridge = null
         week.days.forEach(day => {
             const momentDay = day.day
             let isBridgeDay = false
+
             bridges.forEach(bridge => {
                 if(momentDay.isSameOrAfter(moment(bridge.start), 'day')  && momentDay.isSameOrBefore(moment(bridge.end), 'day')){
                     isBridgeDay = true
                     if(!previousBridge) {
-                        previousBridge = bridge
+                        previousBridge = JSON.parse(JSON.stringify(bridge))
                     }
-                    currentBridge = bridge
                     for(let i = 0; i < bridgeCounter; i++) {
                         day.bridges.push({})
                     }
-                    if(currentBridge.id !== previousBridge.id) {
-                        previousBridge = currentBridge
+                    if(bridge.id !== previousBridge.id) {
+                        previousBridge = JSON.parse(JSON.stringify(bridge))
                         bridgeCounter++
                     }
                     day.bridges.push({
@@ -107,10 +107,12 @@ const calculateMonthlyCalendar = (currentMonth, bridges, settings) => {
                         marginLeft: '-26px',
                         marginRight: '-26px'
                     })
+                    
                 } 
             })
             if(!isBridgeDay) {
                 bridgeCounter = 0
+                previousBridge = null
             }
         })
     })    
@@ -126,6 +128,15 @@ const calculateSelectedBridges = (selectedBridges, bridge) => {
         selectOrDeselect = false
         newBridges.splice(index, 1)
     }
+    newBridges.sort((br1, br2) => {
+        if(moment(br1.start).isBefore(moment(br2.start))){
+            return -1
+        }
+        if(moment(br1.start).isAfter(moment(br2.start))){
+            return 1
+        }
+        return 0
+    })
     return {
         newBridges,
         selectOrDeselect
