@@ -145,7 +145,7 @@ export default class NavigationBar extends Component {
                         </Col>
                     </Row>
                     <Row style={{ paddingTop: '5px' }}>
-                        <Col md={12} >
+                        <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }} >
                             {/* <Geosuggest
                             placeholder="Cerca la tua città"
                             country="it"
