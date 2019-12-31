@@ -37,7 +37,7 @@ export default class CityAutosuggestion extends Component {
     // Suggestions also need to be provided to the Autosuggest,
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
-      value: '',
+      value: 'Milano',
       suggestions: []
     };
   }
@@ -62,7 +62,9 @@ export default class CityAutosuggestion extends Component {
       suggestions: []
     });
   };
-
+  onSuggestionSelected = (event, {suggestion}) => {
+    this.props.changeLocation(suggestion)
+  }
   render() {
     const { value, suggestions } = this.state;
 
@@ -77,6 +79,7 @@ export default class CityAutosuggestion extends Component {
     return (
       <Autosuggest
         suggestions={suggestions}
+        onSuggestionSelected={this.onSuggestionSelected}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         getSuggestionValue={getSuggestionValue}

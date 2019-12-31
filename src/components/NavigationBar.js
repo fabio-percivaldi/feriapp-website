@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import Select from 'react-select';
 // import Geosuggest from 'react-geosuggest';
-import CityAutosuggestions from './CityAutosuggestion'
+import CityAutosuggestion from './CityAutosuggestion'
 import './NavigationBar.css'
 const weekDays = [
     {
@@ -54,6 +54,7 @@ export default class NavigationBar extends Component {
                     "value": 0
                 }
             ],
+            daysOff: [0,6],
             defaultLocation: { country: 'IT', city: 'Milano' }
         };
     }
@@ -77,11 +78,25 @@ export default class NavigationBar extends Component {
                 return day.value
             })
         }
+        this.setState({
+            daysOff
+        })
         this.props.changeSettings({
             daysOff,
             ...this.state.defaultLocation
         })
     };
+    changeLocation = location => {
+        this.setState({
+            defaultLocation: { country: 'IT', city: location.city }
+        })
+
+        this.props.changeSettings({
+            daysOff: this.state.daysOff,
+            country: 'IT',
+            city: location.city
+        })
+    }
     render() {
         return (
             <Container>
@@ -139,7 +154,7 @@ export default class NavigationBar extends Component {
                                 
                                 
                             </Geosuggest> */}
-                            <CityAutosuggestions></CityAutosuggestions>
+                            <CityAutosuggestion changeLocation={this.changeLocation}></CityAutosuggestion>
                         </Col>
                     </Row >
                 </Col>
