@@ -45,19 +45,14 @@ class ConnectedHome extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container className="body-calendar">
         <Row>
           <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
-        </Row>
-        <Row style={{paddingTop: '20px'}}>
           <Col md={4}>
             <BridgesList></BridgesList>
           </Col>
           <Col md={8}>
-
-            <Row>
               <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
-            </Row>
           </Col>
         </Row>
       </Container>

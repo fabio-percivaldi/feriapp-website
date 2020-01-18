@@ -5,3 +5,15 @@
 .App .navbar-brand {
   font-weight: bold;
 }
+
+.orange-button {
+  background-color: orange !important;
+  color: black !important;
+  border-color: #6c757d !important;
+}
+
+.btn-primary {
+  background-color: rgb(255, 135, 32) !important;
+  border-color: white !important;
+  color: white !important;
+}

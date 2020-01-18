@@ -22,6 +22,7 @@
     padding: 10px;
     max-height: 80px;
     border: 1px solid #fff;
+    border-radius: 3px;
   }
   div.calendar li .day,
   div.calendar li .month {
@@ -47,10 +48,10 @@
     }
     div.calendar .weekdays li,
     div.calendar .footer-weekdays li {
-      background-color: #21b0dc;
+      background-color: rgb(255, 135, 32);
       height: 40px;
       text-align: center;
-      color: #fff;
+      color: black;
     }
     div.calendar .footer-weekdays li {
       height: 20px;
@@ -66,7 +67,7 @@
       display: block;
       float: left;
       height: auto;
-      max-height: 150px;
+      max-height: 100px;
       width: 14.2857142857%;
       padding: 10px;
     }

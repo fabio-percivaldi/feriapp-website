@@ -99,7 +99,7 @@ export default class NavigationBar extends Component {
     }
     render() {
         return (
-            <Container>
+            <Container style={{paddingBottom: '15px'}}>
                 <Col md={4}>
                     <Row>
                         <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>

@@ -14,7 +14,7 @@ const renderBridge = (bridge) => {
         yearsNormalized = years.join('-')
     }
     return <Card key={yearsNormalized}>
-        <Card.Header>{yearsNormalized}</Card.Header>
+        <Card.Header style={{backgroundColor: 'rgb(255, 135, 32)'}}>{yearsNormalized}</Card.Header>
         <ListGroup variant="flush">
             {bridges.map(renderSingleBridge)}
         </ListGroup>

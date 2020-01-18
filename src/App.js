@@ -32,22 +32,22 @@ class App extends Component {
   }
 
   loadFacebookSDK() {
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
       window.FB.init({
-        appId            : config.social.FB,
-        autoLogAppEvents : true,
-        xfbml            : true,
-        version          : 'v3.1'
+        appId: config.social.FB,
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v3.1'
       });
     };
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   }
 
   userHasAuthenticated = authenticated => {
@@ -70,9 +70,9 @@ class App extends Component {
 
     return (
       !this.state.isAuthenticating && (
-        <div className="App container">
+        <div className="App container" style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', maxHeight: '100vh', backgroundImage: 'url("./background.jpg")' }}>
 
-          <Navbar bg="light" variant="light">
+          <Navbar style={{ backgroundColor: 'white', height: '8%' }}>
             <Navbar.Brand href="/">
               <img
                 alt=""
@@ -83,18 +83,22 @@ class App extends Component {
               />{' '}
               Feriapp
           </Navbar.Brand>
-          <Navbar.Collapse className="justify-content-end">
-          {this.state.isAuthenticated ? (
-            <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
-                ) : (
+            <Navbar.Collapse className="justify-content-end">
+              {this.state.isAuthenticated ? (
+                <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
+              ) : (
                   <Fragment>
-                    <Button variant="secondary" style={{marginRight:'20px'}}href="/signup">Signup</Button>
-                    <Button variant="secondary" href="/login">Login</Button>
+                    <Button className="orange-button" style={{ marginRight: '20px' }} href="/signup">Signup</Button>
+                    <Button className="orange-button" href="/login">Login</Button>
                   </Fragment>
                 )}
-          </Navbar.Collapse>
+            </Navbar.Collapse>
           </Navbar>
           <Routes childProps={childProps} />
+          <Navbar style={{ backgroundColor: 'white', height: '8%', marginBottom: '0' }}>
+            <Navbar.Collapse className="justify-content-end">
+            </Navbar.Collapse>
+          </Navbar>
         </div>
       )
     );

@@ -1,15 +1,15 @@
 .holiday {
-  background-color: #70961659;
+  background-color: none;
 }
 
 .weekend {
-  background-color: #80808059;
+  background-color: #e2e2e2;
 }
 
 .bridge {
-  background-color: orange;
+  background-color: #e2e2e2;
 }
 
 .defaultDay {
-  background-color: #c3c3c359;
+  background-color: #ffffffad;
 }

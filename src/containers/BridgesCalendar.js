@@ -46,7 +46,7 @@ class ConnectedBridgesCalendar extends Component {
                 </ul>
                 <ul>
                     <Col md={12}>
-                        <Row style={{ background: '#80808059' }}>
+                        <Row>
                             <Col md={3} ></Col>
                             <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
                                 <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
