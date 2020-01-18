@@ -48,6 +48,8 @@ class ConnectedHome extends Component {
       <Container className="body-calendar">
         <Row>
           <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
+          </Row>
+          <Row>
           <Col md={4}>
             <BridgesList></BridgesList>
           </Col>
