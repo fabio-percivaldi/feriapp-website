@@ -28,7 +28,7 @@ class ConnectedBridgeCard extends Component {
     }
 
     render() {
-        const backgroundColor = this.props.isSelected ? 'orange' : 'white'
+        const backgroundColor = this.props.isSelected ? '#ffb225' : 'hsl(0,0%,100%)'
         return (
             <ListGroup.Item 
             style={{cursor: 'pointer', background: backgroundColor}} 

@@ -129,6 +129,7 @@ export default class NavigationBar extends Component {
                     <Row style={{ paddingTop: '5px' }}>
                         <Col md={12} >
                             <Select
+                                style={{width: '350px', height: '38px'}}                            
                                 onChange={this.handleChange}
                                 options={weekDays}
                                 closeMenuOnSelect={false}

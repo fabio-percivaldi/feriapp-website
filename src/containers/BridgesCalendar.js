@@ -8,7 +8,7 @@ import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-sol
 import { connect } from 'react-redux'
 import { calculateCalendarDays } from '../actions/bridges'
 
-
+moment.locale('it')
 class ConnectedBridgesCalendar extends Component {
     renderDay = (calendarDay) => {
         const { day, bridges, isHoliday, isWeekend } = calendarDay
@@ -36,13 +36,13 @@ class ConnectedBridgesCalendar extends Component {
         return (
             <div className="calendar" style={{ heigth: '100vh' }}>
                 <ul className="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
+                    <li>Domenica</li>
+                    <li>Lunedì</li>
+                    <li>Martedì</li>
+                    <li>Mercoledì</li>
+                    <li>Giovedì</li>
+                    <li>Venerdì</li>
+                    <li>Sabato</li>
                 </ul>
                 <ul>
                     <Col md={12}>

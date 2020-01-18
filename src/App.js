@@ -70,7 +70,7 @@ class App extends Component {
 
     return (
       !this.state.isAuthenticating && (
-        <div className="App container" style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', maxHeight: '100vh', backgroundImage: 'url("./background.jpg")' }}>
+        <div className="App container" style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', maxHeight: '100vh', backgroundRepeat: 'round', backgroundImage: 'url("./background.jpg")' }}>
 
           <Navbar style={{ backgroundColor: 'white', height: '8%' }}>
             <Navbar.Brand href="/">

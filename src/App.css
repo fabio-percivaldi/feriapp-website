@@ -10,10 +10,15 @@
   background-color: orange !important;
   color: black !important;
   border-color: #6c757d !important;
+  font-size: 1.5rem !important;
 }
 
 .btn-primary {
   background-color: rgb(255, 135, 32) !important;
   border-color: white !important;
   color: white !important;
+}
+
+* {
+  border-color: hsl(0,0%,80%) !important;
 }
