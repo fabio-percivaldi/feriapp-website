@@ -1,6 +1,6 @@
 import React from "react";
 import './BridgesList.css'
-import { Card, ListGroup } from 'react-bootstrap'
+import { Card, ListGroup, Container } from 'react-bootstrap'
 import { connect } from "react-redux";
 import BridgeCard from '../components/BridgeCard'
 const renderSingleBridge = (singleBridge) => {
@@ -24,7 +24,9 @@ const mapStateToProps = state => {
     return { bridges: state.bridges };
 };
 const ConnectedBridges = ({ bridges }) => (
-    bridges.map(bridge => renderBridge(bridge))
+    <Container style={{height: '90%', overflowY: 'overlay'}}>
+        {bridges.map(bridge => renderBridge(bridge))}
+    </Container>
 )
 const BridgesList = connect(mapStateToProps)(ConnectedBridges);
 export default BridgesList 

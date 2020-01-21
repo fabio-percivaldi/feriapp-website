@@ -50,15 +50,15 @@ class ConnectedHome extends Component {
       </Col>
       <Col md={8} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
        <Container className="body-calendar">
-          <Row style={{height:'20%'}}>
+          <Row style={{height:'15%'}}>
             <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
           </Row>
-          <Row style={{height:'80%', backgroundColor: 'red'}}>
-           <Col md={4}>
-             {/* <BridgesList></BridgesList> */}
+          <Row style={{height:'85%', backgroundColor: 'red'}}>
+           <Col md={4} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
+             <BridgesList></BridgesList>
            </Col>
-           <Col md={8} >
-               {/* <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar> */}
+           <Col md={8} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
+               <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
            </Col>
          </Row>
        </Container>

@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import DayOnCalendar from "../components/DayOnCalendar"
 import './BridgesCalendar.css'
 import moment from 'moment'
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Row, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
@@ -34,41 +34,37 @@ class ConnectedBridgesCalendar extends Component {
     render() {
         const { weeks, currentMonth } = this.props
         return (
-            <div className="calendar">
-                <ul className="weekdays">
-                    <li>Domenica</li>
-                    <li>Lunedì</li>
-                    <li>Martedì</li>
-                    <li>Mercoledì</li>
-                    <li>Giovedì</li>
-                    <li>Venerdì</li>
-                    <li>Sabato</li>
-                </ul>
-                <ul>
-                    <Col md={12}>
-                        <Row>
-                            <Col md={3} ></Col>
-                            <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-                                <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
-                                    <FontAwesomeIcon icon={faChevronCircleLeft}></FontAwesomeIcon>
-                                </Button>
-                                <h2>{currentMonth.format('MMMM - YYYY')}</h2>
-                                <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
-                                    <FontAwesomeIcon icon={faChevronCircleRight}></FontAwesomeIcon>
-                                </Button>
-                            </Col>
-                            <Col md={3}></Col>
-                        </Row >
+            <Container className='calendar' style={{ height: '90%', display: 'flex', flexDirection: 'column', overflowY: 'overlay' }}>
+                <Row className="weekdays" style={{display: 'flex', flexDirection: 'row', height: '5.5%', flexWrap: 'nowrap'}}>
+                    <Col className="calendar-header">Domenica</Col>
+                    <Col className="calendar-header">Lunedì</Col>
+                    <Col className="calendar-header">Martedì</Col>
+                    <Col className="calendar-header">Mercoledì</Col>
+                    <Col className="calendar-header">Giovedì</Col>
+                    <Col className="calendar-header">Venerdì</Col>
+                    <Col className="calendar-header">Sabato</Col>
+                </Row>
+                <Row style={{height: '7.5%'}}>
+                    <Col md={2} ></Col>
+                    <Col md={8} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
+                        <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
+                            <FontAwesomeIcon icon={faChevronCircleLeft}></FontAwesomeIcon>
+                        </Button>
+                        <h2>{currentMonth.format('MMMM - YYYY')}</h2>
+                        <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
+                            <FontAwesomeIcon icon={faChevronCircleRight}></FontAwesomeIcon>
+                        </Button>
                     </Col>
-                </ul>
+                    <Col md={2}></Col>
+                </Row>
                 {weeks.map((week, index) => {
-                    return <ul key={`week-${index}`}>
+                    return <Row style={{height: '14.5%'}} key={`week-${index}`}>
                         {week.days.map(day => {
                             return this.renderDay(day)
                         })}
-                    </ul>
+                    </Row>
                 })}
-            </div>
+            </Container>
         )
     }
 }
