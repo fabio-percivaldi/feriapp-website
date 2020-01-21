@@ -6,6 +6,7 @@ import NavigationBar from '../components/NavigationBar';
 import BridgesList from './BridgesList';
 import { connect } from "react-redux";
 import { calculateBridges, changeSettings } from "../actions/bridges";
+import LandingModal from "../components/LandingModal";
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -46,8 +47,9 @@ class ConnectedHome extends Component {
   render() {
     return (
       <Container className="body-calendar">
-        <Row>
-          <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
+        <LandingModal increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></LandingModal>
+          <Row>
+          <NavigationBar orientation='vertical' increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
           </Row>
           <Row>
           <Col md={4}>

@@ -100,7 +100,8 @@ export default class NavigationBar extends Component {
     render() {
         return (
             <Container style={{paddingBottom: '15px'}}>
-                <Col md={4}>
+                <Row>
+                <Col xl={4} lg={12}>
                     <Row>
                         <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
                             Quanti giorni di ferie vuoi fare?
@@ -120,7 +121,7 @@ export default class NavigationBar extends Component {
                         <Col md={3}></Col>
                     </Row >
                 </Col>
-                <Col md={4}>
+                <Col xl={4} lg={12}>
                     <Row>
                         <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
                             In quali giorni ti riposi?
@@ -133,13 +134,13 @@ export default class NavigationBar extends Component {
                                 onChange={this.handleChange}
                                 options={weekDays}
                                 closeMenuOnSelect={false}
-                                isMulti={true}
+                                imdulti={true}
                                 defaultValue={[weekDays[5], weekDays[6]]}
                             />
                         </Col>
                     </Row >
                 </Col>
-                <Col md={4}>
+                <Col xl={4} lg={12}>
                     <Row>
                         <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
                             In che città vivi?
@@ -159,6 +160,7 @@ export default class NavigationBar extends Component {
                         </Col>
                     </Row >
                 </Col>
+                </Row>
             </Container>
         );
     }

@@ -9,6 +9,7 @@ import "./index.css";
 import bridges from "./store/bridges";
 import { calculateBridges } from "./actions/bridges";
 import { Provider } from "react-redux";
+import { CookiesProvider } from 'react-cookie';
 
 Amplify.configure({
   Auth: {
@@ -38,11 +39,13 @@ window.bridges = bridges;
 window.calculateBridges = calculateBridges;
 
 ReactDOM.render(
-  <Router>
-    <Provider store={bridges}>
-    <App />
-    </Provider>
-  </Router>,
+  <CookiesProvider>
+    <Router>
+      <Provider store={bridges}>
+        <App />
+      </Provider>
+    </Router>
+  </CookiesProvider>,
   document.getElementById("root")
 );
 registerServiceWorker();

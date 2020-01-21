@@ -6,6 +6,8 @@ import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { withCookies } from 'react-cookie';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -94,7 +96,8 @@ class App extends Component {
                 )}
             </Navbar.Collapse>
           </Navbar>
-          <Routes childProps={childProps} />
+          <Routes 
+          childProps={childProps} />
           <Navbar style={{ backgroundColor: 'white', height: '8%', marginBottom: '0' }}>
             <Navbar.Collapse className="justify-content-end">
             </Navbar.Collapse>
@@ -105,4 +108,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default withCookies(App);
