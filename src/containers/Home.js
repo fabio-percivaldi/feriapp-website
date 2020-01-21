@@ -20,7 +20,18 @@ class ConnectedHome extends Component {
     super(props);
 
     this.state = {
-      dayOfHolidays: 2
+      dayOfHolidays: 2,
+      daysOff: [0, 6],
+      selectedNotWorkingDays: [
+        {
+          "label": "Sabato",
+          "value": 6
+        },
+        {
+          "label": "Domenica",
+          "value": 0
+        }
+      ]
     };
   }
 
@@ -47,28 +58,28 @@ class ConnectedHome extends Component {
   render() {
     return (
       <>
-      <Col md={2} style={{height: '100%'}}>
-      </Col>
-      <Col md={8} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
-      <LandingModal increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></LandingModal>
-       <Container className="body-calendar">
-          <Row style={{height:'15%'}}>
-            <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
-          </Row>
-          <Row style={{height:'85%'}}>
-           <Col md={4} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
-             <BridgesList></BridgesList>
-           </Col>
-           <Col md={8} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
-               <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
-           </Col>
-         </Row>
-       </Container>
-      </Col>
-      <Col md={2} style={{height: '100%'}}>
-      </Col>
+        <Col md={2} style={{ height: '100%' }}>
+        </Col>
+        <Col md={8} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+          <LandingModal increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></LandingModal>
+          <Container className="body-calendar">
+            <Row style={{ height: '15%' }}>
+              <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></NavigationBar>
+            </Row>
+            <Row style={{ height: '85%' }}>
+              <Col md={4} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <BridgesList></BridgesList>
+              </Col>
+              <Col md={8} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
+              </Col>
+            </Row>
+          </Container>
+        </Col>
+        <Col md={2} style={{ height: '100%' }}>
+        </Col>
       </>
-      
+
     );
   }
 }

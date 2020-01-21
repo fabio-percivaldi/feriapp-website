@@ -166,6 +166,7 @@ const initialState = {
     currentMonth: moment(),
     dayOfHolidays: 2,
     kazzenger: getKazzenger(),
+    daysOff: [0, 6]
 };
 function rootReducer(state = initialState, action) {
     let nextWeeks
@@ -192,7 +193,7 @@ function rootReducer(state = initialState, action) {
             const newKazzenger = getKazzenger(action.payload)
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, newKazzenger)
             bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
-            return { ...state,  weeks: nextWeeks, bridges: bridgesResult, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger }
+            return { ...state,  weeks: nextWeeks, bridges: bridgesResult, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger }
 
         default:
             return state

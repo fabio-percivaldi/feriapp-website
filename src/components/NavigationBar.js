@@ -44,17 +44,8 @@ export default class NavigationBar extends Component {
             dayOfHolidays: props.dayOfHolidays,
             show: true,
             size: 'large',
-            selectedNotWorkingDays: [
-                {
-                    "label": "Sabato",
-                    "value": 6
-                },
-                {
-                    "label": "Domenica",
-                    "value": 0
-                }
-            ],
-            daysOff: [0, 6],
+            selectedNotWorkingDays: props.selectedNotWorkingDays,
+            daysOff: props.daysOff,
             defaultLocation: { country: 'IT', city: 'Milano' }
         };
     }
