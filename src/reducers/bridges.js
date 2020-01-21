@@ -2,7 +2,7 @@ import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CHANGE_SETTINGS }
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
-const BRIDGES_COLOR = ['#ff000057', '#00800082', 'orange', 'blue']
+const BRIDGES_COLOR = ['rgba(255, 0, 0, 0.62)', '#00800082', 'orange', 'blue']
 const defaultLocation = { country: 'IT', city: 'Milano' }
 const defaultDaysOff = [0, 6]
 const defaultKazzengerSettings = {
@@ -105,8 +105,8 @@ const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
                     day.bridges.push({
                         ...bridge,
                         background: BRIDGES_COLOR[bridgeCounter],
-                        marginLeft: '-26px',
-                        marginRight: '-26px'
+                        marginLeft: '-16px',
+                        marginRight: '-16px'
                     })
                     
                 } 

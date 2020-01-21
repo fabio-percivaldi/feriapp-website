@@ -36,11 +36,15 @@
   margin-top: 45px;
   padding-bottom: 15px;
   margin-bottom: 45px; */
-  background-color: #ffb225e6;
+  background-color: #fbf8ed;
   border-radius: 5px;
-  height: 90%
+  height: 90%;
+  border: 2px solid black;
 }
 
 .body-calendar Row {
   height: 100%;
+}
+h2 {
+  color: #5d4037
 }

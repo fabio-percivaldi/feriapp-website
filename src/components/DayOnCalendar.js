@@ -12,7 +12,7 @@ export default class DayOnCalendar extends Component {
         }
     }
     renderTooltip = (bridge) => {
-        return <Tooltip style={{ fontSize: '1.5rem' }}>{`Holidays: ${bridge.holidaysCount} - Weekdays: ${bridge.weekdaysCount}`}</Tooltip>;
+        return <Tooltip style={{ fontSize: '1.5rem' }}>{`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`}</Tooltip>;
     }
     render() {
         let className = this.props.isWeekend ? 'weekend' : 'defaultDay'

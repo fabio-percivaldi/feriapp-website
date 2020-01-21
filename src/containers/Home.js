@@ -53,7 +53,7 @@ class ConnectedHome extends Component {
           <Row style={{height:'15%'}}>
             <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays}></NavigationBar>
           </Row>
-          <Row style={{height:'85%', backgroundColor: 'red'}}>
+          <Row style={{height:'85%'}}>
            <Col md={4} style={{height: '100%', display: 'flex', alignItems: 'center'}}>
              <BridgesList></BridgesList>
            </Col>
