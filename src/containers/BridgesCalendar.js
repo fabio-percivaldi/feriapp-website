@@ -34,7 +34,7 @@ class ConnectedBridgesCalendar extends Component {
     render() {
         const { weeks, currentMonth } = this.props
         return (
-            <div className="calendar" style={{ heigth: '100vh' }}>
+            <div className="calendar">
                 <ul className="weekdays">
                     <li>Domenica</li>
                     <li>Lunedì</li>

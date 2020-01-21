@@ -54,7 +54,7 @@ export default class NavigationBar extends Component {
                     "value": 0
                 }
             ],
-            daysOff: [0,6],
+            daysOff: [0, 6],
             defaultLocation: { country: 'IT', city: 'Milano' }
         };
     }
@@ -99,14 +99,12 @@ export default class NavigationBar extends Component {
     }
     render() {
         return (
-            <Container style={{paddingBottom: '15px'}}>
-                <Col md={4}>
-                    <Row>
-                        <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
-                            Quanti giorni di ferie vuoi fare?
-                    </Col>
+            <>
+                <Col md={4} style={{ height: '100%' }}>
+                    <Row style={{ height: '50%', justifyContent: 'center' }}>
+                        <h2 style={{ margin: 'auto' }}>Quanti giorni di ferie vuoi fare?</h2>
                     </Row>
-                    <Row style={{ paddingTop: '5px' }}>
+                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
                         <Col md={3} ></Col>
                         <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
                             <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.decreaseDayOfHolidays}>
@@ -120,46 +118,29 @@ export default class NavigationBar extends Component {
                         <Col md={3}></Col>
                     </Row >
                 </Col>
-                <Col md={4}>
-                    <Row>
-                        <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
-                            In quali giorni ti riposi?
-                    </Col>
+                <Col md={4} style={{ height: '100%' }}>
+                    <Row style={{ height: '50%', justifyContent: 'center' }}>
+                        <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
                     </Row>
-                    <Row style={{ paddingTop: '5px' }}>
-                        <Col md={12} >
+                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center',  height: '50%' }}>
                             <Select
-                                style={{width: '350px', height: '38px'}}                            
                                 onChange={this.handleChange}
                                 options={weekDays}
                                 closeMenuOnSelect={false}
                                 isMulti={true}
                                 defaultValue={[weekDays[5], weekDays[6]]}
                             />
-                        </Col>
                     </Row >
                 </Col>
-                <Col md={4}>
-                    <Row>
-                        <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }}>
-                            In che città vivi?
-                        </Col>
+                <Col md={4} style={{ height: '100%' }}>
+                    <Row style={{ height: '50%', justifyContent: 'center' }}>
+                        <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
                     </Row>
-                    <Row style={{ paddingTop: '5px' }}>
-                        <Col md={12} style={{ display: 'inline-flex', justifyContent: 'space-around' }} >
-                            {/* <Geosuggest
-                            placeholder="Cerca la tua città"
-                            country="it"
-                            types="cities"
-                            >
-                                
-                                
-                            </Geosuggest> */}
-                            <CityAutosuggestion changeLocation={this.changeLocation}></CityAutosuggestion>
-                        </Col>
+                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
+                        <CityAutosuggestion style={{width:'90%'}} changeLocation={this.changeLocation}></CityAutosuggestion>
                     </Row >
                 </Col>
-            </Container>
+            </>
         );
     }
 }

@@ -16,3 +16,28 @@
     font-size: 12px;
     line-height: 1.42857;
 }
+
+.react-autosuggest__input {
+    width: 100%;
+    height: 100%;
+}
+
+.react-autosuggest__container {
+    width: 85%;
+    height: 65%
+}
+
+.css-2b097c-container {
+    width: 90%;
+    height: 65%;
+}
+
+.css-yk16xz-control {
+    height: 100%;
+}
+.css-1hwfws3 {
+    height: 100%
+}
+.css-1hb7zxy-IndicatorsContainer {
+    height: 100%
+}

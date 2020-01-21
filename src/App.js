@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
 import { withRouter } from "react-router-dom";
-import { Nav, Navbar, Button } from "react-bootstrap";
+import { Nav, Navbar, Button, Row, Container } from "react-bootstrap";
 import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
@@ -70,36 +70,41 @@ class App extends Component {
 
     return (
       !this.state.isAuthenticating && (
-        <div className="App container" style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', maxHeight: '100vh', backgroundRepeat: 'round', backgroundImage: 'url("./background.jpg")' }}>
-
-          <Navbar style={{ backgroundColor: 'white', height: '8%' }}>
-            <Navbar.Brand href="/">
-              <img
-                alt=""
-                src="./feriapp_icon.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />{' '}
-              Feriapp
+        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', overflowY: 'hidden', backgroundRepeat: 'round', backgroundImage: 'url("./background.jpg")' }}>
+          <Row style={{height: '10%'}}>
+            <Navbar style={{ backgroundColor: 'white', width: '100%', marginBottom: '0'}}>
+              <Navbar.Brand href="/">
+                <img
+                  alt=""
+                  src="./feriapp_icon.png"
+                  width="30"
+                  height="30"
+                  className="d-inline-block align-top"
+                />{' '}
+                Feriapp
           </Navbar.Brand>
-            <Navbar.Collapse className="justify-content-end">
-              {this.state.isAuthenticated ? (
-                <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
-              ) : (
-                  <Fragment>
-                    <Button className="orange-button" style={{ marginRight: '20px' }} href="/signup">Signup</Button>
-                    <Button className="orange-button" href="/login">Login</Button>
-                  </Fragment>
-                )}
-            </Navbar.Collapse>
-          </Navbar>
-          <Routes childProps={childProps} />
-          <Navbar style={{ backgroundColor: 'white', height: '8%', marginBottom: '0' }}>
-            <Navbar.Collapse className="justify-content-end">
-            </Navbar.Collapse>
-          </Navbar>
-        </div>
+              <Navbar.Collapse className="justify-content-end">
+                {this.state.isAuthenticated ? (
+                  <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
+                ) : (
+                    <Fragment>
+                      <Button className="orange-button" style={{ marginRight: '20px' }} href="/signup">Signup</Button>
+                      <Button className="orange-button" href="/login">Login</Button>
+                    </Fragment>
+                  )}
+              </Navbar.Collapse>
+            </Navbar>
+          </Row>
+          <Row style={{height: '80%'}}>
+            <Routes childProps={childProps} />
+          </Row>
+          <Row style={{height: '10%'}}>
+            <Navbar style={{ backgroundColor: 'white',  width: '100%', marginBottom: '0' }}>
+              <Navbar.Collapse className="justify-content-end">
+              </Navbar.Collapse>
+            </Navbar>
+          </Row>
+        </Container>
       )
     );
   }
