@@ -1,15 +1,20 @@
 .holiday {
-  background-color: none;
+  background-color: #ffa000;
+  color: #fffde7;
+  border: 1px solid #fff;
 }
 
 .weekend {
   background-color: #e2e2e2;
+  border: 1px solid #fff;
 }
 
 .bridge {
   background-color: #e2e2e2;
+  border: 1px solid #fff;
 }
 
 .defaultDay {
   background-color: #ffffffad;
+  border: 1px solid #fff;
 }

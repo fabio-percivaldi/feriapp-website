@@ -12,33 +12,30 @@ export default class DayOnCalendar extends Component {
         }
     }
     renderTooltip = (bridge) => {
-        return <Tooltip style={{fontSize: '1.5rem'}}>{`Holidays: ${bridge.holidaysCount} - Weekdays: ${bridge.weekdaysCount}`}</Tooltip>;
-      }
+        return <Tooltip style={{ fontSize: '1.5rem' }}>{`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`}</Tooltip>;
+    }
     render() {
         let className = this.props.isWeekend ? 'weekend' : 'defaultDay'
         className = this.props.isHoliday ? 'holiday' : className
         return (
-            <li className={className} >
-                <Col style={{height: '100px'}} md={12}>
-                    <Row style={{textAlign:'center'}}>
-                        {this.props.dayOfTheMonth}
-                    </Row>
-                    {this.props.bridges.map(bridge => {
-                        const {background, id, marginLeft, marginRight} = bridge
-                        return <OverlayTrigger
-                            key={id}
-                            placement="bottom"
-                            delay={{ show: 250, hide: 250 }}
-                            overlay={this.renderTooltip(bridge)}
-                        ><Row style={{background, marginLeft, marginRight}}>
-                            <Col md={12} style={{height: '20px'}} >
+            <Col className={className}>
+                <Row style={{ textAlign: 'center' }}>
+                    {this.props.dayOfTheMonth}
+                </Row>
+                {this.props.bridges.map(bridge => {
+                    const { background, id, marginLeft, marginRight } = bridge
+                    return <OverlayTrigger
+                        key={id}
+                        placement="bottom"
+                        delay={{ show: 250, hide: 250 }}
+                        overlay={this.renderTooltip(bridge)}
+                    ><Row style={{ background, marginLeft, marginRight }}>
+                            <Col md={12} style={{ height: '20px' }} >
                             </Col>
                         </Row>
-                        </OverlayTrigger>
-                    })}
-                </Col>
-
-            </li>
+                    </OverlayTrigger>
+                })}
+            </Col>
         );
     }
 }

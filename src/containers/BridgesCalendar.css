@@ -16,9 +16,15 @@
     padding: 0;
     list-style-image: none;
   }
+  div.calendar .calendar-header {
+    text-align: center;
+    padding: 0;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: #ffa000;
+    color: #fffde7
+  }
   div.calendar li {
-    height: auto;
-    width: 100%;
     padding: 10px;
     max-height: 80px;
     border: 1px solid #fff;
@@ -48,7 +54,7 @@
     }
     div.calendar .weekdays li,
     div.calendar .footer-weekdays li {
-      background-color: rgb(255, 135, 32);
+      background-color: ffa000;
       height: 40px;
       text-align: center;
       color: black;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Container, Form } from "react-bootstrap";
+import { Button, Modal, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useCookies } from 'react-cookie'
 import NavigationBar from './NavigationBar'
@@ -15,7 +15,7 @@ function RenderModal(props) {
     const handleShow = () => setShow(true);
 
     return (
-        <Container>
+        <Container style={{display: 'none'}}>
             <Button variant="primary" onClick={handleShow}>
                 Launch demo modal
         </Button>
@@ -30,12 +30,13 @@ function RenderModal(props) {
                         <h1 style={{ margin: 'auto' }}>
                             <b>Benvenuto in Feriapp</b>
                         </h1>
+                        <h2>Compila il form e scopri i migliori ponti dell'anno!</h2>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Container style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%'}}>
                         <NavigationBar increment={props.increment} decrease={props.decrease} changeSettings={props.changeSettings} dayOfHolidays={props.dayOfHolidays}></NavigationBar>
-                    </Form>
+                    </Container>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose}>

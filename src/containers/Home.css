@@ -32,15 +32,19 @@
 }
 
 .body-calendar {
-  padding-top: 15px;
+  /* padding-top: 15px;
   margin-top: 45px;
   padding-bottom: 15px;
-  margin-bottom: 45px;
-  background-color: #ffb225e6;
+  margin-bottom: 45px; */
+  background-color: #fbf8ed;
   border-radius: 5px;
-  height: 80vh
+  height: 90%;
+  border: 2px solid black;
 }
 
 .body-calendar Row {
   height: 100%;
+}
+h2 {
+  color: #5d4037
 }
