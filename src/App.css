@@ -6,16 +6,10 @@
   font-weight: bold;
 }
 
-.orange-button {
-  background-color: orange !important;
-  color: black !important;
-  border-color: #6c757d !important;
-  font-size: 1.5rem !important;
-}
-
 .btn-primary {
   background-color: #ffa000 !important;
   border-color: white !important;
+  font-size: 1.5rem !important;
   color: white !important;
 }
 

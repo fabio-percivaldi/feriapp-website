@@ -12,9 +12,9 @@
 }
 
 .modal-dialog {
-    height: 80%;
-    max-width: 70% !important;
-    width: 50% !important;
+    height: 40%;
+    /* max-width: 70% !important;*/
+    width: 40% !important; 
     display: inline-block;
     text-align: left;
     vertical-align: middle;

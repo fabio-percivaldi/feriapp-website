@@ -35,6 +35,7 @@ class ConnectedBridgeCard extends Component {
             key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} 
             onClick={this.handleBridgeSelection}>
                 {`${moment(this.state.bridge.start).format('DD MMMM')} - ${moment(this.state.bridge.end).format('DD MMMM')}`}
+                <div>TOP</div>
             </ListGroup.Item>
         );
     }

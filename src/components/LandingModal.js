@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useCookies } from 'react-cookie'
-import NavigationBar from './NavigationBar'
+import DayOffHolidays from './DayOffHoliday'
+
 import './LandingModal.css'
 function RenderModal(props) {
     const [cookies, setCookie] = useCookies(['cookie-name']);
@@ -15,7 +16,7 @@ function RenderModal(props) {
     const handleShow = () => setShow(true);
 
     return (
-        <Container style={{display: 'none'}}>
+        <Container style={{ display: 'none' }}>
             <Button variant="primary" onClick={handleShow}>
                 Launch demo modal
         </Button>
@@ -30,12 +31,15 @@ function RenderModal(props) {
                         <h1 style={{ margin: 'auto' }}>
                             <b>Benvenuto in Feriapp</b>
                         </h1>
-                        <h2>Compila il form e scopri i migliori ponti dell'anno!</h2>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Container style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%'}}>
-                        <NavigationBar increment={props.increment} decrease={props.decrease} changeSettings={props.changeSettings} dayOfHolidays={props.dayOfHolidays}></NavigationBar>
+                    <Container style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+                        <DayOffHolidays
+                            message="Scegli quanti giorni di ferie vuoi fare e scopri i migliori ponti dell'anno!"
+                            dayOfHolidays={props.dayOfHolidays}
+                            decreaseDayOfHolidays={props.decrease}
+                            incrementDayOfHolidays={props.increment}></DayOffHolidays>
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>

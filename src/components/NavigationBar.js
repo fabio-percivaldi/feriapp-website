@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button, Col, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { Col, Row } from "react-bootstrap";
+import DayOffHolidays from './DayOffHoliday'
+
 import Select from 'react-select';
 // import Geosuggest from 'react-geosuggest';
 import CityAutosuggestion from './CityAutosuggestion'
@@ -91,24 +91,11 @@ export default class NavigationBar extends Component {
     render() {
         return (
             <>
-                <Col style={{ height: '100%' }}>
-                    <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ margin: 'auto' }}>Quanti giorni di ferie vuoi fare?</h2>
-                    </Row>
-                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                        <Col md={3} ></Col>
-                        <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-                            <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.decreaseDayOfHolidays}>
-                                <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
-                            </Button>
-                            {this.state.show ? <h2>{this.props.dayOfHolidays}</h2> : ''}
-                            <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.incrementDayOfHolidays} >
-                                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
-                            </Button>
-                        </Col>
-                        <Col md={3}></Col>
-                    </Row >
-                </Col>
+                <DayOffHolidays 
+                message="Quanti giorni di ferie vuoi fare?"
+                dayOfHolidays={this.props.dayOfHolidays} 
+                decreaseDayOfHolidays={this.decreaseDayOfHolidays} 
+                incrementDayOfHolidays={this.incrementDayOfHolidays}></DayOffHolidays>
                 <Col style={{ height: '100%' }}>
                     <Row style={{ height: '50%', justifyContent: 'center' }}>
                         <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
