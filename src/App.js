@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
-import { withRouter } from "react-router-dom";
 import { Nav, Navbar, Button, Row, Container } from "react-bootstrap";
 import Routes from "./Routes";
 import config from "./config";

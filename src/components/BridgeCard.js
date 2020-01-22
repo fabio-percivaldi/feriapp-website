@@ -31,7 +31,7 @@ class ConnectedBridgeCard extends Component {
         const backgroundColor = this.props.isSelected ? '#e2e2e2' : 'hsl(0,0%,100%)'
         return (
             <ListGroup.Item 
-            style={{cursor: 'pointer', background: backgroundColor}} 
+            style={{cursor: 'pointer', background: backgroundColor, display: 'flex', justifyContent: 'space-between'}} 
             key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} 
             onClick={this.handleBridgeSelection}>
                 {`${moment(this.state.bridge.start).format('DD MMMM')} - ${moment(this.state.bridge.end).format('DD MMMM')}`}
