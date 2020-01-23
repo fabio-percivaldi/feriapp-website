@@ -12,11 +12,10 @@ function RenderModal(props) {
         setCookie('firstVisit', false)
         setShow(false);
     }
-    const handleShow = () => setShow(true);
 
     return (
         <Container style={{ display: 'none' }}>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary">
                 Launch demo modal
         </Button>
 

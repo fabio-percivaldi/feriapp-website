@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel, Modal, Button } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import FacebookButton from "../components/FacebookButton";
 import "./Login.css";
@@ -12,8 +12,20 @@ export default class Login extends Component {
     this.state = {
       isLoading: false,
       email: "",
-      password: ""
+      password: "",
+      showModal: false
     };
+  }
+
+  handleClose = () => {
+    this.setState({
+      showModal: false
+    })
+  }
+  handleShow = () => {
+    this.setState({
+      showModal: true
+    })
   }
 
   validateForm() {
@@ -46,40 +58,65 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FacebookButton
-            onLogin={this.handleFbLogin}
-          />
-          <hr />
-          <FormGroup controlId="email" bsSize="large">
-            <FormLabel>Email</FormLabel>
-            <FormControl
-              autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <FormLabel>Password</FormLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <LoaderButton
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-            isLoading={this.state.isLoading}
-            text="Login"
-            loadingText="Logging in…"
-          />
-        </form>
-      </div>
+      <>
+        <Button className="orange-button" onClick={this.handleShow}>Login</Button>
+        <Modal
+          animation={false}
+          show={this.state.showModal}
+          onHide={this.handleClose}
+          dialogClassName="login-modal"
+          size="lg"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
+              <h1 style={{ margin: 'auto' }}>
+                <b>Benvenuto in Feriapp</b>
+              </h1>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="Login">
+              <form onSubmit={this.handleSubmit}>
+                <FacebookButton
+                  onLogin={this.handleFbLogin}
+                />
+                <hr />
+                <FormGroup controlId="email" bsSize="large">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl
+                    autoFocus
+                    type="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                </FormGroup>
+                <FormGroup controlId="password" bsSize="large">
+                  <FormLabel>Password</FormLabel>
+                  <FormControl
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    type="password"
+                  />
+                </FormGroup>
+                <LoaderButton
+                  block
+                  bsSize="large"
+                  disabled={!this.validateForm()}
+                  type="submit"
+                  isLoading={this.state.isLoading}
+                  text="Login"
+                  loadingText="Logging in…"
+                />
+              </form>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={this.handleClose}>
+              Continua
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
   }
 }

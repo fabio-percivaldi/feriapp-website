@@ -6,6 +6,7 @@ import config from "./config";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
+import Login from './containers/Login'
 
 class App extends Component {
   constructor(props) {
@@ -90,7 +91,7 @@ class App extends Component {
                 ) : (
                     <Fragment>
                       <Button className="orange-button" style={{ marginRight: '20px' }} href="/signup">Signup</Button>
-                      <Button className="orange-button" href="/login">Login</Button>
+                      <Login></Login>
                     </Fragment>
                   )}
               </Navbar.Collapse>

@@ -8,3 +8,12 @@
     max-width: 320px;
   }
 }
+
+.login-modal {
+  height: 55%;
+  /* max-width: 70% !important;*/
+  width: 30% !important; 
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
