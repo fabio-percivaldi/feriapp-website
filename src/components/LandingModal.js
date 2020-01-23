@@ -7,8 +7,7 @@ import DayOffHolidays from './DayOffHoliday'
 import './LandingModal.css'
 function RenderModal(props) {
     const [cookies, setCookie] = useCookies(['cookie-name']);
-    const [show, setShow] = useState(true);
-    // const [show, setShow] = useState(cookies.firstVisit !== undefined ? cookies.firstVisit === 'true' : true);
+    const [show, setShow] = useState(cookies.firstVisit !== undefined ? cookies.firstVisit === 'true' : true);
     const handleClose = () => {
         setCookie('firstVisit', false)
         setShow(false);

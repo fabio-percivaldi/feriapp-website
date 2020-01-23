@@ -7,3 +7,13 @@
     align-items: center;
     justify-content: space-between
 }
+
+.bridge-card {
+    cursor: pointer;
+    display: flex !important;
+    justify-content: space-between
+}
+
+.bridge-card.list-group-item:hover {
+    background-color: #e2e2e2 !important    
+}

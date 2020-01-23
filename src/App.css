@@ -15,6 +15,7 @@
 
 * {
   border-color: hsl(0,0%,80%) !important;
+  outline: none
 }
 
 .clickable-div {
