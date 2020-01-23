@@ -4,6 +4,8 @@ import './BridgeCard.css'
 import moment from 'moment'
 import { selectBridge } from '../actions/bridges'
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -16,7 +18,8 @@ class ConnectedBridgeCard extends Component {
         super(props)
         this.state = {
             bridge: props.bridge,
-            isSelected: props.isSelected
+            isSelected: props.isSelected,
+            isTop: props.isTop
         }
     }
 
@@ -35,7 +38,7 @@ class ConnectedBridgeCard extends Component {
             key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} 
             onClick={this.handleBridgeSelection}>
                 {`${moment(this.state.bridge.start).format('DD MMMM')} - ${moment(this.state.bridge.end).format('DD MMMM')}`}
-                <div>TOP</div>
+                {this.state.isTop ? <div className="top-badge"><FontAwesomeIcon icon={faStar}></FontAwesomeIcon>TOP</div> : <></>}
             </ListGroup.Item>
         );
     }

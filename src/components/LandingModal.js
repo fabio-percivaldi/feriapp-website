@@ -27,7 +27,7 @@ function RenderModal(props) {
                 onHide={handleClose}
                 dialogClassName="landing-modal">
                 <Modal.Header closeButton>
-                    <Modal.Title style={{ width: '100%', textAlign: 'center', display: 'flex', justifyContent: 'space-between' }}>
+                    <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
                         <h1 style={{ margin: 'auto' }}>
                             <b>Benvenuto in Feriapp</b>
                         </h1>
