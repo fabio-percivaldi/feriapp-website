@@ -22,11 +22,11 @@ export default class DayOffHolidays extends Component {
                 <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
                     <Col md={3} ></Col>
                     <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-                        <Button variant="primary" className={'btnCircle'} style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.decreaseDayOfHolidays}>
+                        <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.decreaseDayOfHolidays}>
                             <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
                         </Button>
                         <h2>{this.props.dayOfHolidays}</h2>
-                        <Button className="orange-button" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.incrementDayOfHolidays} >
+                        <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.incrementDayOfHolidays} >
                             <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                         </Button>
                     </Col>

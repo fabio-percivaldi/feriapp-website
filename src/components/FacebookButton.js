@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-// import FacebookLogin from 'react-facebook-login';
-import LoaderButton from './LoaderButton'
 
 import { FacebookLoginButton } from "react-social-login-buttons";
 
@@ -85,13 +83,6 @@ export default class FacebookButton extends Component {
           >
         <span>Login con Facebook</span>
       </FacebookLoginButton>
-      // <LoaderButton
-      //   block
-      //   className="facebook-button"
-      //   text="Login with Facebook"
-      //   onClick={this.handleClick}
-      //   disabled={this.state.isLoading}
-      // />
     );
   }
 }
