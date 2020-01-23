@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
-import { Nav, Navbar, Button, Row, Container } from "react-bootstrap";
+import { Button, Navbar, Row, Container } from "react-bootstrap";
 import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
 import Login from './containers/Login'
+import Signup from './containers/Signup'
 
 class App extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class App extends Component {
         appId: config.social.FB,
         autoLogAppEvents: true,
         xfbml: true,
+        cookie     : true,
         version: 'v3.1'
       });
     };
@@ -60,8 +62,6 @@ class App extends Component {
     await Auth.signOut();
 
     this.userHasAuthenticated(false);
-
-    this.props.history.push("/login");
   };
 
   render() {
@@ -69,8 +69,8 @@ class App extends Component {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
     };
-
     return (
+      
       !this.state.isAuthenticating && (
         <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', overflowY: 'hidden', backgroundRepeat: 'round', backgroundImage: 'url("./background.jpg")' }}>
           <Row style={{height: '8%'}}>
@@ -87,11 +87,11 @@ class App extends Component {
           </Navbar.Brand>
               <Navbar.Collapse className="justify-content-end">
                 {this.state.isAuthenticated ? (
-                  <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
+                  <Button onClick={this.handleLogout}>Logout</Button>
                 ) : (
                     <Fragment>
-                      <Button className="orange-button" style={{ marginRight: '20px' }} href="/signup">Signup</Button>
-                      <Login></Login>
+                      <Signup></Signup>
+                      <Login userHasAuthenticated={this.userHasAuthenticated}></Login>
                     </Fragment>
                   )}
               </Navbar.Collapse>

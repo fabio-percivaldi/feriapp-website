@@ -14,3 +14,12 @@
   padding-bottom: 10px;
   color: #999;
 }
+
+.signup-modal {
+  height: 55%;
+  /* max-width: 70% !important;*/
+  width: 400px !important; 
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}

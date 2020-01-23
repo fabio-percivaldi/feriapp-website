@@ -50,6 +50,7 @@ export default class Login extends Component {
     try {
       await Auth.signIn(this.state.email, this.state.password);
       this.props.userHasAuthenticated(true);
+      this.handleClose()
     } catch (e) {
       alert(e.message);
       this.setState({ isLoading: false });
@@ -70,7 +71,7 @@ export default class Login extends Component {
           <Modal.Header closeButton>
             <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
               <h1 style={{ margin: 'auto' }}>
-                <b>Benvenuto in Feriapp</b>
+                <b>Login</b>
               </h1>
             </Modal.Title>
           </Modal.Header>
@@ -81,7 +82,7 @@ export default class Login extends Component {
                   onLogin={this.handleFbLogin}
                 />
                 <hr />
-                <FormGroup controlId="email" bsSize="large">
+                <FormGroup controlId="email">
                   <FormLabel>Email</FormLabel>
                   <FormControl
                     autoFocus
@@ -90,7 +91,7 @@ export default class Login extends Component {
                     onChange={this.handleChange}
                   />
                 </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
+                <FormGroup controlId="password">
                   <FormLabel>Password</FormLabel>
                   <FormControl
                     value={this.state.password}
@@ -100,7 +101,6 @@ export default class Login extends Component {
                 </FormGroup>
                 <LoaderButton
                   block
-                  bsSize="large"
                   disabled={!this.validateForm()}
                   type="submit"
                   isLoading={this.state.isLoading}
@@ -110,11 +110,6 @@ export default class Login extends Component {
               </form>
             </div>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={this.handleClose}>
-              Continua
-            </Button>
-          </Modal.Footer>
         </Modal>
       </>
     );

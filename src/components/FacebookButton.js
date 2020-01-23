@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import LoaderButton from "./LoaderButton";
+// import FacebookLogin from 'react-facebook-login';
+import LoaderButton from './LoaderButton'
 
+import { FacebookLoginButton } from "react-social-login-buttons";
+
+import './FacebookButton.css'
 function waitForInit() {
   return new Promise((res, rej) => {
     const hasFbLoaded = () => {
@@ -42,7 +46,7 @@ export default class FacebookButton extends Component {
   };
 
   handleClick = () => {
-    window.FB.login(this.checkLoginState, {scope: "public_profile,email"});
+    window.FB.login(this.checkLoginState, { scope: "public_profile,email" });
   };
 
   handleError(error) {
@@ -69,18 +73,25 @@ export default class FacebookButton extends Component {
       this.handleError(e);
     }
   }
-
+  responseFacebook = (response) => {
+    console.log(response);
+  }
   render() {
     return (
-      <LoaderButton
-        block
-        bsSize="large"
-        variant="primary"
-        className="FacebookButton"
-        text="Login with Facebook"
-        onClick={this.handleClick}
-        disabled={this.state.isLoading}
-      />
+        <FacebookLoginButton
+          onClick={this.handleClick}
+          disabled={this.state.isLoading} 
+          style={{height:'40px'}}
+          >
+        <span>Login con Facebook</span>
+      </FacebookLoginButton>
+      // <LoaderButton
+      //   block
+      //   className="facebook-button"
+      //   text="Login with Facebook"
+      //   onClick={this.handleClick}
+      //   disabled={this.state.isLoading}
+      // />
     );
   }
 }

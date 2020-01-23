@@ -3,7 +3,8 @@ import {
   FormText,
   FormGroup,
   FormControl,
-  FormLabel
+  FormLabel,
+  Modal, Button
 } from "react-bootstrap";
 import { Auth } from "aws-amplify";
 import LoaderButton from "../components/LoaderButton";
@@ -20,10 +21,20 @@ export default class Signup extends Component {
       password: "",
       confirmPassword: "",
       confirmationCode: "",
-      newUser: null
+      newUser: null,
+      showModal: false
     };
   }
-
+  handleClose = () => {
+    this.setState({
+      showModal: false
+    })
+  }
+  handleShow = () => {
+    this.setState({
+      showModal: true
+    })
+  }
   validateForm() {
     return (
       this.state.email.length > 0 &&
@@ -76,7 +87,7 @@ export default class Signup extends Component {
       await Auth.signIn(this.state.email, this.state.password);
 
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/");
+      this.handleClose()
     } catch (e) {
       alert(e.message);
       this.setState({ isLoading: false });
@@ -86,7 +97,7 @@ export default class Signup extends Component {
   renderConfirmationForm() {
     return (
       <form onSubmit={this.handleConfirmationSubmit}>
-        <FormGroup controlId="confirmationCode" bsSize="large">
+        <FormGroup controlId="confirmationCode">
           <FormLabel>Confirmation Code</FormLabel>
           <FormControl
             autoFocus
@@ -98,7 +109,6 @@ export default class Signup extends Component {
         </FormGroup>
         <LoaderButton
           block
-          bsSize="large"
           disabled={!this.validateConfirmationForm()}
           type="submit"
           isLoading={this.state.isLoading}
@@ -116,7 +126,7 @@ export default class Signup extends Component {
           onLogin={this.handleFbLogin}
         />
         <hr />
-        <FormGroup controlId="email" bsSize="large">
+        <FormGroup controlId="email">
           <FormLabel>Email</FormLabel>
           <FormControl
             autoFocus
@@ -125,7 +135,7 @@ export default class Signup extends Component {
             onChange={this.handleChange}
           />
         </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password">
           <FormLabel>Password</FormLabel>
           <FormControl
             value={this.state.password}
@@ -133,7 +143,7 @@ export default class Signup extends Component {
             type="password"
           />
         </FormGroup>
-        <FormGroup controlId="confirmPassword" bsSize="large">
+        <FormGroup controlId="confirmPassword">
           <FormLabel>Confirm Password</FormLabel>
           <FormControl
             value={this.state.confirmPassword}
@@ -143,7 +153,7 @@ export default class Signup extends Component {
         </FormGroup>
         <LoaderButton
           block
-          bsSize="large"
+
           disabled={!this.validateForm()}
           type="submit"
           isLoading={this.state.isLoading}
@@ -156,11 +166,31 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className="Signup">
-        {this.state.newUser === null
-          ? this.renderForm()
-          : this.renderConfirmationForm()}
-      </div>
+      <>
+        <Button className="orange-button" onClick={this.handleShow} style={{ marginRight: '20px' }}>Signup</Button>
+        <Modal
+          animation={false}
+          show={this.state.showModal}
+          onHide={this.handleClose}
+          dialogClassName="signup-modal"
+          size="lg"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
+              <h1 style={{ margin: 'auto' }}>
+                <b>Registrazione</b>
+              </h1>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="Signup">
+              {this.state.newUser === null
+                ? this.renderForm()
+                : this.renderConfirmationForm()}
+            </div>
+          </Modal.Body>
+        </Modal>
+      </>
     );
   }
 }
