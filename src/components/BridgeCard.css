@@ -1,7 +1,8 @@
 .top-badge {
     display: flex; 
     border: 3px solid;
-    border-color: red !important;
+    border-color: #ffa000 !important;
+    background-color: #fbf8ed;
     border-radius: 7px;
     align-items: center;
     justify-content: space-between
