@@ -35,16 +35,7 @@ class ConnectedBridgesCalendar extends Component {
         const { weeks, currentMonth } = this.props
         return (
             <Container className='calendar' style={{ height: '90%', display: 'flex', flexDirection: 'column', overflowY: 'overlay' }}>
-                <Row className="weekdays" style={{display: 'flex', flexDirection: 'row', height: '5.5%', flexWrap: 'nowrap'}}>
-                    <Col className="calendar-header">Domenica</Col>
-                    <Col className="calendar-header">Lunedì</Col>
-                    <Col className="calendar-header">Martedì</Col>
-                    <Col className="calendar-header">Mercoledì</Col>
-                    <Col className="calendar-header">Giovedì</Col>
-                    <Col className="calendar-header">Venerdì</Col>
-                    <Col className="calendar-header">Sabato</Col>
-                </Row>
-                <Row style={{height: '7.5%'}}>
+                <Row style={{height: '50px'}}>
                     <Col md={2} ></Col>
                     <Col md={8} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
                         <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
@@ -56,6 +47,15 @@ class ConnectedBridgesCalendar extends Component {
                         </Button>
                     </Col>
                     <Col md={2}></Col>
+                </Row>
+                <Row className="weekdays" style={{display: 'flex', flexDirection: 'row', height: '5.5%', flexWrap: 'nowrap'}}>
+                    <Col className="calendar-header">Domenica</Col>
+                    <Col className="calendar-header">Lunedì</Col>
+                    <Col className="calendar-header">Martedì</Col>
+                    <Col className="calendar-header">Mercoledì</Col>
+                    <Col className="calendar-header">Giovedì</Col>
+                    <Col className="calendar-header">Venerdì</Col>
+                    <Col className="calendar-header">Sabato</Col>
                 </Row>
                 {weeks.map((week, index) => {
                     return <Row style={{height: '14.5%'}} key={`week-${index}`}>
