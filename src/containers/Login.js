@@ -62,19 +62,13 @@ export default class Login extends Component {
       <>
         <Button className="orange-button" onClick={this.handleShow}>Login</Button>
         <Modal
+          style={{ height: '85%' }}
           animation={false}
           show={this.state.showModal}
           onHide={this.handleClose}
           dialogClassName="login-modal"
           size="lg"
         >
-          <Modal.Header closeButton>
-            <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
-              <h1 style={{ margin: 'auto' }}>
-                <b>Login</b>
-              </h1>
-            </Modal.Title>
-          </Modal.Header>
           <Modal.Body>
             <div className="Login">
               <form onSubmit={this.handleSubmit}>
@@ -100,6 +94,7 @@ export default class Login extends Component {
                   />
                 </FormGroup>
                 <LoaderButton
+                  style={{ height: '40px', marginTop: '45px' }}
                   block
                   disabled={!this.validateForm()}
                   type="submit"

@@ -15,7 +15,7 @@ export default class DayOffHolidays extends Component {
 
     render() {
         return (
-            <Col style={{ height: '100%' }}>
+            <Col style={{ backgroundColor: '#fbf8ed', height: '100%' }}>
                 <Row style={{ height: '50%', justifyContent: 'center' }}>
                     <h2 style={{ margin: 'auto', textAlign: 'center' }}>{this.props.message}</h2>
                 </Row>

@@ -36,10 +36,9 @@
   margin-top: 45px;
   padding-bottom: 15px;
   margin-bottom: 45px; */
-  background-color: #fbf8ed;
+  padding: 0px;
   border-radius: 5px;
   height: 90%;
-  border: 2px solid black;
 }
 
 .body-calendar Row {

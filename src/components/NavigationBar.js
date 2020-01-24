@@ -96,7 +96,7 @@ export default class NavigationBar extends Component {
                 dayOfHolidays={this.props.dayOfHolidays} 
                 decreaseDayOfHolidays={this.decreaseDayOfHolidays} 
                 incrementDayOfHolidays={this.incrementDayOfHolidays}></DayOffHolidays>
-                <Col style={{ height: '100%' }}>
+                <Col style={{ backgroundColor: '#fbf8ed', height: '100%' }}>
                     <Row style={{ height: '50%', justifyContent: 'center' }}>
                         <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
                     </Row>
@@ -110,7 +110,7 @@ export default class NavigationBar extends Component {
                             />
                     </Row >
                 </Col>
-                <Col style={{ height: '100%' }}>
+                <Col style={{ backgroundColor: '#fbf8ed', height: '100%' }}>
                     <Row style={{ height: '50%', justifyContent: 'center' }}>
                         <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
                     </Row>

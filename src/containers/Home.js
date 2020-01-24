@@ -58,25 +58,27 @@ class ConnectedHome extends Component {
   render() {
     return (
       <>
-        <Col md={2} style={{ height: '100%' }}>
+        <Col md={1} style={{ height: '100%' }}>
         </Col>
-        <Col md={8} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+        <Col md={10} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
           <LandingModal increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></LandingModal>
           <Container className="body-calendar">
-            <Row style={{ height: '15%' }}>
+            <Row style={{ borderRadius: '5px', height: '15%' }}>
               <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></NavigationBar>
             </Row>
-            <Row style={{ height: '85%' }}>
-              <Col md={4} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+            <Row style={{ height: '5%' }}>
+            </Row>
+            <Row style={{ height: '80%' }}>
+              <Col md={3} style={{ borderRadius: '5px', backgroundColor: '#fbf8ed', height: '100%', display: 'flex', alignItems: 'center' }}>
                 <BridgesList></BridgesList>
               </Col>
-              <Col md={8} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <Col md={{span: 8, offset:1}} style={{ borderRadius: '5px', backgroundColor: '#fbf8ed', height: '100%', display: 'flex', alignItems: 'center' }}>
                 <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
               </Col>
             </Row>
           </Container>
         </Col>
-        <Col md={2} style={{ height: '100%' }}>
+        <Col md={1} style={{ height: '100%' }}>
         </Col>
       </>
 
