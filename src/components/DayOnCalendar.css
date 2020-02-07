@@ -18,3 +18,11 @@
   background-color: #ffffffad;
   border: 1px solid #fff;
 }
+
+.lock-btn.btn.btn-primary {
+  border: none;
+  color: #ffa000 !important;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
