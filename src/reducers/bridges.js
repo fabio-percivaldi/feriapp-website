@@ -82,39 +82,23 @@ const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
             days: days.slice(35, 42)
         },
     ]
-    let bridgeCounter = 0
     weeks.forEach(week => {
-        let previousBridge = null
         week.days.forEach(day => {
             const momentDay = day.day
-            let isBridgeDay = false
-
-            bridges.forEach(bridge => {
+            bridges.forEach((bridge, index) => {
                 if(momentDay.isSameOrAfter(moment(bridge.start), 'day')  && momentDay.isSameOrBefore(moment(bridge.end), 'day')){
-                    isBridgeDay = true
-                    if(!previousBridge) {
-                        previousBridge = JSON.parse(JSON.stringify(bridge))
-                    }
-                    for(let i = 0; i < bridgeCounter; i++) {
+                    if(index > day.bridges.length) {
                         day.bridges.push({})
-                    }
-                    if(bridge.id !== previousBridge.id) {
-                        previousBridge = JSON.parse(JSON.stringify(bridge))
-                        bridgeCounter++
                     }
                     day.bridges.push({
                         ...bridge,
-                        background: BRIDGES_COLOR[bridgeCounter],
+                        background: BRIDGES_COLOR[index],
                         marginLeft: '-16px',
                         marginRight: '-16px'
                     })
                     
                 } 
             })
-            if(!isBridgeDay) {
-                bridgeCounter = 0
-                previousBridge = null
-            }
         })
     })    
     return weeks
