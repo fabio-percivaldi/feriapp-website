@@ -27,11 +27,20 @@
   box-shadow: none !important;
 }
 
-
 .unlock-btn.btn.btn-primary {
   border: none;
   color: white !important;
   background-color: #ffa000 !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+.past-day {
+  background: repeating-linear-gradient(
+  -45deg,
+  #f6ba527d,
+  #f6ba527d 10px,
+  rgb(251, 248, 237) 10px,
+  rgb(251, 248, 237) 20px
+);
 }
