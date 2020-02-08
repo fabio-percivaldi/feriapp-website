@@ -6,7 +6,7 @@ import { Button, Col, Row, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
-import { calculateCalendarDays } from '../actions/bridges'
+import { calculateCalendarDays, addCustomHoliday } from '../actions/bridges'
 
 moment.locale('it')
 class ConnectedBridgesCalendar extends Component {
@@ -18,6 +18,8 @@ class ConnectedBridgesCalendar extends Component {
             bridges={bridges}
             isWeekend={isWeekend}
             isHoliday={isHoliday}
+            day={day}
+            addCustomHoliday={this.props.addCustomHoliday}
             key={`${day.format('D')}${day.format('MMM')}`}>
         </DayOnCalendar>
     }
@@ -79,7 +81,8 @@ const mapStateToProps = state => {
 };
 function mapDispatchToProps(dispatch) {
     return {
-        calculateCalendarDays: currentMonth => dispatch(calculateCalendarDays(currentMonth))
+        calculateCalendarDays: currentMonth => dispatch(calculateCalendarDays(currentMonth)),
+        addCustomHoliday: customHoliday => dispatch(addCustomHoliday(customHoliday))
     }
 }
 const BridgesCalendar = connect(mapStateToProps, mapDispatchToProps)(ConnectedBridgesCalendar);

@@ -1,4 +1,4 @@
-import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CHANGE_SETTINGS } from "../constants/action-types";
+import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CHANGE_SETTINGS, ADD_CUSTOM_HOLIDAY } from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
@@ -179,6 +179,11 @@ function rootReducer(state = initialState, action) {
             bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
             return { ...state,  weeks: nextWeeks, bridges: bridgesResult, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger }
 
+        case ADD_CUSTOM_HOLIDAY:
+            state.kazzenger.addHolidays([action.payload])
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
+            bridgesResult = bridges(state.kazzenger, state.dayOfHolidays)
+            return { ...state,  weeks: nextWeeks, bridges: bridgesResult, selectedBridges: initialState.selectedBridges }
         default:
             return state
     }

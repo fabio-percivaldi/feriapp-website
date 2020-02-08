@@ -1,26 +1,28 @@
 
 
+import moment from 'moment'
 const Holidays = require('date-holidays')
 const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
-
 const localHolidays = {
   it: require('../data/it-holidays'),
 }
-
 // https://github.com/commenthol/date-holidays-parser/blob/master/docs/Holidays.md#holidayssetholidayrule-opts
 function Kazzenger({ country, state, region, city, daysOff, customHolidays }) {
   this.daysOff = daysOff || [0, 6]
   this.holidays = new Holidays()
-  this.holidays.init(country, state, region)
+  this.country = country
+  this.state = state
+  this.region = region
+  this.holidays.init(this.country, this.state, this.region)
   if (customHolidays) {
-    setHolidays(this.holidays, customHolidays)
+    this.addHolidays(customHolidays, this.holidays)
   }
   if (!city) {
     return
   }
   const localHolidays = getLocalHolidays({ country, state, region, city })
   if (localHolidays) {
-    setHolidays(this.holidays, localHolidays)
+    this.addHolidays(localHolidays, this.holidays)
   }
 }
 
@@ -46,13 +48,28 @@ function getCities({ country }) {
 }
 Kazzenger.cities = getCities
 
-function setHolidays(holidaysLib, holidays) {
+Kazzenger.prototype.addHolidays = function addHolidays(holidays, holidaysLib = this.holidays) {
+  let currentHolidays = holidaysLib.getHolidays()
+  this.holidays.init(this.country, this.state, this.region)
+
   holidays.forEach(holiday => {
-    console.log('info', `will add holiday ${JSON.stringify(holiday)}`)
-    if (!holidaysLib.setHoliday(holiday.date, holiday.name)) {
-      console.log('error', `loadITCityHolidays > setHoliday( ${JSON.stringify(holiday)} > FAIL`)
+    const foundHoliday = currentHolidays.find(current => {
+      const date1 = moment(current.date).format('YYYY-MM-DD')
+      const date2 = moment(holiday.date).format('YYYY-MM-DD')
+       return date1 === date2
+    })
+    if(foundHoliday) {
+      currentHolidays.splice(currentHolidays.indexOf(foundHoliday), 1)
+    } else {
+      currentHolidays.push({date: moment(holiday.date).format('MM-DD'), name: holiday.name})
     }
   })
+  currentHolidays.forEach(holiday => {
+    const formattedDate = moment(holiday.date).format('MM-DD')
+    holidaysLib.setHoliday(formattedDate, holiday.name)
+  })
+  currentHolidays = holidaysLib.getHolidays()
+    console.log('££££££££££££££££££££', currentHolidays)
 }
 Kazzenger.prototype.isHolidayOrWeekend = function isHoliday(momentDay) {
   const isWeekend = this.daysOff.includes(parseInt(momentDay.format('d')))

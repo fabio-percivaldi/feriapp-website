@@ -8,10 +8,10 @@ export default class DayOnCalendar extends Component {
         super(props)
         this.state = {
             bridges: props.bridges,
-            isHoliday: props.isHoliday,
             dayOfTheMonth: '',
             month: '',
-            isLocked: false
+            isLocked: false,
+            day: props.day
         }
     }
     renderTooltip = (bridge) => {
@@ -21,11 +21,15 @@ export default class DayOnCalendar extends Component {
         this.setState({
             isLocked: !this.state.isLocked
         })
+        this.props.addCustomHoliday({
+            date: this.props.day,
+            name: 'Custom Holiday'
+        })
     }
     renderLockButton = () => {
         // TODO: render the button only if is not a weekend day or holiday
-        if (this.state.isHoliday) {
-            return <Button className="lock-btn" style={{ marginTop: 'auto', marginBottom: 'auto', marginRight: '-30%' }} onClick={this.toggleLock}>
+        if ((!this.props.isHoliday && !this.props.isWeekend) || this.state.isLocked) {
+            return <Button className={this.state.isLocked ? 'unlock-btn' : 'lock-btn'} style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft:'auto' }} onClick={this.toggleLock}>
                 <FontAwesomeIcon icon={this.state.isLocked ? faLock : faLockOpen}></FontAwesomeIcon>
             </Button>
         }
@@ -35,9 +39,9 @@ export default class DayOnCalendar extends Component {
         className = this.props.isHoliday ? 'holiday' : className
         return (
             <Col className={className}>
-                <Row style={{ textAlign: 'center', justifyContent: 'space-between' }}>
-                    <h4 style={{ marginLeft: '-30%' }}>{this.props.dayOfTheMonth}</h4>
-                    {this.renderLockButton}
+                <Row style={{ textAlign: 'center', justifyContent: 'flex-start' }}>
+                    <h4 style={{ padding: '.375rem .75rem' }}>{this.props.dayOfTheMonth}</h4>
+                    {this.renderLockButton()}
                 </Row>
                 {this.props.bridges.map(bridge => {
                     const { background, marginLeft, marginRight } = bridge

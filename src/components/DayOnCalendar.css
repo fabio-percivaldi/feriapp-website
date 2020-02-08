@@ -26,3 +26,12 @@
   outline: none !important;
   box-shadow: none !important;
 }
+
+
+.unlock-btn.btn.btn-primary {
+  border: none;
+  color: white !important;
+  background-color: #ffa000 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
