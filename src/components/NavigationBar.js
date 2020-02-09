@@ -98,7 +98,7 @@ export default class NavigationBar extends Component {
                     incrementDayOfHolidays={this.incrementDayOfHolidays}></DayOffHolidays>
                 <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
                     <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ fontWeight: 'bold', margin: 'auto' }}>In quali giorni ti riposi?</h2>
+                        <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
                     </Row>
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
                         <Select
@@ -112,7 +112,7 @@ export default class NavigationBar extends Component {
                 </Col>
                 <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
                     <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ fontWeight: 'bold', margin: 'auto' }}>In che città vivi?</h2>
+                        <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
                     </Row>
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
                         <CityAutosuggestion style={{ width: '90%' }} changeLocation={this.changeLocation}></CityAutosuggestion>

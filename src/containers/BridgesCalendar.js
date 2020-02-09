@@ -43,7 +43,7 @@ class ConnectedBridgesCalendar extends Component {
                         <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
                             <FontAwesomeIcon icon={faChevronCircleLeft}></FontAwesomeIcon>
                         </Button>
-                        <h2 style={{fontWeight: 'bold'}}>{currentMonth.format('MMMM - YYYY')}</h2>
+                        <h2>{currentMonth.format('MMMM - YYYY')}</h2>
                         <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
                             <FontAwesomeIcon icon={faChevronCircleRight}></FontAwesomeIcon>
                         </Button>

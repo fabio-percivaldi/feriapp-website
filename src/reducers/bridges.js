@@ -150,7 +150,11 @@ const initialState = {
     currentMonth: moment(),
     dayOfHolidays: 2,
     kazzenger: getKazzenger(),
-    daysOff: [0, 6]
+    daysOff: [0, 6],
+    holidays: [
+        {imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}, 
+        {imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}, 
+        {imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}]
 };
 function rootReducer(state = initialState, action) {
     let nextWeeks

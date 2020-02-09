@@ -35,7 +35,7 @@ const mapStateToProps = state => {
 const ConnectedBridges = ({ bridges }) => (
     <Container style={{ height: '90%', overflowY: 'overlay' }}>
         <Row style={{height: '50px', alignItems: 'center', justifyContent: 'space-between'}}>
-            <h2 style={{fontWeight: 'bold'}}>Ponti Consigliati</h2>
+            <h2>Ponti Consigliati</h2>
         </Row>
         {bridges.map((bridge, index) => renderBridge(bridge, index))}
     </Container>

@@ -31,7 +31,10 @@
   outline: none;
   font-family: Roboto, Helvetica, sans-serif !important;
 }
-
+h2 {
+  color: #0b2d50 !important;
+  font-weight: bold !important;
+}
 .clickable-div {
   cursor: pointer;
 }

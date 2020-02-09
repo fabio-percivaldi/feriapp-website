@@ -39,6 +39,7 @@
   padding: 0px;
   border-radius: 5px;
   height: 90%;
+  max-width: 80% !important;
 }
 
 .body-calendar Row {
