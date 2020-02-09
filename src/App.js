@@ -97,7 +97,7 @@ class App extends Component {
       !this.state.isAuthenticating && (
         <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', overflowY: 'hidden', backgroundColor: '#f1f2f8' }}>
           <Row style={{height: '8%'}}>
-            <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '2px solid black'}}>
+            <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent'}}>
               <Navbar.Brand href="/">
                 <img
                   alt=""
@@ -122,12 +122,6 @@ class App extends Component {
           </Row>
           <Row style={{height: '92%'}}>
             <Routes childProps={childProps} />
-          </Row>
-          <Row style={{height: '8%'}}>
-            <Navbar style={{ backgroundColor: '#fff8e1',  width: '100%', marginBottom: '0' }}>
-              <Navbar.Collapse className="justify-content-end">
-              </Navbar.Collapse>
-            </Navbar>
           </Row>
         </Container>
       )
