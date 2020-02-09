@@ -39,7 +39,7 @@ class ConnectedBridgeCard extends Component {
             key={`${moment(this.state.bridge.start).format('YYYY-MM-DD')}-${moment(this.state.bridge.end).format('YYYY-MM-DD')}`} 
             onClick={this.handleBridgeSelection}>
                 {`${moment(this.state.bridge.start).format('DD MMMM')} - ${moment(this.state.bridge.end).format('DD MMMM')}`}
-                {this.state.isTop ? <div className="top-badge"><FontAwesomeIcon color="#ffa000" icon={faStar}></FontAwesomeIcon><h5 style={{fontSize: '1.1rem', margin: 'auto'}}>TOP</h5></div> : <></>}
+                {this.state.isTop ? <div className="top-badge"><FontAwesomeIcon color="#f87825" icon={faStar}></FontAwesomeIcon><h5 style={{fontSize: '1.1rem', margin: 'auto'}}>TOP</h5></div> : <></>}
             </ListGroup.Item>
         );
     }

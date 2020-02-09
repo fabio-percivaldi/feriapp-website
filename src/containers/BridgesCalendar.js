@@ -40,24 +40,24 @@ class ConnectedBridgesCalendar extends Component {
                 <Row style={{height: '50px'}}>
                     <Col md={2} ></Col>
                     <Col md={8} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-                        <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
+                        <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
                             <FontAwesomeIcon icon={faChevronCircleLeft}></FontAwesomeIcon>
                         </Button>
-                        <h2>{currentMonth.format('MMMM - YYYY')}</h2>
-                        <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
+                        <h2 style={{fontWeight: 'bold'}}>{currentMonth.format('MMMM - YYYY')}</h2>
+                        <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.nextMonth} >
                             <FontAwesomeIcon icon={faChevronCircleRight}></FontAwesomeIcon>
                         </Button>
                     </Col>
                     <Col md={2}></Col>
                 </Row>
                 <Row className="weekdays" style={{display: 'flex', flexDirection: 'row', height: '5.5%', flexWrap: 'nowrap'}}>
-                    <Col className="calendar-header">Domenica</Col>
-                    <Col className="calendar-header">Lunedì</Col>
-                    <Col className="calendar-header">Martedì</Col>
-                    <Col className="calendar-header">Mercoledì</Col>
-                    <Col className="calendar-header">Giovedì</Col>
-                    <Col className="calendar-header">Venerdì</Col>
-                    <Col className="calendar-header">Sabato</Col>
+                    <Col className="calendar-header">Dom</Col>
+                    <Col className="calendar-header">Lun</Col>
+                    <Col className="calendar-header">Mar</Col>
+                    <Col className="calendar-header">Mer</Col>
+                    <Col className="calendar-header">Gio</Col>
+                    <Col className="calendar-header">Ven</Col>
+                    <Col className="calendar-header">Sab</Col>
                 </Row>
                 {weeks.map((week, index) => {
                     return <Row style={{height: '14.5%'}} key={`week-${index}`}>

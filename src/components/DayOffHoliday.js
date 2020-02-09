@@ -15,18 +15,18 @@ export default class DayOffHolidays extends Component {
 
     render() {
         return (
-            <Col style={{ backgroundColor: '#fbf8ed', height: '100%' }}>
+            <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
                 <Row style={{ height: '50%', justifyContent: 'center' }}>
-                    <h2 style={{ margin: 'auto', textAlign: 'center' }}>{this.props.message}</h2>
+                    <h2 style={{ margin: 'auto', textAlign: 'center', fontWeight: 'bold' }}>{this.props.message}</h2>
                 </Row>
                 <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
                     <Col md={3} ></Col>
                     <Col md={6} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-                        <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.decreaseDayOfHolidays}>
+                        <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.decreaseDayOfHolidays}>
                             <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
                         </Button>
                         <h2>{this.props.dayOfHolidays}</h2>
-                        <Button style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.incrementDayOfHolidays} >
+                        <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.props.incrementDayOfHolidays} >
                             <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                         </Button>
                     </Col>

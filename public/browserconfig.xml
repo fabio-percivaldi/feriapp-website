@@ -2,7 +2,7 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/feriapp_icon.png"/>
+            <square150x150logo src="/feriapp_round_icon.png"/>
             <TileColor>#da532c</TileColor>
         </tile>
     </msapplication>

@@ -69,7 +69,6 @@ Kazzenger.prototype.addHolidays = function addHolidays(holidays, holidaysLib = t
     holidaysLib.setHoliday(formattedDate, holiday.name)
   })
   currentHolidays = holidaysLib.getHolidays()
-    console.log('££££££££££££££££££££', currentHolidays)
 }
 Kazzenger.prototype.isHolidayOrWeekend = function isHoliday(momentDay) {
   const isWeekend = this.daysOff.includes(parseInt(momentDay.format('d')))

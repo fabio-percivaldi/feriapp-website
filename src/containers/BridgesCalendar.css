@@ -19,10 +19,8 @@
   div.calendar .calendar-header {
     text-align: center;
     padding: 0;
-    border: 1px solid #fff;
-    border-radius: 3px;
-    background-color: #ffa000;
-    color: #fffde7
+    color: black;
+    border-bottom: 1px solid #DDDDE5;
   }
   div.calendar li {
     padding: 10px;

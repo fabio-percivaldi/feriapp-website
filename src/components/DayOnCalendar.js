@@ -46,8 +46,8 @@ export default class DayOnCalendar extends Component {
         }
         return (
             <Col className={className}>
-                <Row style={{ textAlign: 'center', justifyContent: 'flex-start' }}>
-                    <h4 style={{ padding: '.375rem .75rem' }}>{this.props.dayOfTheMonth}</h4>
+                <Row style={{ margin: 'auto', height: '100%', textAlign: 'center', justifyContent: 'flex-end' }}>
+                    <h3 style={{ margin: 'auto' }}>{this.props.dayOfTheMonth}</h3>
                     {this.renderLockButton()}
                 </Row>
                 {this.props.bridges.map(bridge => {

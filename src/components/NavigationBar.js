@@ -91,31 +91,31 @@ export default class NavigationBar extends Component {
     render() {
         return (
             <>
-                <DayOffHolidays 
-                message="Quanti giorni di ferie vuoi fare?"
-                dayOfHolidays={this.props.dayOfHolidays} 
-                decreaseDayOfHolidays={this.decreaseDayOfHolidays} 
-                incrementDayOfHolidays={this.incrementDayOfHolidays}></DayOffHolidays>
-                <Col style={{ backgroundColor: '#fbf8ed', height: '100%' }}>
+                <DayOffHolidays
+                    message="Quanti giorni di ferie vuoi usare?"
+                    dayOfHolidays={this.props.dayOfHolidays}
+                    decreaseDayOfHolidays={this.decreaseDayOfHolidays}
+                    incrementDayOfHolidays={this.incrementDayOfHolidays}></DayOffHolidays>
+                <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
                     <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
-                    </Row>
-                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center',  height: '50%' }}>
-                            <Select
-                                onChange={this.handleChange}
-                                options={weekDays}
-                                closeMenuOnSelect={false}
-                                isMulti={true}
-                                defaultValue={[weekDays[5], weekDays[6]]}
-                            />
-                    </Row >
-                </Col>
-                <Col style={{ backgroundColor: '#fbf8ed', height: '100%' }}>
-                    <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
+                        <h2 style={{ fontWeight: 'bold', margin: 'auto' }}>In quali giorni ti riposi?</h2>
                     </Row>
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                        <CityAutosuggestion style={{width:'90%'}} changeLocation={this.changeLocation}></CityAutosuggestion>
+                        <Select
+                            onChange={this.handleChange}
+                            options={weekDays}
+                            closeMenuOnSelect={false}
+                            isMulti={true}
+                            defaultValue={[weekDays[5], weekDays[6]]}
+                        />
+                    </Row >
+                </Col>
+                <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
+                    <Row style={{ height: '50%', justifyContent: 'center' }}>
+                        <h2 style={{ fontWeight: 'bold', margin: 'auto' }}>In che città vivi?</h2>
+                    </Row>
+                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
+                        <CityAutosuggestion style={{ width: '90%' }} changeLocation={this.changeLocation}></CityAutosuggestion>
                     </Row >
                 </Col>
             </>

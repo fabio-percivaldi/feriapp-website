@@ -7,15 +7,29 @@
 }
 
 .btn-primary {
-  background-color: #ffa000 !important;
+  border-radius: 3px !important;
+  background-color: #f87825 !important;
   border-color: white !important;
   font-size: 1.5rem !important;
   color: white !important;
 }
 
+.btn-primary.circular-btn {
+  margin-top: auto;
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px !important;
+  text-align: center;
+  font-size: 12px!important;
+  line-height: 1.42857;
+  margin-bottom: auto;
+}
+
 * {
-  border-color: hsl(0,0%,80%) !important;
-  outline: none
+  border-color: hsl(0, 0%, 80%) !important;
+  outline: none;
+  font-family: Roboto, Helvetica, sans-serif !important;
 }
 
 .clickable-div {

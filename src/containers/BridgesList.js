@@ -18,7 +18,7 @@ const renderBridge = (bridge, index) => {
     }
     return <Accordion key={yearsNormalized} defaultActiveKey="0">
         <Card>
-            <Card.Header style={{ backgroundColor: '#ffa000', color: '#fffde7', display: 'flex', justifyContent: 'space-between' }}>{yearsNormalized}
+            <Card.Header style={{ backgroundColor: '#f87825', color: '#fffde7', display: 'flex', justifyContent: 'space-between' }}>{yearsNormalized}
                 <Accordion.Toggle as={Button} eventKey={index.toString()}><FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon></Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={index.toString()}>
@@ -35,7 +35,7 @@ const mapStateToProps = state => {
 const ConnectedBridges = ({ bridges }) => (
     <Container style={{ height: '90%', overflowY: 'overlay' }}>
         <Row style={{height: '50px', alignItems: 'center', justifyContent: 'space-between'}}>
-            <h2>Ponti Consigliati</h2>
+            <h2 style={{fontWeight: 'bold'}}>Ponti Consigliati</h2>
         </Row>
         {bridges.map((bridge, index) => renderBridge(bridge, index))}
     </Container>

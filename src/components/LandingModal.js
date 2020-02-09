@@ -34,7 +34,7 @@ function RenderModal(props) {
                 <Modal.Body>
                     <Container style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
                         <DayOffHolidays
-                            message="Scegli quanti giorni di ferie vuoi fare e scopri i migliori ponti dell'anno!"
+                            message="Scegli il massimo numero di giorni di ferie che vuoi fare e scopri i migliori ponti dell'anno!"
                             dayOfHolidays={props.dayOfHolidays}
                             decreaseDayOfHolidays={props.decrease}
                             incrementDayOfHolidays={props.increment}></DayOffHolidays>

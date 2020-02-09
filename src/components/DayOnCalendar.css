@@ -1,27 +1,22 @@
 .holiday {
-  background-color: #ffa000;
-  color: #fffde7;
-  border: 1px solid #fff;
+  color: #f87825;
 }
 
 .weekend {
-  background-color: #e2e2e2;
-  border: 1px solid #fff;
+  color: #f87825
 }
 
 .bridge {
   background-color: #e2e2e2;
-  border: 1px solid #fff;
 }
 
 .defaultDay {
   background-color: #ffffffad;
-  border: 1px solid #fff;
 }
 
 .lock-btn.btn.btn-primary {
   border: none;
-  color: #ffa000 !important;
+  color: #f87825 !important;
   background-color: transparent !important;
   outline: none !important;
   box-shadow: none !important;
@@ -30,17 +25,11 @@
 .unlock-btn.btn.btn-primary {
   border: none;
   color: white !important;
-  background-color: #ffa000 !important;
+  background-color: #f87825 !important;
   outline: none !important;
   box-shadow: none !important;
 }
 
 .past-day {
-  background: repeating-linear-gradient(
-  -45deg,
-  #f6ba527d,
-  #f6ba527d 10px,
-  rgb(251, 248, 237) 10px,
-  rgb(251, 248, 237) 20px
-);
+  color: #bfbfbf
 }
