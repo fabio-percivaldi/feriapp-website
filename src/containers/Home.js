@@ -67,7 +67,7 @@ class ConnectedHome extends Component {
             <Row style={{ height: '5%' }}>
             </Row>
             <Row style={{ height: '80%' }}>
-              <Col md={3} style={{paddingLeft: '0', paddingRight: '3%'}}>
+              <Col md={3} style={{ paddingLeft: '0', paddingRight: '3%' }}>
                 <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
                   <BridgesList></BridgesList>
                 </Col>
@@ -75,8 +75,8 @@ class ConnectedHome extends Component {
               <Col md={6} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
                 <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
               </Col>
-              <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center'}}>
-                  <HolidaysList></HolidaysList>
+              <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center' }}>
+                <HolidaysList></HolidaysList>
               </Col>
             </Row>
           </Container>

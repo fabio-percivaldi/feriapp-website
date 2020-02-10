@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Tooltip, OverlayTrigger, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import './DayOnCalendar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'

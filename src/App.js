@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
-import { Button, Navbar, Row, Container } from "react-bootstrap";
+import { Button, Navbar, Row, Col, Container } from "react-bootstrap";
 import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
@@ -20,21 +20,21 @@ class App extends Component {
   }
   getMobileOperatingSystem() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        // Windows Phone must come first because its UA also contains "Android"
-      if (/windows phone/i.test(userAgent)) {
-          return "Windows Phone";
-      }
-  
-      if (/android/i.test(userAgent)) {
-          return "Android";
-      }
-  
-      // iOS detection from: http://stackoverflow.com/a/9039885/177710
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          return "iOS";
-      }
-  
-      return "unknown";
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+      return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+      return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      return "iOS";
+    }
+
+    return "unknown";
   }
   async componentDidMount() {
     this.loadFacebookSDK();
@@ -63,7 +63,7 @@ class App extends Component {
         appId: config.social.FB,
         autoLogAppEvents: true,
         xfbml: true,
-        cookie     : true,
+        cookie: true,
         version: 'v3.1'
       });
     };
@@ -93,11 +93,11 @@ class App extends Component {
       userHasAuthenticated: this.userHasAuthenticated
     };
     return (
-      
+
       !this.state.isAuthenticating && (
-        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', overflowY: 'hidden', backgroundColor: '#f1f2f8' }}>
-          <Row style={{height: '8%'}}>
-            <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent'}}>
+        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', backgroundColor: '#E1E2E8' }}>
+          <Row style={{ height: '8vh' }}>
+            <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent' }}>
               <Navbar.Brand href="/">
                 <img
                   alt=""
@@ -120,8 +120,19 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </Row>
-          <Row style={{height: '92%'}}>
+          <Row style={{ height: '92vh' }}>
             <Routes childProps={childProps} />
+          </Row>
+          <Row style={{ height: '20vh', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
+            <Col md={{ span: 8, offset: 2 }} style={{flexDirection: 'column', justifyContent: 'space-around', display: 'flex'}}>
+              <Row>
+                <h2 style={{margin: 'auto', fontSize: '3rem'}} class="section-heading">Scarica l'app su App Store e Google Store!</h2>
+              </Row>
+              <Row style={{justifyContent: 'space-evenly'}}>
+                <a href='https://play.google.com/store/apps/details?id=it.feriapp' rel="noopener noreferrer" target="_blank"><img style={{height:'70px'}} alt='Get it on Google Play' src='google_play.png'/></a>
+                <a href='https://apps.apple.com/it/app/feriapp/id1488392565?l=en' rel="noopener noreferrer" target="_blank"><img style={{height:'70px'}} alt='Download on the App Store' src='app_store.png'/></a>
+              </Row>
+            </Col>
           </Row>
         </Container>
       )
