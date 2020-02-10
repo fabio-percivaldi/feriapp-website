@@ -61,24 +61,26 @@ class ConnectedHome extends Component {
         <Col md={12} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
           <LandingModal increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></LandingModal>
           <Container className="body-calendar">
-            <Row style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', height: '15%' }}>
-              <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></NavigationBar>
-            </Row>
-            <Row style={{ height: '5%' }}>
-            </Row>
-            <Row style={{ height: '80%' }}>
-              <Col md={3} style={{ paddingLeft: '0', paddingRight: '3%' }}>
-                <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
-                  <BridgesList></BridgesList>
+            <Col md={9} style={{ height: '100%', alignItems: 'center' }}>
+              <Row style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', height: '15%' }}>
+                <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.state.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></NavigationBar>
+              </Row>
+              <Row style={{ height: '5%' }}>
+              </Row>
+              <Row style={{ height: '80%' }}>
+                <Col md={4} style={{ paddingLeft: '0', paddingRight: '3%' }}>
+                  <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
+                    <BridgesList></BridgesList>
+                  </Col>
                 </Col>
-              </Col>
-              <Col md={6} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
-                <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
-              </Col>
-              <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center' }}>
-                <HolidaysList></HolidaysList>
-              </Col>
-            </Row>
+                <Col md={8} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
+                  <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
+                </Col>
+              </Row>
+            </Col>
+            <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center' }}>
+              <HolidaysList></HolidaysList>
+            </Col>
           </Container>
         </Col>
       </>
@@ -86,6 +88,7 @@ class ConnectedHome extends Component {
     );
   }
 }
+
 
 const Home = connect(
   null,

@@ -151,8 +151,8 @@ const initialState = {
     daysOff: [0, 6],
     holidays: [
         {imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}, 
-        {imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}, 
-        {imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}]
+        {imageUrl: 'agriculture_card', days: '13 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}, 
+        {imageUrl: 'road_card', days: '14 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR'}]
 };
 function rootReducer(state = initialState, action) {
     let nextWeeks

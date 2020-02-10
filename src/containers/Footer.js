@@ -19,10 +19,10 @@ function Footer() {
             </Row>
             <Row style={{ justifyContent: 'space-evenly' }}>
                 <a href="https://www.instagram.com/feriappofficial/?hl=it" target="_blank">
-                    <FontAwesomeIcon style={{height: '35px'}} color="#ababab" icon={faInstagram}></FontAwesomeIcon>
+                    <FontAwesomeIcon style={{height: '35px', width: '35px'}} color="#ababab" icon={faInstagram}></FontAwesomeIcon>
                 </a>
                 <a href="https://www.facebook.com/feriappofficial/" target="_blank">
-                    <FontAwesomeIcon style={{height: '35px'}} color="#ababab" icon={faFacebook}></FontAwesomeIcon>
+                    <FontAwesomeIcon style={{height: '35px', width: '35px'}} color="#ababab" icon={faFacebook}></FontAwesomeIcon>
                 </a>
             </Row>
         </Col>
