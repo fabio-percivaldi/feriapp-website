@@ -95,7 +95,7 @@ class App extends Component {
     return (
       
       !this.state.isAuthenticating && (
-        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', overflowY: 'hidden', backgroundColor: '#f1f2f8' }}>
+        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', overflowY: 'hidden', backgroundColor: '#E6E7EC' }}>
           <Row style={{height: '8%'}}>
             <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent'}}>
               <Navbar.Brand href="/">

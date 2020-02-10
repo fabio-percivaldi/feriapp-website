@@ -83,3 +83,18 @@
       margin-bottom: 10px;
     }
   }
+
+  .rc-slider-rail {
+    height: 15 !important
+  }
+  .rc-slider-track {
+    height: 15 !important
+  }
+  .rc-slider-step {
+    height: 15 !important
+  }
+  .rc-slider-handle {
+    /* margin-top: -3% !important; */
+    width: 20px;
+    height: 20px;
+  }

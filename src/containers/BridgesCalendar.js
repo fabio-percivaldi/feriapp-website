@@ -7,6 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { calculateCalendarDays, addCustomHoliday } from '../actions/bridges'
+import Slider, { Range } from 'rc-slider';
+// We can just import Slider or Range to reduce bundle size
+// import Slider from 'rc-slider/lib/Slider';
+// import Range from 'rc-slider/lib/Range';
+import 'rc-slider/assets/index.css';
 
 moment.locale('it')
 class ConnectedBridgesCalendar extends Component {
@@ -64,6 +69,7 @@ class ConnectedBridgesCalendar extends Component {
                         {week.days.map(day => {
                             return this.renderDay(day)
                         })}
+                        <Range kay={`week-${index}`} />
                     </Row>
                 })}
             </Container>
