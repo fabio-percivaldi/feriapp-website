@@ -11,7 +11,7 @@ import { calculateCalendarDays, addCustomHoliday } from '../actions/bridges'
 moment.locale('it')
 class ConnectedBridgesCalendar extends Component {
     renderDay = (calendarDay) => {
-        const { day, bridges, isHoliday, isWeekend } = calendarDay
+        const { day, bridges, isHoliday, isWeekend, holidayName } = calendarDay
         return <DayOnCalendar
             dayOfTheMonth={day.format('D')}
             month={day.format('MMM')}
@@ -19,6 +19,7 @@ class ConnectedBridgesCalendar extends Component {
             isWeekend={isWeekend}
             isHoliday={isHoliday}
             day={day}
+            holidayName={holidayName}
             addCustomHoliday={this.props.addCustomHoliday}
             key={`${day.format('D')}${day.format('MMM')}`}>
         </DayOnCalendar>

@@ -56,12 +56,12 @@ Kazzenger.prototype.addHolidays = function addHolidays(holidays, holidaysLib = t
     const foundHoliday = currentHolidays.find(current => {
       const date1 = moment(current.date).format('YYYY-MM-DD')
       const date2 = moment(holiday.date).format('YYYY-MM-DD')
-       return date1 === date2
+      return date1 === date2
     })
-    if(foundHoliday) {
+    if (foundHoliday) {
       currentHolidays.splice(currentHolidays.indexOf(foundHoliday), 1)
     } else {
-      currentHolidays.push({date: moment(holiday.date).format('MM-DD'), name: holiday.name})
+      currentHolidays.push({ date: moment(holiday.date).format('MM-DD'), name: holiday.name })
     }
   })
   currentHolidays.forEach(holiday => {
@@ -72,10 +72,12 @@ Kazzenger.prototype.addHolidays = function addHolidays(holidays, holidaysLib = t
 }
 Kazzenger.prototype.isHolidayOrWeekend = function isHoliday(momentDay) {
   const isWeekend = this.daysOff.includes(parseInt(momentDay.format('d')))
-  const isHoliday = Object.keys(this.holidays.holidays).includes(momentDay.format('MM-DD'))
+  const holidays = this.holidays.getHolidays()
+  const foundholiday = holidays.find(holiday => moment(holiday.date).format('MM-DD') === momentDay.format('MM-DD'))
   return {
     isWeekend,
-    isHoliday
+    isHoliday: Boolean(foundholiday),
+    holidayName: foundholiday ? foundholiday.name : null
   }
 }
 

@@ -1,7 +1,10 @@
 .holiday {
   color: #f87825;
 }
-
+.holiday h3 {
+  font-weight: bold;
+  font-size: 2.15rem;
+}
 .weekend {
   color: #f87825
 }

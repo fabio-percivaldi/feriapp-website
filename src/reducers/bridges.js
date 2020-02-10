@@ -92,9 +92,7 @@ const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
                     }
                     day.bridges.push({
                         ...bridge,
-                        background: BRIDGES_COLOR[index],
-                        marginLeft: '-16px',
-                        marginRight: '-16px'
+                        background: BRIDGES_COLOR[index]
                     })
                     
                 } 

@@ -12,11 +12,9 @@ export default class DayOnCalendar extends Component {
             dayOfTheMonth: '',
             month: '',
             isLocked: false,
-            day: props.day
+            day: props.day,
+            holidayName: props.holidayName
         }
-    }
-    renderTooltip = (bridge) => {
-        return <Tooltip style={{ fontSize: '1.5rem' }}>{`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`}</Tooltip>;
     }
     toggleLock = () => {
         this.setState({
@@ -28,9 +26,8 @@ export default class DayOnCalendar extends Component {
         })
     }
     renderLockButton = () => {
-        // TODO: render the button only if is not a weekend day or holiday
         if (((!this.props.isHoliday && !this.props.isWeekend) || this.state.isLocked) && !this.isDayInThePast(this.props.day)) {
-            return <Button className={this.state.isLocked ? 'unlock-btn' : 'lock-btn'} style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 'auto' }} onClick={this.toggleLock}>
+            return <Button title="Blocca il giorno come festivo" className={this.state.isLocked ? 'unlock-btn' : 'lock-btn'} style={{ marginBottom: 'auto' }} onClick={this.toggleLock}>
                 <FontAwesomeIcon icon={this.state.isLocked ? faLock : faLockOpen}></FontAwesomeIcon>
             </Button>
         }
@@ -45,26 +42,20 @@ export default class DayOnCalendar extends Component {
             className += ' past-day'
         }
         return (
-            <Col className={className}>
-                <Row style={{ margin: 'auto', height: '100%', textAlign: 'center', justifyContent: 'flex-end' }}>
-                    <h3 style={{ margin: 'auto' }}>{this.props.dayOfTheMonth}</h3>
+            <Col className={className} style={{ display: 'flex', textAlign: 'center', flexDirection: 'column' }}>
+                <Row title={this.props.holidayName} style={{ height: '30px', justifyContent: 'space-around' }}>
+                    <h3 style={{ marginTop: 'auto' }}>{this.props.dayOfTheMonth}</h3>
                     {this.renderLockButton()}
                 </Row>
                 {this.props.bridges.map(bridge => {
-                    const { background, marginLeft, marginRight } = bridge
+                    const { background } = bridge
                     if (Object.keys(bridge).length > 0) {
-                        return <OverlayTrigger
-                            key={`${this.props.month}${this.props.dayOfTheMonth}${bridge.id}`}
-                            placement="bottom"
-                            delay={{ show: 250, hide: 250 }}
-                            overlay={this.renderTooltip(bridge)}
-                        ><Row style={{ background, marginLeft, marginRight }}>
-                                <Col md={12} style={{ height: '20px' }} >
-                                </Col>
-                            </Row>
-                        </OverlayTrigger>
+                        return <Row title={`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`} style={{ background }}>
+                            <Col md={12} style={{ height: '20px' }} >
+                            </Col>
+                        </Row>
                     } else {
-                        return <Row key={`${this.props.month}${this.props.dayOfTheMonth}${bridge.id}`} style={{ background, marginLeft, marginRight }}>
+                        return <Row key={`${this.props.month}${this.props.dayOfTheMonth}${bridge.id}`} style={{ background, marginLeft: '-15px', marginRight: '-15px' }}>
                             <Col md={12} style={{ height: '20px' }} >
                             </Col>
                         </Row>
