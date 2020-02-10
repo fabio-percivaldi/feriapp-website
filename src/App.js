@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
-import { Button, Navbar, Row, Col, Container } from "react-bootstrap";
+import { Button, Navbar, Row, Container } from "react-bootstrap";
 import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
 import Login from './containers/Login'
 import Signup from './containers/Signup'
-
+import Footer from './containers/Footer'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -123,17 +123,7 @@ class App extends Component {
           <Row style={{ height: '92vh' }}>
             <Routes childProps={childProps} />
           </Row>
-          <Row style={{ height: '20vh', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
-            <Col md={{ span: 8, offset: 2 }} style={{flexDirection: 'column', justifyContent: 'space-around', display: 'flex'}}>
-              <Row>
-                <h2 style={{margin: 'auto', fontSize: '3rem'}} class="section-heading">Scarica l'app su App Store e Google Store!</h2>
-              </Row>
-              <Row style={{justifyContent: 'space-evenly'}}>
-                <a href='https://play.google.com/store/apps/details?id=it.feriapp' rel="noopener noreferrer" target="_blank"><img style={{height:'70px'}} alt='Get it on Google Play' src='google_play.png'/></a>
-                <a href='https://apps.apple.com/it/app/feriapp/id1488392565?l=en' rel="noopener noreferrer" target="_blank"><img style={{height:'70px'}} alt='Download on the App Store' src='app_store.png'/></a>
-              </Row>
-            </Col>
-          </Row>
+          <Footer></Footer>
         </Container>
       )
     );
