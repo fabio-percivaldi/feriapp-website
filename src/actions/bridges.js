@@ -99,6 +99,8 @@ export function fetchFlights(bridge, origin) {
             })
             const cheapestFlights = sortedFlights.slice(0, 5)
             cheapestFlights.forEach(flight => {
+              flight.InboundDate = moment(inboundDate).format('YYYY-MM-DD')
+              flight.OutboundDate = moment(outboundDate).format('YYYY-MM-DD')
               const quotes = Quotes.filter(quote => flight.QuoteIds.includes(quote.QuoteId))
               if (quotes) {
                 flight.Quotes = quotes

@@ -5,17 +5,21 @@ import BridgesCalendar from "./BridgesCalendar";
 import NavigationBar from '../components/NavigationBar';
 import BridgesList from './BridgesList';
 import { connect } from "react-redux";
-import { calculateBridges, changeSettings } from "../actions/bridges";
+import { calculateBridges, changeSettings, fetchFlights, selectBridge } from "../actions/bridges";
 import LandingModal from "../components/LandingModal";
 import FlightsList from "./FlightsList";
 
 function mapDispatchToProps(dispatch) {
   return {
     calculateBridges: bridges => dispatch(calculateBridges(bridges)),
-    changeSettings: settings => dispatch(changeSettings(settings))
+    selectBridge: bridges => dispatch(selectBridge(bridges)),
+    changeSettings: settings => dispatch(changeSettings(settings)),
+    fetchFlights: (selectedBridge, currentCity) => dispatch(fetchFlights(selectedBridge, currentCity))
   };
 }
-
+function mapStateToProps(state) {
+  return { bridges: state.bridges, currentCity: state.currentCity}
+}
 class ConnectedHome extends Component {
   constructor(props) {
     super(props);
@@ -37,9 +41,12 @@ class ConnectedHome extends Component {
   }
 
   async componentDidMount() {
-    if (!this.props.isAuthenticated) {
-      return;
-    }
+    console.log('||||||||||||||||||', this.props)
+    this.props.selectBridge({
+      ...this.props.bridges[0].bridges[0],
+      isSelected: true
+  })
+    this.props.fetchFlights(this.props.bridges[0].bridges[0], this.props.currentCity)
   }
   increment = () => {
     this.setState({
@@ -69,7 +76,7 @@ class ConnectedHome extends Component {
               <Row style={{ height: '5%' }}>
               </Row>
               <Row style={{ height: '80%' }}>
-                <Col md={4} style={{ paddingLeft: '0', paddingRight: '3%' }}>
+                <Col md={4} style={{ paddingLeft: '0', paddingRight: '3%',maxHeight: '100%' }}>
                   <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
                     <BridgesList></BridgesList>
                   </Col>
@@ -92,7 +99,7 @@ class ConnectedHome extends Component {
 
 
 const Home = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ConnectedHome);
 export default Home;

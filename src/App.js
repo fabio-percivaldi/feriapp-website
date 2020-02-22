@@ -122,7 +122,7 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </Row>
-          <Row style={{ height: '92vh' }}>
+          <Row style={{ height: '89vh' }}>
             <Routes childProps={childProps} />
           </Row>
           <Row style={{ marginBottom: '1%', marginTop: '1%', height: '20vh'}}>

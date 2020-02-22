@@ -196,7 +196,6 @@ function rootReducer(state = initialState, action) {
             const newKazzenger = getKazzenger(action.payload)
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, newKazzenger)
             bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
-            console.log('||||||||||||||||||||', action.payload)
             return { ...state, weeks: nextWeeks, currentCity: { country: action.payload.country, city: action.payload.city }, bridges: bridgesResult, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger, flights: initialState.flights }
 
         case ADD_CUSTOM_HOLIDAY:
