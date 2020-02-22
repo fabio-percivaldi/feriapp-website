@@ -9,6 +9,8 @@ import { withCookies } from 'react-cookie';
 import Login from './containers/Login'
 import Signup from './containers/Signup'
 import Footer from './containers/Footer'
+import HolidaysList from "./containers/HolidaysList";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -122,6 +124,9 @@ class App extends Component {
           </Row>
           <Row style={{ height: '92vh' }}>
             <Routes childProps={childProps} />
+          </Row>
+          <Row style={{ marginBottom: '1%', marginTop: '1%', height: '20vh'}}>
+            <HolidaysList></HolidaysList>
           </Row>
           <Footer></Footer>
         </Container>

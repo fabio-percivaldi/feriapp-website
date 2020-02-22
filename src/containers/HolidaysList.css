@@ -1,0 +1,6 @@
+.holidays-container {
+    max-width: 80% !important;
+    justify-content: space-evenly;
+    height: 100%;
+    display: flex;
+}

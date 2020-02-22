@@ -7,7 +7,7 @@ import BridgesList from './BridgesList';
 import { connect } from "react-redux";
 import { calculateBridges, changeSettings } from "../actions/bridges";
 import LandingModal from "../components/LandingModal";
-import HolidaysList from "./HolidaysList"
+
 function mapDispatchToProps(dispatch) {
   return {
     calculateBridges: bridges => dispatch(calculateBridges(bridges)),
@@ -79,7 +79,6 @@ class ConnectedHome extends Component {
               </Row>
             </Col>
             <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center' }}>
-              <HolidaysList></HolidaysList>
             </Col>
           </Container>
         </Col>

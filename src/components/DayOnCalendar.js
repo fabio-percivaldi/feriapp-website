@@ -50,7 +50,7 @@ export default class DayOnCalendar extends Component {
                 {this.props.bridges.map(bridge => {
                     const { background } = bridge
                     if (Object.keys(bridge).length > 0) {
-                        return <Row title={`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`} style={{ background }}>
+                        return <Row key={`${this.props.month}${this.props.dayOfTheMonth}`} title={`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`} style={{ background }}>
                             <Col md={12} style={{ height: '20px' }} >
                             </Col>
                         </Row>
