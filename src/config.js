@@ -16,5 +16,8 @@ export default {
   },
   social: {
     FB: "478083609490605",
+    IG_client_id: '17841425275240077',
+    IG_app_secret: '3f96ea4141cd5219abcecc6f0931d296',
+    IG_access_token: 'IGQVJXWUNlN193Y0NNZA2JZAbXg0V0I3dDNoNFFLTFhzdE9waFBoeHlfNlJjUFJJaGFqeFFLR3czS2tpZA3pxWDBLQWRaUGFrNTdmTjZANcTdkZAmdEZAVV1UlR4MWRHNWMtenY4MUE3MDNn'
   }
 };

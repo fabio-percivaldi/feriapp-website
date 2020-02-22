@@ -6,7 +6,9 @@ import {
     ADD_CUSTOM_HOLIDAY,
     REQUEST_FLIGHTS,
     RECEIVE_FLIGHTS,
-    INVALIDATE_FLIGHTS
+    INVALIDATE_FLIGHTS,
+    REQUEST_IG_MEDIA,
+    RECEIVE_IG_MEDIA
 } from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
@@ -57,7 +59,6 @@ const bridges = (kazzenger, dayOfHolidays) => {
             return years
         })
 }
-
 const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
     const firstDayInCurrentMonth = currentMonth.startOf('month')
 
@@ -160,6 +161,7 @@ const initialState = {
     kazzenger: getKazzenger(),
     daysOff: [0, 6],
     flights: [],
+    media: [],
     isFetching: false,
     holidays: [
         { imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' },
@@ -181,12 +183,18 @@ function rootReducer(state = initialState, action) {
             return { ...state, isFetching: true }
         case RECEIVE_FLIGHTS:
             return { ...state, isFetching: false, flights: action.flights }
+            
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
             const nextMonth = selectedBridges.isANewBridge ? moment(action.payload.start) : state.currentMonth
             nextWeeks = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.kazzenger)
             const newBridgesList = updateBridges(state.bridges, action.payload)
             return { ...state, currentMonth: nextMonth, weeks: nextWeeks, bridges: newBridgesList, selectedBridges: selectedBridges.newBridges }
+
+        case REQUEST_IG_MEDIA:
+            return { ...state, isFetchingMedia: true }
+        case RECEIVE_IG_MEDIA:
+            return { ...state, isFetchingMedia: false, media: action.media }
 
         case CALCULATE_CALENDAR:
             nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.kazzenger)

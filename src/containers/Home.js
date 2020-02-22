@@ -5,12 +5,13 @@ import BridgesCalendar from "./BridgesCalendar";
 import NavigationBar from '../components/NavigationBar';
 import BridgesList from './BridgesList';
 import { connect } from "react-redux";
-import { calculateBridges, changeSettings, fetchFlights, selectBridge } from "../actions/bridges";
+import { calculateBridges, changeSettings, fetchFlights, selectBridge, fetchIGMedia } from "../actions/bridges";
 import LandingModal from "../components/LandingModal";
 import FlightsList from "./FlightsList";
 
 function mapDispatchToProps(dispatch) {
   return {
+    fetchIGMedia: () => dispatch(fetchIGMedia()),
     calculateBridges: bridges => dispatch(calculateBridges(bridges)),
     selectBridge: bridges => dispatch(selectBridge(bridges)),
     changeSettings: settings => dispatch(changeSettings(settings)),
@@ -18,7 +19,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  return { bridges: state.bridges, currentCity: state.currentCity}
+  return { bridges: state.bridges, currentCity: state.currentCity }
 }
 class ConnectedHome extends Component {
   constructor(props) {
@@ -41,11 +42,11 @@ class ConnectedHome extends Component {
   }
 
   async componentDidMount() {
-    console.log('||||||||||||||||||', this.props)
     this.props.selectBridge({
       ...this.props.bridges[0].bridges[0],
       isSelected: true
-  })
+    })
+    this.props.fetchIGMedia()
     this.props.fetchFlights(this.props.bridges[0].bridges[0], this.props.currentCity)
   }
   increment = () => {
@@ -76,7 +77,7 @@ class ConnectedHome extends Component {
               <Row style={{ height: '5%' }}>
               </Row>
               <Row style={{ height: '80%' }}>
-                <Col md={4} style={{ paddingLeft: '0', paddingRight: '3%',maxHeight: '100%' }}>
+                <Col md={4} style={{ paddingLeft: '0', paddingRight: '3%', maxHeight: '100%' }}>
                   <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
                     <BridgesList></BridgesList>
                   </Col>

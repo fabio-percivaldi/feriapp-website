@@ -125,7 +125,7 @@ class App extends Component {
           <Row style={{ height: '89vh' }}>
             <Routes childProps={childProps} />
           </Row>
-          <Row style={{ marginBottom: '1%', marginTop: '1%', height: '20vh'}}>
+          <Row style={{ marginBottom: '1%', marginTop: '1%', height: '40vh'}}>
             <HolidaysList></HolidaysList>
           </Row>
           <Footer></Footer>

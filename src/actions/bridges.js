@@ -6,12 +6,22 @@ import {
   ADD_CUSTOM_HOLIDAY,
   REQUEST_FLIGHTS,
   RECEIVE_FLIGHTS,
-  INVALIDATE_FLIGHTS
+  INVALIDATE_FLIGHTS,
+  REQUEST_IG_MEDIA,
+  RECEIVE_IG_MEDIA
 } from '../constants/action-types'
 
 import moment from 'moment'
 import axios from 'axios'
-
+import config from "../config";
+const IG_CLIENT_ID = config.social.IG_client_id
+const ACCESS_TOKEN = config.social.IG_access_token
+const igClient = axios.create({
+    baseURL: 'https://graph.instagram.com',
+    params: {
+        access_token: config.social.IG_access_token
+    }
+})
 const skyScannerClient = axios.create({
   baseURL: 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/',
   headers: {
@@ -38,7 +48,19 @@ export function changeSettings(settings) {
 export function addCustomHoliday(settings) {
   return { type: ADD_CUSTOM_HOLIDAY, payload: settings }
 }
-
+function requestIGMedia() {
+  return {
+    type: REQUEST_IG_MEDIA,
+    isFetchingMedia: true,
+  }
+}
+function receiveIGMedia(media) {
+  return {
+    type: RECEIVE_IG_MEDIA,
+    media,
+    receivedAt: Date.now()
+  }
+}
 function requestFlights(bridge) {
   return {
     type: REQUEST_FLIGHTS,
@@ -60,6 +82,22 @@ export function invalidateFligths(subreddit) {
   }
 }
 
+export function fetchIGMedia() {
+  return function(dispatch) {
+    dispatch(requestIGMedia())
+    return igClient.get(`${IG_CLIENT_ID}/media?access_token=${ACCESS_TOKEN}`)
+    .then(response => {
+      const {data} = response.data
+      const recentMedia = data.slice(0, 6)
+      Promise.all(recentMedia.map(media => {
+        return igClient.get(`${media.id}?access_token=${ACCESS_TOKEN}&fields=caption,media_url`)
+      }))
+      .then(responses => {
+        dispatch(receiveIGMedia(responses.map(response => response.data)))
+      })
+    })
+  }
+}
 export function fetchFlights(bridge, origin) {
   return function (dispatch) {
     dispatch(requestFlights(bridge, origin))
