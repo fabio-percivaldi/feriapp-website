@@ -60,15 +60,14 @@ export function invalidateFligths(subreddit) {
   }
 }
 
-export function fetchFlights(bridge) {
+export function fetchFlights(bridge, origin) {
   return function (dispatch) {
-
-    dispatch(requestFlights(bridge))
+    dispatch(requestFlights(bridge, origin))
     // The function called by the thunk middleware can return a value,
     // that is passed on as the return value of the dispatch method.
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
-    return skyScannerClient.get("autosuggest/v1.0/IT/EUR/it-IT/?query=Milan")
+    return skyScannerClient.get(`autosuggest/v1.0/${origin.country}/EUR/it-IT/?query=${origin.city}`)
       .then(
         null,
         // Do not use catch, because that will also catch

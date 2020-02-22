@@ -153,6 +153,7 @@ const updateBridges = (bridgesList, clickedBridge) => {
 const initialState = {
     bridges: bridges(getKazzenger(), 2),
     selectedBridges: [],
+    currentCity: defaultLocation,
     weeks: calculateMonthlyCalendar(moment(), [], getKazzenger()),
     currentMonth: moment(),
     dayOfHolidays: 2,
@@ -177,9 +178,9 @@ function rootReducer(state = initialState, action) {
 
         case INVALIDATE_FLIGHTS:
         case REQUEST_FLIGHTS:
-            return { ...state, isFetching: true}
+            return { ...state, isFetching: true }
         case RECEIVE_FLIGHTS:
-            return { ...state, isFetching: false, flights: action.flights}
+            return { ...state, isFetching: false, flights: action.flights }
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
             const nextMonth = selectedBridges.isANewBridge ? moment(action.payload.start) : state.currentMonth
@@ -195,7 +196,8 @@ function rootReducer(state = initialState, action) {
             const newKazzenger = getKazzenger(action.payload)
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, newKazzenger)
             bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
-            return { ...state, weeks: nextWeeks, bridges: bridgesResult, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger }
+            console.log('||||||||||||||||||||', action.payload)
+            return { ...state, weeks: nextWeeks, currentCity: { country: action.payload.country, city: action.payload.city }, bridges: bridgesResult, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger, flights: initialState.flights }
 
         case ADD_CUSTOM_HOLIDAY:
             state.kazzenger.addHolidays([action.payload])

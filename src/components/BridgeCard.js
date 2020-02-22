@@ -10,17 +10,19 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 function mapDispatchToProps(dispatch) {
     return {
         selectBridge: bridges => dispatch(selectBridge(bridges)),
-        fetchFlights: selectedBridge => dispatch(fetchFlights(selectedBridge))
+        fetchFlights: (selectedBridge, currentCity) => dispatch(fetchFlights(selectedBridge, currentCity))
     };
   }
-
+const mapStateToProps = state => {
+    return { currentCity: state.currentCity };
+};
 class ConnectedBridgeCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
             bridge: props.bridge,
             isSelected: props.isSelected,
-            isTop: props.isTop
+            isTop: props.isTop,
         }
     }
 
@@ -29,7 +31,8 @@ class ConnectedBridgeCard extends Component {
             ...this.state.bridge,
             isSelected: !this.props.isSelected
         })
-        this.props.fetchFlights({...this.state.bridge})
+        console.log('$$$$$$$$$$$$$$$', this.props.currentCity)
+        this.props.fetchFlights(this.state.bridge, this.props.currentCity)
     }
 
     render() {
@@ -48,7 +51,7 @@ class ConnectedBridgeCard extends Component {
 }
 
 const BridgeCard = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(ConnectedBridgeCard);
   export default BridgeCard;
