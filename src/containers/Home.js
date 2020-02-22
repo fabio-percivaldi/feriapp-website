@@ -7,6 +7,7 @@ import BridgesList from './BridgesList';
 import { connect } from "react-redux";
 import { calculateBridges, changeSettings } from "../actions/bridges";
 import LandingModal from "../components/LandingModal";
+import FlightsList from "./FlightsList";
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -79,6 +80,7 @@ class ConnectedHome extends Component {
               </Row>
             </Col>
             <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center' }}>
+              <FlightsList></FlightsList>
             </Col>
           </Container>
         </Col>

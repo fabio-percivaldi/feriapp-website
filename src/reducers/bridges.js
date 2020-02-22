@@ -1,17 +1,16 @@
-import { CALCULATE_BRIDGES, SELECT_BRIDGE, CALCULATE_CALENDAR, CHANGE_SETTINGS, ADD_CUSTOM_HOLIDAY } from "../constants/action-types";
+import {
+    CALCULATE_BRIDGES,
+    SELECT_BRIDGE,
+    CALCULATE_CALENDAR,
+    CHANGE_SETTINGS,
+    ADD_CUSTOM_HOLIDAY,
+    REQUEST_FLIGHTS,
+    RECEIVE_FLIGHTS,
+    INVALIDATE_FLIGHTS
+} from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
-import axios from 'axios';
-
-const skyScannerClient = axios.create({
-    baseURL: 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/',
-    headers: {
-        "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-        "x-rapidapi-key": "f241036916msh736ffa7aaa9d64fp1a743ajsn26d5430892c5"
-    }
-})
-
 const BRIDGES_COLOR = ['rgba(255, 0, 0, 0.62)', '#00800082', 'orange', 'blue']
 const defaultLocation = { country: 'IT', city: 'Milano' }
 const defaultDaysOff = [0, 6]
@@ -151,42 +150,6 @@ const updateBridges = (bridgesList, clickedBridge) => {
     })
     return bridgeListCopy
 }
-async function calculateNewFlights(selectedBridges) {
-    const {start: outboundDate, end: inboundDate} = selectedBridges.newBridges[0]
-    const {data} = await skyScannerClient.get("autosuggest/v1.0/IT/EUR/it-IT/?query=Milan")
-    const originPlaceSkyId = data.Places[0].PlaceId
-    const {data: flightResponse} = await skyScannerClient.get(`browseroutes/v1.0/IT/EUR/it-IT/${originPlaceSkyId}/anywhere/${moment(outboundDate).format('YYYY-MM-DD')}?inboundpartialdate=${moment(inboundDate).format('YYYY-MM-DD')}`)
-    const {Routes, Places, Quotes} = flightResponse
-    const sortedFlights = Routes.sort((f1, f2) => {
-        if(f1.Price < f2.Price) {
-            return -1
-        }
-        if(f1.Price> f2.Price) {
-            return 1
-        }
-        return 0
-    })
-    const cheapestFlights = sortedFlights.slice(0, 5)
-    cheapestFlights.forEach(flight => {
-        const quotes = Quotes.filter(quote => flight.QuoteIds.includes(quote.QuoteId))
-        if(quotes) {
-            flight.Quotes = quotes
-        }
-        flight.Quotes.forEach(quote => {
-            const quotePlace = Places.find(place => place.PlaceId === quote.OutboundLeg.DestinationId)
-            quote.DestinationPlace = quotePlace
-        });
-        const originPlace = Places.find(place => place.PlaceId === flight.OriginId)
-        if(originPlace) {
-            flight.OriginPlace = originPlace
-        }
-        const destinationPlace = Places.find(place => place.PlaceId === flight.DestinationId)
-        if(destinationPlace) {
-            flight.DestinationPlace = destinationPlace
-        }
-    })
-    return cheapestFlights
-}
 const initialState = {
     bridges: bridges(getKazzenger(), 2),
     selectedBridges: [],
@@ -196,11 +159,13 @@ const initialState = {
     kazzenger: getKazzenger(),
     daysOff: [0, 6],
     flights: [],
+    isFetching: false,
     holidays: [
         { imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' },
         { imageUrl: 'agriculture_card', days: '13 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' },
         { imageUrl: 'road_card', days: '14 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' }]
 };
+
 function rootReducer(state = initialState, action) {
     let nextWeeks
     let bridgesResult
@@ -210,16 +175,17 @@ function rootReducer(state = initialState, action) {
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
             return { ...state, bridges: bridgesResult, weeks: nextWeeks, selectedBridges: initialState.selectedBridges, dayOfHolidays: action.payload }
 
+        case INVALIDATE_FLIGHTS:
+        case REQUEST_FLIGHTS:
+            return { ...state, isFetching: true}
+        case RECEIVE_FLIGHTS:
+            return { ...state, isFetching: false, flights: action.flights}
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
             const nextMonth = selectedBridges.isANewBridge ? moment(action.payload.start) : state.currentMonth
             nextWeeks = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.kazzenger)
             const newBridgesList = updateBridges(state.bridges, action.payload)
-            let flights
-            if (selectedBridges.isANewBridge) {
-                flights = calculateNewFlights(selectedBridges)
-            }
-            return { ...state, currentMonth: nextMonth, weeks: nextWeeks, bridges: newBridgesList, selectedBridges: selectedBridges.newBridges, flights }
+            return { ...state, currentMonth: nextMonth, weeks: nextWeeks, bridges: newBridgesList, selectedBridges: selectedBridges.newBridges }
 
         case CALCULATE_CALENDAR:
             nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.kazzenger)

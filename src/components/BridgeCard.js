@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { ListGroup } from "react-bootstrap";
 import './BridgeCard.css'
 import moment from 'moment'
-import { selectBridge } from '../actions/bridges'
+import { selectBridge, fetchFlights } from '../actions/bridges'
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 function mapDispatchToProps(dispatch) {
     return {
-        selectBridge: bridges => dispatch(selectBridge(bridges))
+        selectBridge: bridges => dispatch(selectBridge(bridges)),
+        fetchFlights: selectedBridge => dispatch(fetchFlights(selectedBridge))
     };
   }
 
@@ -28,6 +29,7 @@ class ConnectedBridgeCard extends Component {
             ...this.state.bridge,
             isSelected: !this.props.isSelected
         })
+        this.props.fetchFlights({...this.state.bridge})
     }
 
     render() {
