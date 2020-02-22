@@ -88,9 +88,9 @@ export function fetchIGMedia() {
     return igClient.get(`${IG_CLIENT_ID}/media?access_token=${ACCESS_TOKEN}`)
     .then(response => {
       const {data} = response.data
-      const recentMedia = data.slice(0, 6)
+      const recentMedia = data.slice(0, 5)
       Promise.all(recentMedia.map(media => {
-        return igClient.get(`${media.id}?access_token=${ACCESS_TOKEN}&fields=caption,media_url`)
+        return igClient.get(`${media.id}?access_token=${ACCESS_TOKEN}&fields=caption,media_url,permalink`)
       }))
       .then(responses => {
         dispatch(receiveIGMedia(responses.map(response => response.data)))

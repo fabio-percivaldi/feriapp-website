@@ -68,6 +68,7 @@ class App extends Component {
         cookie: true,
         version: 'v3.1'
       });
+      window.FB.AppEvents.logPageView();
     };
 
     (function (d, s, id) {
