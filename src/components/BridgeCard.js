@@ -31,8 +31,9 @@ class ConnectedBridgeCard extends Component {
             ...this.state.bridge,
             isSelected: !this.props.isSelected
         })
-        console.log('$$$$$$$$$$$$$$$', this.props.currentCity)
-        this.props.fetchFlights(this.state.bridge, this.props.currentCity)
+        if(!this.props.isSelected) {
+            this.props.fetchFlights(this.state.bridge, this.props.currentCity)
+        }
     }
 
     render() {

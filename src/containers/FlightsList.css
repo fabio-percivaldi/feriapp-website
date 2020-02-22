@@ -1,0 +1,27 @@
+.flights-spinner {
+    border: .25em solid #f87825 !important;
+    border-right-color: transparent !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 5%;
+    width: 7rem !important;
+    height: 7rem !important;
+}
+
+.flights-container {
+    height: 100%; 
+    overflow-y: overlay;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flight-card {
+    color: #f87825 !important;
+}
+
+.flight-card-body {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
