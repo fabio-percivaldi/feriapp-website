@@ -14,13 +14,9 @@ import {
 import moment from 'moment'
 import axios from 'axios'
 import config from "../config";
-const IG_CLIENT_ID = config.social.IG_client_id
-const ACCESS_TOKEN = config.social.IG_access_token
-const igClient = axios.create({
-    baseURL: 'https://graph.instagram.com',
-    params: {
-        access_token: config.social.IG_access_token
-    }
+const API_GATEWAY_URL = config.apiGateway.URL
+const apiGatewayClient = axios.create({
+  baseURL: API_GATEWAY_URL,
 })
 const skyScannerClient = axios.create({
   baseURL: 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/',
@@ -83,19 +79,12 @@ export function invalidateFligths(subreddit) {
 }
 
 export function fetchIGMedia() {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(requestIGMedia())
-    return igClient.get(`${IG_CLIENT_ID}/media?access_token=${ACCESS_TOKEN}`)
-    .then(response => {
-      const {data} = response.data
-      const recentMedia = data.slice(0, 5)
-      Promise.all(recentMedia.map(media => {
-        return igClient.get(`${media.id}?access_token=${ACCESS_TOKEN}&fields=caption,media_url,permalink`)
-      }))
-      .then(responses => {
-        dispatch(receiveIGMedia(responses.map(response => response.data)))
+    return apiGatewayClient.get('/getIgMedia')
+      .then(response => {
+        dispatch(receiveIGMedia(response.data.media))
       })
-    })
   }
 }
 export function fetchFlights(bridge, origin) {
