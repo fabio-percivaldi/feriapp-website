@@ -3,9 +3,9 @@ import { Col, Row } from "react-bootstrap";
 import DayOffHolidays from './DayOffHoliday'
 
 import Select from 'react-select';
-// import Geosuggest from 'react-geosuggest';
-import CityAutosuggestion from './CityAutosuggestion'
+import Geosuggest from 'react-geosuggest';
 import './NavigationBar.css'
+const COUNTRY_LABEL = 'country'
 const weekDays = [
     {
         "label": "Lunedi",
@@ -78,14 +78,16 @@ export default class NavigationBar extends Component {
         })
     };
     changeLocation = location => {
+        const country = location.gmaps.address_components.find(address => address.types.includes(COUNTRY_LABEL))
+        const city = location.gmaps.name
         this.setState({
-            defaultLocation: { country: 'IT', city: location.city }
+            defaultLocation: { country: country.short_name, city }
         })
 
         this.props.changeSettings({
             daysOff: this.state.daysOff,
-            country: 'IT',
-            city: location.city
+            country: country.short_name,
+            city
         })
     }
     render() {
@@ -115,7 +117,7 @@ export default class NavigationBar extends Component {
                         <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
                     </Row>
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                        <CityAutosuggestion style={{ width: '90%' }} changeLocation={this.changeLocation}></CityAutosuggestion>
+                    <Geosuggest onSuggestSelect={this.changeLocation}/>
                     </Row >
                 </Col>
             </>

@@ -13,6 +13,7 @@ import {
 
 import axios from 'axios'
 import config from "../config";
+import moment from 'moment'
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
   baseURL: API_GATEWAY_URL,
@@ -97,7 +98,7 @@ export function fetchFlights(bridge, origin) {
     dispatch(requestFlights(bridge, origin))
     const { start: outboundDate, end: inboundDate } = bridge
 
-    const cheapestFlights = await apiGatewayClient.get(`/flights?originCity=${origin.city}&outboundDate=${outboundDate}&inboundDate=${inboundDate}&locale=it-IT&currency=EUR`)
+    const cheapestFlights = await apiGatewayClient.get(`/flights?originCity=${origin.city}&outboundDate=${moment(outboundDate).format('YYYY-MM-DD')}&inboundDate=${moment(inboundDate).format('YYYY-MM-DD')}&locale=it-IT&currency=EUR`)
     return dispatch(receiveFlights(cheapestFlights.data))
   }
 }
