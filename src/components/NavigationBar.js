@@ -97,6 +97,7 @@ class ConnectedNavigationBar extends Component {
     changeLocation = location => {
         const country = location.gmaps.address_components.find(address => address.types.includes(COUNTRY_LABEL))
         const city = location.gmaps.name
+        console.log('|||||||||||||', location.gmaps)
         this.setState({
             defaultLocation: { country: country.short_name, city }
         })
@@ -135,7 +136,10 @@ class ConnectedNavigationBar extends Component {
                         <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
                     </Row>
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                        <Geosuggest onSuggestSelect={this.changeLocation} />
+                        <Geosuggest 
+                        onSuggestSelect={this.changeLocation} 
+                        initialValue={this.props.currentCity.city}
+                        />
                     </Row >
                 </Col>
             </>

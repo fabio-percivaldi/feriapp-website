@@ -173,7 +173,7 @@ function rootReducer(state = initialState, action) {
     let nextWeeks
     switch (action.type) {
         case REQUEST_BRIDGES:
-            return { ...state, isFetchingBridges: true }
+            return { ...state, isFetchingBridges: true, flights: initialState.flights }
         case RECEIVE_BRIDGES:
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
             return { ...state, isFetchingBridges: false, bridges: action.bridges, weeks: nextWeeks, selectedBridges: initialState.selectedBridges }
