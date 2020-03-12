@@ -80,10 +80,10 @@ export function fetchIGMedia() {
     return apiGatewayClient.get('/igMedia')
       .then(response => {
         const sortedMedia = response.data.media.sort((media1, media2) => {
-          if(media1.mediaId < media2.mediaId) {
+          if(media1.timestamp < media2.timestamp) {
             return 1
           } 
-          if(media1.mediaId > media2.mediaId) {
+          if(media1.timestamp > media2.timestamp) {
             return -1
           } 
           return 0
