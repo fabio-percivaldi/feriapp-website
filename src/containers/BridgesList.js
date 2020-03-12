@@ -1,6 +1,6 @@
 import React from "react";
 import './BridgesList.css'
-import { Card, ListGroup, Container, Accordion, Button, Row } from 'react-bootstrap'
+import { Card, ListGroup, Container, Spinner, Accordion, Button, Row } from 'react-bootstrap'
 import { connect } from "react-redux";
 import BridgeCard from '../components/BridgeCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -30,15 +30,20 @@ const renderBridge = (bridge, index) => {
     </Accordion>
 }
 const mapStateToProps = state => {
-    return { bridges: state.bridges };
+    return { bridges: state.bridges, isFetchingBridges: state.isFetchingBridges };
 };
-const ConnectedBridges = ({ bridges }) => (
-    <Container style={{ height: '90%', overflowY: 'overlay' }}>
+const ConnectedBridges = ({ bridges, isFetchingBridges }) => {
+    if (isFetchingBridges) {
+        return <Spinner className="bridges-spinner" animation="border" role="status">
+            <span className="sr-only">Caricamento...</span>
+        </Spinner>
+    }
+    return <Container style={{ height: '90%', overflowY: 'overlay' }}>
         <Row style={{height: '50px', alignItems: 'center', justifyContent: 'space-between'}}>
             <h2>Ponti Consigliati</h2>
         </Row>
         {bridges.map((bridge, index) => renderBridge(bridge, index))}
     </Container>
-)
+}
 const BridgesList = connect(mapStateToProps)(ConnectedBridges);
 export default BridgesList 

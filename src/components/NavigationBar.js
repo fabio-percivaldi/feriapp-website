@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Col, Row } from "react-bootstrap";
 import DayOffHolidays from './DayOffHoliday'
+import { changeSettings, fetchBridges } from "../actions/bridges";
+import { connect } from "react-redux";
 
 import Select from 'react-select';
 import Geosuggest from 'react-geosuggest';
@@ -36,12 +38,26 @@ const weekDays = [
         "value": 0
     }
 ]
-export default class NavigationBar extends Component {
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchBridges: settings => dispatch(fetchBridges(settings)),
+        changeSettings: settings => dispatch(changeSettings(settings)),
+    };
+}
+function mapStateToProps(state) {
+    return {
+        bridges: state.bridges,
+        currentCity: state.currentCity,
+        dayOfHolidays: state.dayOfHolidays,
+        daysOff: state.daysOff,
+        customHolidays: state.customHolidays
+    }
+}
+class ConnectedNavigationBar extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            dayOfHolidays: props.dayOfHolidays,
             show: true,
             size: 'large',
             selectedNotWorkingDays: props.selectedNotWorkingDays,
@@ -76,6 +92,7 @@ export default class NavigationBar extends Component {
             daysOff,
             ...this.state.defaultLocation
         })
+        this.props.fetchBridges({ dayOfHolidays: this.props.dayOfHolidays, daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays })
     };
     changeLocation = location => {
         const country = location.gmaps.address_components.find(address => address.types.includes(COUNTRY_LABEL))
@@ -89,6 +106,7 @@ export default class NavigationBar extends Component {
             country: country.short_name,
             city
         })
+        this.props.fetchBridges({ dayOfHolidays: this.props.dayOfHolidays, daysOff: this.props.daysOff, city, customHolidays: this.props.customHolidays })
     }
     render() {
         return (
@@ -117,10 +135,16 @@ export default class NavigationBar extends Component {
                         <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
                     </Row>
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                    <Geosuggest onSuggestSelect={this.changeLocation}/>
+                        <Geosuggest onSuggestSelect={this.changeLocation} />
                     </Row >
                 </Col>
             </>
         );
     }
 }
+
+const NavigationBar = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ConnectedNavigationBar);
+export default NavigationBar

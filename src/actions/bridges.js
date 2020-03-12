@@ -1,14 +1,16 @@
 import {
-  CALCULATE_BRIDGES,
+  RECEIVE_BRIDGES,
   SELECT_BRIDGE,
   CALCULATE_CALENDAR,
   CHANGE_SETTINGS,
-  ADD_CUSTOM_HOLIDAY,
+  TOGGLE_CUSTOM_HOLIDAY,
   REQUEST_FLIGHTS,
   RECEIVE_FLIGHTS,
   INVALIDATE_FLIGHTS,
   REQUEST_IG_MEDIA,
-  RECEIVE_IG_MEDIA
+  RECEIVE_IG_MEDIA,
+  REQUEST_BRIDGES,
+  CHANGE_DAY_OF_HOLIDAYS
 } from '../constants/action-types'
 
 import axios from 'axios'
@@ -21,10 +23,9 @@ const apiGatewayClient = axios.create({
     'x-api-key': API_KEY
   }
 })
-
-export function calculateBridges(dayOfHolidays) {
-  return { type: CALCULATE_BRIDGES, payload: dayOfHolidays }
-};
+export function changeDayOfHolidays(dayOfHolidays) {
+  return {type: CHANGE_DAY_OF_HOLIDAYS, payload: dayOfHolidays}
+}
 
 export function selectBridge(bridge) {
   return { type: SELECT_BRIDGE, payload: bridge }
@@ -39,7 +40,7 @@ export function changeSettings(settings) {
 }
 
 export function addCustomHoliday(settings) {
-  return { type: ADD_CUSTOM_HOLIDAY, payload: settings }
+  return { type: TOGGLE_CUSTOM_HOLIDAY, payload: settings }
 }
 function requestIGMedia() {
   return {
@@ -68,6 +69,20 @@ function receiveFlights(flights) {
     receivedAt: Date.now()
   }
 }
+function requestBridges(settings) {
+  return {
+    type: REQUEST_BRIDGES,
+    isFetching: true,
+    settings
+  }
+}
+function receiveBridges(bridges) {
+  return {
+    type: RECEIVE_BRIDGES,
+    bridges,
+    receivedAt: Date.now()
+  }
+}
 export function invalidateFligths(subreddit) {
   return {
     type: INVALIDATE_FLIGHTS,
@@ -81,12 +96,12 @@ export function fetchIGMedia() {
     return apiGatewayClient.get('/igMedia')
       .then(response => {
         const sortedMedia = response.data.media.sort((media1, media2) => {
-          if(media1.timestamp < media2.timestamp) {
+          if (media1.timestamp < media2.timestamp) {
             return 1
-          } 
-          if(media1.timestamp > media2.timestamp) {
+          }
+          if (media1.timestamp > media2.timestamp) {
             return -1
-          } 
+          }
           return 0
         })
         dispatch(receiveIGMedia(sortedMedia))
@@ -98,7 +113,21 @@ export function fetchFlights(bridge, origin) {
     dispatch(requestFlights(bridge, origin))
     const { start: outboundDate, end: inboundDate } = bridge
 
-    const cheapestFlights = await apiGatewayClient.get(`/flights?originCity=${origin.city}&outboundDate=${moment(outboundDate).format('YYYY-MM-DD')}&inboundDate=${moment(inboundDate).format('YYYY-MM-DD')}&locale=it-IT&currency=EUR`)
+    const cheapestFlights = await apiGatewayClient.get(`/flights?originCity=${origin.city}&outboundDate=${moment(outboundDate).format('YYYY-MM-DD')}&inboundDate=${moment(inboundDate).format('YYYY-MM-DD')}&locale=it-IT&currency=USD`)
     return dispatch(receiveFlights(cheapestFlights.data))
+  }
+}
+export function fetchBridges(settings) {
+  return async function (dispatch) {
+    dispatch(requestBridges(settings))
+    const { dayOfHolidays, customHolidays, city, daysOff } = settings
+    const body = {
+      dayOfHolidays,
+      customHolidays,
+      city,
+      daysOff
+    }
+    const bridges = await apiGatewayClient.post('/bridges', body)
+    return dispatch(receiveBridges(bridges.data))
   }
 }

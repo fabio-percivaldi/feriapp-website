@@ -7,7 +7,6 @@ import registerServiceWorker from "./registerServiceWorker";
 import config from "./config";
 import "./index.css";
 import bridges from "./store/bridges";
-import { calculateBridges } from "./actions/bridges";
 import { Provider } from "react-redux";
 import { CookiesProvider } from 'react-cookie';
 
@@ -36,7 +35,6 @@ Amplify.configure({
 });
 
 window.bridges = bridges;
-window.calculateBridges = calculateBridges;
 
 ReactDOM.render(
   <CookiesProvider>

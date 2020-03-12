@@ -1,9 +1,11 @@
 import {
-    CALCULATE_BRIDGES,
+    RECEIVE_BRIDGES,
+    REQUEST_BRIDGES,
+    CHANGE_DAY_OF_HOLIDAYS,
     SELECT_BRIDGE,
     CALCULATE_CALENDAR,
     CHANGE_SETTINGS,
-    ADD_CUSTOM_HOLIDAY,
+    TOGGLE_CUSTOM_HOLIDAY,
     REQUEST_FLIGHTS,
     RECEIVE_FLIGHTS,
     INVALIDATE_FLIGHTS,
@@ -14,7 +16,7 @@ import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
 import moment from 'moment'
 const BRIDGES_COLOR = ['rgba(255, 0, 0, 0.62)', '#00800082', 'orange', 'blue']
-const defaultLocation = { country: 'IT', city: 'Milano' }
+const defaultLocation = { country: 'IT', city: 'Milan' }
 const defaultDaysOff = [0, 6]
 const defaultKazzengerSettings = {
     ...defaultLocation,
@@ -160,23 +162,24 @@ const initialState = {
     dayOfHolidays: 2,
     kazzenger: getKazzenger(),
     daysOff: [0, 6],
+    customHolidays: [],
     flights: [],
     media: [],
     isFetching: false,
-    holidays: [
-        { imageUrl: 'myanmar_card', days: '12 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' },
-        { imageUrl: 'agriculture_card', days: '13 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' },
-        { imageUrl: 'road_card', days: '14 FEBRAIO', holidayDescription: 'UNION DAY IN MYANMAR' }]
+    isFetchingBridges: false
 };
 
 function rootReducer(state = initialState, action) {
     let nextWeeks
-    let bridgesResult
     switch (action.type) {
-        case CALCULATE_BRIDGES:
-            bridgesResult = bridges(state.kazzenger, action.payload)
+        case REQUEST_BRIDGES:
+            return { ...state, isFetchingBridges: true }
+        case RECEIVE_BRIDGES:
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
-            return { ...state, bridges: bridgesResult, weeks: nextWeeks, selectedBridges: initialState.selectedBridges, dayOfHolidays: action.payload }
+            return { ...state, isFetchingBridges: false, bridges: action.bridges, weeks: nextWeeks, selectedBridges: initialState.selectedBridges }
+
+        case CHANGE_DAY_OF_HOLIDAYS:
+            return {...state, dayOfHolidays: action.payload}
 
         case INVALIDATE_FLIGHTS:
         case REQUEST_FLIGHTS:
@@ -203,14 +206,17 @@ function rootReducer(state = initialState, action) {
         case CHANGE_SETTINGS:
             const newKazzenger = getKazzenger(action.payload)
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, newKazzenger)
-            bridgesResult = bridges(newKazzenger, state.dayOfHolidays)
-            return { ...state, weeks: nextWeeks, currentCity: { country: action.payload.country, city: action.payload.city }, bridges: bridgesResult, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger, flights: initialState.flights }
+            return { ...state, weeks: nextWeeks, currentCity: { country: action.payload.country, city: action.payload.city }, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger, flights: initialState.flights }
 
-        case ADD_CUSTOM_HOLIDAY:
-            state.kazzenger.addHolidays([action.payload])
+        case TOGGLE_CUSTOM_HOLIDAY:
+            const foundCustomHoliday = state.customHolidays.find(holiday => holiday.date === action.payload.date)
+            if(foundCustomHoliday) {
+                state.customHolidays.splice(state.customHolidays.indexOf(foundCustomHoliday), 1)
+            } else {
+                state.customHolidays = [...state.customHolidays, action.payload]
+            }
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
-            bridgesResult = bridges(state.kazzenger, state.dayOfHolidays)
-            return { ...state, weeks: nextWeeks, bridges: bridgesResult, selectedBridges: initialState.selectedBridges }
+            return { ...state, weeks: nextWeeks, customHolidays: [...state.customHolidays], selectedBridges: initialState.selectedBridges }
         default:
             return state
     }

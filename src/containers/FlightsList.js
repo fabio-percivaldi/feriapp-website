@@ -15,7 +15,7 @@ const renderFlight = (flight, index) => {
                 </h2>
             </Card.Title>
             <Card.Text style={{ textAlign: 'center', color: '#0b2d50', fontWeight: 'bold', display: 'flex', flexDirection: 'column' }}>
-                {`${direct ? 'Diretto' : 'Con scalo'} A/R a partire da: ${price}€`}
+                {`${direct ? 'Diretto' : 'Con scalo'} A/R a partire da: ${price}$`}
                 <Button style={{ width: '50%', margin: 'auto' }} href={referralLink} rel="noopener noreferrer" target="_blank">Vedi Offerte<FontAwesomeIcon style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: '3%' }} icon={faPlaneDeparture}></FontAwesomeIcon></Button>
             </Card.Text>
         </Card.Body>

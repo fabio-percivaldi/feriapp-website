@@ -3,12 +3,30 @@ import { Row, Col, Button } from "react-bootstrap";
 import './DayOnCalendar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
+import { connect } from "react-redux";
 import moment from 'moment'
-export default class DayOnCalendar extends Component {
+import { fetchBridges, addCustomHoliday } from "../actions/bridges";
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchBridges: settings => dispatch(fetchBridges(settings)),
+        addCustomHoliday: dayOfHolidays => dispatch(addCustomHoliday(dayOfHolidays))
+    };
+}
+function mapStateToProps(state) {
+    return {
+        bridges: state.bridges,
+        currentCity: state.currentCity,
+        dayOfHolidays: state.dayOfHolidays,
+        daysOff: state.daysOff,
+        customHolidays: state.customHolidays
+    }
+}
+class ConnectedDayOnCalendar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            bridges: props.bridges,
+            bridgesOfTheDay: props.bridgesOfTheDay,
             dayOfTheMonth: '',
             month: '',
             isLocked: false,
@@ -21,10 +39,12 @@ export default class DayOnCalendar extends Component {
             isLocked: !this.state.isLocked
         })
         this.props.addCustomHoliday({
-            date: this.props.day,
+            date: moment(this.props.day).format('YYYY-MM-DD'),
             name: 'Custom Holiday'
         })
+       
     }
+
     renderLockButton = () => {
         if (((!this.props.isHoliday && !this.props.isWeekend) || this.state.isLocked) && !this.isDayInThePast(this.props.day)) {
             return <Button title="Blocca il giorno come festivo" className={this.state.isLocked ? 'unlock-btn' : 'lock-btn'} style={{ marginBottom: 'auto' }} onClick={this.toggleLock}>
@@ -47,7 +67,7 @@ export default class DayOnCalendar extends Component {
                     <h3 style={{ marginTop: 'auto' }}>{this.props.dayOfTheMonth}</h3>
                     {this.renderLockButton()}
                 </Row>
-                {this.props.bridges.map(bridge => {
+                {this.props.bridgesOfTheDay.map(bridge => {
                     const { background } = bridge
                     if (Object.keys(bridge).length > 0) {
                         return <Row key={`${this.props.month}${this.props.dayOfTheMonth}`} title={`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`} style={{ background }}>
@@ -65,3 +85,9 @@ export default class DayOnCalendar extends Component {
         );
     }
 }
+
+const DayOnCalendar = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ConnectedDayOnCalendar);
+export default DayOnCalendar;

@@ -6,7 +6,7 @@ import { Button, Col, Row, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
-import { calculateCalendarDays, addCustomHoliday } from '../actions/bridges'
+import { calculateCalendarDays, fetchBridges } from '../actions/bridges'
 
 moment.locale('it')
 class ConnectedBridgesCalendar extends Component {
@@ -15,12 +15,11 @@ class ConnectedBridgesCalendar extends Component {
         return <DayOnCalendar
             dayOfTheMonth={day.format('D')}
             month={day.format('MMM')}
-            bridges={bridges}
+            bridgesOfTheDay={bridges}
             isWeekend={isWeekend}
             isHoliday={isHoliday}
             day={day}
             holidayName={holidayName}
-            addCustomHoliday={this.props.addCustomHoliday}
             key={`${day.format('D')}${day.format('MMM')}`}>
         </DayOnCalendar>
     }
@@ -34,11 +33,21 @@ class ConnectedBridgesCalendar extends Component {
         const previousMonth = moment(this.props.currentMonth).subtract(1, 'months')
         this.props.calculateCalendarDays(previousMonth)
     }
+    componentDidUpdate(prevProps) {
+        if (prevProps && this.props.customHolidays !== prevProps.customHolidays) {
+            this.props.fetchBridges({
+                daysOff: this.props.daysOff,
+                dayOfHolidays: this.props.dayOfHolidays,
+                city: this.props.currentCity.city,
+                customHolidays: this.props.customHolidays
+            })
+        }
+    }
     render() {
         const { weeks, currentMonth } = this.props
         return (
             <Container className='calendar' style={{ height: '90%', display: 'flex', flexDirection: 'column', overflowY: 'overlay' }}>
-                <Row style={{height: '50px'}}>
+                <Row style={{ height: '50px' }}>
                     <Col md={2} ></Col>
                     <Col md={8} style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
                         <Button className="circular-btn" style={{ marginTop: 'auto', marginBottom: 'auto' }} onClick={this.previousMonth}>
@@ -51,7 +60,7 @@ class ConnectedBridgesCalendar extends Component {
                     </Col>
                     <Col md={2}></Col>
                 </Row>
-                <Row className="weekdays" style={{display: 'flex', flexDirection: 'row', height: '5.5%', flexWrap: 'nowrap'}}>
+                <Row className="weekdays" style={{ display: 'flex', flexDirection: 'row', height: '5.5%', flexWrap: 'nowrap' }}>
                     <Col className="calendar-header">Dom</Col>
                     <Col className="calendar-header">Lun</Col>
                     <Col className="calendar-header">Mar</Col>
@@ -61,7 +70,7 @@ class ConnectedBridgesCalendar extends Component {
                     <Col className="calendar-header">Sab</Col>
                 </Row>
                 {weeks.map((week, index) => {
-                    return <Row style={{height: '14.5%'}} key={`week-${index}`}>
+                    return <Row style={{ height: '14.5%' }} key={`week-${index}`}>
                         {week.days.map(day => {
                             return this.renderDay(day)
                         })}
@@ -76,6 +85,9 @@ const mapStateToProps = state => {
         bridges: state.bridges,
         selectedBridges: state.selectedBridges,
         weeks: state.weeks,
+        currentCity: state.currentCity,
+        daysOff: state.daysOff,
+        customHolidays: state.customHolidays,
         dayOfHolidays: state.dayOfHolidays,
         currentMonth: state.currentMonth
     };
@@ -83,7 +95,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
     return {
         calculateCalendarDays: currentMonth => dispatch(calculateCalendarDays(currentMonth)),
-        addCustomHoliday: customHoliday => dispatch(addCustomHoliday(customHoliday))
+        fetchBridges: settings => dispatch(fetchBridges(settings))
     }
 }
 const BridgesCalendar = connect(mapStateToProps, mapDispatchToProps)(ConnectedBridgesCalendar);
