@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row } from "react-bootstrap";
 import DayOffHolidays from './DayOffHoliday'
-import { changeSettings, fetchBridges } from "../actions/bridges";
+import { changeSettings, fetchBridges, fetchHolidays } from "../actions/bridges";
 import { connect } from "react-redux";
 
 import Select from 'react-select';
@@ -42,6 +42,7 @@ function mapDispatchToProps(dispatch) {
     return {
         fetchBridges: settings => dispatch(fetchBridges(settings)),
         changeSettings: settings => dispatch(changeSettings(settings)),
+        fetchHolidays: city => dispatch(fetchHolidays(city))
     };
 }
 function mapStateToProps(state) {
@@ -97,7 +98,6 @@ class ConnectedNavigationBar extends Component {
     changeLocation = location => {
         const country = location.gmaps.address_components.find(address => address.types.includes(COUNTRY_LABEL))
         const city = location.gmaps.name
-        console.log('|||||||||||||', location.gmaps)
         this.setState({
             defaultLocation: { country: country.short_name, city }
         })
@@ -107,6 +107,7 @@ class ConnectedNavigationBar extends Component {
             country: country.short_name,
             city
         })
+        this.props.fetchHolidays(city)
         this.props.fetchBridges({ dayOfHolidays: this.props.dayOfHolidays, daysOff: this.props.daysOff, city, customHolidays: this.props.customHolidays })
     }
     render() {

@@ -5,12 +5,13 @@ import BridgesCalendar from "./BridgesCalendar";
 import NavigationBar from '../components/NavigationBar';
 import BridgesList from './BridgesList';
 import { connect } from "react-redux";
-import { changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
+import { fetchHolidays, changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
 import LandingModal from "../components/LandingModal";
 import FlightsList from "./FlightsList";
 
 function mapDispatchToProps(dispatch) {
   return {
+    fetchHolidays: city => dispatch(fetchHolidays(city)),
     fetchIGMedia: () => dispatch(fetchIGMedia()),
     fetchBridges: settings => dispatch(fetchBridges(settings)),
     selectBridge: bridges => dispatch(selectBridge(bridges)),
@@ -49,12 +50,9 @@ class ConnectedHome extends Component {
   }
 
   async componentDidMount() {
-    this.props.selectBridge({
-      ...this.props.bridges[0].bridges[0],
-      isSelected: true
-    })
+    this.props.fetchHolidays(this.props.currentCity.city)
+    this.props.fetchBridges({ dayOfHolidays: this.props.dayOfHolidays, daysOff: this.props.daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays})
     this.props.fetchIGMedia()
-    this.props.fetchFlights(this.props.bridges[0].bridges[0], this.props.currentCity)
   }
   increment = () => {
     this.props.changeDayOfHolidays(this.props.dayOfHolidays + 1)

@@ -10,7 +10,9 @@ import {
   REQUEST_IG_MEDIA,
   RECEIVE_IG_MEDIA,
   REQUEST_BRIDGES,
-  CHANGE_DAY_OF_HOLIDAYS
+  CHANGE_DAY_OF_HOLIDAYS,
+  REQUEST_HOLIDAYS,
+  RECEIVE_HOLIDAYS
 } from '../constants/action-types'
 
 import axios from 'axios'
@@ -83,6 +85,20 @@ function receiveBridges(bridges) {
     receivedAt: Date.now()
   }
 }
+function requestHolidays(city) {
+  return {
+    type: REQUEST_HOLIDAYS,
+    isFetching: true,
+    city
+  }
+}
+function receiveHolidays(holidays) {
+  return {
+    type: RECEIVE_HOLIDAYS,
+    holidays,
+    receivedAt: Date.now()
+  }
+}
 export function invalidateFligths(subreddit) {
   return {
     type: INVALIDATE_FLIGHTS,
@@ -129,5 +145,12 @@ export function fetchBridges(settings) {
     }
     const bridges = await apiGatewayClient.post('/bridges', body)
     return dispatch(receiveBridges(bridges.data))
+  }
+}
+export function fetchHolidays(city) {
+  return async function (dispatch) {
+    dispatch(requestHolidays(city))
+    const holidays = await apiGatewayClient.get(`/getHolidaysByCity?city=${city}`)
+    return dispatch(receiveHolidays(holidays.data))
   }
 }

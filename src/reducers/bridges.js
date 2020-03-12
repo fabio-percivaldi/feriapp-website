@@ -10,7 +10,9 @@ import {
     RECEIVE_FLIGHTS,
     INVALIDATE_FLIGHTS,
     REQUEST_IG_MEDIA,
-    RECEIVE_IG_MEDIA
+    RECEIVE_IG_MEDIA,
+    REQUEST_HOLIDAYS,
+    RECEIVE_HOLIDAYS
 } from "../constants/action-types";
 import * as Kazzenger from '../kazzenger-core/kazzenger'
 import deepEqual from 'deep-equal'
@@ -33,45 +35,26 @@ const getKazzenger = (settings) => {
     }
     return _kazzenger
 }
-const bridges = (kazzenger, dayOfHolidays) => {
-    //  const now = new Date('2019-01-01T00:00:00Z')
-    const now = new Date()
-    return kazzenger
-        .bridgesByYears({
-            start: now,
-            end: new Date(`${now.getFullYear() + 2}-12-31T12:00:00Z`),
-            maxHolidaysDistance: 4,
-            maxAvailability: dayOfHolidays,
-        })
-        .map(years => {
-            const scores = []
-            years.bridges.forEach(bridge => {
-                bridge.rate = kazzenger.rateBridge(bridge)
-                if (bridge.rate > 70) {
-                    scores.push(bridge.rate)
-                }
-                bridge.id = `${moment(bridge.start).format('YYYY-MM-DD')}-${moment(bridge.end).format('YYYY-MM-DD')}`
-                bridge.isSelected = false
-            })
-            scores.sort().reverse()
-            years.bridges.forEach(bridge => {
-                const index = scores.indexOf(bridge.rate)
-                bridge.isTop = index >= 0 && index < 2
-            })
-            return years
-        })
+const isHolidayOrWeekend = (day, holidays, daysOff) => {
+    const isWeekend = daysOff.includes(parseInt(day.format('d')))
+    const foundholiday = holidays.find(holiday => moment(holiday.date).format('MM-DD') === day.format('MM-DD'))
+    return {
+        isWeekend,
+        isHoliday: Boolean(foundholiday),
+        holidayName: foundholiday ? foundholiday.name : null
+    }
 }
-const calculateMonthlyCalendar = (currentMonth, bridges, kazzenger) => {
+const calculateMonthlyCalendar = (currentMonth, bridges, holidays, daysOff) => {
     const firstDayInCurrentMonth = currentMonth.startOf('month')
 
     let days = []
     for (let i = - firstDayInCurrentMonth.format('d'); i < 42; i++) {
         const day = moment(firstDayInCurrentMonth).add(i, 'days')
-        const isHolidayOrWeekend = kazzenger.isHolidayOrWeekend(day)
+        const isHolidayOrWeekendResult = isHolidayOrWeekend(day, holidays, daysOff)
         days.push({
             day,
             bridges: [],
-            ...isHolidayOrWeekend
+            ...isHolidayOrWeekendResult
         })
     }
     const weeks = [
@@ -154,19 +137,20 @@ const updateBridges = (bridgesList, clickedBridge) => {
     return bridgeListCopy
 }
 const initialState = {
-    bridges: bridges(getKazzenger(), 2),
+    bridges: [],
     selectedBridges: [],
     currentCity: defaultLocation,
-    weeks: calculateMonthlyCalendar(moment(), [], getKazzenger()),
+    weeks: calculateMonthlyCalendar(moment(), [], [], [0, 6]),
     currentMonth: moment(),
     dayOfHolidays: 2,
-    kazzenger: getKazzenger(),
     daysOff: [0, 6],
+    holidays: [],
     customHolidays: [],
     flights: [],
     media: [],
     isFetching: false,
-    isFetchingBridges: false
+    isFetchingBridges: false,
+    isFetchingHolidays: false
 };
 
 function rootReducer(state = initialState, action) {
@@ -175,22 +159,27 @@ function rootReducer(state = initialState, action) {
         case REQUEST_BRIDGES:
             return { ...state, isFetchingBridges: true, flights: initialState.flights }
         case RECEIVE_BRIDGES:
-            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.holidays, state.daysOff)
             return { ...state, isFetchingBridges: false, bridges: action.bridges, weeks: nextWeeks, selectedBridges: initialState.selectedBridges }
 
         case CHANGE_DAY_OF_HOLIDAYS:
-            return {...state, dayOfHolidays: action.payload}
+            return { ...state, dayOfHolidays: action.payload }
 
         case INVALIDATE_FLIGHTS:
         case REQUEST_FLIGHTS:
             return { ...state, isFetching: true }
         case RECEIVE_FLIGHTS:
             return { ...state, isFetching: false, flights: action.flights }
-            
+
+        case REQUEST_HOLIDAYS:
+            return { ...state, isFetchingHolidays: true }
+        case RECEIVE_HOLIDAYS:
+            return { ...state, isFetchingHolidays: true, holidays: action.holidays }
+
         case SELECT_BRIDGE:
             const selectedBridges = calculateSelectedBridges(state.selectedBridges, action.payload)
             const nextMonth = selectedBridges.isANewBridge ? moment(action.payload.start) : state.currentMonth
-            nextWeeks = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.kazzenger)
+            nextWeeks = calculateMonthlyCalendar(nextMonth, selectedBridges.newBridges, state.holidays, state.daysOff)
             const newBridgesList = updateBridges(state.bridges, action.payload)
             return { ...state, currentMonth: nextMonth, weeks: nextWeeks, bridges: newBridgesList, selectedBridges: selectedBridges.newBridges }
 
@@ -200,22 +189,22 @@ function rootReducer(state = initialState, action) {
             return { ...state, isFetchingMedia: false, media: action.media }
 
         case CALCULATE_CALENDAR:
-            nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.kazzenger)
+            nextWeeks = calculateMonthlyCalendar(action.payload, state.selectedBridges, state.holidays, state.daysOff)
             return { ...state, currentMonth: action.payload, weeks: nextWeeks }
 
         case CHANGE_SETTINGS:
             const newKazzenger = getKazzenger(action.payload)
-            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, newKazzenger)
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.holidays, state.daysOff)
             return { ...state, weeks: nextWeeks, currentCity: { country: action.payload.country, city: action.payload.city }, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger, flights: initialState.flights }
 
         case TOGGLE_CUSTOM_HOLIDAY:
             const foundCustomHoliday = state.customHolidays.find(holiday => holiday.date === action.payload.date)
-            if(foundCustomHoliday) {
+            if (foundCustomHoliday) {
                 state.customHolidays.splice(state.customHolidays.indexOf(foundCustomHoliday), 1)
             } else {
                 state.customHolidays = [...state.customHolidays, action.payload]
             }
-            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.kazzenger)
+            nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.holidays, state.daysOff)
             return { ...state, weeks: nextWeeks, customHolidays: [...state.customHolidays], selectedBridges: initialState.selectedBridges }
         default:
             return state
