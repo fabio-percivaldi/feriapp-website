@@ -18,10 +18,10 @@ function Footer() {
                 <h2 style={{ margin: 'auto' }}>Seguici sui social!</h2>
             </Row>
             <Row style={{ justifyContent: 'space-evenly' }}>
-                <a href="https://www.instagram.com/feriappofficial/?hl=it" target="_blank">
+                <a href="https://www.instagram.com/feriappofficial/?hl=it" rel="noopener noreferrer" target="_blank">
                     <FontAwesomeIcon style={{height: '35px', width: '35px'}} color="#ababab" icon={faInstagram}></FontAwesomeIcon>
                 </a>
-                <a href="https://www.facebook.com/feriappofficial/" target="_blank">
+                <a href="https://www.facebook.com/feriappofficial/" rel="noopener noreferrer" target="_blank">
                     <FontAwesomeIcon style={{height: '35px', width: '35px'}} color="#ababab" icon={faFacebook}></FontAwesomeIcon>
                 </a>
             </Row>

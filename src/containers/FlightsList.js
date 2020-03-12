@@ -6,20 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons'
 
 const renderFlight = (flight, index) => {
-    const { OriginPlace, Quotes, Price } = flight
-    const [firstQuote] = Quotes
+    const { originPlace, destinationPlace, price, referralLink, direct } = flight
     return <Card key={index} style={{ height: '25%', marginBottom: '5%', boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '7px' }}>
         <Card.Body className="flight-card-body">
             <Card.Title style={{ textAlign: 'center' }}>
                 <h2 className="flight-card">
-                    {`${OriginPlace.Name} - ${firstQuote.DestinationPlace.Name}`}
+                    {`${originPlace.name} - ${destinationPlace.name}`}
                 </h2>
             </Card.Title>
             <Card.Text style={{ textAlign: 'center', color: '#0b2d50', fontWeight: 'bold', display: 'flex', flexDirection: 'column' }}>
-                {/* {`${flight.InboundDate} - ${flight.OutboundDate}`}
-                <p></p> */}
-                {`${firstQuote.Direct ? 'Diretto' : 'Con scalo'} A/R: ${Price}€`}
-                <Button style={{ width: '50%', margin: 'auto' }} href="https://skyscanner.it" rel="noopener noreferrer" target="_blank">Vedi Offerte<FontAwesomeIcon style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: '3%' }} icon={faPlaneDeparture}></FontAwesomeIcon></Button>
+                {`${direct ? 'Diretto' : 'Con scalo'} A/R a partire da: ${price}€`}
+                <Button style={{ width: '50%', margin: 'auto' }} href={referralLink} rel="noopener noreferrer" target="_blank">Vedi Offerte<FontAwesomeIcon style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: '3%' }} icon={faPlaneDeparture}></FontAwesomeIcon></Button>
             </Card.Text>
         </Card.Body>
     </Card>

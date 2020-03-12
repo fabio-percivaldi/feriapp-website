@@ -6,7 +6,8 @@ export default {
   },
   apiGateway: {
     REGION: "eu-west-1",
-    URL: "https://94aktgdse7.execute-api.eu-west-1.amazonaws.com/dev"
+    URL: "https://94aktgdse7.execute-api.eu-west-1.amazonaws.com/dev",
+    KEY: process.env.REACT_APP_API_KEY
   },
   cognito: {
     REGION: "eu-west-1",
@@ -16,8 +17,5 @@ export default {
   },
   social: {
     FB: "478083609490605",
-    IG_client_id: '17841425275240077',
-    IG_app_secret: '3f96ea4141cd5219abcecc6f0931d296',
-    IG_access_token: 'IGQVJXWUNlN193Y0NNZA2JZAbXg0V0I3dDNoNFFLTFhzdE9waFBoeHlfNlJjUFJJaGFqeFFLR3czS2tpZA3pxWDBLQWRaUGFrNTdmTjZANcTdkZAmdEZAVV1UlR4MWRHNWMtenY4MUE3MDNn'
   }
 };
