@@ -7,7 +7,7 @@ export default {
   apiGateway: {
     REGION: "eu-west-1",
     URL: "https://94aktgdse7.execute-api.eu-west-1.amazonaws.com/dev",
-    KEY: process.env.REACT_APP_API_KEY
+    KEY: "Vm4LXepmiE26ub27sE1Wv5qFV0MXUu9h8nFVH2uL"
   },
   cognito: {
     REGION: "eu-west-1",
