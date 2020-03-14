@@ -1,13 +1,17 @@
-import React, { Component } from "react";
-import { Container, Col, Row } from "react-bootstrap";
 import "./Home.css";
-import BridgesCalendar from "./BridgesCalendar";
-import NavigationBar from '../components/NavigationBar';
-import BridgesList from './BridgesList';
+import Login from './Login'
+import Signup from './Signup'
 import { connect } from "react-redux";
-import { fetchHolidays, changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
-import LandingModal from "../components/LandingModal";
+import BridgesList from './BridgesList';
 import FlightsList from "./FlightsList";
+import HolidaysList from "./HolidaysList";
+import BridgesCalendar from "./BridgesCalendar";
+import React, { Component, Fragment } from "react";
+import LandingModal from "../components/LandingModal";
+import NavigationBar from '../components/NavigationBar';
+import { Container, Col, Row, Button, Navbar } from "react-bootstrap";
+import { fetchHolidays, changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
+const { WEEK_DAYS } = require('../constants')
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -21,7 +25,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  return { 
+  return {
     bridges: state.bridges,
     currentCity: state.currentCity,
     dayOfHolidays: state.dayOfHolidays,
@@ -32,48 +36,78 @@ function mapStateToProps(state) {
 class ConnectedHome extends Component {
   constructor(props) {
     super(props);
-
+    const defaultNotWorkingDays = this.props.daysOff.map(day => {
+      const weekDay = WEEK_DAYS.find(weekDay => weekDay.value === day)
+      return {
+        "label": weekDay ? weekDay.label : '',
+        "value": day
+      }
+    })
+    console.log('&&&&&&&&&&&&&&&&&&&&', defaultNotWorkingDays)
     this.state = {
-      dayOfHolidays: 2,
-      daysOff: [0, 6],
-      selectedNotWorkingDays: [
-        {
-          "label": "Sabato",
-          "value": 6
-        },
-        {
-          "label": "Domenica",
-          "value": 0
-        }
-      ]
+      selectedNotWorkingDays: defaultNotWorkingDays
     };
   }
 
   async componentDidMount() {
     this.props.fetchHolidays(this.props.currentCity.city)
-    this.props.fetchBridges({ dayOfHolidays: this.props.dayOfHolidays, daysOff: this.props.daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays})
     this.props.fetchIGMedia()
   }
   increment = () => {
     this.props.changeDayOfHolidays(this.props.dayOfHolidays + 1)
-    this.props.fetchBridges({ dayOfHolidays: (this.props.dayOfHolidays + 1), daysOff: this.props.daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays})
+    this.props.fetchBridges({ dayOfHolidays: (this.props.dayOfHolidays + 1), daysOff: this.props.daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays })
   }
   decrease = () => {
     this.props.changeDayOfHolidays(this.props.dayOfHolidays - 1)
-    this.props.fetchBridges({ dayOfHolidays: (this.props.dayOfHolidays - 1), daysOff: this.props.daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays})
+    this.props.fetchBridges({ dayOfHolidays: (this.props.dayOfHolidays - 1), daysOff: this.props.daysOff, city: this.props.currentCity.city, customHolidays: this.props.customHolidays })
   }
   changeSettings = (newSettings) => {
     this.props.changeSettings(newSettings)
   }
   render() {
     return (
-      <>
-        <Col md={12} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-          <LandingModal increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} dayOfHolidays={this.props.dayOfHolidays} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></LandingModal>
+      <Row style={{ height: '140vh' }}>
+        <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent' }}>
+          <Navbar.Brand href="/">
+            <img
+              alt=""
+              src="./feriapp_round_icon.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+            Feriapp
+          </Navbar.Brand>
+          <Navbar.Collapse className="justify-content-end">
+            {this.state.isAuthenticated ? (
+              <Button onClick={this.handleLogout}>Logout</Button>
+            ) : (
+                <Fragment>
+                  <Signup></Signup>
+                  <Login userHasAuthenticated={this.userHasAuthenticated}></Login>
+                </Fragment>
+              )}
+          </Navbar.Collapse>
+        </Navbar>
+        <Col md={12} style={{ height: '60%', display: 'flex', alignItems: 'center' }}>
+          <LandingModal
+            increment={this.increment}
+            decrease={this.decrease}
+            changeSettings={this.changeSettings}
+            dayOfHolidays={this.props.dayOfHolidays}
+            daysOff={this.state.daysOff}
+            selectedNotWorkingDays={this.state.selectedNotWorkingDays}>
+          </LandingModal>
           <Container className="body-calendar">
             <Col md={9} style={{ height: '100%', alignItems: 'center' }}>
               <Row style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', height: '15%' }}>
-                <NavigationBar increment={this.increment} decrease={this.decrease} changeSettings={this.changeSettings} daysOff={this.state.daysOff} selectedNotWorkingDays={this.state.selectedNotWorkingDays}></NavigationBar>
+                <NavigationBar 
+                increment={this.increment} 
+                decrease={this.decrease} 
+                changeSettings={this.changeSettings} 
+                daysOff={this.state.daysOff} 
+                selectedNotWorkingDays={this.state.selectedNotWorkingDays}
+                ></NavigationBar>
               </Row>
               <Row style={{ height: '5%' }}>
               </Row>
@@ -93,8 +127,10 @@ class ConnectedHome extends Component {
             </Col>
           </Container>
         </Col>
-      </>
-
+        <Row style={{ height: '40vh' }}>
+          <HolidaysList></HolidaysList>
+        </Row>
+      </Row>
     );
   }
 }

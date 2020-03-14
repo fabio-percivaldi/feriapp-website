@@ -6,8 +6,7 @@ import config from "./config";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
-import Login from './containers/Login'
-import Signup from './containers/Signup'
+
 import Footer from './containers/Footer'
 import HolidaysList from "./containers/HolidaysList";
 
@@ -99,36 +98,7 @@ class App extends Component {
 
       !this.state.isAuthenticating && (
         <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', backgroundColor: '#E1E2E8' }}>
-          <Row style={{ height: '8vh' }}>
-            <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent' }}>
-              <Navbar.Brand href="/">
-                <img
-                  alt=""
-                  src="./feriapp_round_icon.png"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                />{' '}
-                Feriapp
-          </Navbar.Brand>
-              <Navbar.Collapse className="justify-content-end">
-                {this.state.isAuthenticated ? (
-                  <Button onClick={this.handleLogout}>Logout</Button>
-                ) : (
-                    <Fragment>
-                      <Signup></Signup>
-                      <Login userHasAuthenticated={this.userHasAuthenticated}></Login>
-                    </Fragment>
-                  )}
-              </Navbar.Collapse>
-            </Navbar>
-          </Row>
-          <Row style={{ height: '89vh' }}>
-            <Routes childProps={childProps} />
-          </Row>
-          <Row style={{ marginBottom: '1%', marginTop: '1%', height: '40vh'}}>
-            <HolidaysList></HolidaysList>
-          </Row>
+          <Routes childProps={childProps} />
           <Footer></Footer>
         </Container>
       )

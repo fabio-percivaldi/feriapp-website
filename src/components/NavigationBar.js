@@ -1,43 +1,13 @@
+import './NavigationBar.css'
+import Select from 'react-select';
+import { connect } from "react-redux";
 import React, { Component } from "react";
+import Geosuggest from 'react-geosuggest';
 import { Col, Row } from "react-bootstrap";
 import DayOffHolidays from './DayOffHoliday'
 import { changeSettings, fetchBridges, fetchHolidays } from "../actions/bridges";
-import { connect } from "react-redux";
+const {COUNTRY_LABEL, WEEK_DAYS} = require('../constants')
 
-import Select from 'react-select';
-import Geosuggest from 'react-geosuggest';
-import './NavigationBar.css'
-const COUNTRY_LABEL = 'country'
-const weekDays = [
-    {
-        "label": "Lunedi",
-        "value": 1
-    },
-    {
-        "label": "Martedì",
-        "value": 2
-    },
-    {
-        "label": "Mercoledì",
-        "value": 3
-    },
-    {
-        "label": "Giovedì",
-        "value": 4
-    },
-    {
-        "label": "Venerdì",
-        "value": 5
-    },
-    {
-        "label": "Sabato",
-        "value": 6
-    },
-    {
-        "label": "Domenica",
-        "value": 0
-    }
-]
 function mapDispatchToProps(dispatch) {
     return {
         fetchBridges: settings => dispatch(fetchBridges(settings)),
@@ -57,7 +27,7 @@ function mapStateToProps(state) {
 class ConnectedNavigationBar extends Component {
     constructor(props) {
         super(props);
-
+        console.log('((((((((((((((((((', props.selectedNotWorkingDays)
         this.state = {
             show: true,
             size: 'large',
@@ -125,10 +95,10 @@ class ConnectedNavigationBar extends Component {
                     <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
                         <Select
                             onChange={this.handleChange}
-                            options={weekDays}
+                            options={WEEK_DAYS}
                             closeMenuOnSelect={false}
                             isMulti={true}
-                            defaultValue={[weekDays[5], weekDays[6]]}
+                            defaultValue={this.state.selectedNotWorkingDays}
                         />
                     </Row >
                 </Col>

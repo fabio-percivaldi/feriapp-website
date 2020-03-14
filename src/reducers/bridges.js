@@ -14,27 +14,10 @@ import {
     REQUEST_HOLIDAYS,
     RECEIVE_HOLIDAYS
 } from "../constants/action-types";
-import * as Kazzenger from '../kazzenger-core/kazzenger'
-import deepEqual from 'deep-equal'
 import moment from 'moment'
 const BRIDGES_COLOR = ['rgba(255, 0, 0, 0.62)', '#00800082', 'orange', 'blue']
 const defaultLocation = { country: 'IT', city: 'Milan' }
-const defaultDaysOff = [0, 6]
-const defaultKazzengerSettings = {
-    ...defaultLocation,
-    daysOff: defaultDaysOff,
-}
 
-let _kazzenger = null
-let _kazzengerSettings = null
-const getKazzenger = (settings) => {
-    if (!_kazzenger || (settings && !deepEqual(settings, _kazzengerSettings))) {
-        _kazzengerSettings = settings || defaultKazzengerSettings
-        _kazzenger = new Kazzenger.default(_kazzengerSettings)
-        console.log('creted new Kazzenger')
-    }
-    return _kazzenger
-}
 const isHolidayOrWeekend = (day, holidays, daysOff) => {
     const isWeekend = daysOff.includes(parseInt(day.format('d')))
     const foundholiday = holidays.find(holiday => moment(holiday.date).format('MM-DD') === day.format('MM-DD'))
@@ -193,9 +176,13 @@ function rootReducer(state = initialState, action) {
             return { ...state, currentMonth: action.payload, weeks: nextWeeks }
 
         case CHANGE_SETTINGS:
-            const newKazzenger = getKazzenger(action.payload)
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.holidays, state.daysOff)
-            return { ...state, weeks: nextWeeks, currentCity: { country: action.payload.country, city: action.payload.city }, daysOff: action.payload.daysOff, selectedBridges: initialState.selectedBridges, kazzenger: newKazzenger, flights: initialState.flights }
+            return { ...state, 
+                weeks: nextWeeks, 
+                currentCity: { country: action.payload.country, city: action.payload.city }, 
+                daysOff: action.payload.daysOff, 
+                selectedBridges: initialState.selectedBridges, 
+                flights: initialState.flights }
 
         case TOGGLE_CUSTOM_HOLIDAY:
             const foundCustomHoliday = state.customHolidays.find(holiday => holiday.date === action.payload.date)
