@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import { Button, Navbar, Row, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Routes from "./Routes";
 import config from "./config";
 import "./App.css";
@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
 
 import Footer from './containers/Footer'
-import HolidaysList from "./containers/HolidaysList";
 
 class App extends Component {
   constructor(props) {
@@ -97,7 +96,7 @@ class App extends Component {
     return (
 
       !this.state.isAuthenticating && (
-        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', height: '100vh', overflowX: 'hidden', backgroundColor: '#E1E2E8' }}>
+        <Container style={{ maxWidth: '100%', padding: '0px 0px 0px 0px', marginTop: '0', minHeight: '100vh', overflowX: 'hidden', backgroundColor: '#E1E2E8' }}>
           <Routes childProps={childProps} />
           <Footer></Footer>
         </Container>

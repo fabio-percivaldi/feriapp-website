@@ -1,7 +1,5 @@
 .holidays-container {
-    max-width: 80% !important;
-    justify-content: space-between;
-    height: 100%;
+    justify-content: space-evenly;
     display: flex;
 }
 
@@ -10,3 +8,24 @@
     cursor: pointer;
 }
 .grow:hover { transform: scale(1.2); }
+.holiday-card {
+    cursor: pointer;
+    width: 15%;
+    height: 300px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+@media (max-width: 767px) {
+    .holidays-container {
+        flex-direction: column;
+    }
+    .holiday-card {
+        margin-bottom: 8%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+    .holidays-container {
+        flex-direction: column;
+    }
+}

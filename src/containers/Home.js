@@ -9,7 +9,7 @@ import BridgesCalendar from "./BridgesCalendar";
 import React, { Component, Fragment } from "react";
 import LandingModal from "../components/LandingModal";
 import NavigationBar from '../components/NavigationBar';
-import { Container, Col, Row, Button, Navbar } from "react-bootstrap";
+import { Col, Row, Button, Navbar } from "react-bootstrap";
 import { fetchHolidays, changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
 const { WEEK_DAYS } = require('../constants')
 
@@ -43,7 +43,6 @@ class ConnectedHome extends Component {
         "value": day
       }
     })
-    console.log('&&&&&&&&&&&&&&&&&&&&', defaultNotWorkingDays)
     this.state = {
       selectedNotWorkingDays: defaultNotWorkingDays
     };
@@ -66,7 +65,8 @@ class ConnectedHome extends Component {
   }
   render() {
     return (
-      <Row style={{ height: '140vh' }}>
+      <>
+        <Row>
         <Navbar style={{ backgroundColor: '#ffff', width: '100%', marginBottom: '0', borderBottom: '1px solid transparent' }}>
           <Navbar.Brand href="/">
             <img
@@ -89,17 +89,17 @@ class ConnectedHome extends Component {
               )}
           </Navbar.Collapse>
         </Navbar>
-        <Col md={12} style={{ height: '60%', display: 'flex', alignItems: 'center' }}>
-          <LandingModal
+        </Row>
+        <Row style={{ minHeight: '80vh', marginTop: '2%' }}>
+          {/* <LandingModal
             increment={this.increment}
             decrease={this.decrease}
             changeSettings={this.changeSettings}
             dayOfHolidays={this.props.dayOfHolidays}
             daysOff={this.state.daysOff}
             selectedNotWorkingDays={this.state.selectedNotWorkingDays}>
-          </LandingModal>
-          <Container className="body-calendar">
-            <Col md={9} style={{ height: '100%', alignItems: 'center' }}>
+          </LandingModal> */}
+            <Col md={{span: 8, offset: 1}} sm={12} style={{ alignItems: 'center' }}>
               <Row style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', height: '15%' }}>
                 <NavigationBar 
                 increment={this.increment} 
@@ -112,25 +112,24 @@ class ConnectedHome extends Component {
               <Row style={{ height: '5%' }}>
               </Row>
               <Row style={{ height: '80%' }}>
-                <Col md={4} style={{ paddingLeft: '0', paddingRight: '3%', maxHeight: '100%' }}>
+                <Col md={4} sm={12} style={{ paddingLeft: '0', paddingRight: '3%', maxHeight: '100%' }}>
                   <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
                     <BridgesList></BridgesList>
                   </Col>
                 </Col>
-                <Col md={8} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
+                <Col md={8} sm={12} className="sm-margin-top" style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', display: 'flex', alignItems: 'center' }}>
                   <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
                 </Col>
               </Row>
             </Col>
-            <Col md={3} style={{ paddingLeft: '3%', paddingRight: '0%', height: '100%', display: 'flex', alignItems: 'center' }}>
+            <Col md={2} sm={12} className="sm-margin-top" style={{ paddingRight: '0%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <FlightsList></FlightsList>
             </Col>
-          </Container>
-        </Col>
-        <Row style={{ height: '40vh' }}>
+        </Row>
+        <Row style={{ marginTop: '2%'}}>
           <HolidaysList></HolidaysList>
         </Row>
-      </Row>
+        </>
     );
   }
 }

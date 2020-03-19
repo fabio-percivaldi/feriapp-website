@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 function Footer() {
-    return <Row style={{ height: '20vh', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
+    return <Row style={{ minHeight: '10vh', marginTop: '2%', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
         <Col md={{ span: 3, offset: 3 }} style={{ flexDirection: 'column', justifyContent: 'space-around', display: 'flex' }}>
             <Row>
                 <h2 style={{ margin: 'auto' }}>Scarica l'app su App Store e Google Store!</h2>

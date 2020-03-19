@@ -38,8 +38,8 @@
   margin-bottom: 45px; */
   padding: 0px;
   border-radius: 5px;
-  height: 95%;
-  margin-top: auto;
+  /* height: 95%;
+  margin-top: auto; */
   max-width: 80% !important;
 }
 
@@ -51,4 +51,17 @@ h2 {
 }
 h5 {
   color: black
+}
+
+@media(max-width: 767px) {
+  .sm-margin-top {
+    margin-top: 15%
+  }
+  .col-sm-12 {
+    margin-left: 7%;
+    margin-right: 7%
+  }
+  h2 {
+    font-size: 1.4rem !important;
+  }
 }
