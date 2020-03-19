@@ -7,7 +7,6 @@ import FlightsList from "./FlightsList";
 import HolidaysList from "./HolidaysList";
 import BridgesCalendar from "./BridgesCalendar";
 import React, { Component, Fragment } from "react";
-import LandingModal from "../components/LandingModal";
 import NavigationBar from '../components/NavigationBar';
 import { Col, Row, Button, Navbar } from "react-bootstrap";
 import { fetchHolidays, changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
@@ -126,7 +125,7 @@ class ConnectedHome extends Component {
               <FlightsList></FlightsList>
             </Col>
         </Row>
-        <Row style={{ marginTop: '2%'}}>
+        <Row style={{ marginTop: '2%', marginBottom: '2%'}}>
           <HolidaysList></HolidaysList>
         </Row>
         </>

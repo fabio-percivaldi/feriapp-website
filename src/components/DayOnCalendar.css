@@ -1,20 +1,26 @@
-.holiday {
-  color: #f87825;
+.holiday Button#dropdown-item-button{
+  color: #f87825 !important;
+  font-size: 1.8rem !important;
 }
+
 .holiday h3 {
   font-weight: bold;
   font-size: 2.15rem;
 }
-.weekend {
-  color: #f87825
+
+.weekend Button#dropdown-item-button{
+  color: #f87825 !important;
+  font-size: 1.8rem !important;
 }
 
-.bridge {
-  background-color: #e2e2e2;
+.bridge Button#dropdown-item-button{
+  color: #f87825 !important;
+  font-size: 1.8rem !important;
 }
 
-.defaultDay {
-  background-color: #ffffffad;
+.defaultDay Button#dropdown-item-button{
+  color: black !important;
+  font-size: 1.8rem !important;
 }
 
 .lock-btn.btn.btn-primary {
@@ -33,6 +39,57 @@
   box-shadow: none !important;
 }
 
-.past-day {
-  color: #bfbfbf
+.past-day Button#dropdown-item-button{
+  color: #bfbfbf !important;
+}
+.dropdown-item {
+  width: auto !important;
+}
+.bridge-cirle .dropdown-toggle{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid #f87825 !important;
+  border-radius: 25px !important;
+  cursor: pointer;
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+.calendar-day .dropdown-toggle{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 25px !important;
+  cursor: pointer;
+  background-color: transparent !important;
+  outline: none !important;
+}
+.bridge-cirle {
+  display: flex !important;
+}
+.calendar-day.dropdown {
+  display: flex !important;
+}
+.dropdown-item.active, .dropdown-item:active {
+  background-color: transparent !important;
+  color: black !important;
+  outline: none !important;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.bridge-cirle .dropdown-toggle:hover{
+  background-color: #fd9b556b !important;
+}
+
+.calendar-day .dropdown-toggle:hover{
+  background-color: #fd9b556b !important;
 }

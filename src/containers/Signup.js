@@ -167,7 +167,7 @@ export default class Signup extends Component {
   render() {
     return (
       <>
-        <Button className="orange-button" onClick={this.handleShow} style={{ marginRight: '20px' }}>Signup</Button>
+        <Button className="orange-button signup" onClick={this.handleShow} style={{ marginRight: '20px' }}>Signup</Button>
         <Modal
           style={{ height: '85%' }}
           animation={false}

@@ -27,7 +27,6 @@ function mapStateToProps(state) {
 class ConnectedNavigationBar extends Component {
     constructor(props) {
         super(props);
-        console.log('((((((((((((((((((', props.selectedNotWorkingDays)
         this.state = {
             show: true,
             size: 'large',

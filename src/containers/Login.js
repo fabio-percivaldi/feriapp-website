@@ -60,7 +60,7 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        <Button className="orange-button" onClick={this.handleShow}>Login</Button>
+        <Button className="orange-button login" onClick={this.handleShow}>Login</Button>
         <Modal
           style={{ height: '85%' }}
           animation={false}

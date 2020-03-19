@@ -1,10 +1,12 @@
 import './Landing.css'
-import React, { Component } from "react";
+import Login from './Login'
+import Signup from './Signup'
 import Select from 'react-select';
 import { connect } from "react-redux";
+import React, { Component } from "react";
 import Geosuggest from 'react-geosuggest';
 import { Row, Form, Button } from 'react-bootstrap'
-import { changeSettings, fetchBridges, fetchHolidays,changeDayOfHolidays, selectBridge } from "../actions/bridges";
+import { changeSettings, fetchBridges, fetchHolidays,changeDayOfHolidays } from "../actions/bridges";
 
 const { COUNTRY_LABEL, WEEK_DAYS } = require('../constants')
 
@@ -68,7 +70,7 @@ class ConnectedLanding extends Component {
             customHolidays: [],
             dayOfHolidays: this.props.dayOfHolidays
         })
-        this.props.history.push('/')
+        this.props.history.push('/home')
     }
     handleDayOfHolidaysChange = (event) => {
         this.props.changeDayOfHolidays(event.target.value)
@@ -77,9 +79,18 @@ class ConnectedLanding extends Component {
     render() {
 
         return (
-            <Row style={{ height: '100vh', backgroundSize: 'cover', backgroundImage: 'url("landing.jpg")' }}>
+            <Row className="landing-container" style={{ height: '100vh', backgroundSize: 'cover', backgroundImage: 'url("landing.jpg")' }}>
+                <img
+              alt=""
+              src="./feriapp_round_icon.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top landing"
+            />{' '}
+                <Login></Login>
+                <Signup></Signup>
                 <div className="landing-form">
-                    <h1 style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '2%' }}>Trova i migliori ponti</h1>
+                    <h1 style={{ fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '2%' }}>Trova i migliori ponti</h1>
                     <Form>
                         <Form.Group style={{ marginBottom: '5%' }} controlId="formBasicEmail">
                             <Form.Label>In che città vivi?</Form.Label>
@@ -116,10 +127,11 @@ class ConnectedLanding extends Component {
                             </Form.Control>
                         </Form.Group>
                         <Button onClick={this.handleDiscoveryClick} variant="primary">
-                            Scopri
+                            Scopri ponti
                         </Button>
                     </Form>
                 </div>
+                <h2>The first site that allows you to find the best bridge deals in the year</h2>
             </Row>
         )
     }
