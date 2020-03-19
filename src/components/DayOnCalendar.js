@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col, Button, OverlayTrigger, DropdownButton, Dropdown, Tooltip } from "react-bootstrap";
+import { Row, Col, Button, DropdownButton, Dropdown } from "react-bootstrap";
 import './DayOnCalendar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
 import { connect } from "react-redux";
 import moment from 'moment'
 import { fetchBridges, addCustomHoliday } from "../actions/bridges";
-import { Manager, Reference, Popper } from 'react-popper';
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -67,28 +66,10 @@ class ConnectedDayOnCalendar extends Component {
             <Col className={className} style={{ display: 'flex', textAlign: 'center', flexDirection: 'column' }}>
                 <Row title={this.props.holidayName} style={{ height: '100%', justifyContent: 'space-around' }}>
 
-                <DropdownButton className={this.props.bridgesOfTheDay.length > 0 ? 'bridge-cirle' : 'calendar-day'} id="dropdown-item-button" title={this.props.dayOfTheMonth}>
+                <DropdownButton className={this.props.bridgesOfTheDay.length > 0 ? 'bridge-cirle' : 'calendar-day'} drop="up" id="dropdown-item-button" title={this.props.dayOfTheMonth}>
                     <Dropdown.Item onClick={this.toggleLock} as="button">{this.state.isLocked ? 'Sblocca giorno' :'Blocca giorno come festivo'}</Dropdown.Item>
                 </DropdownButton>
-
-                    {/* <div className={this.props.bridgesOfTheDay.length > 0 ? 'bridge-cirle' : 'calendar-day'}>
-                        <h3 style={{ marginTop: 'auto', marginBottom: 'auto' }}>{this.props.dayOfTheMonth}</h3>
-                    </div> */}
                 </Row>
-                {/* {this.props.bridgesOfTheDay.map(bridge => {
-                    const { background } = bridge
-                    if (Object.keys(bridge).length > 0) {
-                        return <Row key={`${this.props.month}${this.props.dayOfTheMonth}`} title={`Festivi: ${bridge.holidaysCount} - Feriali: ${bridge.weekdaysCount}`} style={{ background }}>
-                            <Col md={12} style={{ height: '20px' }} >
-                            </Col>
-                        </Row>
-                    } else {
-                        return <Row key={`${this.props.month}${this.props.dayOfTheMonth}${bridge.id}`} style={{ background, marginLeft: '-15px', marginRight: '-15px' }}>
-                            <Col md={12} style={{ height: '20px' }} >
-                            </Col>
-                        </Row>
-                    }
-                })} */}
             </Col>
         );
     }

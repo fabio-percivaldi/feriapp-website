@@ -74,8 +74,11 @@
 .bridge-cirle {
   display: flex !important;
 }
-.calendar-day.dropdown {
+.calendar-day.dropup {
   display: flex !important;
+}
+.dropdown-item {
+  font-size: 1.6rem !important;
 }
 .dropdown-item.active, .dropdown-item:active {
   background-color: transparent !important;
