@@ -16,7 +16,7 @@ const renderBridge = (bridge, index) => {
     if (years) {
         yearsNormalized = years.join('-')
     }
-    return <Accordion key={yearsNormalized} defaultActiveKey="0">
+    return <Accordion style={{marginBottom: '5%'}} key={yearsNormalized} defaultActiveKey="0">
         <Card>
             <Card.Header style={{ backgroundColor: '#f87825', color: '#fffde7', display: 'flex', justifyContent: 'space-between' }}>{yearsNormalized}
                 <Accordion.Toggle as={Button} eventKey={index.toString()}><FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon></Accordion.Toggle>

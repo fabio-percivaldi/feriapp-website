@@ -3,18 +3,22 @@
     display: flex;
 }
 
-.grow { 
+.grow {
     transition: all .2s ease-in-out;
     cursor: pointer;
 }
-.grow:hover { transform: scale(1.2); }
+
+.grow:hover {
+    transform: scale(1.2);
+}
+
 .holiday-card {
     cursor: pointer;
     width: 15%;
-    height: 300px;
     margin-bottom: auto;
     margin-top: auto;
 }
+
 @media (max-width: 767px) {
     .holidays-container {
         flex-direction: column;
@@ -23,9 +27,16 @@
         margin-bottom: 8%;
         margin-left: auto;
         margin-right: auto;
-        width: 80%;
+        height: 350px;
+        width: 90%;
     }
     .holidays-container {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 1024px) {
+    .holiday-card {
+        font-size: 1.4rem
     }
 }
