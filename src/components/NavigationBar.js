@@ -6,7 +6,7 @@ import Geosuggest from 'react-geosuggest';
 import { Col, Row } from "react-bootstrap";
 import DayOffHolidays from './DayOffHoliday'
 import { changeSettings, fetchBridges, fetchHolidays } from "../actions/bridges";
-const {COUNTRY_LABEL, WEEK_DAYS} = require('../constants')
+const { COUNTRY_LABEL, WEEK_DAYS } = require('../constants')
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -87,30 +87,34 @@ class ConnectedNavigationBar extends Component {
                     dayOfHolidays={this.props.dayOfHolidays}
                     decreaseDayOfHolidays={this.decreaseDayOfHolidays}
                     incrementDayOfHolidays={this.incrementDayOfHolidays}></DayOffHolidays>
-                <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
-                    <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
+                <Col className="navigation-bar-col" xs={12} md={4} style={{ backgroundColor: '#ffff' }}>
+                    <Row style={{ height: '100%' }}>
+                        <Col xs={6} md={12} style={{ display: 'flex', height: '50%', justifyContent: 'center' }}>
+                            <h2 style={{ margin: 'auto' }}>In quali giorni ti riposi?</h2>
+                        </Col>
+                        <Col xs={6} md={12} style={{ display: 'flex', height: '50%' }}>
+                            <Select
+                                onChange={this.handleChange}
+                                options={WEEK_DAYS}
+                                closeMenuOnSelect={false}
+                                isMulti={true}
+                                defaultValue={this.state.selectedNotWorkingDays}
+                            />
+                        </Col>
                     </Row>
-                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                        <Select
-                            onChange={this.handleChange}
-                            options={WEEK_DAYS}
-                            closeMenuOnSelect={false}
-                            isMulti={true}
-                            defaultValue={this.state.selectedNotWorkingDays}
-                        />
-                    </Row >
                 </Col>
-                <Col style={{ backgroundColor: '#ffff', height: '100%' }}>
-                    <Row style={{ height: '50%', justifyContent: 'center' }}>
-                        <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
+                <Col className="navigation-bar-col right" xs={12} md={4} style={{ backgroundColor: '#ffff' }}>
+                    <Row style={{ height: '100%' }}>
+                        <Col xs={6} md={12} style={{display: 'flex', height: '50%', justifyContent: 'center' }}>
+                            <h2 style={{ margin: 'auto' }}>In che città vivi?</h2>
+                        </Col>
+                        <Col xs={6} md={12} style={{ alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
+                            <Geosuggest
+                                onSuggestSelect={this.changeLocation}
+                                initialValue={this.props.currentCity.city}
+                            />
+                        </Col>
                     </Row>
-                    <Row style={{ paddingTop: '5px', alignItems: 'flex-start', justifyContent: 'center', height: '50%' }}>
-                        <Geosuggest 
-                        onSuggestSelect={this.changeLocation} 
-                        initialValue={this.props.currentCity.city}
-                        />
-                    </Row >
                 </Col>
             </>
         );

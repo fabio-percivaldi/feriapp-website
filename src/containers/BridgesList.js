@@ -22,9 +22,9 @@ const renderBridge = (bridge, index) => {
                 <Accordion.Toggle as={Button} eventKey={index.toString()}><FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon></Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={index.toString()}>
-            <ListGroup variant="flush">
-                {bridges.map(renderSingleBridge)}
-            </ListGroup>
+                <ListGroup variant="flush">
+                    {bridges.map(renderSingleBridge)}
+                </ListGroup>
             </Accordion.Collapse>
         </Card>
     </Accordion>
@@ -38,8 +38,8 @@ const ConnectedBridges = ({ bridges, isFetchingBridges }) => {
             <span className="sr-only">Caricamento...</span>
         </Spinner>
     }
-    return <Container style={{ height: '90%', overflowY: 'overlay' }}>
-        <Row style={{height: '50px', alignItems: 'center', justifyContent: 'space-between'}}>
+    return <Container style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '7px', backgroundColor: '#ffff', height: '100%', overflowY: 'overlay' }}>
+        <Row style={{ height: '50px', alignItems: 'center', justifyContent: 'space-between' }}>
             <h2>Ponti Consigliati</h2>
         </Row>
         {bridges.map((bridge, index) => renderBridge(bridge, index))}

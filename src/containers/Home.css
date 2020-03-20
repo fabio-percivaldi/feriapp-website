@@ -37,7 +37,7 @@
   padding-bottom: 15px;
   margin-bottom: 45px; */
   padding: 0px;
-  border-radius: 5px;
+  border-radius: 7px;
   /* height: 95%;
   margin-top: auto; */
   max-width: 80% !important;
@@ -54,14 +54,25 @@ h5 {
 }
 
 @media(max-width: 767px) {
-  .sm-margin-top {
-    margin-top: 15%
+  .spacing-row {
+    height: 0 !important;
   }
-  .col-sm-12 {
-    margin-left: 7%;
-    margin-right: 7%
+  .sx-margin-top {
+    margin-top: 7%
   }
+
   h2 {
     font-size: 1.4rem !important;
+  }
+  .navigation-bar {
+    min-height: 35vh !important;
+  }
+  .body-container {
+    margin-right: -1% !important;
+    margin-left: -1% !important;
+  }
+
+  #bridgesList {
+    padding-right: 0 !important;
   }
 }

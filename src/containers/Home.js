@@ -89,7 +89,7 @@ class ConnectedHome extends Component {
           </Navbar.Collapse>
         </Navbar>
         </Row>
-        <Row style={{ minHeight: '80vh', marginTop: '2%' }}>
+        <Row className="body-container" style={{ minHeight: '80vh', marginTop: '2%' }}>
           {/* <LandingModal
             increment={this.increment}
             decrease={this.decrease}
@@ -98,8 +98,8 @@ class ConnectedHome extends Component {
             daysOff={this.state.daysOff}
             selectedNotWorkingDays={this.state.selectedNotWorkingDays}>
           </LandingModal> */}
-            <Col md={{span: 8, offset: 1}} sm={12} style={{ alignItems: 'center' }}>
-              <Row style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', height: '15%' }}>
+            <Col md={{span: 8, offset: 1}} sx={12} style={{display: 'flex', flexDirection: 'column'}}>
+              <Row className="navigation-bar" style={{ minHeight: '15%', boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '7px' }}>
                 <NavigationBar 
                 increment={this.increment} 
                 decrease={this.decrease} 
@@ -108,20 +108,18 @@ class ConnectedHome extends Component {
                 selectedNotWorkingDays={this.state.selectedNotWorkingDays}
                 ></NavigationBar>
               </Row>
-              <Row style={{ height: '5%' }}>
+              <Row className="spacing-row" style={{ height: '5%' }}>
               </Row>
               <Row style={{ height: '80%' }}>
-                <Col md={4} sm={12} style={{ paddingLeft: '0', paddingRight: '3%', maxHeight: '100%' }}>
-                  <Col md={12} style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', height: '100%', display: 'flex', alignItems: 'center' }}>
+                <Col md={4} xs={12} id="bridgesList" className="xs-margin-top" style={{ display: 'flex', alignItems: 'center', paddingLeft: '0', paddingRight: '3%', maxHeight: '100%' }}>
                     <BridgesList></BridgesList>
-                  </Col>
                 </Col>
-                <Col md={8} sm={12} className="sm-margin-top" style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '5px', backgroundColor: '#ffff', display: 'flex', alignItems: 'center' }}>
+                <Col md={8} xs={12} className="xs-margin-top" style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '7px', backgroundColor: '#ffff', display: 'flex', alignItems: 'center' }}>
                   <BridgesCalendar dayOfHolidays={this.state.dayOfHolidays}></BridgesCalendar>
                 </Col>
               </Row>
             </Col>
-            <Col md={2} sm={12} className="sm-margin-top" style={{ paddingRight: '0%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Col md={2} xs={12} className="xs-margin-top" style={{ paddingRight: '0%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <FlightsList></FlightsList>
             </Col>
         </Row>

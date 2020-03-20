@@ -5,8 +5,8 @@ import Select from 'react-select';
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import Geosuggest from 'react-geosuggest';
-import { Row, Form, Button } from 'react-bootstrap'
-import { changeSettings, fetchBridges, fetchHolidays,changeDayOfHolidays } from "../actions/bridges";
+import { Row, Form, Button, Col } from 'react-bootstrap'
+import { changeSettings, fetchBridges, fetchHolidays, changeDayOfHolidays } from "../actions/bridges";
 
 const { COUNTRY_LABEL, WEEK_DAYS } = require('../constants')
 
@@ -79,59 +79,69 @@ class ConnectedLanding extends Component {
     render() {
 
         return (
-            <Row className="landing-container" style={{ height: '100vh', backgroundSize: 'cover', backgroundImage: 'url("landing.jpg")' }}>
-                <img
-              alt=""
-              src="./feriapp_round_icon.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top landing"
-            />{' '}
-                <Login></Login>
-                <Signup></Signup>
-                <div className="landing-form">
-                    <h1 style={{ fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '2%' }}>Trova i migliori ponti</h1>
-                    <Form>
-                        <Form.Group style={{ marginBottom: '5%' }} controlId="formBasicEmail">
-                            <Form.Label>In che città vivi?</Form.Label>
-                            <Geosuggest
-                                className="landing"
-                                onSuggestSelect={this.changeLocation}
-                                initialValue={this.props.currentCity.city}
-                            />
-                        </Form.Group>
+            <Row className="landing-container" style={{ backgroundSize: 'cover', backgroundImage: 'url("landing.jpg")' }}>
+                <Col md={12}>
+                    <Row style={{height: '8%'}}>
+                        <Col style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                            <img
+                                alt=""
+                                src="./feriapp_round_icon.png"
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top landing"
+                            />{' '}
+                        </Col>
+                        <Col style={{ display: 'flex', justifyContent: 'flex-end' }} >
+                            <Login></Login>
+                            <Signup></Signup>
+                        </Col>
+                    </Row>
+                    <Row style={{height: '90%'}}>
+                        <div className="landing-form">
+                            <h1 style={{ fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '2%' }}>Trova i migliori ponti</h1>
+                            <Form>
+                                <Form.Group style={{ marginBottom: '5%' }} controlId="formBasicEmail">
+                                    <Form.Label>In che città vivi?</Form.Label>
+                                    <Geosuggest
+                                        className="landing"
+                                        onSuggestSelect={this.changeLocation}
+                                        initialValue={this.props.currentCity.city}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group style={{ marginBottom: '5%' }} controlId="formBasicPassword">
-                            <Form.Label>In quali giorni ti riposi?</Form.Label>
-                            <Select
-                                className="landing"
-                                onChange={this.handleDayOffChange}
-                                options={WEEK_DAYS}
-                                closeMenuOnSelect={false}
-                                isMulti={true}
-                                defaultValue={[WEEK_DAYS[5], WEEK_DAYS[6]]}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Quanti giorni di ferie al massimo vuoi usare?</Form.Label>
-                            <Form.Control 
-                                name="dayOfHolidays"
-                                onChange={this.handleDayOfHolidaysChange} 
-                                value={this.formValue}
-                                as="select">
-                                <option value="1">1</option>
-                                <option value="2" selected>2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </Form.Control>
-                        </Form.Group>
-                        <Button onClick={this.handleDiscoveryClick} variant="primary">
-                            Scopri ponti
+                                <Form.Group style={{ marginBottom: '5%' }} controlId="formBasicPassword">
+                                    <Form.Label>In quali giorni ti riposi?</Form.Label>
+                                    <Select
+                                        className="landing"
+                                        onChange={this.handleDayOffChange}
+                                        options={WEEK_DAYS}
+                                        closeMenuOnSelect={false}
+                                        isMulti={true}
+                                        defaultValue={[WEEK_DAYS[5], WEEK_DAYS[6]]}
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicPassword">
+                                    <Form.Label>Quanti giorni di ferie al massimo vuoi usare?</Form.Label>
+                                    <Form.Control
+                                        name="dayOfHolidays"
+                                        onChange={this.handleDayOfHolidaysChange}
+                                        value={this.formValue}
+                                        as="select">
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                <Button onClick={this.handleDiscoveryClick} variant="primary">
+                                    Scopri ponti
                         </Button>
-                    </Form>
-                </div>
-                <h2>The first site that allows you to find the best bridge deals in the year</h2>
+                            </Form>
+                        </div>
+                        <h2>The first site that allows you to find the best bridge deals in the year</h2>
+                    </Row>
+                </Col>
             </Row>
         )
     }
