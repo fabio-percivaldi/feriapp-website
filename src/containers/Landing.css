@@ -78,13 +78,14 @@
 
 @media (max-width: 767px) {
     .landing-form {
-        margin-top: 5%;
-        margin-right: auto;
+        margin: auto;
         width: 90%;
         left: auto;
-        margin-left: auto;
         position: relative;
         top: auto;
         height: 60%;
+    }
+    #landingInfo {
+        display: none;
     }
 }

@@ -139,7 +139,7 @@ class ConnectedLanding extends Component {
                         </Button>
                             </Form>
                         </div>
-                        <h2>The first site that allows you to find the best bridge deals in the year</h2>
+                        <h2 id="landingInfo">The first site that allows you to find the best bridge deals in the year</h2>
                     </Row>
                 </Col>
             </Row>
