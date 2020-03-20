@@ -75,4 +75,11 @@ h5 {
   #bridgesList {
     padding-right: 0 !important;
   }
+  #fligthsList {
+    padding-left: 0 !important;
+  }
+}
+
+.navbar-collapse {
+  border-top: none;
 }

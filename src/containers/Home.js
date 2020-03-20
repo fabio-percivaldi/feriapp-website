@@ -119,7 +119,7 @@ class ConnectedHome extends Component {
                 </Col>
               </Row>
             </Col>
-            <Col md={2} xs={12} className="xs-margin-top" style={{ paddingRight: '0%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Col md={2} xs={12} id="fligthsList" className="xs-margin-top" style={{ paddingLeft: '2%', paddingRight: '0%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <FlightsList></FlightsList>
             </Col>
         </Row>
