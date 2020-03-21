@@ -7,9 +7,15 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .06);
 }
 
-.info-page-1 {
-    height: 100%;
+.info-page {
+    height: 95vh;
     background-color: #ffffff;
+}
+.info-page#info-page-2 {
+    height: 65vh;
+}
+.info-page#info-page-3 {
+    height: 65vh;
 }
 
 .info-container button.login {
@@ -35,8 +41,17 @@
     margin: auto;
     margin-top: 2%
 }
-.info.phone {
-    width: 350px;
+.info-phone {
+    height: 515px;
+    width: auto;
+}
+.info-phone#flights {
+    margin-right: 51%;
+    margin-left: auto;
+}
+.info-phone#profile {
+    margin-right: auto;
+    margin-left: 51%;
 }
 .info-container h1 {
     width: 414px;
@@ -64,7 +79,7 @@
     margin-right: auto;
 }
 
-.info-container h3 {
+.info-container h3.info-1 {
     width: 545px;
     height: 116px;
     font-style: normal;
@@ -90,6 +105,61 @@
     color: #3D3D3D;
     margin-left: 1%;
     margin-right: auto;
+}
+.info-container h3.info-2 {
+    width: 545px;
+    height: 115px;
+    font-style: normal;
+    font-size: 48px !important;
+    line-height: 57px !important;
+    font-weight: bold !important;
+    text-align: left;
+    letter-spacing: -0.01em;
+    color: #FB552C;
+    margin-left: 55%;
+    margin-right: auto;
+}
+
+.info-container h4.info-2 {
+    width: 545px;
+    height: 60px;
+    font-style: normal;
+    font-weight: normal !important;
+    font-size: 22px !important;
+    line-height: 26px !important;
+    text-align: left;
+    letter-spacing: -1px;
+    color: #3D3D3D;
+    margin-left: 55%;
+    margin-right: auto;
+}
+.info-container h3.info-3 {
+    width: 545px;
+    height: 115px;
+    text-align: left;
+    margin-right: 55%;
+    margin-left: auto;
+    font-style: normal;
+    font-size: 48px !important;
+    line-height: 57px !important;
+    font-weight: bold !important;
+    text-align: right;
+    letter-spacing: -0.01em;
+    color: #FB552C;
+}
+
+.info-container h4.info-3 {
+    width: 545px;
+    height: 65px;
+    margin-right: 55%;
+    margin-left: auto;
+    font-style: normal;
+    font-weight: normal !important;
+    font-size: 22px !important;
+    line-height: 26px !important;
+    text-align: right;
+    letter-spacing: -1px;
+    color: #3D3D3D;
 }
 
 .info-container .beta-btn {
@@ -121,6 +191,12 @@ button.signup {
     color: #3D3D3D !important;
     font-size: 20px !important;
     line-height: 24px !important;
+}
+#col-1 {
+    height: 12%;
+}
+#col-2 {
+    height: 88%;
 }
 @media(max-width: 1300px) {
     .info-bean {
@@ -155,6 +231,7 @@ button.signup {
     .info-bean {
         width: 345px;
         margin: auto;
+        margin-top: 0;
     }
     .info-container h1 {
         width: 240px;
@@ -182,4 +259,102 @@ button.signup {
         height: 45px;
         font-size: 18px !important;
     }
+    .info-mac {
+        width: 335px;
+    }
+    .info-phone {
+        height: 300px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .info-container h3.info-1 {
+        width: 49%;
+        height: 85px;
+        text-align: right;
+        margin-left: auto;
+        margin-right: 1%;
+        font-size: 27px !important;
+        line-height: 25px !important;
+    }
+    
+    .info-container h4.info-1 {
+        width: 49%;
+        height: 80px;
+        margin-left: 1%;
+        margin-right: auto;
+        padding: 1%;
+        font-size: 15px !important;
+        line-height: 15px !important;
+        text-align: left;
+    }
+    .info-container h3.info-2 {
+        width: 49%;
+        height: 85px;
+        text-align: right;
+        margin-left: auto;
+        margin-right: 1%;
+        font-size: 27px !important;
+        line-height: 25px !important;
+    }
+    
+    .info-container h4.info-2 {
+        width: 49%;
+        height: 80px;
+        margin-left: 1%;
+        margin-right: auto;
+        padding: 1%;
+        font-size: 15px !important;
+        line-height: 15px !important;
+        text-align: left;
+    }
+    .info-container h3.info-3 {
+        width: 49%;
+        height: 70px;
+        text-align: right;
+        margin-left: auto;
+        margin-right: 1%;
+        font-size: 27px !important;
+        line-height: 25px !important;
+    }
+    
+    .info-container h4.info-3 {
+        width: 49%;
+        height: 70px;
+        text-align: left;
+        margin-left: 1%;
+        margin-right: auto;
+        padding: 1%;
+        font-size: 15px !important;
+        line-height: 15px !important;
+    }
+    #info-page-1 {
+        height: 50vh;
+    }
+    .info-page#info-page-2 {
+        height: 50vh;
+    }
+    .info-page#info-page-3 {
+        height: 50vh;
+    }
+    #info-page-1 #col-1 {
+        height: 25%;
+    }
+    #info-page-1 #col-2 {
+        height: 75%;
+    }
+    #info-page-2 #col-1 {
+        height: 5%;
+    }
+    #info-page-2 #col-2 {
+        height: 75%;
+    }
+    #info-page-3 #col-1 {
+        height: 15%;
+    }
+    #info-page-3 #col-2 {
+        height: 75%;
+    }
+    .col-12 {
+        margin-top: 0;
+      }
 }

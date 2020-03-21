@@ -55,7 +55,7 @@ class ConnectedInfo extends Component {
                             <Signup></Signup>
                         </Col>
                     </Row>
-                    <Row className="info-page-1" style={{ height: '90vh' }}>
+                    <Row className="info-page">
                         <Col md={5} sm={12} xs={12}>
                             <Row style={{ height: '100%', marginTop: '3%', flexDirection: 'column', justifyContent: 'center' }}>
                                 <Col md={{ span: 7, offset: 5 }}>
@@ -75,17 +75,42 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="info-page-1" style={{ height: '85vh' }}>
-                        <Col md={12} style={{height: '12%'}}>
+                    <Row className="info-page" id="info-page-1">
+                        <Col md={12} id="col-1">
                             <Row>
-                                <h3>Optimize your holidays</h3>
-                                <h4>Feriapp helps you to find the best days to go on vacation. Customize your research by entering the city where you work, your days off and your available leave days.</h4>
+                                <h3 className="info-1">Optimize your holidays</h3>
+                                <h4 className="info-1">Feriapp helps you find the best days to go on vacation. Customize the research with your city, days off and available leave days.</h4>
                             </Row>
                         </Col>
-                        <Col md={12} style={{height: '88%'}}>
+                        <Col md={12} id="col-2">
                             <Row style={{ height: '100%' }}>
                                 <img className="info-mac" alt="" src="./macbook.png" />
-                                {/* <img className="info-phone" alt="" src="./phone_with_travels.png" /> */}
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row className="info-page" id="info-page-2">
+                        <Col md={6} xs={12} id="col-1">
+                            <Row>
+                                <h3 className="info-2">Find out the best flights</h3>
+                                <h4 className="info-2">Once you have selected your preferred holidays, discover the cheapest flights!</h4>
+                            </Row>
+                        </Col>
+                        <Col md={6} xs={12} id="col-2">
+                            <Row style={{ height: '100%' }}>
+                                <img className="info-phone" id="flights" alt="" src="./phone_with_travels.png" />
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row className="info-page" id="info-page-3">
+                        <Col md={{ span: 6, order: 1 }} xs={{ span: 12, order: 2 }} id="col-2">
+                            <Row style={{ height: '100%' }}>
+                                <img className="info-phone" id="profile" alt="" src="./profile.png" />
+                            </Row>
+                        </Col>
+                        <Col md={{ span: 6, order: 2 }} xs={{ spane: 12, order: 1 }} id="col-1">
+                            <Row>
+                                <h3 className="info-3">Keep track of your leave days</h3>
+                                <h4 className="info-3">In your profile you will always have under control your available leave days</h4>
                             </Row>
                         </Col>
                     </Row>
