@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import Landing from "./containers/Landing";
 import Notes from "./containers/Notes";
+import Info from "./containers/Info";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import NewNote from "./containers/NewNote";
@@ -14,7 +15,8 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 export default ({ childProps }) =>
   <Switch>
     <AppliedRoute path="/" exact component={Landing} props={childProps} />
-    <AppliedRoute path="/home" exact component={Home} props={childProps} />
+    <UnauthenticatedRoute path="/info" exact component={Info} props={childProps} />
+    <UnauthenticatedRoute path="/home" exact component={Home} props={childProps} />
     <UnauthenticatedRoute path="/login" exact component={Login} props={childProps} />
     <UnauthenticatedRoute path="/signup" exact component={Signup} props={childProps} />
     <AuthenticatedRoute path="/notes/new" exact component={NewNote} props={childProps} />

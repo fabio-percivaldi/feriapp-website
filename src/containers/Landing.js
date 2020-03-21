@@ -81,9 +81,10 @@ class ConnectedLanding extends Component {
         return (
             <Row className="landing-container" style={{ backgroundSize: 'cover', backgroundImage: 'url("landing.jpg")' }}>
                 <Col md={12}>
-                    <Row style={{height: '8%'}}>
+                    <Row style={{ height: '8%' }}>
                         <Col style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <img
+                                id="logo"
                                 alt=""
                                 src="./feriapp_round_icon.png"
                                 width="30"
@@ -96,7 +97,7 @@ class ConnectedLanding extends Component {
                             <Signup></Signup>
                         </Col>
                     </Row>
-                    <Row style={{height: '90%'}}>
+                    <Row style={{ height: '90%' }}>
                         <div className="landing-form">
                             <h1 style={{ fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '2%' }}>Trova i migliori ponti</h1>
                             <Form>

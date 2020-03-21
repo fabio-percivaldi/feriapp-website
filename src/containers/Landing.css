@@ -45,13 +45,6 @@
     height: 100vh
 }
 
-.landing-container img {
-    height: 40px;
-    width: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
 .landing-container button.login {
     background-color: transparent !important;
     border: none;

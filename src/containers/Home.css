@@ -4,7 +4,7 @@
 }
 
 .Home .lander h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: Rubik;
   font-weight: 600;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .Home .notes h4 {
-  font-family: "Open Sans", sans-serif;
+  font-family: Rubik;
   font-weight: 600;
   overflow: hidden;
   line-height: 1.5;
@@ -51,6 +51,14 @@ h2 {
 }
 h5 {
   color: black
+}
+
+.btn-primary {
+  border-radius: 3px !important;
+  background-color: #f87825 !important;
+  border-color: white !important;
+  font-size: 1.5rem !important;
+  color: white !important;
 }
 
 @media(max-width: 767px) {

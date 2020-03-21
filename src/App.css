@@ -6,14 +6,6 @@
   font-weight: bold;
 }
 
-.btn-primary {
-  border-radius: 3px !important;
-  background-color: #f87825 !important;
-  border-color: white !important;
-  font-size: 1.5rem !important;
-  color: white !important;
-}
-
 .btn-primary.circular-btn {
   margin-top: auto;
   width: 30px;
@@ -29,7 +21,7 @@
 * {
   border-color: hsl(0, 0%, 80%) !important;
   outline: none;
-  font-family: Roboto, Helvetica, sans-serif !important;
+  font-family: Rubik;
 }
 h2 {
   color: #0b2d50 !important;
@@ -37,4 +29,10 @@ h2 {
 }
 .clickable-div {
   cursor: pointer;
+}
+#logo {
+  height: 40px;
+  width: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }

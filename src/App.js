@@ -96,7 +96,7 @@ class App extends Component {
     return (
 
       !this.state.isAuthenticating && (
-        <Container style={{ maxWidth: '100%', marginTop: '0', minHeight: '100vh', overflowX: 'hidden', backgroundColor: '#E1E2E8' }}>
+        <Container style={{ maxWidth: '100%', marginTop: '0', minHeight: '100vh', backgroundColor: '#E1E2E8' }}>
           <Routes childProps={childProps} />
           <Footer></Footer>
         </Container>
