@@ -42,7 +42,7 @@ class ConnectedInfo extends Component {
             <Row className="info-container">
                 <Col>
                     <Row className="info-header">
-                        <Col style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <Col style={{ marginLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
                             <img
                                 id="logo"
                                 alt=""
@@ -50,7 +50,7 @@ class ConnectedInfo extends Component {
                                 className="landing"
                             />
                         </Col>
-                        <Col style={{ display: 'flex', justifyContent: 'flex-end' }} >
+                        <Col style={{ marginRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
                             <Login></Login>
                             <Signup></Signup>
                         </Col>
@@ -85,6 +85,7 @@ class ConnectedInfo extends Component {
                         <Col md={12} style={{height: '88%'}}>
                             <Row style={{ height: '100%' }}>
                                 <img className="info-mac" alt="" src="./macbook.png" />
+                                {/* <img className="info-phone" alt="" src="./phone_with_travels.png" /> */}
                             </Row>
                         </Col>
                     </Row>

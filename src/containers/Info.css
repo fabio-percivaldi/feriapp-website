@@ -1,6 +1,7 @@
 .info-header {
-    position: absolute;
+    position: fixed;
     width: 100%;
+    z-index: 1060;
     height: 6vh;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .06);
@@ -14,12 +15,14 @@
 .info-container button.login {
     background-color: transparent !important;
     border: none;
+    font-weight: 200 !important
 }
 
 .info-container button.signup {
     background-color: transparent !important;
     border: none;
     margin-right: 0 !important;
+    font-weight: 200 !important
 }
 
 .info-bean {
@@ -31,6 +34,9 @@
     width: 1035px;
     margin: auto;
     margin-top: 2%
+}
+.info.phone {
+    width: 350px;
 }
 .info-container h1 {
     width: 414px;
