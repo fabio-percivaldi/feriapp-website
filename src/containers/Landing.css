@@ -48,12 +48,14 @@
 .landing-container button.login {
     background-color: transparent !important;
     border: none;
+    color: white !important;
 }
 
 .landing-container button.signup {
     background-color: transparent !important;
     border: none;
     margin-right: 0 !important;
+    color: white !important;
 }
 
 .landing-container h2 {

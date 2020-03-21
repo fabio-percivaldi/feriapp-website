@@ -55,9 +55,9 @@ class ConnectedInfo extends Component {
                             <Signup></Signup>
                         </Col>
                     </Row>
-                    <Row className="info-page-1" style={{ height: '85vh' }}>
+                    <Row className="info-page-1" style={{ height: '90vh' }}>
                         <Col md={5} sm={12} xs={12}>
-                            <Row style={{ height: '100%', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Row style={{ height: '100%', marginTop: '3%', flexDirection: 'column', justifyContent: 'center' }}>
                                 <Col md={{ span: 7, offset: 5 }}>
                                     <Row>
                                         <h1>Feriapp</h1>
@@ -70,19 +70,21 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col md={7} sm={12} xs={12}>
-                            <Row style={{ height: '100%' }}>
+                            <Row style={{ height: '100%', marginTop: '3%' }}>
                                 <img className="info-bean" alt="" src="./illustration.png" />
                             </Row>
                         </Col>
                     </Row>
                     <Row className="info-page-1" style={{ height: '85vh' }}>
-                        <Col md={6} sm={12} xs={12}>
-                            <Row style={{ height: '100%', flexDirection: 'column', justifyContent: 'center' }}>
-
+                        <Col md={12} style={{height: '12%'}}>
+                            <Row>
+                                <h3>Optimize your holidays</h3>
+                                <h4>Feriapp helps you to find the best days to go on vacation. Customize your research by entering the city where you work, your days off and your available leave days.</h4>
                             </Row>
                         </Col>
-                        <Col md={6} sm={12} xs={12}>
+                        <Col md={12} style={{height: '88%'}}>
                             <Row style={{ height: '100%' }}>
+                                <img className="info-mac" alt="" src="./macbook.png" />
                             </Row>
                         </Col>
                     </Row>
