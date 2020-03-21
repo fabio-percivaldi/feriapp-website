@@ -63,6 +63,33 @@ class ConnectedLanding extends Component {
             city
         })
     }
+    getMobileOperatingSystem = () => {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+          return "Windows Phone";
+        }
+    
+        if (/android/i.test(userAgent)) {
+          return "Android";
+        }
+    
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return "iOS";
+        }
+    
+        return "unknown";
+      }
+    handleDownloadApp = () => {
+        const clientType = this.getMobileOperatingSystem()
+        if (clientType === 'iOS') {
+          window.location.href = 'https://apps.apple.com/it/app/feriapp/id1488392565'
+        }
+        if (clientType === 'Android') {
+          window.location.href = 'https://play.google.com/store/apps/details?id=it.feriapp&gl=IT'
+        }
+    }
     handleDiscoveryClick = () => {
         this.props.fetchBridges({
             city: this.props.currentCity.city,
@@ -73,15 +100,16 @@ class ConnectedLanding extends Component {
         this.props.history.push('/home')
     }
     handleDayOfHolidaysChange = (event) => {
+        this.formValue = event.target.value
         this.props.changeDayOfHolidays(event.target.value)
     }
-    formValue = 2
+    formValue = "2"
     render() {
 
         return (
             <Row className="landing-container" style={{ backgroundSize: 'cover', backgroundImage: 'url("landing.jpg")' }}>
                 <Col md={12}>
-                    <Row style={{height: '8%'}}>
+                    <Row style={{ height: '8%' }}>
                         <Col style={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <img
                                 alt=""
@@ -96,7 +124,7 @@ class ConnectedLanding extends Component {
                             <Signup></Signup>
                         </Col>
                     </Row>
-                    <Row style={{height: '90%'}}>
+                    <Row style={{ height: '90%' }}>
                         <div className="landing-form">
                             <h1 style={{ fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '2%' }}>Trova i migliori ponti</h1>
                             <Form>
@@ -128,15 +156,20 @@ class ConnectedLanding extends Component {
                                         value={this.formValue}
                                         as="select">
                                         <option value="1">1</option>
-                                        <option value="2" selected>2</option>
+                                        <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </Form.Control>
                                 </Form.Group>
+                                <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
                                 <Button onClick={this.handleDiscoveryClick} variant="primary">
                                     Scopri ponti
-                        </Button>
+                                </Button>
+                                <Button className="download-btn" onClick={this.handleDownloadApp} variant="primary">
+                                    Scarica l'app
+                                </Button>
+                                </div>
                             </Form>
                         </div>
                         <h2 id="landingInfo">The first site that allows you to find the best bridge deals in the year</h2>

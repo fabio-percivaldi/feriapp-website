@@ -6,13 +6,7 @@
   font-weight: bold;
 }
 
-.btn-primary {
-  border-radius: 3px !important;
-  background-color: #f87825 !important;
-  border-color: white !important;
-  font-size: 1.5rem !important;
-  color: white !important;
-}
+
 
 .btn-primary.circular-btn {
   margin-top: auto;
