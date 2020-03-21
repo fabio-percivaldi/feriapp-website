@@ -117,7 +117,7 @@ class ConnectedLanding extends Component {
                                 width="30"
                                 height="30"
                                 className="d-inline-block align-top landing"
-                            />{' '}
+                            />
                         </Col>
                         <Col style={{ display: 'flex', justifyContent: 'flex-end' }} >
                             <Login></Login>

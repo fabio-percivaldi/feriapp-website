@@ -1,0 +1,30 @@
+.download-banner {
+    z-index: 1060;
+    height: 60px; 
+    border-top: 1px #b9b7b7 solid;
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+    opacity: 1;
+    background-color: #FFFFFF;
+    text-align: center;
+    justify-content: space-around
+}
+
+#close-btn {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+img.download {
+    margin-left: 5%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.download-link {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 5px;
+    color: #f87825 !important
+}
