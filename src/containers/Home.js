@@ -4,6 +4,7 @@ import Signup from './Signup'
 import { connect } from "react-redux";
 import BridgesList from './BridgesList';
 import FlightsList from "./FlightsList";
+import Download from '../components/Download'
 import HolidaysList from "./HolidaysList";
 import BridgesCalendar from "./BridgesCalendar";
 import React, { Component, Fragment } from "react";
@@ -126,6 +127,7 @@ class ConnectedHome extends Component {
         <Row style={{ marginTop: '2%', marginBottom: '2%'}}>
           <HolidaysList></HolidaysList>
         </Row>
+        <Download></Download>
         </>
     );
   }

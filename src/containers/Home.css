@@ -91,3 +91,10 @@ h5 {
 .navbar-collapse {
   border-top: none;
 }
+.btn-primary {
+  border-radius: 5px !important;
+  background-color: #f87825 !important;
+  border-color: white !important;
+  font-size: 1.5rem !important;
+  color: white !important;
+}

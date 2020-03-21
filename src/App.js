@@ -38,13 +38,13 @@ class App extends Component {
   }
   async componentDidMount() {
     this.loadFacebookSDK();
-    const clientType = this.getMobileOperatingSystem()
-    if (clientType === 'iOS') {
-      window.location.href = 'https://apps.apple.com/it/app/feriapp/id1488392565'
-    }
-    if (clientType === 'Android') {
-      window.location.href = 'https://play.google.com/store/apps/details?id=it.feriapp&gl=IT'
-    }
+    // const clientType = this.getMobileOperatingSystem()
+    // if (clientType === 'iOS') {
+    //   window.location.href = 'https://apps.apple.com/it/app/feriapp/id1488392565'
+    // }
+    // if (clientType === 'Android') {
+    //   window.location.href = 'https://play.google.com/store/apps/details?id=it.feriapp&gl=IT'
+    // }
     try {
       await Auth.currentAuthenticatedUser();
       this.userHasAuthenticated(true);
