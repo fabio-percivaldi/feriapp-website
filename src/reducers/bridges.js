@@ -177,12 +177,14 @@ function rootReducer(state = initialState, action) {
 
         case CHANGE_SETTINGS:
             nextWeeks = calculateMonthlyCalendar(state.currentMonth, initialState.selectedBridges, state.holidays, state.daysOff)
-            return { ...state, 
-                weeks: nextWeeks, 
-                currentCity: { country: action.payload.country, city: action.payload.city }, 
-                daysOff: action.payload.daysOff, 
-                selectedBridges: initialState.selectedBridges, 
-                flights: initialState.flights }
+            return {
+                ...state,
+                weeks: nextWeeks,
+                currentCity: { country: action.payload.country, city: action.payload.city },
+                daysOff: action.payload.daysOff,
+                selectedBridges: initialState.selectedBridges,
+                flights: initialState.flights
+            }
 
         case TOGGLE_CUSTOM_HOLIDAY:
             const foundCustomHoliday = state.customHolidays.find(holiday => holiday.date === action.payload.date)

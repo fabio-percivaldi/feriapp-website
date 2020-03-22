@@ -3,43 +3,99 @@ import Login from './Login'
 import Signup from './Signup'
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { Row, Button, Col } from 'react-bootstrap'
-import { changeSettings, fetchBridges, fetchHolidays, changeDayOfHolidays } from "../actions/bridges";
-
-const mapStateToProps = state => {
-    return {
-        holidays: state.holidays,
-        media: state.media,
-        currentCity: state.currentCity,
-        dayOfHolidays: state.dayOfHolidays,
-        daysOff: state.daysOff,
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchBridges: settings => dispatch(fetchBridges(settings)),
-        changeSettings: settings => dispatch(changeSettings(settings)),
-        fetchHolidays: city => dispatch(fetchHolidays(city)),
-        changeDayOfHolidays: dayOfHolidays => dispatch(changeDayOfHolidays(dayOfHolidays))
-    }
-}
+import { Row, Button, Col, Modal, Form } from 'react-bootstrap'
+import axios from 'axios'
+import config from "../config";
+import { withSnackbar } from 'notistack';
+const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
+const apiGatewayClient = axios.create({
+  baseURL: API_GATEWAY_URL,
+  headers: {
+    'x-api-key': API_KEY
+  }
+})
 
 class ConnectedInfo extends Component {
     constructor(props) {
         super(props)
-
+        this.userEmail = ""
         this.state = {
-            selectedNotWorkingDays: props.selectedNotWorkingDays,
-            dayOfHolidays: 1,
-            daysOff: props.daysOff,
-            defaultLocation: { country: 'IT', city: 'Milano' },
+            show: false,
+            userEmail: ''
         }
+    }
+    handleBetaClick = () => {
+        this.openModal()
+    }
+    handleClose = () => {
+        this.setState({
+            show: false
+        })
+    }
+    betaSubscribe = (event) => {
+        this.setState({
+            show: false
+        })
+        apiGatewayClient.post('/betaSubscribe', {
+            email: this.state.userEmail
+        }).then(response => {
+            this.props.enqueueSnackbar('Successfully fetched the data.', {
+                variant: 'success',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                },
+            })
+        })
+    }
+    openModal = () => {
+        this.setState({
+            show: true
+        })
+    }
+    handleEmailChange = (event) => {
+        this.setState({ userEmail: event.target.value });
     }
     render() {
 
         return (
             <Row className="info-container">
+                <Modal
+                    animation={false}
+                    centered
+                    show={this.state.show}
+                    onHide={this.handleClose}
+                    dialogClassName="landing-modal">
+                    <Modal.Header closeButton>
+                        <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
+                            <h1 style={{ margin: 'auto' }}>
+                                <b>Try out our beta</b>
+                            </h1>
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form onSubmit={this.betaSubscribe}>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    onChange={this.handleEmailChange}
+                                    value={this.state.userEmail}
+                                    placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+                            <Button type="submit">
+                                Subscribe
+                            </Button>
+                        </Form>
+                    </Modal.Body>
+                    {/* <Modal.Footer>
+                        
+                    </Modal.Footer> */}
+                </Modal>
+
                 <Col>
                     <Row className="info-header">
                         <Col style={{ marginLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
@@ -63,7 +119,7 @@ class ConnectedInfo extends Component {
                                         <h1>Feriapp</h1>
                                         <h2>The first site that allows you to find the best holidays in the year</h2>
                                         <div className="beta-btn-container">
-                                            <Button className="beta-btn">Request Beta Access</Button>
+                                            <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                                         </div>
                                     </Row>
                                 </Col>
@@ -114,13 +170,20 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                     </Row>
+                    <Row className="banner" id="info-page-4">
+                        <Col>
+                            <Row>
+                                <h1>Become a beta tester now!</h1>
+                            </Row>
+                            <Row>
+                                <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
+                            </Row>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         )
     }
 }
-const Info = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(ConnectedInfo);
-export default Info
+const Info = connect()(ConnectedInfo);
+export default withSnackbar(Info)

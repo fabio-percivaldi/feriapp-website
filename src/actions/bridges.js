@@ -12,7 +12,7 @@ import {
   REQUEST_BRIDGES,
   CHANGE_DAY_OF_HOLIDAYS,
   REQUEST_HOLIDAYS,
-  RECEIVE_HOLIDAYS
+  RECEIVE_HOLIDAYS,
 } from '../constants/action-types'
 
 import axios from 'axios'

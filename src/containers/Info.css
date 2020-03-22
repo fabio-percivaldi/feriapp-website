@@ -11,11 +11,19 @@
     height: 95vh;
     background-color: #ffffff;
 }
+
 .info-page#info-page-2 {
     height: 65vh;
 }
+
 .info-page#info-page-3 {
     height: 65vh;
+}
+
+.banner {
+    height: 20vh;
+    background: rgb(242, 188, 21);
+    background: linear-gradient(90deg, rgba(242, 188, 21, 1) 0%, rgba(252, 58, 50, 1) 100%);
 }
 
 .info-container button.login {
@@ -36,23 +44,28 @@
     height: auto;
     margin: auto auto auto 0;
 }
+
 .info-mac {
     width: 1035px;
     margin: auto;
     margin-top: 2%
 }
+
 .info-phone {
     height: 515px;
     width: auto;
 }
+
 .info-phone#flights {
     margin-right: 51%;
     margin-left: auto;
 }
+
 .info-phone#profile {
     margin-right: auto;
     margin-left: 51%;
 }
+
 .info-container h1 {
     width: 414px;
     height: 116px;
@@ -106,6 +119,7 @@
     margin-left: 1%;
     margin-right: auto;
 }
+
 .info-container h3.info-2 {
     width: 545px;
     height: 115px;
@@ -133,6 +147,7 @@
     margin-left: 55%;
     margin-right: auto;
 }
+
 .info-container h3.info-3 {
     width: 545px;
     height: 115px;
@@ -165,7 +180,7 @@
 .info-container .beta-btn {
     margin-left: auto;
     margin-right: auto;
-    width: 273px;
+    width: 275px;
     height: 55px;
     font-style: normal !important;
     font-weight: 500 !important;
@@ -176,11 +191,38 @@
     background-color: #FB552C !important;
     border-radius: 8px !important;
 }
+
 .beta-btn-container {
     width: 414px;
     margin-left: auto;
     margin-right: auto;
 }
+
+.banner h1 {
+    width: 555px;
+    height: 45px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px !important;
+    line-height: 44px !important;
+    letter-spacing: -0.01em;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.banner col {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner .beta-btn {
+    background-color: white !important;
+    color: #f35525 !important;
+}
+
 button.login {
     color: #3D3D3D !important;
     font-size: 20px !important;
@@ -192,12 +234,15 @@ button.signup {
     font-size: 20px !important;
     line-height: 24px !important;
 }
+
 #col-1 {
     height: 12%;
 }
+
 #col-2 {
     height: 88%;
 }
+
 @media(max-width: 1300px) {
     .info-bean {
         width: 645px;
@@ -227,6 +272,7 @@ button.signup {
         font-size: 18px !important;
     }
 }
+
 @media(max-width: 767px) {
     .info-bean {
         width: 345px;
@@ -276,7 +322,6 @@ button.signup {
         font-size: 27px !important;
         line-height: 25px !important;
     }
-    
     .info-container h4.info-1 {
         width: 49%;
         height: 80px;
@@ -296,7 +341,6 @@ button.signup {
         font-size: 27px !important;
         line-height: 25px !important;
     }
-    
     .info-container h4.info-2 {
         width: 49%;
         height: 80px;
@@ -316,7 +360,6 @@ button.signup {
         font-size: 27px !important;
         line-height: 25px !important;
     }
-    
     .info-container h4.info-3 {
         width: 49%;
         height: 70px;
@@ -356,5 +399,18 @@ button.signup {
     }
     .col-12 {
         margin-top: 0;
-      }
+    }
+    .banner h1 {
+        width: 555px;
+        height: 45px;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px !important;
+        line-height: 30px !important;
+        letter-spacing: -0.01em;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 }

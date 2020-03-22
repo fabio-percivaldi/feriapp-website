@@ -9,7 +9,7 @@ import "./index.css";
 import bridges from "./store/bridges";
 import { Provider } from "react-redux";
 import { CookiesProvider } from 'react-cookie';
-
+import { SnackbarProvider } from 'notistack';
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -40,7 +40,9 @@ ReactDOM.render(
   <CookiesProvider>
     <Router>
       <Provider store={bridges}>
-        <App />
+        <SnackbarProvider maxSnack={3}>
+          <App />
+        </SnackbarProvider>
       </Provider>
     </Router>
   </CookiesProvider>,
