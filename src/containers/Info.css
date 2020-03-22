@@ -418,4 +418,21 @@ button.signup {
         margin-right: auto;
         text-align: center;
     }
+    .logo-col {
+        margin-left: 0 !important;
+    }
+    .login-col {
+        margin-right: 0 !important;
+    }
+    button.login {
+        color: #3D3D3D !important;
+        font-size: 17px !important;
+        line-height: 24px !important;
+    }
+    
+    button.signup {
+        color: #3D3D3D !important;
+        font-size: 17px !important;
+        line-height: 24px !important;
+    }
 }

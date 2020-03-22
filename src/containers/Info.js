@@ -122,7 +122,7 @@ class ConnectedInfo extends Component {
 
                 <Col>
                     <Row className="info-header">
-                        <Col style={{ marginLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
+                        <Col className="logo-col" style={{ marginLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
                             <img
                                 id="logo"
                                 alt=""
@@ -130,7 +130,7 @@ class ConnectedInfo extends Component {
                                 className="landing"
                             />
                         </Col>
-                        <Col style={{ marginRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
+                        <Col className="login-col" style={{ marginRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
                             <Login></Login>
                             <Signup></Signup>
                         </Col>
