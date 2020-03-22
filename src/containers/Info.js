@@ -7,6 +7,7 @@ import { Row, Button, Col, Modal, Form } from 'react-bootstrap'
 import axios from 'axios'
 import config from "../config";
 import { withSnackbar } from 'notistack';
+
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
     baseURL: API_GATEWAY_URL,
@@ -125,7 +126,7 @@ class ConnectedInfo extends Component {
                             <img
                                 id="logo"
                                 alt=""
-                                src="./feriapp_round_icon.png"
+                                src="./feriapp_round_icon-80.png"
                                 className="landing"
                             />
                         </Col>
@@ -163,7 +164,7 @@ class ConnectedInfo extends Component {
                         </Col>
                         <Col md={12} id="col-2">
                             <Row style={{ height: '100%' }}>
-                                <img className="info-mac" alt="" src="./macbook.png" />
+                                <img className="info-mac" alt="" src="./macbook.png"/>
                             </Row>
                         </Col>
                     </Row>
@@ -176,7 +177,7 @@ class ConnectedInfo extends Component {
                         </Col>
                         <Col md={6} xs={12} id="col-2">
                             <Row style={{ height: '100%' }}>
-                                <img className="info-phone" id="flights" alt="" src="./phone_with_travels.png" />
+                                <img className="info-phone" id="flights" alt="" src='./phone_with_travels.png' />
                             </Row>
                         </Col>
                     </Row>
@@ -194,7 +195,7 @@ class ConnectedInfo extends Component {
                         </Col>
                     </Row>
                     <Row className="banner" id="info-page-4">
-                        <Col>
+                        <Col style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <Row>
                                 <h1>Become a beta tester now!</h1>
                             </Row>

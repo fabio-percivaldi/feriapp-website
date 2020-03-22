@@ -59,7 +59,7 @@ class Footer extends Component {
                     <Row style={{ height: '60px', justifyContent: 'flex-start' }}>
                         <img
                             alt=""
-                            src="./feriapp_round_icon.png"
+                            src="./feriapp_round_icon-80.png"
                             width="30"
                             height="30"
                             className="download"

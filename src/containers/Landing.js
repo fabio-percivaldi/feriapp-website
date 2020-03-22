@@ -114,7 +114,7 @@ class ConnectedLanding extends Component {
                             <img
                                 id="logo"
                                 alt=""
-                                src="./feriapp_round_icon.png"
+                                src="./feriapp_round_icon-80.png"
                                 width="30"
                                 height="30"
                                 className="d-inline-block align-top landing"

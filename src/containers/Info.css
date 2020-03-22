@@ -48,7 +48,7 @@
 .info-mac {
     width: 1035px;
     margin: auto;
-    margin-top: 2%
+    margin-top: 2%;
 }
 
 .info-phone {
@@ -391,13 +391,13 @@ button.signup {
         height: 75%;
     }
     #info-page-2 #col-1 {
-        height: 5%;
+        height: 20%;
     }
     #info-page-2 #col-2 {
         height: 75%;
     }
     #info-page-3 #col-1 {
-        height: 15%;
+        height: 25%;
     }
     #info-page-3 #col-2 {
         height: 75%;
