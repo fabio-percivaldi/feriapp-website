@@ -9,10 +9,10 @@ import config from "../config";
 import { withSnackbar } from 'notistack';
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
-  baseURL: API_GATEWAY_URL,
-  headers: {
-    'x-api-key': API_KEY
-  }
+    baseURL: API_GATEWAY_URL,
+    headers: {
+        'x-api-key': API_KEY
+    }
 })
 
 class ConnectedInfo extends Component {
@@ -21,7 +21,8 @@ class ConnectedInfo extends Component {
         this.userEmail = ""
         this.state = {
             show: false,
-            userEmail: ''
+            userEmail: '',
+            userOS: 'iOS'
         }
     }
     handleBetaClick = () => {
@@ -37,14 +38,19 @@ class ConnectedInfo extends Component {
             show: false
         })
         apiGatewayClient.post('/betaSubscribe', {
-            email: this.state.userEmail
+            email: this.state.userEmail,
+            os: this.state.userOS
         }).then(response => {
-            this.props.enqueueSnackbar('Successfully fetched the data.', {
+            this.props.enqueueSnackbar('Successfully subscribed to beta program.', {
                 variant: 'success',
                 anchorOrigin: {
                     vertical: 'bottom',
                     horizontal: 'center',
                 },
+            })
+            this.setState({
+                userEmail: '',
+                os: ''
             })
         })
     }
@@ -55,6 +61,9 @@ class ConnectedInfo extends Component {
     }
     handleEmailChange = (event) => {
         this.setState({ userEmail: event.target.value });
+    }
+    handleOSChange = (event) => {
+        this.setState({ userOS: event.target.value });
     }
     render() {
 
@@ -82,6 +91,20 @@ class ConnectedInfo extends Component {
                                     onChange={this.handleEmailChange}
                                     value={this.state.userEmail}
                                     placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Operating System</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    onChange={this.handleOSChange}
+                                    value={this.state.userOS}
+                                    as="select" >
+                                    <option value="ios">iOS</option>
+                                    <option value="android">Android</option>
+                                </Form.Control>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
                                 </Form.Text>

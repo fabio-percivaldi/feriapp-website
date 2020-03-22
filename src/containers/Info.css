@@ -242,7 +242,12 @@ button.signup {
 #col-2 {
     height: 88%;
 }
-
+.SnackbarItem-message-25 {
+    font-size: 1.6rem;
+}
+.SnackbarItem-variantSuccess-21 {
+    background-color: #fb782c !important;
+}
 @media(max-width: 1300px) {
     .info-bean {
         width: 645px;
