@@ -14,18 +14,37 @@
 
 .info-page#info-page-2 {
     height: 65vh;
+    background-color: #FFF7F0;
 }
 
 .info-page#info-page-3 {
     height: 65vh;
+    background-color: #FFF7F0;
+}
+
+.info-page#info-page-5 {
+    height: 75vh;
+    background-color: #FFF7F0;
 }
 
 .banner {
-    height: 20vh;
+    height: 10vh;
     background: rgb(242, 188, 21);
     background: linear-gradient(90deg, rgba(242, 188, 21, 1) 0%, rgba(252, 58, 50, 1) 100%);
 }
-
+.info-footer {
+    width: 955px;
+    height: 80px;
+    font-style: normal;
+    font-weight: normal !important;
+    font-size: 32px !important;
+    line-height: 33px !important;
+    text-align: center;
+    letter-spacing: -1px;
+    color: #3D3D3D;
+    margin: auto;
+    margin-top: 2%;
+}
 .info-container button.login {
     background-color: transparent !important;
     border: none;
@@ -177,6 +196,34 @@
     color: #3D3D3D;
 }
 
+.info-container h3.info-5 {
+    height: 65px;
+    text-align: center !important;
+    margin-right: auto;
+    margin-left: auto;
+    font-style: normal;
+    font-size: 48px !important;
+    line-height: 57px !important;
+    font-weight: bold !important;
+    text-align: right;
+    letter-spacing: -0.01em;
+    color: #FB552C;
+}
+
+.info-container h4.info-5 {
+    width: 545px;
+    height: 65px;
+    margin-right: 55%;
+    margin-left: auto;
+    font-style: normal;
+    font-weight: normal !important;
+    font-size: 25px !important;
+    line-height: 26px !important;
+    text-align: right;
+    letter-spacing: -1px;
+    color: #3D3D3D;
+}
+
 .info-container .beta-btn {
     margin-left: auto;
     margin-right: auto;
@@ -242,12 +289,15 @@ button.signup {
 #col-2 {
     height: 88%;
 }
+
 .SnackbarItem-message-25 {
     font-size: 1.6rem;
 }
+
 .SnackbarItem-variantSuccess-21 {
     background-color: #fb782c !important;
 }
+
 @media(max-width: 1300px) {
     .info-bean {
         width: 645px;
@@ -278,7 +328,52 @@ button.signup {
     }
 }
 
-@media(max-width: 767px) {
+@media(max-height: 375px) and (orientation: landscape) {
+    .info-bean {
+        width: 300px;
+        margin: auto;
+        margin-bottom: 0;
+    }
+    .info-mac {
+        width: 335px;
+    }
+    .info-phone {
+        height: 300px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .info-container h1 {
+        width: 240px;
+        height: 75px;
+        font-size: 70px !important;
+        line-height: 74px !important;
+        letter-spacing: -0.01em;
+        text-align: center;
+    }
+    .info-container h2 {
+        width: 240px;
+        height: 90px;
+        font-size: 20px !important;
+        line-height: 26px !important;
+        letter-spacing: -0.01em;
+        text-align: center;
+    }
+    .info-header {
+        height: 13vh;
+    }
+    .offset-md-5 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .info-page#title .row {
+        margin-top: 0 !important;
+    }
+    .info-page {
+        height: 100vh;
+    }
+}
+
+@media(max-width: 767px) and (orientation: portrait) {
     .info-bean {
         width: 345px;
         margin: auto;
@@ -381,6 +476,31 @@ button.signup {
         font-size: 15px !important;
         line-height: 15px !important;
     }
+    .info-container h3.info-5 {
+        width: 59%;
+        height: 70px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 27px !important;
+        line-height: 25px !important;
+    }
+    .info-container h4.info-5 {
+        width: 65%;
+        height: 70px;
+        text-align: left;
+        margin-left: 0;
+        margin-right: auto;
+        padding: 1%;
+        font-size: 15px !important;
+        line-height: 15px !important;
+    }
+    .info-footer {
+        width: 90%;
+        font-size: 20px !important;
+        line-height: 30px !important;
+        margin-top: 6%;
+    }
     #info-page-1 {
         height: 50vh;
     }
@@ -389,6 +509,9 @@ button.signup {
     }
     .info-page#info-page-3 {
         height: 50vh;
+    }
+    .info-page#info-page-5 {
+        height: 80vh;
     }
     #info-page-1 #col-1 {
         height: 25%;
@@ -435,7 +558,6 @@ button.signup {
         font-size: 17px !important;
         line-height: 24px !important;
     }
-    
     button.signup {
         color: #3D3D3D !important;
         font-size: 17px !important;

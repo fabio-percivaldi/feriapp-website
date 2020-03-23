@@ -7,6 +7,7 @@ import { Row, Button, Col, Modal, Form } from 'react-bootstrap'
 import axios from 'axios'
 import config from "../config";
 import { withSnackbar } from 'notistack';
+import BulletElement from '../components/BulletElement'
 
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
@@ -161,7 +162,7 @@ class ConnectedInfo extends Component {
                         </Col>
                         <Col md={12} id="col-2">
                             <Row style={{ height: '100%' }}>
-                                <img className="info-mac" alt="" src="./macbook.png"/>
+                                <img className="info-mac" alt="" src="./macbook.png" />
                             </Row>
                         </Col>
                     </Row>
@@ -194,11 +195,23 @@ class ConnectedInfo extends Component {
                     <Row className="banner" id="info-page-4">
                         <Col style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <Row>
-                                <h1>Become a beta tester now!</h1>
+                                <h1>Become beta tester!</h1>
                             </Row>
-                            <Row>
+                        </Col>
+                    </Row>
+                    <Row className="info-page" id="info-page-5">
+                        <Col>
+                            <h3 className="info-5">Why to becode a beta tester?</h3>
+                            {['Become part of the Feriapp closed community', 
+                            'Get for free the app premium version',
+                            'Use the app a month before it is available on stores to all users',
+                            'Be the first to recive the app upgrades',
+                            'Send your feedback to Feriapp development team',
+                            'Watch Feriapp implement the features you requested for'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
+                            <Row style={{marginTop: '2%'}}>
                                 <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                             </Row>
+                            <h5 className="info-footer">To join feriapp beta community click the button and insert your email. We will send you the beta version. It’s free :)</h5>
                         </Col>
                     </Row>
                 </Col>
