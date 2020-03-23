@@ -106,9 +106,6 @@ class ConnectedInfo extends Component {
                                     <option value="ios">iOS</option>
                                     <option value="android">Android</option>
                                 </Form.Control>
-                                <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
-                                </Form.Text>
                             </Form.Group>
                             <Button type="submit">
                                 Subscribe
@@ -135,8 +132,8 @@ class ConnectedInfo extends Component {
                             <Signup></Signup>
                         </Col>
                     </Row>
-                    <Row className="info-page">
-                        <Col md={5} sm={12} xs={12}>
+                    <Row className="info-page" id="title">
+                        <Col className="col-1" md={5} sm={12} xs={12}>
                             <Row style={{ height: '100%', marginTop: '3%', flexDirection: 'column', justifyContent: 'center' }}>
                                 <Col md={{ span: 7, offset: 5 }}>
                                     <Row>
@@ -149,7 +146,7 @@ class ConnectedInfo extends Component {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col md={7} sm={12} xs={12}>
+                        <Col className="col-2" md={7} sm={12} xs={12}>
                             <Row style={{ height: '100%', marginTop: '3%' }}>
                                 <img className="info-bean" alt="" src="./illustration.png" />
                             </Row>

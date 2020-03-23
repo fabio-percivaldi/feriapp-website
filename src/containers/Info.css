@@ -284,6 +284,12 @@ button.signup {
         margin: auto;
         margin-top: 0;
     }
+    .info-page#title .col-1 {
+        margin-top: 17%;
+    }
+    .info-page#title .col-2 {
+        margin-top: 5% !important;
+    }
     .info-container h1 {
         width: 240px;
         height: 75px;
@@ -323,14 +329,14 @@ button.signup {
         height: 85px;
         text-align: right;
         margin-left: auto;
-        margin-right: 1%;
+        margin-right: 0;
         font-size: 27px !important;
         line-height: 25px !important;
     }
     .info-container h4.info-1 {
         width: 49%;
         height: 80px;
-        margin-left: 1%;
+        margin-left: 0;
         margin-right: auto;
         padding: 1%;
         font-size: 15px !important;
@@ -349,7 +355,7 @@ button.signup {
     .info-container h4.info-2 {
         width: 49%;
         height: 80px;
-        margin-left: 1%;
+        margin-left: 0;
         margin-right: auto;
         padding: 1%;
         font-size: 15px !important;
@@ -361,7 +367,7 @@ button.signup {
         height: 70px;
         text-align: right;
         margin-left: auto;
-        margin-right: 1%;
+        margin-right: 0;
         font-size: 27px !important;
         line-height: 25px !important;
     }
@@ -369,7 +375,7 @@ button.signup {
         width: 49%;
         height: 70px;
         text-align: left;
-        margin-left: 1%;
+        margin-left: 0;
         margin-right: auto;
         padding: 1%;
         font-size: 15px !important;
