@@ -1,3 +1,15 @@
+.modal-content {
+    background-color: #FFF7F0;
+}
+.modal-content h1{
+    color: #FB552C;
+}
+.modal-body button {
+    background-color: #FB552C !important;
+    width: 30%;
+    margin-left: 35%;
+}
+
 .info-header {
     position: fixed;
     width: 100%;
@@ -329,6 +341,7 @@ button.signup {
 }
 
 @media(max-height: 375px) and (orientation: landscape) {
+    
     .info-bean {
         width: 300px;
         margin: auto;
@@ -374,6 +387,16 @@ button.signup {
 }
 
 @media(max-width: 767px) and (orientation: portrait) {
+    .modal-content {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .modal-body button {
+        background-color: #FB552C !important;
+        width: 40%;
+        margin-left: 30%;
+    }
     .info-bean {
         width: 345px;
         margin: auto;

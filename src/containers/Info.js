@@ -94,7 +94,8 @@ class ConnectedInfo extends Component {
                                     value={this.state.userEmail}
                                     placeholder="Enter email" />
                                 <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
+                                Your email will be used to grant you the beta access.
+                                Find out more in our <a href="/privacy">Privacy</a> section. 
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formBasicEmail">
