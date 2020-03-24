@@ -1,5 +1,5 @@
 .modal-content {
-    background-color: #FFF7F0;
+    background-color: #FFF7F0 !important;
 }
 .modal-content h1{
     color: #FB552C;
