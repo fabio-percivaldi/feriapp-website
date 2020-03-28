@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import './BulletElement.css'
 function BulletElement(props) {
-    return <Row style={{height: '7vh'}}>
+    return <Row className="info-point">
         
         <FontAwesomeIcon style={{margin: 'auto', marginRight: '1%', width:"30px", height: 'auto' }} color="#FB552C" icon={faCheckCircle}></FontAwesomeIcon>
         <h4 className="info-5" style={{margin: 'auto', marginLeft: '0', height: 'auto'}}> 

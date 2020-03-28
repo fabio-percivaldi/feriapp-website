@@ -49,7 +49,7 @@
 }
 
 .info-footer {
-    width: 955px;
+    width: 90%;
     height: 80px;
     font-style: normal;
     font-weight: normal !important;
@@ -358,7 +358,7 @@ button.signup {
     }
 }
 
-@media(max-height: 375px) and (orientation: landscape) {
+@media(max-height: 380px) and (orientation: landscape) {
     .info-bean {
         width: 300px;
         margin: auto;
@@ -401,9 +401,84 @@ button.signup {
     .info-page {
         height: 100vh;
     }
+    .info-page#info-page-5 {
+        height: 160vh;
+    }
+    .info-container h3.info-1 {
+        width: 100%;
+        height: 35px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 1%;
+        font-size: 27px !important;
+        line-height: 25px !important;
+    }
+    .info-container h4.info-1 {
+        width: 75%;
+        height: 35px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1%;
+        font-size: 15px !important;
+        line-height: 15px !important;
+        text-align: center;
+    }
+    .info-mac {
+        width: 480px;
+    }
+    .info-page {
+        height: 110vh;
+    }
+    .info-page#info-page-2 {
+        height: 115vh;
+        padding-top: 0;
+    }
+    .info-container h3.info-2 {
+        width: 545px;
+        height: 115px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    .info-container h4.info-2 {
+        width: 545px;
+        height: 115px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    .info-container h3.info-3 {
+        width: 545px;
+        height: 115px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    .info-container h4.info-3 {
+        width: 545px;
+        height: 115px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    .info-page#info-page-3 {
+        height: 115vh;
+        padding-top: 0;
+    }
+    .banner {
+        height: 25vh;
+    }
+    .info-container h1 {
+        width: auto;
+        margin: auto;
+        font-size: 60px !important;
+        text-align: center;
+    }
 }
 
-@media(max-width: 767px) and (orientation: portrait) {
+
+@media(max-height: 815px) and (orientation: portrait) {
     .modal-content {
         width: 85%;
         margin-left: auto;
@@ -555,10 +630,10 @@ button.signup {
         height: 55vh;
     }
     .info-page#info-page-3 {
-        height: 50vh;
+        height: 55vh;
     }
     .info-page#info-page-5 {
-        height: 70vh;
+        height: 73vh;
     }
     #info-page-1 #col-1 {
         margin-top: 8%;
@@ -622,5 +697,20 @@ button.signup {
         /*input has OS specific font-family*/
         color: #3D3D3D;
         cursor: pointer;
+    }
+}
+
+@media(max-height: 670px) and (orientation: portrait) {
+    #info-page-1 {
+        height: 55vh;
+    }
+    .info-phone {
+        height: 260px;
+    }
+    .info-page#info-page-5 {
+        height: 80vh;
+    }
+    .info-container h2 {
+        height: 60px;
     }
 }

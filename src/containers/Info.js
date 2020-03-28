@@ -219,11 +219,11 @@ class ConnectedInfo extends Component {
                     </Row>
                     <Row className="info-page" id="info-page-5">
                         <Col>
-                            <h3 className="info-5">Why to becode a beta tester?</h3>
+                            <h3 className="info-5">Why to become a beta tester?</h3>
                             {['Become part of the Feriapp closed community', 
                             'Get for free the App Premium version ',
                             'Use the app before it is available on public Stores',
-                            'Be the first to recive the app updates',
+                            'Be the first to receive the app updates',
                             'Send your feedback and contribute to the app development'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
                             <Row style={{marginTop: '2%'}}>
                                 <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>

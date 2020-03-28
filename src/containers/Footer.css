@@ -1,0 +1,11 @@
+.footer {
+    height: 10vh;
+    background: rgba(252, 58, 50, 1); 
+    justify-content: center;
+}
+
+@media(max-height: 380px) and (orientation: landscape) {
+    .footer {
+        height: 15vh;
+    }
+}
