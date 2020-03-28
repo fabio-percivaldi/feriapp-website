@@ -64,6 +64,7 @@ export default class Login extends Component {
         <Modal
           style={{ height: '85%' }}
           animation={false}
+          centered
           show={this.state.showModal}
           onHide={this.handleClose}
           dialogClassName="login-modal"

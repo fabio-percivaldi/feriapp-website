@@ -60,7 +60,12 @@ h5 {
   font-size: 1.5rem !important;
   color: white !important;
 }
-
+button.login {
+  float: right
+}
+button.signup {
+  float: right
+}
 @media(max-width: 767px) {
   .spacing-row {
     height: 0 !important;

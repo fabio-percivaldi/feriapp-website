@@ -1,9 +1,11 @@
 .modal-content {
     background-color: #FFF7F0 !important;
 }
-.modal-content h1{
+
+.modal-content h1 {
     color: #FB552C;
 }
+
 .modal-body button {
     background-color: #FB552C !important;
     width: 30%;
@@ -44,6 +46,7 @@
     background: rgb(242, 188, 21);
     background: linear-gradient(90deg, rgba(242, 188, 21, 1) 0%, rgba(252, 58, 50, 1) 100%);
 }
+
 .info-footer {
     width: 955px;
     height: 80px;
@@ -57,6 +60,21 @@
     margin: auto;
     margin-top: 2%;
 }
+
+.anchor-link {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: Rubik;
+    /*input has OS specific font-family*/
+    color: #3D3D3D;
+    cursor: pointer;
+}
+.anchor-link:hover {
+    text-decoration: underline;
+}
+
 .info-container button.login {
     background-color: transparent !important;
     border: none;
@@ -341,7 +359,6 @@ button.signup {
 }
 
 @media(max-height: 375px) and (orientation: landscape) {
-    
     .info-bean {
         width: 300px;
         margin: auto;
@@ -571,10 +588,10 @@ button.signup {
         text-align: center;
     }
     .logo-col {
-        margin-left: 0 !important;
+        padding-left: 2% !important;
     }
-    .login-col {
-        margin-right: 0 !important;
+    .link-col {
+        padding-right: 2% !important;
     }
     button.login {
         color: #3D3D3D !important;
@@ -585,5 +602,16 @@ button.signup {
         color: #3D3D3D !important;
         font-size: 17px !important;
         line-height: 24px !important;
+    }
+    .anchor-link {
+        background: none!important;
+        border: none;
+        padding: 0!important;
+        /*optional*/
+        font-size: 12px;
+        font-family: Rubik;
+        /*input has OS specific font-family*/
+        color: #3D3D3D;
+        cursor: pointer;
     }
 }

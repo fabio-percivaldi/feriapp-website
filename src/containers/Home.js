@@ -83,8 +83,8 @@ class ConnectedHome extends Component {
               <Button onClick={this.handleLogout}>Logout</Button>
             ) : (
                 <Fragment>
-                  <Signup></Signup>
                   <Login userHasAuthenticated={this.userHasAuthenticated}></Login>
+                  <Signup style={{float: 'rigth'}}></Signup>
                 </Fragment>
               )}
           </Navbar.Collapse>

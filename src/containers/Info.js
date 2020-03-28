@@ -26,6 +26,7 @@ class ConnectedInfo extends Component {
             userEmail: '',
             userOS: 'iOS'
         }
+        this.featuresRef = React.createRef();
     }
     handleBetaClick = () => {
         this.openModal()
@@ -66,6 +67,22 @@ class ConnectedInfo extends Component {
     }
     handleOSChange = (event) => {
         this.setState({ userOS: event.target.value });
+    }
+    scrollToRef = (ref) => {
+        console.log('||||||||||||',ref)
+        if(ref.current) {
+            window.scrollTo(0, ref.current.offsetTop - 100) 
+        }
+    }
+    scrollToFeatures = () => {
+        this.scrollToRef(this.featuresRef)
+    }
+    scrollToBeta = () => {
+        window.scrollTo(0, document.body.scrollHeight)
+    }
+    openContactUsForm = () => {
+        const newWindow = window.open('https://www.google.it', '_blank');
+        newWindow.focus()
     }
     render() {
 
@@ -121,7 +138,7 @@ class ConnectedInfo extends Component {
 
                 <Col>
                     <Row className="info-header">
-                        <Col className="logo-col" style={{ marginLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
+                        <Col className="logo-col" lg={6} xs={5} style={{ paddingLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
                             <img
                                 id="logo"
                                 alt=""
@@ -129,9 +146,10 @@ class ConnectedInfo extends Component {
                                 className="landing"
                             />
                         </Col>
-                        <Col className="login-col" style={{ marginRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
-                            <Login></Login>
-                            <Signup></Signup>
+                        <Col className="link-col" lg={6} xs={7} style={{ paddingRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
+                            <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
+                            <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
+                            <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
                         </Col>
                     </Row>
                     <Row className="info-page" id="title">
@@ -154,7 +172,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="info-page" id="info-page-1">
+                    <Row className="info-page" ref={this.featuresRef} id="info-page-1">
                         <Col md={12} id="col-1">
                             <Row>
                                 <h3 className="info-1">Optimize your holidays</h3>
