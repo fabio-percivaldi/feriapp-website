@@ -29,7 +29,7 @@
 .info-page#info-page-2 {
     height: 65vh;
     background-color: #FFF7F0;
-    padding-top: 3%;
+    padding-top: 10%;
 }
 
 .info-page#info-page-3 {
@@ -38,7 +38,7 @@
 }
 
 .info-page#info-page-5 {
-    height: 88vh;
+    height: 70vh;
     background-color: #FFF7F0;
 }
 
@@ -460,28 +460,28 @@ button.signup {
         margin-right: auto !important;
     }
     .info-container h3.info-1 {
-        width: 49%;
-        height: 85px;
-        text-align: right;
+        width: 100%;
+        height: 35px;
+        text-align: center;
         margin-left: auto;
-        margin-right: 0;
+        margin-right: auto;
         padding-right: 1%;
         font-size: 27px !important;
         line-height: 25px !important;
     }
     .info-container h4.info-1 {
-        width: 49%;
-        height: 85px;
-        margin-left: 0;
+        width: 75%;
+        height: 55px;
+        margin-left: auto;
         margin-right: auto;
         padding-left: 1%;
         font-size: 15px !important;
         line-height: 15px !important;
-        text-align: left;
+        text-align: center;
     }
     .info-container h3.info-2 {
         width: 49%;
-        height: 85px;
+        height: 55px;
         text-align: right;
         margin-left: auto;
         margin-right: 1%;
@@ -491,7 +491,7 @@ button.signup {
     }
     .info-container h4.info-2 {
         width: 49%;
-        height: 85px;
+        height: 55px;
         margin-left: 0;
         margin-right: auto;
         margin-top: 0;
@@ -549,31 +549,33 @@ button.signup {
         margin-top: 6%;
     }
     #info-page-1 {
-        height: 50vh;
+        height: 45vh;
     }
     .info-page#info-page-2 {
-        height: 50vh;
+        height: 55vh;
     }
     .info-page#info-page-3 {
         height: 50vh;
     }
     .info-page#info-page-5 {
-        height: 80vh;
+        height: 70vh;
     }
     #info-page-1 #col-1 {
+        margin-top: 8%;
         height: 25%;
     }
     #info-page-1 #col-2 {
+        padding-top: 8%;
         height: 75%;
     }
     #info-page-2 #col-1 {
-        height: 20%;
+        height: 10%;
     }
     #info-page-2 #col-2 {
         height: 75%;
     }
     #info-page-3 #col-1 {
-        height: 25%;
+        height: 15%;
     }
     #info-page-3 #col-2 {
         height: 75%;

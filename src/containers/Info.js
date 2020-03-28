@@ -80,7 +80,7 @@ class ConnectedInfo extends Component {
         window.scrollTo(0, document.body.scrollHeight)
     }
     openContactUsForm = () => {
-        const newWindow = window.open('https://www.google.it', '_blank');
+        const newWindow = window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzq7xgCA8aaVCZYYOdTNcJYug0p9YMFEDwmK-U3nr0MpaMVw/viewform', '_blank');
         newWindow.focus()
     }
     render() {
@@ -152,12 +152,12 @@ class ConnectedInfo extends Component {
                         </Col>
                     </Row>
                     <Row className="info-page" id="title">
-                        <Col className="col-1" md={5} sm={12} xs={12}>
+                        <Col className="col-1" md={{ span: 4, offset: 1}} sm={12} xs={12}>
                             <Row style={{ height: '100%', marginTop: '3%', flexDirection: 'column', justifyContent: 'center' }}>
                                 <Col md={{ span: 7, offset: 5 }}>
                                     <Row>
                                         <h1>Feriapp</h1>
-                                        <h2>Schedule your next holiday in a smart way</h2>
+                                        <h2>Organize your holidays in a smart way</h2>
                                         <div className="beta-btn-container">
                                             <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                                         </div>
@@ -165,7 +165,7 @@ class ConnectedInfo extends Component {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col className="col-2" md={7} sm={12} xs={12}>
+                        <Col className="col-2" md={6} sm={12} xs={12}>
                             <Row style={{ height: '100%', marginTop: '3%' }}>
                                 <img className="info-bean" alt="" src="./illustration.png" />
                             </Row>
@@ -174,8 +174,8 @@ class ConnectedInfo extends Component {
                     <Row className="info-page" style={{backgroundColor: '#f5f5f5'}} ref={this.featuresRef} id="info-page-1">
                         <Col md={12} id="col-1">
                             <Row style={{ height: '100%' }}>
-                                <h3 className="info-1">Optimize your holidays</h3>
-                                <h4 className="info-1">Feriapp helps you to find the best days to go on vacation. Customize your research by entering the city where you work, your days off and your available leave days.</h4>
+                                <h3 className="info-1">Optimize your days off</h3>
+                                <h4 className="info-1">Feriapp helps you to maximize the lenght of your vacation by optimizing your days off. Enter your city, your available days off and book your next trip.</h4>
                             </Row>
                         </Col>
                         <Col md={12} id="col-2">
@@ -185,28 +185,28 @@ class ConnectedInfo extends Component {
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-2">
-                        <Col md={6} xs={12} id="col-1">
+                        <Col md={{ span: 5, offset: 1}} xs={12} id="col-1">
                             <Row style={{ height: '100%' }}> 
                                 <h3 className="info-2">Find out the best flights</h3>
-                                <h4 className="info-2">Once you have selected your preferred holidays, discover the cheapest flights!</h4>
+                                <h4 className="info-2">Once selected the holiday period that suits your needs, discover the cheapest flights!</h4>
                             </Row>
                         </Col>
-                        <Col md={6} xs={12} id="col-2">
+                        <Col md={5} xs={12} id="col-2">
                             <Row style={{ height: '100%' }}>
                                 <img className="info-phone" id="flights" alt="" src='./phone_with_travels.png' />
                             </Row>
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-3">
-                        <Col md={{ span: 6, order: 1 }} xs={{ span: 12, order: 2 }} id="col-2">
+                        <Col md={{ span: 5, order: 1, offset: 1 }} xs={{ span: 12, order: 2 }} id="col-2">
                             <Row style={{ height: '100%' }}>
                                 <img className="info-phone" id="profile" alt="" src="./profile.png" />
                             </Row>
                         </Col>
-                        <Col md={{ span: 6, order: 2 }} xs={{ spane: 12, order: 1 }} id="col-1">
+                        <Col md={{ span: 5, order: 2 }} xs={{ span: 12, order: 1 }} id="col-1">
                             <Row style={{ height: '100%' }}>
-                                <h3 className="info-3">Keep track of your leave days</h3>
-                                <h4 className="info-3">In your profile you will always have under control your available leave days</h4>
+                                <h3 className="info-3">Keep track of your days off</h3>
+                                <h4 className="info-3">In your profile you will always have under control your available days off.</h4>
                             </Row>
                         </Col>
                     </Row>
@@ -218,14 +218,13 @@ class ConnectedInfo extends Component {
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-5">
-                        <Col style={{padding: '2%'}}>
+                        <Col>
                             <h3 className="info-5">Why to becode a beta tester?</h3>
                             {['Become part of the Feriapp closed community', 
-                            'Get for free the app premium version',
-                            'Use the app a month before it is available on stores to all users',
-                            'Be the first to recive the app upgrades',
-                            'Send your feedback to Feriapp development team',
-                            'Watch Feriapp implement the features you requested for'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
+                            'Get for free the App Premium version ',
+                            'Use the app before it is available on public Stores',
+                            'Be the first to recive the app updates',
+                            'Send your feedback and contribute to the app development'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
                             <Row style={{marginTop: '2%'}}>
                                 <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                             </Row>
