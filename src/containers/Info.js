@@ -79,6 +79,10 @@ class ConnectedInfo extends Component {
     scrollToBeta = () => {
         window.scrollTo(0, document.body.scrollHeight)
     }
+    scrollToTop = () => {
+        window.scrollTo(0, 0)
+    }
+
     openContactUsForm = () => {
         const newWindow = window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzq7xgCA8aaVCZYYOdTNcJYug0p9YMFEDwmK-U3nr0MpaMVw/viewform', '_blank');
         newWindow.focus()
@@ -139,6 +143,8 @@ class ConnectedInfo extends Component {
                     <Row className="info-header">
                         <Col className="logo-col"style={{ paddingLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
                             <img
+                                style={{cursor: 'pointer'}}
+                                onClick={this.scrollToTop}
                                 id="logo"
                                 alt=""
                                 src="./feriapp_round_icon-80.png"
@@ -175,7 +181,7 @@ class ConnectedInfo extends Component {
                         <Col md={12} id="col-1">
                             <Row style={{ height: '100%' }}>
                                 <h3 className="info-1">Optimize your days off</h3>
-                                <h4 className="info-1">Feriapp helps you to maximize the lenght of your vacation by optimizing your days off. Enter your city, your available days off and book your next trip.</h4>
+                                <h4 className="info-1">Feriapp helps you to maximize the length of your vacation by optimizing your days off. Enter your city, your available days off and book your next trip.</h4>
                             </Row>
                         </Col>
                         <Col md={12} id="col-2">
