@@ -29,6 +29,7 @@
 .info-page#info-page-2 {
     height: 65vh;
     background-color: #FFF7F0;
+    padding-top: 3%;
 }
 
 .info-page#info-page-3 {
@@ -37,12 +38,12 @@
 }
 
 .info-page#info-page-5 {
-    height: 75vh;
+    height: 88vh;
     background-color: #FFF7F0;
 }
 
 .banner {
-    height: 10vh;
+    height: 12vh;
     background: rgb(242, 188, 21);
     background: linear-gradient(90deg, rgba(242, 188, 21, 1) 0%, rgba(252, 58, 50, 1) 100%);
 }
@@ -103,16 +104,18 @@
 .info-phone {
     height: 515px;
     width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .info-phone#flights {
-    margin-right: 51%;
+    margin-right: 55%;
     margin-left: auto;
 }
 
 .info-phone#profile {
     margin-right: auto;
-    margin-left: 51%;
+    margin-left: 55%;
 }
 
 .info-container h1 {
@@ -153,11 +156,12 @@
     color: #FB552C;
     margin-left: auto;
     margin-right: 1%;
+    margin-top: auto;
 }
 
-.info-container h4 {
+.info-container h4.info-1 {
     width: 545px;
-    height: 111px;
+    height: 116px;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
@@ -167,6 +171,7 @@
     color: #3D3D3D;
     margin-left: 1%;
     margin-right: auto;
+    margin-top: auto
 }
 
 .info-container h3.info-2 {
@@ -176,52 +181,55 @@
     font-size: 48px !important;
     line-height: 57px !important;
     font-weight: bold !important;
-    text-align: left;
+    text-align: right;
     letter-spacing: -0.01em;
     color: #FB552C;
     margin-left: 55%;
     margin-right: auto;
+    margin-top: auto;
 }
 
 .info-container h4.info-2 {
     width: 545px;
-    height: 60px;
+    height: 115px;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
     line-height: 26px !important;
-    text-align: left;
+    text-align: right;
     letter-spacing: -1px;
     color: #3D3D3D;
     margin-left: 55%;
     margin-right: auto;
+    margin-bottom: auto;
 }
 
 .info-container h3.info-3 {
     width: 545px;
     height: 115px;
-    text-align: left;
     margin-right: 55%;
     margin-left: auto;
+    margin-top: auto;
     font-style: normal;
     font-size: 48px !important;
     line-height: 57px !important;
     font-weight: bold !important;
-    text-align: right;
+    text-align: left;
     letter-spacing: -0.01em;
     color: #FB552C;
 }
 
 .info-container h4.info-3 {
     width: 545px;
-    height: 65px;
+    height: 115px;
     margin-right: 55%;
     margin-left: auto;
+    margin-bottom: auto;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
     line-height: 26px !important;
-    text-align: right;
+    text-align: left;
     letter-spacing: -1px;
     color: #3D3D3D;
 }
@@ -280,7 +288,7 @@
     height: 45px;
     font-style: normal;
     font-weight: bold;
-    font-size: 35px !important;
+    font-size: 45px !important;
     line-height: 44px !important;
     letter-spacing: -0.01em;
     color: white;
@@ -310,14 +318,6 @@ button.signup {
     color: #3D3D3D !important;
     font-size: 20px !important;
     line-height: 24px !important;
-}
-
-#col-1 {
-    height: 12%;
-}
-
-#col-2 {
-    height: 88%;
 }
 
 .SnackbarItem-message-25 {
@@ -465,15 +465,16 @@ button.signup {
         text-align: right;
         margin-left: auto;
         margin-right: 0;
+        padding-right: 1%;
         font-size: 27px !important;
         line-height: 25px !important;
     }
     .info-container h4.info-1 {
         width: 49%;
-        height: 80px;
+        height: 85px;
         margin-left: 0;
         margin-right: auto;
-        padding: 1%;
+        padding-left: 1%;
         font-size: 15px !important;
         line-height: 15px !important;
         text-align: left;
@@ -484,15 +485,17 @@ button.signup {
         text-align: right;
         margin-left: auto;
         margin-right: 1%;
+        padding-right: 1%;
         font-size: 27px !important;
         line-height: 25px !important;
     }
     .info-container h4.info-2 {
         width: 49%;
-        height: 80px;
+        height: 85px;
         margin-left: 0;
         margin-right: auto;
-        padding: 1%;
+        margin-top: 0;
+        padding-left: 1%;
         font-size: 15px !important;
         line-height: 15px !important;
         text-align: left;
@@ -501,8 +504,10 @@ button.signup {
         width: 49%;
         height: 70px;
         text-align: right;
-        margin-left: auto;
+        margin-left: 0;
         margin-right: 0;
+        margin-top: 0;
+        padding-right: 1%;
         font-size: 27px !important;
         line-height: 25px !important;
     }
@@ -512,7 +517,8 @@ button.signup {
         text-align: left;
         margin-left: 0;
         margin-right: auto;
-        padding: 1%;
+        margin-top: 0;
+        padding-left: 1%;
         font-size: 15px !important;
         line-height: 15px !important;
     }
@@ -522,6 +528,7 @@ button.signup {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
+        padding-right: 1%;
         font-size: 27px !important;
         line-height: 25px !important;
     }
@@ -531,7 +538,7 @@ button.signup {
         text-align: left;
         margin-left: 0;
         margin-right: auto;
-        padding: 1%;
+        padding-left: 1%;
         font-size: 15px !important;
         line-height: 15px !important;
     }

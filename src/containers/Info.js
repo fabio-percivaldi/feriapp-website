@@ -1,6 +1,4 @@
 import './Info.css'
-import Login from './Login'
-import Signup from './Signup'
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Row, Button, Col, Modal, Form } from 'react-bootstrap'
@@ -8,6 +6,7 @@ import axios from 'axios'
 import config from "../config";
 import { withSnackbar } from 'notistack';
 import BulletElement from '../components/BulletElement'
+import Emoji from '../components/Emoji'
 
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
@@ -44,13 +43,14 @@ class ConnectedInfo extends Component {
             email: this.state.userEmail,
             os: this.state.userOS
         }).then(response => {
-            this.props.enqueueSnackbar('Successfully subscribed to beta program.', {
+            this.props.enqueueSnackbar('Successfully subscribed to beta, you will receive news from us soon', {
                 variant: 'success',
                 anchorOrigin: {
                     vertical: 'bottom',
                     horizontal: 'center',
                 },
             })
+            window.gtag('event', "beta-subscription");
             this.setState({
                 userEmail: '',
                 os: ''
@@ -68,8 +68,7 @@ class ConnectedInfo extends Component {
     handleOSChange = (event) => {
         this.setState({ userOS: event.target.value });
     }
-    scrollToRef = (ref) => {
-        console.log('||||||||||||',ref)
+    scrollToRef = (ref) => {        
         if(ref.current) {
             window.scrollTo(0, ref.current.offsetTop - 100) 
         }
@@ -138,7 +137,7 @@ class ConnectedInfo extends Component {
 
                 <Col>
                     <Row className="info-header">
-                        <Col className="logo-col" lg={6} xs={5} style={{ paddingLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
+                        <Col className="logo-col"style={{ paddingLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
                             <img
                                 id="logo"
                                 alt=""
@@ -146,10 +145,10 @@ class ConnectedInfo extends Component {
                                 className="landing"
                             />
                         </Col>
-                        <Col className="link-col" lg={6} xs={7} style={{ paddingRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
+                        <Col className="link-col" style={{ paddingRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
-                            <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
+                            <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
                         </Col>
                     </Row>
                     <Row className="info-page" id="title">
@@ -158,7 +157,7 @@ class ConnectedInfo extends Component {
                                 <Col md={{ span: 7, offset: 5 }}>
                                     <Row>
                                         <h1>Feriapp</h1>
-                                        <h2>The first site that allows you to find the best holidays in the year</h2>
+                                        <h2>Schedule your next holiday in a smart way</h2>
                                         <div className="beta-btn-container">
                                             <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                                         </div>
@@ -172,11 +171,11 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="info-page" ref={this.featuresRef} id="info-page-1">
+                    <Row className="info-page" style={{backgroundColor: '#f5f5f5'}} ref={this.featuresRef} id="info-page-1">
                         <Col md={12} id="col-1">
-                            <Row>
+                            <Row style={{ height: '100%' }}>
                                 <h3 className="info-1">Optimize your holidays</h3>
-                                <h4 className="info-1">Feriapp helps you find the best days to go on vacation. Customize the research with your city, days off and available leave days.</h4>
+                                <h4 className="info-1">Feriapp helps you to find the best days to go on vacation. Customize your research by entering the city where you work, your days off and your available leave days.</h4>
                             </Row>
                         </Col>
                         <Col md={12} id="col-2">
@@ -187,7 +186,7 @@ class ConnectedInfo extends Component {
                     </Row>
                     <Row className="info-page" id="info-page-2">
                         <Col md={6} xs={12} id="col-1">
-                            <Row>
+                            <Row style={{ height: '100%' }}> 
                                 <h3 className="info-2">Find out the best flights</h3>
                                 <h4 className="info-2">Once you have selected your preferred holidays, discover the cheapest flights!</h4>
                             </Row>
@@ -205,7 +204,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col md={{ span: 6, order: 2 }} xs={{ spane: 12, order: 1 }} id="col-1">
-                            <Row>
+                            <Row style={{ height: '100%' }}>
                                 <h3 className="info-3">Keep track of your leave days</h3>
                                 <h4 className="info-3">In your profile you will always have under control your available leave days</h4>
                             </Row>
@@ -219,7 +218,7 @@ class ConnectedInfo extends Component {
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-5">
-                        <Col>
+                        <Col style={{padding: '2%'}}>
                             <h3 className="info-5">Why to becode a beta tester?</h3>
                             {['Become part of the Feriapp closed community', 
                             'Get for free the app premium version',
@@ -230,7 +229,7 @@ class ConnectedInfo extends Component {
                             <Row style={{marginTop: '2%'}}>
                                 <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                             </Row>
-                            <h5 className="info-footer">To join feriapp beta community click the button and insert your email. We will send you the beta version. It’s free :)</h5>
+                            <h5 className="info-footer">To join feriapp beta community click the button and insert your email. We will send you the beta version. It’s free <Emoji symbol="😃" label="smiling-face"></Emoji> </h5>
                         </Col>
                     </Row>
                 </Col>
