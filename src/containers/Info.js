@@ -160,15 +160,11 @@ class ConnectedInfo extends Component {
                     <Row className="info-page" id="title">
                         <Col className="col-1" md={{ span: 4, offset: 1}} sm={12} xs={12}>
                             <Row style={{ height: '100%', marginTop: '3%', flexDirection: 'column', justifyContent: 'center' }}>
-                                <Col md={{ span: 7, offset: 5 }}>
-                                    <Row>
                                         <h1>Feriapp</h1>
                                         <h2>Organize your holidays in a smart way</h2>
                                         <div className="beta-btn-container">
                                             <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                                         </div>
-                                    </Row>
-                                </Col>
                             </Row>
                         </Col>
                         <Col className="col-2" md={6} sm={12} xs={12}>

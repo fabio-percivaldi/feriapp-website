@@ -22,28 +22,26 @@
 }
 
 .info-page {
-    height: 95vh;
+    padding: 3%;
     background-color: #ffffff;
 }
 
 .info-page#info-page-2 {
-    height: 65vh;
+    padding: 3%;
     background-color: #FFF7F0;
-    padding-top: 10%;
 }
 
 .info-page#info-page-3 {
-    height: 65vh;
+    padding: 3%;
     background-color: #FFF7F0;
 }
 
 .info-page#info-page-5 {
-    height: 70vh;
+    padding: 3%;
     background-color: #FFF7F0;
 }
 
 .banner {
-    height: 12vh;
     background: rgb(242, 188, 21);
     background: linear-gradient(90deg, rgba(242, 188, 21, 1) 0%, rgba(252, 58, 50, 1) 100%);
 }
@@ -109,18 +107,17 @@
 }
 
 .info-phone#flights {
-    margin-right: 55%;
-    margin-left: auto;
+    margin-right: auto;
+    margin-left: 10%;
 }
 
 .info-phone#profile {
-    margin-right: auto;
-    margin-left: 55%;
+    margin-right: 10%;
+    margin-left: auto;
 }
 
 .info-container h1 {
-    width: 414px;
-    height: 116px;
+    width: 82%;
     font-style: normal;
     font-weight: 500 !important;
     font-size: 124px !important;
@@ -132,8 +129,7 @@
 }
 
 .info-container h2 {
-    width: 414px;
-    height: 111px;
+    width: 80%;
     font-style: normal;
     font-weight: normal !important;
     font-size: 30px !important;
@@ -175,8 +171,7 @@
 }
 
 .info-container h3.info-2 {
-    width: 545px;
-    height: 115px;
+    width: 75%;
     font-style: normal;
     font-size: 48px !important;
     line-height: 57px !important;
@@ -184,14 +179,13 @@
     text-align: right;
     letter-spacing: -0.01em;
     color: #FB552C;
-    margin-left: 55%;
+    margin-left: auto;
     margin-right: auto;
     margin-top: auto;
 }
 
 .info-container h4.info-2 {
-    width: 545px;
-    height: 115px;
+    width: 75%;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
@@ -199,15 +193,14 @@
     text-align: right;
     letter-spacing: -1px;
     color: #3D3D3D;
-    margin-left: 55%;
+    margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
 }
 
 .info-container h3.info-3 {
-    width: 545px;
-    height: 115px;
-    margin-right: 55%;
+    width: 75%;
+    margin-right: auto;
     margin-left: auto;
     margin-top: auto;
     font-style: normal;
@@ -220,9 +213,8 @@
 }
 
 .info-container h4.info-3 {
-    width: 545px;
-    height: 115px;
-    margin-right: 55%;
+    width: 75%;
+    margin-right: auto;
     margin-left: auto;
     margin-bottom: auto;
     font-style: normal;
@@ -278,14 +270,14 @@
 }
 
 .beta-btn-container {
-    width: 414px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .banner h1 {
-    width: 555px;
-    height: 45px;
+    width: auto;
+    height: auto;
     font-style: normal;
     font-weight: bold;
     font-size: 45px !important;
@@ -332,13 +324,11 @@ button.signup {
     .info-bean {
         width: 645px;
     }
-    .info-container h1 {
-        width: 330px;
-        height: 90px;
+    /* .info-container h1 {
         font-size: 100px !important;
         line-height: 74px !important;
         letter-spacing: -0.01em;
-    }
+    } */
     .info-container h2 {
         width: 330px;
         height: 90px;
@@ -466,9 +456,7 @@ button.signup {
         height: 115vh;
         padding-top: 0;
     }
-    .banner {
-        height: 25vh;
-    }
+
     .info-container h1 {
         width: auto;
         margin: auto;
@@ -659,8 +647,8 @@ button.signup {
         margin-top: 0;
     }
     .banner h1 {
-        width: 555px;
-        height: 45px;
+        width: auto;
+        height: auto;
         font-style: normal;
         font-weight: bold;
         font-size: 30px !important;
