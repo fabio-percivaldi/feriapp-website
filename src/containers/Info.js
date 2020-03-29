@@ -154,7 +154,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col className="link-col" style={{ paddingRight: '11%'}} >
-                            <Row style={{height: '100%'}}>
+                            <Row style={{height: '100%', justifyContent: 'flex-end'}}>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
                             <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
