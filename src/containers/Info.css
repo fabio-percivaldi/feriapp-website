@@ -86,15 +86,13 @@
 }
 
 .info-bean {
-    padding-top: 5%;
-    width: 80%;
-    margin: auto;
+    width: 100%;
+    margin-top: 5%;
 }
 
 .info-mac {
-    width: 1035px;
-    margin: auto;
-    margin-top: 2%;
+    width: 60%;
+    margin-left: 20%;
 }
 
 .info-phone {
@@ -139,7 +137,7 @@
 }
 
 .info-container h3.info-1 {
-    width: 545px;
+    width: 45%;
     font-style: normal;
     font-size: 48px !important;
     line-height: 57px !important;
@@ -153,7 +151,7 @@
 }
 
 .info-container h4.info-1 {
-    width: 545px;
+    width: 45%;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
@@ -391,7 +389,8 @@ button.signup {
         text-align: center;
     }
     .info-mac {
-        width: 480px;
+        width: 80%;
+        margin-left: 10%;
     }
     .info-page {
         height: 110vh;
@@ -453,10 +452,6 @@ button.signup {
         width: 40%;
         margin-left: 30%;
     }
-    .info-bean {
-        width: 80%;
-        margin-left: 10%
-    }
     .info-page#title .col-1 {
         margin-top: 10%;
     }
@@ -490,7 +485,8 @@ button.signup {
         font-size: 18px !important;
     }
     .info-mac {
-        width: 335px;
+        width: 80%;
+        margin-left: 10%;
     }
     .info-phone {
         height: 300px;
@@ -592,10 +588,6 @@ button.signup {
     #info-page-1 #col-1 {
         margin-top: 8%;
         height: 25%;
-    }
-    #info-page-1 #col-2 {
-        padding-top: 8%;
-        height: 75%;
     }
     #info-page-2 #col-1 {
         height: 10%;

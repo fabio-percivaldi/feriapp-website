@@ -183,14 +183,12 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col md={12} id="col-2">
-                            <Row style={{ height: '100%' }}>
                                 <img className="info-mac" alt="" src="./macbook.png" />
-                            </Row>
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-2">
                         <Col md={{ span: 5, offset: 1}} xs={12} id="col-1">
-                            <Row style={{ height: '100%' }}> 
+                            <Row style={{ padding: '2%', height: '100%' }}> 
                                 <h3 className="info-2">Find out the best flights</h3>
                                 <h4 className="info-2">Once selected the holiday period that suits your needs, discover the cheapest flights!</h4>
                             </Row>
