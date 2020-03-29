@@ -16,7 +16,6 @@
     position: fixed;
     width: 100%;
     z-index: 1060;
-    height: 6vh;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .06);
 }
@@ -48,7 +47,6 @@
 
 .info-footer {
     width: 90%;
-    height: 80px;
     font-style: normal;
     font-weight: normal !important;
     font-size: 32px !important;
@@ -88,9 +86,9 @@
 }
 
 .info-bean {
-    width: 855px;
-    height: auto;
-    margin: auto auto auto 0;
+    padding-top: 5%;
+    width: 80%;
+    margin: auto;
 }
 
 .info-mac {
@@ -142,7 +140,6 @@
 
 .info-container h3.info-1 {
     width: 545px;
-    height: 116px;
     font-style: normal;
     font-size: 48px !important;
     line-height: 57px !important;
@@ -157,7 +154,6 @@
 
 .info-container h4.info-1 {
     width: 545px;
-    height: 116px;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
@@ -227,7 +223,6 @@
 }
 
 .info-container h3.info-5 {
-    height: 65px;
     text-align: center !important;
     margin-right: auto;
     margin-left: auto;
@@ -321,9 +316,6 @@ button.signup {
 }
 
 @media(max-width: 1300px) {
-    .info-bean {
-        width: 645px;
-    }
     /* .info-container h1 {
         font-size: 100px !important;
         line-height: 74px !important;
@@ -349,11 +341,6 @@ button.signup {
 }
 
 @media(max-height: 380px) and (orientation: landscape) {
-    .info-bean {
-        width: 300px;
-        margin: auto;
-        margin-bottom: 0;
-    }
     .info-mac {
         width: 335px;
     }
@@ -378,9 +365,6 @@ button.signup {
         letter-spacing: -0.01em;
         text-align: center;
     }
-    .info-header {
-        height: 13vh;
-    }
     .offset-md-5 {
         margin-left: auto;
         margin-right: auto;
@@ -388,15 +372,8 @@ button.signup {
     .info-page#title .row {
         margin-top: 0 !important;
     }
-    .info-page {
-        height: 100vh;
-    }
-    .info-page#info-page-5 {
-        height: 160vh;
-    }
     .info-container h3.info-1 {
         width: 100%;
-        height: 35px;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -406,7 +383,6 @@ button.signup {
     }
     .info-container h4.info-1 {
         width: 75%;
-        height: 35px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 1%;
@@ -478,12 +454,11 @@ button.signup {
         margin-left: 30%;
     }
     .info-bean {
-        width: 345px;
-        margin: auto;
-        margin-top: 0;
+        width: 80%;
+        margin-left: 10%
     }
     .info-page#title .col-1 {
-        margin-top: 17%;
+        margin-top: 10%;
     }
     .info-page#title .col-2 {
         margin-top: 5% !important;
@@ -524,7 +499,6 @@ button.signup {
     }
     .info-container h3.info-1 {
         width: 100%;
-        height: 35px;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -534,7 +508,6 @@ button.signup {
     }
     .info-container h4.info-1 {
         width: 75%;
-        height: 55px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 1%;
@@ -544,17 +517,14 @@ button.signup {
     }
     .info-container h3.info-2 {
         width: 49%;
-        height: 55px;
         text-align: right;
         margin-left: auto;
         margin-right: 1%;
-        padding-right: 1%;
         font-size: 27px !important;
         line-height: 25px !important;
     }
     .info-container h4.info-2 {
         width: 49%;
-        height: 55px;
         margin-left: 0;
         margin-right: auto;
         margin-top: 0;
@@ -565,7 +535,6 @@ button.signup {
     }
     .info-container h3.info-3 {
         width: 49%;
-        height: 70px;
         text-align: right;
         margin-left: 0;
         margin-right: 0;
@@ -576,7 +545,6 @@ button.signup {
     }
     .info-container h4.info-3 {
         width: 49%;
-        height: 70px;
         text-align: left;
         margin-left: 0;
         margin-right: auto;
@@ -586,8 +554,7 @@ button.signup {
         line-height: 15px !important;
     }
     .info-container h3.info-5 {
-        width: 59%;
-        height: 70px;
+        width: 80%;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -597,7 +564,6 @@ button.signup {
     }
     .info-container h4.info-5 {
         width: 65%;
-        height: 70px;
         text-align: left;
         margin-left: 0;
         margin-right: auto;
@@ -611,7 +577,7 @@ button.signup {
         line-height: 30px !important;
         margin-top: 6%;
     }
-    #info-page-1 {
+    /* #info-page-1 {
         height: 45vh;
     }
     .info-page#info-page-2 {
@@ -622,7 +588,7 @@ button.signup {
     }
     .info-page#info-page-5 {
         height: 73vh;
-    }
+    } */
     #info-page-1 #col-1 {
         margin-top: 8%;
         height: 25%;
@@ -694,9 +660,6 @@ button.signup {
     }
     .info-phone {
         height: 260px;
-    }
-    .info-page#info-page-5 {
-        height: 80vh;
     }
     .info-container h2 {
         height: 60px;

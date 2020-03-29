@@ -141,20 +141,24 @@ class ConnectedInfo extends Component {
 
                 <Col>
                     <Row className="info-header">
-                        <Col className="logo-col"style={{ paddingLeft: '18%', display: 'flex', justifyContent: 'flex-start' }}>
+                        <Col className="logo-col"style={{ paddingLeft: '18%'}}>
+                            <Row>
                             <img
-                                style={{cursor: 'pointer'}}
+                                style={{cursor: 'pointer', margin: '3% 0% 3% 5%'}}
                                 onClick={this.scrollToTop}
                                 id="logo"
                                 alt=""
                                 src="./feriapp_round_icon-80.png"
                                 className="landing"
                             />
+                            </Row>
                         </Col>
-                        <Col className="link-col" style={{ paddingRight: '11%', display: 'flex', justifyContent: 'flex-end' }} >
+                        <Col className="link-col" style={{ paddingRight: '11%'}} >
+                            <Row style={{height: '100%'}}>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
                             <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
+                            </Row>
                         </Col>
                     </Row>
                     <Row className="info-page" id="title">
@@ -168,9 +172,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col className="col-2" md={6} sm={12} xs={12}>
-                            <Row style={{ height: '100%', marginTop: '3%' }}>
                                 <img className="info-bean" alt="" src="./illustration.png" />
-                            </Row>
                         </Col>
                     </Row>
                     <Row className="info-page" style={{backgroundColor: '#f5f5f5'}} ref={this.featuresRef} id="info-page-1">
