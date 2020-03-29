@@ -105,7 +105,7 @@ class ConnectedInfo extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form onSubmit={this.betaSubscribe}>
+                        <Form>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control
@@ -129,7 +129,7 @@ class ConnectedInfo extends Component {
                                     <option value="android">Android</option>
                                 </Form.Control>
                             </Form.Group>
-                            <Button type="submit">
+                            <Button onClick={this.betaSubscribe}>
                                 Subscribe
                             </Button>
                         </Form>
