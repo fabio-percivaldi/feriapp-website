@@ -86,6 +86,10 @@ class ConnectedInfo extends Component {
         const newWindow = window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzq7xgCA8aaVCZYYOdTNcJYug0p9YMFEDwmK-U3nr0MpaMVw/viewform', '_blank');
         newWindow.focus()
     }
+    redirectToSkyscanner = () => {
+        const newWindow = window.open('https://clk.tradedoubler.com/click?p=224455&a=3147401&g=24649338', '_blank');
+        newWindow.focus()
+    }
     render() {
 
         return (
@@ -188,7 +192,8 @@ class ConnectedInfo extends Component {
                     <Row className="info-page" id="info-page-2">
                         <Col md={{ span: 5, offset: 1}} xs={12} id="col-1">
                             <Row style={{ padding: '2%', height: '100%' }}> 
-                                <h3 className="info-2">Find out the best flights</h3>
+                                <h3 className="info-2">Find out the best flights with 
+                                <img alt="" style={{cursor: 'pointer', marginLeft: '3%'}} onClick={this.redirectToSkyscanner} src="https://impfr.tradedoubler.com/imp?type(img)g(24649338)a(3147401)" /></h3>
                                 <h4 className="info-2">Thanks to Skyscanner integration, you can browse from the app the cheapest flight for the selected holiday.</h4>
                             </Row>
                         </Col>
