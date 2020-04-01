@@ -36,3 +36,16 @@ h2 {
   margin-top: auto;
   margin-bottom: auto;
 }
+
+.cookie-banner {
+  position: fixed;
+    width: 100%;
+    z-index: 1060;
+    bottom: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.cookie-banner p {
+  font-size: 1.1rem;
+}

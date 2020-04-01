@@ -163,7 +163,7 @@ class ConnectedInfo extends Component {
                     </Row>
                     <Row className="info-page" id="title">
                         <Col className="col-1" md={{ span: 4, offset: 1}} sm={12} xs={12}>
-                            <Row style={{ height: '100%', marginTop: '3%', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Row style={{ height: '100%', marginTop: '-10%', flexDirection: 'column', justifyContent: 'center' }}>
                                         <h1>Feriapp</h1>
                                         <h2>Organize your holidays in a smart way</h2>
                                         <div className="beta-btn-container">

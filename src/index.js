@@ -10,6 +10,7 @@ import bridges from "./store/bridges";
 import { Provider } from "react-redux";
 import { CookiesProvider } from 'react-cookie';
 import { SnackbarProvider } from 'notistack';
+import { StyledProvider } from 'components-extra'
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -37,15 +38,17 @@ Amplify.configure({
 window.bridges = bridges;
 
 ReactDOM.render(
-  <CookiesProvider>
-    <Router>
-      <Provider store={bridges}>
-        <SnackbarProvider maxSnack={3}>
-          <App />
-        </SnackbarProvider>
-      </Provider>
-    </Router>
-  </CookiesProvider>,
+  <StyledProvider>
+    <CookiesProvider>
+      <Router>
+        <Provider store={bridges}>
+          <SnackbarProvider maxSnack={3}>
+            <App />
+          </SnackbarProvider>
+        </Provider>
+      </Router>
+    </CookiesProvider>
+  </StyledProvider>,
   document.getElementById("root")
 );
 registerServiceWorker();

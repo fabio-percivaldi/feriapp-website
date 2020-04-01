@@ -11,6 +11,7 @@
     "aws-amplify": "^2.2.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "components-extra": "^2.6.1",
     "core-js": "^3.5.0",
     "date-holidays": "^1.4.2",
     "deep-equal": "^1.1.0",
@@ -33,7 +34,8 @@
     "react-select": "^3.0.8",
     "react-social-login-buttons": "^3.0.0",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "PORT=4200 react-scripts start",
