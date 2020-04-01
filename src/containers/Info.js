@@ -190,7 +190,7 @@ class ConnectedInfo extends Component {
                         <Col md={{ span: 5, offset: 1}} xs={12} id="col-1">
                             <Row style={{ padding: '2%', height: '100%' }}> 
                                 <h3 className="info-2">Find out the best flights</h3>
-                                <h4 className="info-2">Once selected the holiday period that suits your needs, discover the cheapest flights!</h4>
+                                <h4 className="info-2">Thanks to Skyscanner integration, you can browse from the app the cheapest flight for the selected holiday.</h4>
                             </Row>
                         </Col>
                         <Col md={5} xs={12} id="col-2">

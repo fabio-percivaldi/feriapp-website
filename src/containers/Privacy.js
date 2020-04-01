@@ -16,7 +16,7 @@ function Privacy(props) {
             <p>If you join the beta program Feriapp will only collect your email address. Among the email there are also: Cookies and Usage Data.</p>
             <p>The email and other personal data may be freely provided by the User, or, in case of Usage Data, collected automatically when using this Website.</p>
             <p>Unless specified otherwise, all Data requested by this Website is mandatory and failure to provide this Data may make it impossible for this Website to provide its services.
-    In cases where this Website specifically states that some Data is not mandatory, Users are free not to communicate this Data without consequences to the availability or the functioning of the Service.</p>
+In cases where this Website specifically states that some Data is not mandatory, Users are free not to communicate this Data without consequences to the availability or the functioning of the Service.</p>
             <p>Any use of Cookies – or of other tracking tools – by this Website or by the owners of third-party services used by this Website serves the purpose of providing the Service required by the User, in addition to any other purposes described in the present document and in the Cookie Policy, if available.</p>
 
 
@@ -29,15 +29,15 @@ function Privacy(props) {
 
             <h3>Retention time</h3>
             <p>Personal Data shall be processed and stored for as long as required by the purpose they have been collected for.
-    The email shared by the user for joining the beta program will be stored for one year.</p>
+The email shared by the user for joining the beta program will be stored for one year.</p>
+
 
             <h3>The purposes of processing</h3>
             <p>The Data concerning the User is collected to allow the Owner to:
-    <ul><li>send to the user the beta version off the app</li>
+<ul><li>send to the user the beta version off the app</li>
                     <li>send to the user email regarding app updates</li>
                 </ul></p>
             <p>The application and websites collects also anonymous data to monitoring the infrastructure and the user interactions to understand and improve the app usage.</p>
-
 
             <h3>The rights of Users</h3>
             <p>Users may exercise certain rights regarding their Data processed by the Owner.</p>
@@ -53,14 +53,15 @@ function Privacy(props) {
                 <li>Receive their Data and have it transferred to another controller. Users have the right to receive their Data in a structured, commonly used and machine readable format and, if technically feasible, to have it transmitted to another controller without any hindrance. This provision is applicable provided that the Data is processed by automated means and that the processing is based on the User's consent, on a contract which the User is part of or on pre-contractual obligations thereof.</li>
                 <li>Lodge a complaint. Users have the right to bring a claim before their competent data protection authority.</li></ul>
 
-        <h3>How to exercise these rights</h3>
-        <p>Any requests to exercise User rights can be directed to the Owner through the contact details provided in this document. These requests can be exercised free of charge and will be addressed by the Owner as early as possible and always within one month.</p>
+
+            <h3>How to exercise these rights</h3>
+            <p>Any requests to exercise User rights can be directed to the Owner through the contact details provided in this document. These requests can be exercised free of charge and will be addressed by the Owner as early as possible and always within one month.</p>
 
 
-        <h3>Changes to this privacy policy</h3>
-        <p>The Owner reserves the right to make changes to this privacy policy at any time by giving notice to its Users on this page and possibly within this Application and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom. Should the changes affect processing activities performed on the basis of the User’s consent, the Owner shall collect new consent from the User, where required.</p>
-    
-    </body>
+            <h3>Changes to this privacy policy</h3>
+            <p>The Owner reserves the right to make changes to this privacy policy at any time by giving notice to its Users on this page and possibly within this Application and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom. Should the changes affect processing activities performed on the basis of the User’s consent, the Owner shall collect new consent from the User, where required.</p>
+
+        </body>
     </html>
 }
 export default Privacy;
