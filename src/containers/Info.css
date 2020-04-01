@@ -84,33 +84,42 @@
     margin-right: 0 !important;
     font-weight: 200 !important
 }
-
+.link-col .row {
+    justify-content: flex-end;
+}
 .info-bean {
-    width: 100%;
+    height: 800px;
+    background-size: contain;
+    background-repeat: no-repeat;
     margin-top: 5%;
+    background-image: url('../images/illustration.png');
 }
 
 .info-mac {
     width: 60%;
     margin-left: 20%;
+    height: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../images/macbook.png');
 }
-
 .info-phone {
+    background-size: contain;
+    background-repeat: no-repeat;
     height: 515px;
-    width: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    width: 326px;
 }
-
 .info-phone#flights {
+    background-image: url('../images/phone_with_travels.png');
     margin-right: auto;
     margin-left: 10%;
 }
-
 .info-phone#profile {
+    background-image: url('../images/profile.png');
     margin-right: 10%;
     margin-left: auto;
 }
+
 
 .info-container h1 {
     width: 82%;
@@ -314,27 +323,25 @@ button.signup {
 }
 
 @media(max-width: 1300px) {
-    /* .info-container h1 {
+    .info-container h1 {
         font-size: 100px !important;
         line-height: 74px !important;
-        letter-spacing: -0.01em;
-    } */
+    }
     .info-container h2 {
-        width: 330px;
-        height: 90px;
         font-size: 25px !important;
         line-height: 26px !important;
         letter-spacing: -0.01em;
     }
     .beta-btn-container {
-        width: 330px;
         margin-left: auto;
         margin-right: auto;
     }
     .info-container .beta-btn {
-        width: 203px;
-        height: 45px;
         font-size: 18px !important;
+    }
+    .info-bean {
+        height: 400px;
+        margin-top: 10%;
     }
 }
 
@@ -485,13 +492,30 @@ button.signup {
         font-size: 18px !important;
     }
     .info-mac {
-        width: 80%;
+        height: 150px;
+        width: 300px;
         margin-left: 10%;
+        background-image: url('../images/macbook-xs.png');
     }
     .info-phone {
         height: 300px;
+        width: 190px;
         margin-left: auto !important;
         margin-right: auto !important;
+    }
+    .info-phone#flights {
+        background-image: url('../images/phone_with_travels-xs.png');
+    }
+    .info-phone#profile {
+        background-image: url('../images/profile-xs.png');
+    }
+    .link-col .row {
+        justify-content: space-evenly;
+    }
+    .info-bean {
+        height: 300px;
+        margin-top: 0;
+        background-image: url('../images/illustration-xs.png');
     }
     .info-container h3.info-1 {
         width: 100%;
@@ -573,18 +597,6 @@ button.signup {
         line-height: 30px !important;
         margin-top: 6%;
     }
-    /* #info-page-1 {
-        height: 45vh;
-    }
-    .info-page#info-page-2 {
-        height: 55vh;
-    }
-    .info-page#info-page-3 {
-        height: 55vh;
-    }
-    .info-page#info-page-5 {
-        height: 73vh;
-    } */
     #info-page-1 #col-1 {
         margin-top: 8%;
         height: 25%;

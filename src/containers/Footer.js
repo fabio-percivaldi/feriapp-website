@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import './Footer.css'
 function Footer() {
+    const redirectToSkyscanner = () => {
+        const newWindow = window.open('https://clk.tradedoubler.com/click?p=224455&a=3147401&g=24649344', '_blank');
+        newWindow.focus()
+    }
     return <Row className="footer">
         <Col>
             <Row className="privacy">
@@ -25,7 +29,7 @@ function Footer() {
         </Col>
         <Col>
             <Row className="skyscanner">
-            <div id="skyscanner-img"><a href="https://clk.tradedoubler.com/click?p=224455&a=3147401&g=24649344" target="_BLANK"></a></div> 
+            <div id="skyscanner-img" onClick={redirectToSkyscanner}></div> 
             </Row>
         </Col>
 

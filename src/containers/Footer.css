@@ -52,6 +52,7 @@
     height: 50%;
     background-position: right;
     margin: auto;
+    cursor: pointer;
 }
 
 @media(max-height: 380px) and (orientation: landscape) {

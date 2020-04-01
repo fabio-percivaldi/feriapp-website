@@ -141,7 +141,7 @@ class ConnectedInfo extends Component {
 
                 <Col>
                     <Row className="info-header">
-                        <Col className="logo-col"style={{ paddingLeft: '18%'}}>
+                        <Col className="logo-col"style={{ paddingLeft: '13%'}}>
                             <Row>
                             <img
                                 style={{cursor: 'pointer', margin: '3% 0% 3% 5%'}}
@@ -154,7 +154,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col className="link-col" style={{ paddingRight: '11%'}} >
-                            <Row style={{height: '100%', justifyContent: 'flex-end'}}>
+                            <Row style={{height: '100%'}}>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
                             <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
                             <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
@@ -172,7 +172,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col className="col-2" md={6} sm={12} xs={12}>
-                                <img className="info-bean" alt="" src="./illustration.png" />
+                                <div className="info-bean" alt=""  />
                         </Col>
                     </Row>
                     <Row className="info-page" style={{backgroundColor: '#f5f5f5'}} ref={this.featuresRef} id="info-page-1">
@@ -183,7 +183,7 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                         <Col md={12} id="col-2">
-                                <img className="info-mac" alt="" src="./macbook.png" />
+                                <div className="info-mac" alt=""/>
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-2">
@@ -195,14 +195,14 @@ class ConnectedInfo extends Component {
                         </Col>
                         <Col md={5} xs={12} id="col-2">
                             <Row style={{ height: '100%' }}>
-                                <img className="info-phone" id="flights" alt="" src='./phone_with_travels.png' />
+                                <div className="info-phone" id="flights" alt=""/>
                             </Row>
                         </Col>
                     </Row>
                     <Row className="info-page" id="info-page-3">
                         <Col md={{ span: 5, order: 1, offset: 1 }} xs={{ span: 12, order: 2 }} id="col-2">
                             <Row style={{ height: '100%' }}>
-                                <img className="info-phone" id="profile" alt="" src="./profile.png" />
+                                <div className="info-phone" id="profile" alt="" />
                             </Row>
                         </Col>
                         <Col md={{ span: 5, order: 2 }} xs={{ span: 12, order: 1 }} id="col-1">
