@@ -7,6 +7,9 @@ import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
 import { CookiesBanner } from 'components-extra'
+import {
+  withRouter
+} from 'react-router-dom'
 import Footer from './containers/Footer'
 
 class App extends Component {
@@ -14,7 +17,6 @@ class App extends Component {
     super(props);
     const { cookies } = this.props;
     const acceptCookies = cookies.get('acceptCookies')
-    console.log('||||||||||||||||', cookies)
     this.state = {
       acceptCookies,
       isAuthenticated: false,
@@ -90,6 +92,9 @@ class App extends Component {
 
     this.userHasAuthenticated(false);
   };
+  privacy = () => {
+    this.props.history.push('/privacy')
+  }
   cookiesConsent = () => {
     const { cookies } = this.props;
     cookies.set('acceptCookies', 'acceptCookies')
@@ -108,7 +113,10 @@ class App extends Component {
 
 
         <Container style={{ minWidth: '100%', marginTop: '0', minHeight: '100vh', backgroundColor: '#E1E2E8' }}>
-          <CookiesBanner style={{ display: this.state.acceptCookies ? 'none' : 'flex' }} className="cookie-banner" text="Please be aware that this awesome cookies banner informs you that this awesome website uses cookies. Why ? Because cookies are an awesome delight of course!">
+          <CookiesBanner style={{ display: this.state.acceptCookies ? 'none' : 'flex' }} className="cookie-banner" text="This site uses proprietary cookies in order to improve the browsing experience. For more information, read the Privacy Policy.">
+          <CookiesBanner.Button onClick={this.privacy}>
+              More
+        </CookiesBanner.Button>
             <CookiesBanner.Button onClick={this.cookiesConsent}>
               Ok
         </CookiesBanner.Button>
@@ -121,4 +129,4 @@ class App extends Component {
   }
 }
 
-export default withCookies(App);
+export default withRouter(withCookies(App));

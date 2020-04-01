@@ -7,7 +7,6 @@ import config from "../config";
 import { withSnackbar } from 'notistack';
 import BulletElement from '../components/BulletElement'
 import Emoji from '../components/Emoji'
-
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
     baseURL: API_GATEWAY_URL,
