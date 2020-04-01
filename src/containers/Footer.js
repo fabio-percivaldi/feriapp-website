@@ -25,7 +25,7 @@ function Footer() {
         </Col>
         <Col>
             <Row className="skyscanner">
-                <a href="https://clk.tradedoubler.com/click?p=224455&a=3147401&g=24649344" target="_BLANK"><img src="skyscanner_inline.png" /></a>
+            <div id="skyscanner-img"><a href="https://clk.tradedoubler.com/click?p=224455&a=3147401&g=24649344" target="_BLANK"></a></div> 
             </Row>
         </Col>
 
