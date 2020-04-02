@@ -39,7 +39,12 @@
     padding: 3%;
     background-color: #FFF7F0;
 }
-
+#title-row {
+    margin-top: -10%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
 .banner {
     background: rgb(242, 188, 21);
     background: linear-gradient(90deg, rgba(242, 188, 21, 1) 0%, rgba(252, 58, 50, 1) 100%);
@@ -356,7 +361,6 @@ button.signup {
     }
     .info-container h1 {
         width: 240px;
-        height: 75px;
         font-size: 70px !important;
         line-height: 74px !important;
         letter-spacing: -0.01em;
@@ -364,7 +368,6 @@ button.signup {
     }
     .info-container h2 {
         width: 240px;
-        height: 90px;
         font-size: 20px !important;
         line-height: 26px !important;
         letter-spacing: -0.01em;
@@ -467,7 +470,6 @@ button.signup {
     }
     .info-container h1 {
         width: 240px;
-        height: 75px;
         font-size: 70px !important;
         line-height: 74px !important;
         letter-spacing: -0.01em;
@@ -475,7 +477,7 @@ button.signup {
     }
     .info-container h2 {
         width: 240px;
-        height: 90px;
+        margin-top: 0;
         font-size: 20px !important;
         line-height: 26px !important;
         letter-spacing: -0.01em;
@@ -655,6 +657,12 @@ button.signup {
         /*input has OS specific font-family*/
         color: #3D3D3D;
         cursor: pointer;
+    }
+    #title-row {
+        margin-top: 0;
+    }
+    #skyscanner-logo-mini {
+        height: 30px;
     }
 }
 

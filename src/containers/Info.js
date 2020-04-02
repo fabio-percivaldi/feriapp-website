@@ -166,7 +166,7 @@ class ConnectedInfo extends Component {
                     </Row>
                     <Row className="info-page" id="title">
                         <Col className="col-1" md={{ span: 4, offset: 1}} sm={12} xs={12}>
-                            <Row style={{ height: '100%', marginTop: '-10%', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Row id="title-row">
                                         <h1>Feriapp</h1>
                                         <h2>Organize your holidays in a smart way</h2>
                                         <div className="beta-btn-container">
@@ -193,7 +193,7 @@ class ConnectedInfo extends Component {
                         <Col md={{ span: 5, offset: 1}} xs={12} id="col-1">
                             <Row style={{ padding: '2%', height: '100%' }}> 
                                 <h3 className="info-2">Find out the best flights with 
-                                <img alt="" style={{cursor: 'pointer', marginLeft: '3%'}} onClick={this.redirectToSkyscanner} src="https://impfr.tradedoubler.com/imp?type(img)g(24649338)a(3147401)" /></h3>
+                                <img alt="" id="skyscanner-logo-mini" style={{cursor: 'pointer', marginLeft: '3%'}} onClick={this.redirectToSkyscanner} src="https://impfr.tradedoubler.com/imp?type(img)g(24649338)a(3147401)" /></h3>
                                 <h4 className="info-2">Thanks to Skyscanner integration, you can browse from the app the cheapest flight for the selected holiday.</h4>
                             </Row>
                         </Col>
