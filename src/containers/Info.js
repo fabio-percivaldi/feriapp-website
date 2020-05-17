@@ -188,7 +188,7 @@ class ConnectedInfo extends Component {
                             </Row>
                             <Row>
                                 <h4 className="info-1">
-                                    Feriapp helps you to maximize the length of your vacation by optimizing your annual leave by utilising the bank holidays in your country. Moreover, thanks to the integration with Skyscanner, the app suggests you the cheapest flights for your vacation!</h4>
+                                    Feriapp helps you to maximize the length of your vacation by optimizing your annual leave, taking advantage of the bank holidays in your country. Moreover, thanks to the integration with Skyscanner, the app suggests you the cheapest flights for your vacation!</h4>
                             </Row>
                         </Col>
                     </Row>
