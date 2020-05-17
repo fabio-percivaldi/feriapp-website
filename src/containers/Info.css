@@ -25,12 +25,12 @@
     background-color: #ffffff;
 }
 
-.info-page#info-page-2 {
+.info-page#info-page-bridges {
     padding: 3%;
     background-color: #FFF7F0;
 }
 
-.info-page#info-page-3 {
+.info-page#info-page-profile {
     padding: 3%;
     background-color: #FFF7F0;
 }
@@ -100,13 +100,14 @@
     background-image: url('../images/illustration.png');
 }
 
-.info-mac {
-    width: 60%;
-    margin-left: 20%;
-    height: 500px;
+.info-balance {
+    width: 338px;
+    height: 321px;
+    margin-left: auto;
+    margin-right: auto;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../images/macbook.png');
+    background-image: url('../images/balance.png');
 }
 .info-phone {
     background-size: contain;
@@ -116,13 +117,18 @@
 }
 .info-phone#flights {
     background-image: url('../images/phone_with_travels.png');
-    margin-right: auto;
-    margin-left: 10%;
+    margin-right: 10%;
+    margin-left: auto;
 }
 .info-phone#profile {
     background-image: url('../images/profile.png');
     margin-right: 10%;
     margin-left: auto;
+}
+.info-phone#bridges {
+    background-image: url('../images/bridges.png');
+    margin-right: auto;
+    margin-left: 10%;
 }
 
 
@@ -151,34 +157,33 @@
 }
 
 .info-container h3.info-1 {
-    width: 45%;
     font-style: normal;
     font-size: 48px !important;
     line-height: 57px !important;
     font-weight: bold !important;
-    text-align: right;
+    text-align: center;
     letter-spacing: -0.01em;
     color: #FB552C;
     margin-left: auto;
-    margin-right: 1%;
+    margin-right: auto;
     margin-top: auto;
 }
 
 .info-container h4.info-1 {
-    width: 45%;
+    width: 70%;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
     line-height: 26px !important;
-    text-align: left;
+    text-align: center;
     letter-spacing: -1px;
     color: #3D3D3D;
-    margin-left: 1%;
+    margin-left: auto;
     margin-right: auto;
     margin-top: auto
 }
 
-.info-container h3.info-2 {
+.info-container h3 {
     width: 75%;
     font-style: normal;
     font-size: 48px !important;
@@ -192,7 +197,7 @@
     margin-top: auto;
 }
 
-.info-container h4.info-2 {
+.info-container h4 {
     width: 75%;
     font-style: normal;
     font-weight: normal !important;
@@ -206,32 +211,18 @@
     margin-bottom: auto;
 }
 
-.info-container h3.info-3 {
-    width: 75%;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: auto;
-    font-style: normal;
-    font-size: 48px !important;
-    line-height: 57px !important;
-    font-weight: bold !important;
+h3.info-profile {
     text-align: left;
-    letter-spacing: -0.01em;
-    color: #FB552C;
+}
+h4.info-profile {
+    text-align: left;
 }
 
-.info-container h4.info-3 {
-    width: 75%;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: auto;
-    font-style: normal;
-    font-weight: normal !important;
-    font-size: 22px !important;
-    line-height: 26px !important;
+h3.info-flights {
     text-align: left;
-    letter-spacing: -1px;
-    color: #3D3D3D;
+}
+h4.info-flights {
+    text-align: left;
 }
 
 .info-container h3.info-5 {
@@ -393,7 +384,7 @@ button.signup {
         width: 75%;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 1%;
+        padding: 3%;
         font-size: 15px !important;
         line-height: 15px !important;
         text-align: center;
@@ -405,39 +396,26 @@ button.signup {
     .info-page {
         height: 110vh;
     }
-    .info-page#info-page-2 {
+    .info-page#info-page-bridges {
         height: 115vh;
         padding-top: 0;
     }
-    .info-container h3.info-2 {
+
+    .info-container h3 {
         width: 545px;
         height: 115px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: auto;
     }
-    .info-container h4.info-2 {
+    .info-container h4 {
         width: 545px;
         height: 115px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: auto;
     }
-    .info-container h3.info-3 {
-        width: 545px;
-        height: 115px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: auto;
-    }
-    .info-container h4.info-3 {
-        width: 545px;
-        height: 115px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: auto;
-    }
-    .info-page#info-page-3 {
+    .info-page#info-page-profile {
         height: 115vh;
         padding-top: 0;
     }
@@ -493,11 +471,9 @@ button.signup {
         height: 45px;
         font-size: 18px !important;
     }
-    .info-mac {
-        height: 150px;
-        width: 300px;
-        margin-left: 10%;
-        background-image: url('../images/macbook-xs.png');
+    .info-balance {
+        height: 199px;
+        width: 210px;
     }
     .info-phone {
         height: 300px;
@@ -529,10 +505,10 @@ button.signup {
         line-height: 25px !important;
     }
     .info-container h4.info-1 {
-        width: 75%;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 1%;
+        padding: 3%;
         font-size: 15px !important;
         line-height: 15px !important;
         text-align: center;
@@ -555,7 +531,7 @@ button.signup {
         line-height: 15px !important;
         text-align: left;
     }
-    .info-container h3.info-3 {
+    .info-container h3 {
         width: 49%;
         text-align: right;
         margin-left: 0;
@@ -565,7 +541,7 @@ button.signup {
         font-size: 27px !important;
         line-height: 25px !important;
     }
-    .info-container h4.info-3 {
+    .info-container h4 {
         width: 49%;
         text-align: left;
         margin-left: 0;
@@ -599,20 +575,20 @@ button.signup {
         line-height: 30px !important;
         margin-top: 6%;
     }
-    #info-page-1 #col-1 {
+    /* #info-page-1 #col-1 {
         margin-top: 8%;
         height: 25%;
-    }
-    #info-page-2 #col-1 {
+    } */
+    #info-page-bridges #col-1 {
         height: 10%;
     }
-    #info-page-2 #col-2 {
+    #info-page-bridges #col-2 {
         height: 75%;
     }
-    #info-page-3 #col-1 {
+    #info-page-profile #col-1 {
         height: 15%;
     }
-    #info-page-3 #col-2 {
+    #info-page-profile #col-2 {
         height: 75%;
     }
     .col-12 {
@@ -667,9 +643,9 @@ button.signup {
 }
 
 @media(max-height: 670px) and (orientation: portrait) {
-    #info-page-1 {
+    /* #info-page-1 {
         height: 55vh;
-    }
+    } */
     .info-phone {
         height: 260px;
     }

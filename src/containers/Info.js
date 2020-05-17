@@ -67,9 +67,9 @@ class ConnectedInfo extends Component {
     handleOSChange = (event) => {
         this.setState({ userOS: event.target.value });
     }
-    scrollToRef = (ref) => {        
-        if(ref.current) {
-            window.scrollTo(0, ref.current.offsetTop - 100) 
+    scrollToRef = (ref) => {
+        if (ref.current) {
+            window.scrollTo(0, ref.current.offsetTop - 100)
         }
     }
     scrollToFeatures = () => {
@@ -117,8 +117,8 @@ class ConnectedInfo extends Component {
                                     value={this.state.userEmail}
                                     placeholder="Enter email" />
                                 <Form.Text className="text-muted">
-                                Your email will be used to grant you the beta access.
-                                Find out more in our <a href="/privacy">Privacy</a> section. 
+                                    Your email will be used to grant you the beta access.
+                                Find out more in our <a href="/privacy">Privacy</a> section.
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formBasicEmail">
@@ -144,66 +144,55 @@ class ConnectedInfo extends Component {
 
                 <Col>
                     <Row className="info-header">
-                        <Col className="logo-col"style={{ paddingLeft: '13%'}}>
+                        <Col className="logo-col" style={{ paddingLeft: '13%' }}>
                             <Row>
-                            <img
-                                style={{cursor: 'pointer', margin: '3% 0% 3% 5%'}}
-                                onClick={this.scrollToTop}
-                                id="logo"
-                                alt=""
-                                src="./feriapp_round_icon-80.png"
-                                className="landing"
-                            />
+                                <img
+                                    style={{ cursor: 'pointer', margin: '3% 0% 3% 5%' }}
+                                    onClick={this.scrollToTop}
+                                    id="logo"
+                                    alt=""
+                                    src="./feriapp_round_icon-80.png"
+                                    className="landing"
+                                />
                             </Row>
                         </Col>
-                        <Col className="link-col" style={{ paddingRight: '11%'}} >
-                            <Row style={{height: '100%'}}>
-                            <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
-                            <button style={{marginRight: '5%'}} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
-                            <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
+                        <Col className="link-col" style={{ paddingRight: '11%' }} >
+                            <Row style={{ height: '100%' }}>
+                                <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
+                                <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
+                                <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
                             </Row>
                         </Col>
                     </Row>
                     <Row className="info-page" id="title">
-                        <Col className="col-1" md={{ span: 4, offset: 1}} sm={12} xs={12}>
+                        <Col className="col-1" md={{ span: 4, offset: 1 }} sm={12} xs={12}>
                             <Row id="title-row">
-                                        <h1>Feriapp</h1>
-                                        <h2>Organize your holidays in a smart way</h2>
-                                        <div className="beta-btn-container">
-                                            <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
-                                        </div>
+                                <h1>Feriapp</h1>
+                                <h2>Plan your vacation in a smart way</h2>
+                                <div className="beta-btn-container">
+                                    <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
+                                </div>
                             </Row>
                         </Col>
                         <Col className="col-2" md={6} sm={12} xs={12}>
-                                <div className="info-bean" alt=""  />
+                            <div className="info-bean" alt="" />
                         </Col>
                     </Row>
-                    <Row className="info-page" style={{backgroundColor: '#f5f5f5'}} ref={this.featuresRef} id="info-page-1">
+                    <Row className="info-page" style={{ backgroundColor: '#f5f5f5' }} ref={this.featuresRef} id="info-page-1">
                         <Col md={12} id="col-1">
-                            <Row style={{ height: '100%' }}>
-                                <h3 className="info-1">Optimize your days off</h3>
-                                <h4 className="info-1">Feriapp helps you to maximize the length of your vacation by optimizing your days off. Enter your city, your available days off and book your next trip.</h4>
+                            <Row>
+                                <h3 style={{textAlign: 'center' }} className="info-1">Turn your annual leave into the longest vacation</h3>
                             </Row>
-                        </Col>
-                        <Col md={12} id="col-2">
-                                <div className="info-mac" alt=""/>
-                        </Col>
-                    </Row>
-                    <Row className="info-page" id="info-page-2">
-                        <Col md={{ span: 5, offset: 1}} xs={12} id="col-1">
-                            <Row style={{ padding: '2%', height: '100%' }}> 
-                                <h3 className="info-2">Find out the best flights with 
-                                <img alt="" id="skyscanner-logo-mini" style={{cursor: 'pointer', marginLeft: '3%'}} onClick={this.redirectToSkyscanner} src="https://impfr.tradedoubler.com/imp?type(img)g(24649338)a(3147401)" /></h3>
-                                <h4 className="info-2">Thanks to Skyscanner integration, you can browse from the app the cheapest flight for the selected holiday.</h4>
+                            <Row>
+                                <div className="info-balance" alt="" />
                             </Row>
-                        </Col>
-                        <Col md={5} xs={12} id="col-2">
-                            <Row style={{ height: '100%' }}>
-                                <div className="info-phone" id="flights" alt=""/>
+                            <Row>
+                                <h4 className="info-1">
+                                    Feriapp helps you to maximize the length of your vacation by optimizing your annual leave by utilising the bank holidays in your country. Moreover, thanks to the integration with Skyscanner, the app suggests you the cheapest flights for your vacation!</h4>
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="info-page" id="info-page-3">
+                    <Row className="info-page" id="info-page-profile">
                         <Col md={{ span: 5, order: 1, offset: 1 }} xs={{ span: 12, order: 2 }} id="col-2">
                             <Row style={{ height: '100%' }}>
                                 <div className="info-phone" id="profile" alt="" />
@@ -211,11 +200,42 @@ class ConnectedInfo extends Component {
                         </Col>
                         <Col md={{ span: 5, order: 2 }} xs={{ span: 12, order: 1 }} id="col-1">
                             <Row style={{ height: '100%' }}>
-                                <h3 className="info-3">Keep track of your days off</h3>
-                                <h4 className="info-3">In your profile you will always have under control your available days off.</h4>
+                                <h3 className="info-profile">Check your available annual leave</h3>
+                                <h4 className="info-profile">
+                                    On your profile page you will always have a clear overview of all your days off work. The app automatically updates the calculation. </h4>
                             </Row>
                         </Col>
                     </Row>
+                    <Row className="info-page" id="info-page-bridges">
+                        <Col md={{ span: 5, offset: 1 }} xs={12} id="col-1">
+                            <Row style={{ padding: '2%', height: '100%' }}>
+                                <h3 className="info-bridges">Discover the longest vacation you can take </h3>
+                                <h4 className="info-bridges">
+                                    Insert the number of vacation days you want to use and discover the longest vacations in the year.</h4>
+                            </Row>
+                        </Col>
+                        <Col md={5} xs={12} id="col-2">
+                            <Row style={{ height: '100%' }}>
+                                <div className="info-phone" id="bridges" alt="" />
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row className="info-page" id="info-page-2">
+                        <Col md={{ span: 5, order: 1, offset: 1 }} xs={{ span: 12, order: 2 }} id="col-2">
+                            <Row style={{ height: '100%' }}>
+                                <div className="info-phone" id="flights" alt="" />
+                            </Row>
+                        </Col>
+                        <Col md={{ span: 5, order: 2 }} xs={{ span: 12, order: 1 }} id="col-1">
+                            <Row style={{ height: '100%' }}>
+                                <h3 className="info-flights">Find out the cheapest flight for your holiday with
+                                <img alt="" id="skyscanner-logo-mini" style={{ cursor: 'pointer', marginLeft: '3%' }} onClick={this.redirectToSkyscanner} src="https://impfr.tradedoubler.com/imp?type(img)g(24649338)a(3147401)" /></h3>
+                                <h4 className="info-flights">
+                                    Thanks to the Skyscanner integration, the app suggests you the cheapest flight for the selected time period of your vacation.</h4>
+                            </Row>
+                        </Col>
+                    </Row>
+
                     <Row className="banner" id="info-page-4">
                         <Col style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <Row>
@@ -223,18 +243,19 @@ class ConnectedInfo extends Component {
                             </Row>
                         </Col>
                     </Row>
+
                     <Row className="info-page" id="info-page-5">
                         <Col>
                             <h3 className="info-5">Why to become a beta tester?</h3>
-                            {['Become part of the Feriapp closed community', 
-                            'Get for free the App Premium version ',
-                            'Use the app before it is available on public Stores',
-                            'Be the first to receive the app updates',
-                            'Send your feedback and contribute to the app development'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
-                            <Row style={{marginTop: '2%'}}>
+                            {['To become part of the feriapp community',
+                                'To get the premium version for free',
+                                'To be able to use it to optimize your vacation before it becomes public on app stores',
+                                'To be the first to receive the app updates',
+                                'To be able to take part in developing the app by giving us valuable feedback'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
+                            <Row style={{ marginTop: '2%' }}>
                                 <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                             </Row>
-                            <h5 className="info-footer">To join feriapp beta community click the button and insert your email. We will send you the beta version. It’s free <Emoji symbol="😃" label="smiling-face"></Emoji> </h5>
+                            <h5 className="info-footer">To join feriapp Beta Community click the button and insert your email. We will send you the beta version. It’s free <Emoji symbol="😃" label="smiling-face"></Emoji> </h5>
                         </Col>
                     </Row>
                 </Col>
