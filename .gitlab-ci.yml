@@ -1,0 +1,17 @@
+include:
+  - project: 'platform/pipelines-templates'
+    file: '/build/node/template-react-yarn.yml'
+    ref: master
+  - project: 'platform/pipelines-templates'
+    file: '/build/node/template-react-yarn-test-latest.yml'
+    ref: master
+
+.docker-job:
+  variables:
+    COMMIT_SHA_FILEPATH: /etc/nginx/commit.sha
+
+default:
+  image: node:12.19.0-alpine
+
+variables:
+  IMAGE_NAME: feriapp/feriapp-website
