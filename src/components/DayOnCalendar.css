@@ -76,6 +76,7 @@
 }
 .calendar-day.dropup {
   display: flex !important;
+  width: auto !important;
 }
 .dropdown-item {
   font-size: 1.6rem !important;

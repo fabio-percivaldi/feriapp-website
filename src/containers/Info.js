@@ -164,10 +164,10 @@ class ConnectedInfo extends Component {
                         </Col>
                         <Col className="link-col" style={{ paddingRight: '11%' }} >
                             <Row style={{ height: '100%' }}>
-                                <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
-                                <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
-                                <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.openBridges}>Browse Bridges</button>
-                                <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
+                                <button style={{ marginRight: '5%', width: 'auto' }} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
+                                <button style={{ marginRight: '5%', width: 'auto' }} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
+                                <button style={{ marginRight: '5%', width: 'auto' }} className="anchor-link" onClick={this.openBridges}>Browse Bridges</button>
+                                <button style={{ width: 'auto' }} className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
                             </Row>
                         </Col>
                     </Row>
@@ -259,7 +259,7 @@ class ConnectedInfo extends Component {
                                 'To be able to use it to optimize your vacation before it becomes public on app stores',
                                 'To be the first to receive the app updates',
                                 'To be able to take part in developing the app by giving us valuable feedback'].map((value, index) => <BulletElement key={index} value={value}></BulletElement>)}
-                            <Row style={{ marginTop: '2%' }}>
+                            <Row id="request-beta-access-row">
                                 <Button onClick={this.handleBetaClick} className="beta-btn">Request Beta Access</Button>
                             </Row>
                             <h5 className="info-footer">To join feriapp Beta Community click the button and insert your email. We will send you the beta version. It’s free <Emoji symbol="😃" label="smiling-face"></Emoji> </h5>

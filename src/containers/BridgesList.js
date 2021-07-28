@@ -36,7 +36,7 @@ const ConnectedBridges = ({ bridges, isFetchingBridges }) => {
     }
     return <Container style={{ boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '7px', backgroundColor: '#ffff', height: '100%', overflowY: 'overlay' }}>
         <Row style={{ height: '50px', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h2>Ponti Consigliati</h2>
+            <h2 style={{ width: 'auto' }}>Ponti Consigliati</h2>
         </Row>
 
         {bridges.map((bridge, index) => renderBridge(bridge, index))}

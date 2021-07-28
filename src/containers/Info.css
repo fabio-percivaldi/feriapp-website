@@ -8,13 +8,13 @@
 
 .modal-body button {
     background-color: #FB552C !important;
-    width: 30%;
+    width: 30% !important;
     margin-left: 35%;
 }
 
 .info-header {
     position: fixed;
-    width: 100%;
+    width: calc(100% + 7px) !important;
     z-index: 1060;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .06);
@@ -39,6 +39,9 @@
     padding: 3%;
     background-color: #FFF7F0;
 }
+#request-beta-access-row {
+    margin-top: 2%;
+}
 #title-row {
     margin-top: -10%;
     height: 100%;
@@ -51,7 +54,7 @@
 }
 
 .info-footer {
-    width: 90%;
+    width: 90% !important;
     font-style: normal;
     font-weight: normal !important;
     font-size: 32px !important;
@@ -101,7 +104,7 @@
 }
 
 .info-balance {
-    width: 338px;
+    width: 338px !important;
     height: 321px;
     margin-left: auto;
     margin-right: auto;
@@ -113,7 +116,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     height: 515px;
-    width: 326px;
+    width: 326px !important;
 }
 .info-phone#flights {
     background-image: url('../images/phone_with_travels.png');
@@ -133,11 +136,11 @@
 
 
 .info-container h1 {
-    width: 82%;
+    width: 82% !important;
     font-style: normal;
     font-weight: 500 !important;
     font-size: 124px !important;
-    line-height: 74px !important;
+    line-height: 104px !important;
     letter-spacing: -0.01em;
     color: #FB552C;
     margin-left: auto;
@@ -145,7 +148,7 @@
 }
 
 .info-container h2 {
-    width: 80%;
+    width: 80% !important;
     font-style: normal;
     font-weight: normal !important;
     font-size: 30px !important;
@@ -170,7 +173,7 @@
 }
 
 .info-container h4.info-1 {
-    width: 70%;
+    width: 70% !important;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
@@ -184,7 +187,7 @@
 }
 
 .info-container h3 {
-    width: 75%;
+    width: 75% !important;
     font-style: normal;
     font-size: 48px !important;
     line-height: 57px !important;
@@ -198,7 +201,7 @@
 }
 
 .info-container h4 {
-    width: 75%;
+    width: 75% !important;
     font-style: normal;
     font-weight: normal !important;
     font-size: 22px !important;
@@ -239,7 +242,7 @@ h4.info-flights {
 }
 
 .info-container h4.info-5 {
-    width: 545px;
+    width: 545px !important;
     height: 65px;
     margin-right: 55%;
     margin-left: auto;
@@ -255,7 +258,7 @@ h4.info-flights {
 .info-container .beta-btn {
     margin-left: auto;
     margin-right: auto;
-    width: 275px;
+    width: 275px !important;
     height: 55px;
     font-style: normal !important;
     font-weight: 500 !important;
@@ -268,13 +271,13 @@ h4.info-flights {
 }
 
 .beta-btn-container {
-    width: 80%;
+    width: 80% !important;
     margin-left: auto;
     margin-right: auto;
 }
 
 .banner h1 {
-    width: auto;
+    width: auto !important;
     height: auto;
     font-style: normal;
     font-weight: bold;
@@ -321,7 +324,7 @@ button.signup {
 @media(max-width: 1300px) {
     .info-container h1 {
         font-size: 100px !important;
-        line-height: 74px !important;
+        line-height: 104px !important;
     }
     .info-container h2 {
         font-size: 25px !important;
@@ -343,7 +346,7 @@ button.signup {
 
 @media(max-height: 380px) and (orientation: landscape) {
     .info-mac {
-        width: 335px;
+        width: 335px !important;
     }
     .info-phone {
         height: 300px;
@@ -351,14 +354,14 @@ button.signup {
         margin-right: auto !important;
     }
     .info-container h1 {
-        width: 240px;
+        width: 240px !important;
         font-size: 70px !important;
-        line-height: 74px !important;
+        line-height: 104px !important;
         letter-spacing: -0.01em;
         text-align: center;
     }
     .info-container h2 {
-        width: 240px;
+        width: 240px !important;
         font-size: 20px !important;
         line-height: 26px !important;
         letter-spacing: -0.01em;
@@ -372,7 +375,7 @@ button.signup {
         margin-top: 0 !important;
     }
     .info-container h3.info-1 {
-        width: 100%;
+        width: 100% !important;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -381,7 +384,7 @@ button.signup {
         line-height: 25px !important;
     }
     .info-container h4.info-1 {
-        width: 75%;
+        width: 75% !important;
         margin-left: auto;
         margin-right: auto;
         padding: 3%;
@@ -390,7 +393,7 @@ button.signup {
         text-align: center;
     }
     .info-mac {
-        width: 80%;
+        width: 80% !important;
         margin-left: 10%;
     }
     .info-page {
@@ -402,14 +405,14 @@ button.signup {
     }
 
     .info-container h3 {
-        width: 545px;
+        width: 545px !important;
         height: 115px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: auto;
     }
     .info-container h4 {
-        width: 545px;
+        width: 545px !important;
         height: 115px;
         margin-left: auto;
         margin-right: auto;
@@ -421,7 +424,7 @@ button.signup {
     }
 
     .info-container h1 {
-        width: auto;
+        width: auto !important;
         margin: auto;
         font-size: 60px !important;
         text-align: center;
@@ -431,13 +434,13 @@ button.signup {
 
 @media(max-height: 815px) and (orientation: portrait) {
     .modal-content {
-        width: 85%;
+        width: 85% !important;
         margin-left: auto;
         margin-right: auto;
     }
     .modal-body button {
         background-color: #FB552C !important;
-        width: 40%;
+        width: 40% !important;
         margin-left: 30%;
     }
     .info-page#title .col-1 {
@@ -447,14 +450,14 @@ button.signup {
         margin-top: 5% !important;
     }
     .info-container h1 {
-        width: 240px;
+        width: 240px !important;
         font-size: 70px !important;
-        line-height: 74px !important;
+        line-height: 104px !important;
         letter-spacing: -0.01em;
         text-align: center;
     }
     .info-container h2 {
-        width: 240px;
+        width: 240px !important;
         margin-top: 0;
         font-size: 20px !important;
         line-height: 26px !important;
@@ -462,22 +465,22 @@ button.signup {
         text-align: center;
     }
     .beta-btn-container {
-        width: 200px;
+        width: 200px !important;
         margin-left: auto;
         margin-right: auto;
     }
     .info-container .beta-btn {
-        width: 200px;
+        width: 200px !important;
         height: 45px;
         font-size: 18px !important;
     }
     .info-balance {
         height: 199px;
-        width: 210px;
+        width: 210px !important;
     }
     .info-phone {
         height: 300px;
-        width: 190px;
+        width: 190px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -496,7 +499,7 @@ button.signup {
         background-image: url('../images/illustration-xs.png');
     }
     .info-container h3.info-1 {
-        width: 100%;
+        width: 100% !important;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -505,7 +508,7 @@ button.signup {
         line-height: 25px !important;
     }
     .info-container h4.info-1 {
-        width: 100%;
+        width: 100% !important;
         margin-left: auto;
         margin-right: auto;
         padding: 3%;
@@ -514,7 +517,7 @@ button.signup {
         text-align: center;
     }
     .info-container h3.info-2 {
-        width: 49%;
+        width: 49% !important;
         text-align: right;
         margin-left: auto;
         margin-right: 1%;
@@ -522,7 +525,7 @@ button.signup {
         line-height: 25px !important;
     }
     .info-container h4.info-2 {
-        width: 49%;
+        width: 49% !important;
         margin-left: 0;
         margin-right: auto;
         margin-top: 0;
@@ -532,7 +535,7 @@ button.signup {
         text-align: left;
     }
     .info-container h3 {
-        width: 49%;
+        width: 49% !important;
         text-align: right;
         margin-left: 0;
         margin-right: 0;
@@ -542,7 +545,7 @@ button.signup {
         line-height: 25px !important;
     }
     .info-container h4 {
-        width: 49%;
+        width: 49% !important;
         text-align: left;
         margin-left: 0;
         margin-right: auto;
@@ -552,7 +555,7 @@ button.signup {
         line-height: 15px !important;
     }
     .info-container h3.info-5 {
-        width: 80%;
+        width: 80% !important;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -561,7 +564,7 @@ button.signup {
         line-height: 25px !important;
     }
     .info-container h4.info-5 {
-        width: 65%;
+        width: 65% !important;
         text-align: left;
         margin-left: 0;
         margin-right: auto;
@@ -570,7 +573,7 @@ button.signup {
         line-height: 15px !important;
     }
     .info-footer {
-        width: 90%;
+        width: 90% !important;
         font-size: 20px !important;
         line-height: 30px !important;
         margin-top: 6%;
@@ -595,7 +598,7 @@ button.signup {
         margin-top: 0;
     }
     .banner h1 {
-        width: auto;
+        width: auto !important;
         height: auto;
         font-style: normal;
         font-weight: bold;
@@ -639,6 +642,9 @@ button.signup {
     }
     #skyscanner-logo-mini {
         height: 30px;
+    }
+    #request-beta-access-row {
+        margin-top: 12%;
     }
 }
 
