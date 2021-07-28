@@ -73,6 +73,7 @@
 }
 .bridge-cirle {
   display: flex !important;
+  width: auto !important;
 }
 .calendar-day.dropup {
   display: flex !important;
