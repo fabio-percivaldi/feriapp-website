@@ -7,6 +7,9 @@ import config from "../config";
 import { withSnackbar } from 'notistack';
 import BulletElement from '../components/BulletElement'
 import Emoji from '../components/Emoji'
+import {
+    withRouter
+  } from 'react-router-dom'
 const { URL: API_GATEWAY_URL, KEY: API_KEY } = config.apiGateway
 const apiGatewayClient = axios.create({
     baseURL: API_GATEWAY_URL,
@@ -86,6 +89,9 @@ class ConnectedInfo extends Component {
         const newWindow = window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzq7xgCA8aaVCZYYOdTNcJYug0p9YMFEDwmK-U3nr0MpaMVw/viewform', '_blank');
         newWindow.focus()
     }
+    openBridges = () => {
+        this.props.history.push('/holidays')
+    }
     redirectToSkyscanner = () => {
         const newWindow = window.open('https://clk.tradedoubler.com/click?p=224455&a=3147401&g=24649338', '_blank');
         newWindow.focus()
@@ -160,6 +166,7 @@ class ConnectedInfo extends Component {
                             <Row style={{ height: '100%' }}>
                                 <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.scrollToFeatures}>Features</button>
                                 <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.scrollToBeta}>Beta</button>
+                                <button style={{ marginRight: '5%' }} className="anchor-link" onClick={this.openBridges}>Browse Bridges</button>
                                 <button className="anchor-link" onClick={this.openContactUsForm}>Contact us</button>
                             </Row>
                         </Col>
@@ -264,4 +271,4 @@ class ConnectedInfo extends Component {
     }
 }
 const Info = connect()(ConnectedInfo);
-export default withSnackbar(Info)
+export default withRouter(withSnackbar(Info))
