@@ -13,7 +13,8 @@
 
 # misc
 .DS_Store
-.env
+*.env
+!default.env
 .env.development
 .env.test
 .env.production

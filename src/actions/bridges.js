@@ -18,7 +18,7 @@ import {
 import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
 import moment from 'moment'
-const API_VERSION = process.env.API_VERSION
+const API_VERSION = process.env.REACT_APP_API_VERSION
 const apiGatewayClient = axios.create({
 })
 export function changeDayOfHolidays(dayOfHolidays) {
