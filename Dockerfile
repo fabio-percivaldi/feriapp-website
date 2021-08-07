@@ -3,7 +3,7 @@ FROM nginx:1.17.2-alpine as build
 LABEL name="feriapp-website" \
       description="" \
       eu.mia-platform.url="https://www.mia-platform.eu" \
-      eu.mia-platform.version="0.2.3"
+      eu.mia-platform.version="0.2.4"
 
 COPY nginx /etc/nginx
 
