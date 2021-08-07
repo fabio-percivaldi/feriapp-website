@@ -18,6 +18,7 @@ import {
 import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
 import moment from 'moment'
+const API_VERSION = process.env.API_VERSION
 const apiGatewayClient = axios.create({
 })
 export function changeDayOfHolidays(dayOfHolidays) {
@@ -104,7 +105,7 @@ export function invalidateFligths(subreddit) {
 export function fetchIGMedia() {
   return function (dispatch) {
     dispatch(requestIGMedia())
-    return apiGatewayClient.get('/api/igMedia')
+    return apiGatewayClient.get(`/api/v1/igMedia`)
       .then(response => {
         const sortedMedia = response.data.media.sort((media1, media2) => {
           if (media1.timestamp < media2.timestamp) {
@@ -124,7 +125,7 @@ export function fetchFlights(bridge, origin) {
     dispatch(requestFlights(bridge, origin))
     // const { start: outboundDate, end: inboundDate } = bridge
 
-    // const cheapestFlights = await apiGatewayClient.get(`/api/flights?originCity=${origin.city}&outboundDate=${moment(outboundDate).format('YYYY-MM-DD')}&inboundDate=${moment(inboundDate).format('YYYY-MM-DD')}&locale=it-IT&currency=USD`)
+    // const cheapestFlights = await apiGatewayClient.get(`/api/${API_VERSION}/flights`originCity=${origin.city}&outboundDate=${moment(outboundDate).format('YYYY-MM-DD')}&inboundDate=${moment(inboundDate).format('YYYY-MM-DD')}&locale=it-IT&currency=USD`)
     return dispatch(receiveFlights([]))
     // return dispatch(receiveFlights(cheapestFlights.data))
   }
@@ -139,14 +140,14 @@ export function fetchBridges(settings) {
       city,
       daysOff
     }
-    const bridges = await apiGatewayClient.post('/api/bridges', body)
+    const bridges = await apiGatewayClient.post(`/api/v${API_VERSION}/bridges`, body)
     return dispatch(receiveBridges(bridges.data))
   }
 }
 export function fetchHolidays(city) {
   return async function (dispatch) {
     dispatch(requestHolidays(city))
-    const holidays = await apiGatewayClient.get(`/api/getHolidaysByCity?city=${city}`)
+    const holidays = await apiGatewayClient.get(`/api/v1/getHolidaysByCity?city=${city}`)
     return dispatch(receiveHolidays(holidays.data))
   }
 }
