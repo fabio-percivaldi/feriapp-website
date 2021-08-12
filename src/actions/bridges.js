@@ -17,8 +17,7 @@ import {
 
 import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
-import moment from 'moment'
-const API_VERSION = process.env.REACT_APP_API_VERSION
+// import moment from 'moment'
 const apiGatewayClient = axios.create({
 })
 export function changeDayOfHolidays(dayOfHolidays) {
@@ -105,7 +104,7 @@ export function invalidateFligths(subreddit) {
 export function fetchIGMedia() {
   return function (dispatch) {
     dispatch(requestIGMedia())
-    return apiGatewayClient.get(`/api/v1/igMedia`)
+    return apiGatewayClient.get(`/api/igMedia`)
       .then(response => {
         const sortedMedia = response.data.media.sort((media1, media2) => {
           if (media1.timestamp < media2.timestamp) {
@@ -140,14 +139,14 @@ export function fetchBridges(settings) {
       city,
       daysOff
     }
-    const bridges = await apiGatewayClient.post(`/api/v${API_VERSION}/bridges`, body)
+    const bridges = await apiGatewayClient.post(`/api/bridges`, body)
     return dispatch(receiveBridges(bridges.data))
   }
 }
 export function fetchHolidays(city) {
   return async function (dispatch) {
     dispatch(requestHolidays(city))
-    const holidays = await apiGatewayClient.get(`/api/v1/getHolidaysByCity?city=${city}`)
+    const holidays = await apiGatewayClient.get(`/api/getHolidaysByCity?city=${city}`)
     return dispatch(receiveHolidays(holidays.data))
   }
 }
