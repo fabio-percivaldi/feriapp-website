@@ -6,7 +6,7 @@ import BridgeCard from '../components/BridgeCard'
 
 const renderSingleBridge = (singleBridge, yearsNormalized) => {
     const { isTop, id, isSelected } = singleBridge
-    return <Accordion.Body>
+    return <Accordion.Body key={id}>
         <BridgeCard isTop={isTop} key={id} isSelected={isSelected} bridge={singleBridge}></BridgeCard>
     </Accordion.Body>
 

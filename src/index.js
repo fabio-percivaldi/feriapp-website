@@ -42,6 +42,19 @@ function retrieveContainer (props) {
   return container ? container.querySelector('#root') : document.querySelector('#root')
 }
 
+
+const rootComponent = <StyledProvider>
+    <CookiesProvider>
+      <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/'} >
+        <Provider store={bridges}>
+          <SnackbarProvider maxSnack={3}>
+            <App />
+          </SnackbarProvider>
+        </Provider>
+      </BrowserRouter >
+    </CookiesProvider>
+  </StyledProvider>
+
 function render(props) {
   ReactDOM.render(rootComponent, retrieveContainer(props))
 }
@@ -63,18 +76,4 @@ export async function unmount(props) {
   ReactDOM.unmountComponentAtNode(retrieveContainer(props));
 }
 
-const rootComponent = ReactDOM.render(
-  <StyledProvider>
-    <CookiesProvider>
-      <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/'} >
-        <Provider store={bridges}>
-          <SnackbarProvider maxSnack={3}>
-            <App />
-          </SnackbarProvider>
-        </Provider>
-      </BrowserRouter >
-    </CookiesProvider>
-  </StyledProvider>,
-  document.getElementById("root")
-);
 registerServiceWorker();
