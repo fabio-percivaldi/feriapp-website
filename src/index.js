@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Amplify from "aws-amplify";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import config from "./config";
@@ -37,16 +37,42 @@ Amplify.configure({
 
 window.bridges = bridges;
 
-ReactDOM.render(
+function retrieveContainer (props) {
+  const {container} = props
+  return container ? container.querySelector('#root') : document.querySelector('#root')
+}
+
+function render(props) {
+  ReactDOM.render(rootComponent, retrieveContainer(props))
+}
+
+if (!window.__POWERED_BY_QIANKUN__) {
+  render({});
+}
+
+export async function bootstrap() {
+  console.log('[react16] react app bootstraped');
+}
+
+export async function mount(props) {
+  console.log('[react16] props from main framework', props);
+  render(props);
+}
+
+export async function unmount(props) {
+  ReactDOM.unmountComponentAtNode(retrieveContainer(props));
+}
+
+const rootComponent = ReactDOM.render(
   <StyledProvider>
     <CookiesProvider>
-      <Router>
+      <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/'} >
         <Provider store={bridges}>
           <SnackbarProvider maxSnack={3}>
             <App />
           </SnackbarProvider>
         </Provider>
-      </Router>
+      </BrowserRouter >
     </CookiesProvider>
   </StyledProvider>,
   document.getElementById("root")
