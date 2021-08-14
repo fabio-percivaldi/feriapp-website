@@ -18,7 +18,7 @@ const renderBridge = (bridge, index) => {
     if (years) {
         yearsNormalized = years.join('-')
     }
-    return <Accordion style={{ marginBottom: '5%' }} defaultActiveKey="0">
+    return <Accordion key={yearsNormalized} style={{ marginBottom: '5%' }} defaultActiveKey="0">
         <Accordion.Item eventKey={yearsNormalized}>
             <Accordion.Header style={{ marginTop: '0px' }}>{yearsNormalized}</Accordion.Header>
             {bridges.map(singleBridge => renderSingleBridge(singleBridge, yearsNormalized))}

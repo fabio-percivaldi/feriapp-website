@@ -6,6 +6,7 @@ import BridgesList from './BridgesList';
 import FlightsList from "./FlightsList";
 import Download from '../components/Download'
 import HolidaysList from "./HolidaysList";
+// import LandingModal from "../components/LandingModal"
 import BridgesCalendar from "./BridgesCalendar";
 import React, { Component, Fragment } from "react";
 import NavigationBar from '../components/NavigationBar';
@@ -99,7 +100,7 @@ class ConnectedHome extends Component {
             daysOff={this.state.daysOff}
             selectedNotWorkingDays={this.state.selectedNotWorkingDays}>
           </LandingModal> */}
-            <Col md={{span: 8, offset: 1}} sx={12} style={{display: 'flex', flexDirection: 'column'}}>
+            <Col md={{span: 8, offset: 1}} sx={12} style={{display: 'flex', height: '100%', flexDirection: 'column'}}>
               <Row className="navigation-bar" style={{ minHeight: '15%', boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)', borderRadius: '7px' }}>
                 <NavigationBar 
                 increment={this.increment} 
@@ -109,9 +110,7 @@ class ConnectedHome extends Component {
                 selectedNotWorkingDays={this.state.selectedNotWorkingDays}
                 ></NavigationBar>
               </Row>
-              <Row className="spacing-row" style={{ height: '5%' }}>
-              </Row>
-              <Row style={{ height: '80%' }}>
+              <Row style={{ height: '70vh', paddingTop: '5%' }}>
                 <Col md={4} xs={12} id="bridgesList" className="xs-margin-top" style={{ display: 'flex', alignItems: 'center', paddingLeft: '0', paddingRight: '3%', maxHeight: '100%' }}>
                     <BridgesList></BridgesList>
                 </Col>

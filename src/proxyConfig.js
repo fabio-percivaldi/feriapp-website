@@ -1,12 +1,10 @@
-import config from './config'
-const API_GATEWAY_URL = config.apiGateway.URL
 const proxy = require("http-proxy-middleware");
 
 module.exports = app => {
   app.use(
-    "/api/getIgMedia",
+    "/api",
     proxy({
-      target: API_GATEWAY_URL,
+      target: 'https://feriapp.test.mia-platform.eu/api',
       changeOrigin: true
     })
   );
