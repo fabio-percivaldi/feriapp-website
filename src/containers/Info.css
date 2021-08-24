@@ -80,7 +80,7 @@
     text-decoration: underline;
 }
 
-.info-container button.login {
+.info-container button.auth-button {
     background-color: transparent !important;
     border: none;
     font-weight: 200 !important
@@ -301,7 +301,7 @@ h4.info-flights {
     color: #f35525 !important;
 }
 
-button.login {
+button.auth-button {
     color: white !important;
     font-size: 13px !important;
     line-height: 15px !important;
@@ -616,7 +616,7 @@ button.signup {
     .link-col {
         padding-right: 2% !important;
     }
-    button.login {
+    button.auth-button {
         color: #3D3D3D !important;
         font-size: 17px !important;
         line-height: 24px !important;

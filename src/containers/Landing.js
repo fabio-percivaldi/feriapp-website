@@ -1,6 +1,5 @@
 import './Landing.css'
-import Login from './Login'
-import Signup from './Signup'
+import AuthenticationButton from '../components/AuthenticationButton'
 import Select from 'react-select';
 import { connect } from "react-redux";
 import React, { Component } from "react";
@@ -67,27 +66,27 @@ class ConnectedLanding extends Component {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
         // Windows Phone must come first because its UA also contains "Android"
         if (/windows phone/i.test(userAgent)) {
-          return "Windows Phone";
+            return "Windows Phone";
         }
-    
+
         if (/android/i.test(userAgent)) {
-          return "Android";
+            return "Android";
         }
-    
+
         // iOS detection from: http://stackoverflow.com/a/9039885/177710
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          return "iOS";
+            return "iOS";
         }
-    
+
         return "unknown";
-      }
+    }
     handleDownloadApp = () => {
         const clientType = this.getMobileOperatingSystem()
         if (clientType === 'iOS') {
-          window.location.href = 'https://apps.apple.com/it/app/feriapp/id1488392565'
+            window.location.href = 'https://apps.apple.com/it/app/feriapp/id1488392565'
         }
         if (clientType === 'Android') {
-          window.location.href = 'https://play.google.com/store/apps/details?id=it.feriapp&gl=IT'
+            window.location.href = 'https://play.google.com/store/apps/details?id=it.feriapp&gl=IT'
         }
     }
     handleDiscoveryClick = () => {
@@ -121,8 +120,7 @@ class ConnectedLanding extends Component {
                             />
                         </Col>
                         <Col style={{ display: 'flex', justifyContent: 'flex-end' }} >
-                            <Login></Login>
-                            <Signup></Signup>
+                            <AuthenticationButton></AuthenticationButton>
                         </Col>
                     </Row>
                     <Row style={{ height: '90%' }}>
@@ -163,13 +161,13 @@ class ConnectedLanding extends Component {
                                         <option value="5">5</option>
                                     </Form.Control>
                                 </Form.Group>
-                                <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-                                <Button onClick={this.handleDiscoveryClick} variant="primary">
-                                    Scopri ponti
-                                </Button>
-                                <Button className="download-btn" onClick={this.handleDownloadApp} variant="primary">
-                                    Scarica l'app
-                                </Button>
+                                <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                    <Button onClick={this.handleDiscoveryClick} variant="primary">
+                                        Scopri ponti
+                                    </Button>
+                                    <Button className="download-btn" onClick={this.handleDownloadApp} variant="primary">
+                                        Scarica l'app
+                                    </Button>
                                 </div>
                             </Form>
                         </div>

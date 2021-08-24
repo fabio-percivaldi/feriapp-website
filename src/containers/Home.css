@@ -60,7 +60,7 @@ h5 {
   font-size: 1.5rem !important;
   color: white !important;
 }
-button.login {
+button.auth-button {
   float: right
 }
 button.signup {

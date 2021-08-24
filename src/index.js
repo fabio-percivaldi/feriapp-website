@@ -11,6 +11,8 @@ import { Provider } from "react-redux";
 import { CookiesProvider } from 'react-cookie';
 import { SnackbarProvider } from 'notistack';
 import { StyledProvider } from 'components-extra'
+import { Auth0Provider } from "@auth0/auth0-react";
+
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -43,7 +45,11 @@ function retrieveContainer (props) {
 }
 
 
-const rootComponent = <StyledProvider>
+const rootComponent = <Auth0Provider
+domain="dev-mqipnlbj.us.auth0.com"
+clientId="TgxtZLFyI5FpBUQkc3PbtDZAkhA4WeHM"
+redirectUri={`${window.location.origin}/holidays`}
+><StyledProvider>
     <CookiesProvider>
       <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/'} >
         <Provider store={bridges}>
@@ -54,7 +60,7 @@ const rootComponent = <StyledProvider>
       </BrowserRouter >
     </CookiesProvider>
   </StyledProvider>
-
+  </Auth0Provider>
 function render(props) {
   ReactDOM.render(rootComponent, retrieveContainer(props))
 }

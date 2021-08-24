@@ -39,7 +39,7 @@
     height: 100vh
 }
 
-.landing-container button.login {
+.landing-container button.auth-button {
     background-color: transparent !important;
     border: none;
     color: white !important;

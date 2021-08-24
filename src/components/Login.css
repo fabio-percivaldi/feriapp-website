@@ -1,0 +1,10 @@
+@media all and (min-width: 480px) {
+  .auth-button {
+    padding: 60px 0;
+  }
+
+  .auth-button form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
