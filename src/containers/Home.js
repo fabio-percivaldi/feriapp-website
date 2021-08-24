@@ -9,9 +9,9 @@ import AuthenticationButton from '../components/AuthenticationButton'
 import HolidaysList from "./HolidaysList";
 // import LandingModal from "../components/LandingModal"
 import BridgesCalendar from "./BridgesCalendar";
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import NavigationBar from '../components/NavigationBar';
-import { Col, Row, Button, Navbar } from "react-bootstrap";
+import { Col, Row, Navbar } from "react-bootstrap";
 import { fetchHolidays, changeSettings, fetchFlights, selectBridge, fetchIGMedia, fetchBridges, changeDayOfHolidays } from "../actions/bridges";
 const { WEEK_DAYS } = require('../constants')
 

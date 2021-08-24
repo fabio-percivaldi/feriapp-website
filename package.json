@@ -10,7 +10,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@material-ui/core": "^4.9.14",
-    "aws-amplify": "^2.3.0",
     "axios": "^0.19.2",
     "bootstrap": "5.0.2",
     "components-extra": "^2.6.2",

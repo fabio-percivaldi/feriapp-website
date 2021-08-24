@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Auth } from "aws-amplify";
 import { Container } from "react-bootstrap";
 import Routes from "./Routes";
-import config from "./config";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withCookies } from 'react-cookie';
@@ -41,57 +39,7 @@ class App extends Component {
 
     return "unknown";
   }
-  async componentDidMount() {
-    this.loadFacebookSDK();
-    // const clientType = this.getMobileOperatingSystem()
-    // if (clientType === 'iOS') {
-    //   window.location.href = 'https://apps.apple.com/it/app/feriapp/id1488392565'
-    // }
-    // if (clientType === 'Android') {
-    //   window.location.href = 'https://play.google.com/store/apps/details?id=it.feriapp&gl=IT'
-    // }
-    try {
-      await Auth.currentAuthenticatedUser();
-      this.userHasAuthenticated(true);
-    } catch (e) {
-      if (e !== "not authenticated") {
-        alert(e);
-      }
-    }
-
-    this.setState({ isAuthenticating: false });
-  }
-
-  loadFacebookSDK() {
-    window.fbAsyncInit = function () {
-      window.FB.init({
-        appId: config.social.FB,
-        autoLogAppEvents: true,
-        xfbml: true,
-        cookie: true,
-        version: 'v3.1'
-      });
-      window.FB.AppEvents.logPageView();
-    };
-
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  }
-
-  userHasAuthenticated = authenticated => {
-    this.setState({ isAuthenticated: authenticated });
-  };
-
-  handleLogout = async event => {
-    await Auth.signOut();
-
-    this.userHasAuthenticated(false);
-  };
+  
   privacy = () => {
     this.props.history.push('/privacy')
   }
@@ -108,10 +56,6 @@ class App extends Component {
       userHasAuthenticated: this.userHasAuthenticated
     };
     return (
-
-      !this.state.isAuthenticating && (
-
-
         <Container style={{ minWidth: '100%', marginTop: '0', minHeight: '100vh', backgroundColor: '#E1E2E8' }}>
           <CookiesBanner style={{ display: this.state.acceptCookies ? 'none' : 'flex' }} className="cookie-banner" text="This site uses proprietary cookies in order to improve the browsing experience. For more information, read the Privacy Policy.">
           <CookiesBanner.Button onClick={this.privacy}>
@@ -124,7 +68,6 @@ class App extends Component {
           <Routes childProps={childProps} />
           <Footer></Footer>
         </Container>
-      )
     );
   }
 }

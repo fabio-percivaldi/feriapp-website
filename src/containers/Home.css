@@ -63,9 +63,6 @@ h5 {
 button.auth-button {
   float: right
 }
-button.signup {
-  float: right
-}
 @media(max-width: 767px) {
   .spacing-row {
     height: 0 !important;

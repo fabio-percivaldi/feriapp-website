@@ -86,12 +86,6 @@
     font-weight: 200 !important
 }
 
-.info-container button.signup {
-    background-color: transparent !important;
-    border: none;
-    margin-right: 0 !important;
-    font-weight: 200 !important
-}
 .link-col .row {
     justify-content: flex-end;
 }
@@ -302,12 +296,6 @@ h4.info-flights {
 }
 
 button.auth-button {
-    color: white !important;
-    font-size: 13px !important;
-    line-height: 15px !important;
-}
-
-button.signup {
     color: white !important;
     font-size: 13px !important;
     line-height: 15px !important;
@@ -617,11 +605,6 @@ button.signup {
         padding-right: 2% !important;
     }
     button.auth-button {
-        color: #3D3D3D !important;
-        font-size: 17px !important;
-        line-height: 24px !important;
-    }
-    button.signup {
         color: #3D3D3D !important;
         font-size: 17px !important;
         line-height: 24px !important;
