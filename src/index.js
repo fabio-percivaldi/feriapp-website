@@ -25,7 +25,7 @@ clientId="TgxtZLFyI5FpBUQkc3PbtDZAkhA4WeHM"
 redirectUri={`${window.location.origin}/holidays`}
 ><StyledProvider>
     <CookiesProvider>
-      <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/bridges/' : '/'} >
+      <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/' : '/'} >
         <Provider store={bridges}>
           <SnackbarProvider maxSnack={3}>
             <App />
