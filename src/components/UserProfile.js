@@ -20,7 +20,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 
 const UserProfile = () => {
     const openGestioneOre = () => {
-        window.location.href = '/gestione-ore'
+        window.location.href = '/gestione-ore/'
     }
     const { logout } = useAuth0();
     const { NODE_ENV } = process.env
