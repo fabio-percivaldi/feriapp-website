@@ -83,7 +83,7 @@ class ConnectedHome extends Component {
               Feriapp
             </Navbar.Brand>
             <Navbar.Collapse className="justify-content-end">
-              <AuthenticationButton></AuthenticationButton>
+              <AuthenticationButton location={this.props.location}></AuthenticationButton>
             </Navbar.Collapse>
           </Navbar>
         </Row>

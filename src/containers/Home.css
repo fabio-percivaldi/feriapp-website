@@ -60,7 +60,7 @@ h5 {
   font-size: 1.5rem !important;
   color: white !important;
 }
-button.auth-button {
+.auth-button {
   float: right
 }
 @media(max-width: 767px) {

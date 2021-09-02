@@ -18,11 +18,13 @@ function retrieveContainer (props) {
   return container ? container.querySelector('#root') : document.querySelector('#root')
 }
 
+const { NODE_ENV } = process.env
+const redirectLocation = NODE_ENV === 'development' ? '/holidays' : '/bridges/holidays'
 
 const rootComponent = <Auth0Provider
 domain="dev-mqipnlbj.us.auth0.com"
 clientId="TgxtZLFyI5FpBUQkc3PbtDZAkhA4WeHM"
-redirectUri={`${window.location.origin}/holidays`}
+redirectUri={`${window.location.origin}${redirectLocation}`}
 ><StyledProvider>
     <CookiesProvider>
       <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/bridges/' : '/'} >
