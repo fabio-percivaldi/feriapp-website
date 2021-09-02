@@ -3,7 +3,6 @@ import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { useAuth0 } from "@auth0/auth0-react";
-import { useHistory } from "react-router-dom";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
@@ -20,9 +19,8 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 
 
 const UserProfile = () => {
-    let history = useHistory();
     const openGestioneOre = () => {
-        history.push('/gestione-ore')
+        window.location.href = '/gestione-ore'
     }
     const { logout } = useAuth0();
     const { NODE_ENV } = process.env
